@@ -30,7 +30,7 @@
     }
 
 .formTitle {
-    font-family: Raleway-Medium;
+    font-family: monospace;
     font-size: 30px;
     color: #555;
     line-height: 1.2;
@@ -44,7 +44,7 @@
 
 .formInput {
     position: relative;
-    font-family: Raleway-Medium;
+    font-family: monospace;
     line-height: 1.2;
     font-size: 18px;
     display: block;
@@ -66,7 +66,7 @@
 .formInputName {
     margin-bottom: 5%;
 
-    font-family: Raleway-SemiBold;
+    font-family: monospace;
     font-size: 16px;
     color: #555;
     line-height: 1.4;
@@ -78,7 +78,7 @@
     width: 60%;
     height: 55px;
     margin-left: 20%;
-    margin-top: 25%;
+    margin-top: 10%;
 
     background: #333;
     border-radius: 27.5px;
@@ -91,6 +91,9 @@
     color: honeydew;
     font-size: large;
     font-weight: 400;
+    
+    font-family: monospace;
+    font-size: 20px;
 }
 
 .formSubmitButton:hover {
