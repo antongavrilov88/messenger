@@ -20,7 +20,7 @@
     margin: 10% auto 5% auto;    
 }
 
-.form-title {
+.form__title {
     font-family: monospace;
     font-size: 30px;
     color: #555;
@@ -33,7 +33,7 @@
     margin-bottom: 20%;
 }
 
-.form-input {
+.form__input {
     position: relative;
     font-family: monospace;
     line-height: 1.2;
@@ -50,12 +50,12 @@
     transition: all .4s; 
 }
 
-.form-input:hover, .form-input:focus {
+.form__input:hover, .form__input:focus {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
-.form-input_name {
+.form__input__name {
     margin-bottom: 10%;
 
     font-family: monospace;
@@ -65,7 +65,7 @@
     text-transform: uppercase;
 }
 
-.form-submit-button {
+.form__submit-button {
     position: relative;
     width: 60%;
     height: 55px;
@@ -88,7 +88,7 @@
     font-size: 20px;
 }
 
-.form-submit-button:hover {
+.form__submit-button:hover {
     background: #57b846;
     cursor: pointer;
 }
