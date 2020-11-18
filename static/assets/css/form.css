@@ -6,7 +6,7 @@
 
 .container {
     width: 340px;
-    height: 450px;
+    height: fit-content;
     margin: 10% auto 5% auto;
 
     background: #FFFFEE;
