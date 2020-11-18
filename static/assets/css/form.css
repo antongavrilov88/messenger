@@ -44,9 +44,10 @@
     height: 30px;
     margin:  auto;
     margin-bottom: 15%;
-    transition: all .4s; 
     outline: none;
     border: 1px solid #DDDDDD;
+    
+    transition: all .4s; 
 }
 
 .form-input:hover, .form-input:focus {
