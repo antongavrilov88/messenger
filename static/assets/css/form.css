@@ -1,4 +1,4 @@
-.formWrapper {
+.form-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;  
@@ -14,13 +14,13 @@
     border-radius: 12px;
 }
 
-.formContainer {
+.form-container {
     width: 70%;
     height: 85%;
     margin: 10% auto 5% auto;    
 }
 
-.formTitle {
+.form-title {
     font-family: monospace;
     font-size: 30px;
     color: #555;
@@ -33,7 +33,7 @@
     margin-bottom: 20%;
 }
 
-.formInput {
+.form-input {
     position: relative;
     font-family: monospace;
     line-height: 1.2;
@@ -49,12 +49,12 @@
     border: 1px solid #DDDDDD;
 }
 
-.formInput:hover, .formInput:focus {
+.form-input:hover, .form-input:focus {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
-.formInputName {
+.form-input_name {
     margin-bottom: 10%;
 
     font-family: monospace;
@@ -64,7 +64,7 @@
     text-transform: uppercase;
 }
 
-.formSubmitButton {
+.form-submit-button {
     position: relative;
     width: 60%;
     height: 55px;
