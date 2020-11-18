@@ -1,0 +1,43 @@
+.chat-list__container {
+    position: absolute;
+    width: 310px;
+    height: 720px;
+    left: 0px;
+    top: 0px;
+    border-radius: 25px 0 0 25px;
+
+    background: #f3f2f2;
+}
+
+.chat-list__search__container {
+    position: absolute;
+    width: 290px;
+    height: 32px;
+    left: 10px;
+    top: 56px;
+
+    background: #E5E5E5;
+    border-radius: 7px;
+}
+
+.chat-list__search__input {
+    position: relative;
+    font-family: monospace;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    background: 0 0;
+    height: 30px;
+    margin:  auto;
+    margin-bottom: 10%;
+    outline: none !important;
+    border: none !important;
+    
+    transition: all .4s; 
+}
+
+.chat-list__search__container:hover, .chat-list__search__container:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
