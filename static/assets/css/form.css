@@ -88,7 +88,7 @@
     font-size: 20px;
 }
 
-.formSubmitButton:hover {
+.form-submit-button:hover {
     background: #57b846;
     cursor: pointer;
 }
