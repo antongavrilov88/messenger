@@ -26,7 +26,12 @@
     position: relative;
     width: 90%;
     height: 0.5px;
-    margin:  auto;
+    margin:  auto; 
+    color: #555; /*для IE */
+    background-color:#555; /*для Firefox, Opera, Safari*/
+    border:0px none;
+    height:1px; /* высота 1px IE, Firefox, Opera, Safari */
+    clear:both;
 
     background: #E5E5E5;    
 }
@@ -73,7 +78,9 @@
 }
 
 .chat-list__item:hover {
-    background-color: #E5E5E5;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+    ;
 }
 
 .chat-list__item__chat-author__container {
@@ -103,11 +110,6 @@
     background: #E5E5E5;
 }
 
-.chat-list__item__avatar__container:hover {
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);
-}
-
 .chat-list__item__last-message__container {
     position: absolute;
     width: 193px;
@@ -123,6 +125,45 @@
     overflow: hidden;
     /* or 125% */
 
+    color: #999999;
+}
+
+.chat-list__item__counter {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    left: 270px;
+    bottom: 30px;
+
+    background: #3369F3;
+    border-radius: 10px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: white;
+}
+
+.chat-list__item__time {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    left: 270px;
+    bottom: 45px;    
+
+    text-align: center;
+    vertical-align: middle;
+    
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
     color: #999999;
 }
 
