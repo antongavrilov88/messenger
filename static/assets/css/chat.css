@@ -220,18 +220,8 @@
     border-radius: 0 25px 25px 0;
 }
 
-.chat-container__messages-container {
-    width: 100%;
-    height: 90%;
-    overflow-y: scroll;
-    overflow-x: hidden !important;
-}
 
-.chat-container__messages-container::-webkit-scrollbar {
-    width: 0;
-  }
-
-  .chat-container hr {
+.chat-container hr {
     position: relative;
     width: 90%;
     height: 0.5px;
@@ -242,4 +232,85 @@
     clear:both;
 
     background: #c9c7c7;    
+}
+
+.chat-container__messages-container {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+}
+
+.chat-container__messages-container::-webkit-scrollbar {
+    width: 0;
+}
+
+
+.chat-container__message-input {
+    position: relative;
+    width: 75%;
+    height: 5%;
+    margin-left: 12.5%;
+    top: 2%;
+    padding: 0;
+    
+    background: #d4d4d4;
+    border-radius: 10px;
+
+    outline: none !important;
+    border: none !important;
+}
+
+.chat-container__message-input:hover, .chat-container__message-input:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.chat-container__interlocutor-container {
+    position: relative;
+    width: 100%;
+    height: 10%;
+}
+
+.chat-container__messages-container__message-container {
+    position: relative;
+    width: 45%;
+    height: fit-content;
+    left: 50%;
+    top: 5%;
+}
+
+.chat-container__messages-container__message-container__my-message-box {
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    float: right;
+
+    border-radius: 5px 5px 0 5px;
+
+    background: #E4EDFD;
+
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+
+    text-align: center;
+}
+
+.chat-container__messages-container__message-container__interlocutor-message-box {
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    float: left;
+    
+    border-radius: 0px 5px 5px 5px;
+
+    background: #E4EDFD;
+}
+
+.chat-container__messages-container__message-container__interlocutor-message-box__message {
+    position: relative;
 }
