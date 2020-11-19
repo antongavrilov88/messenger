@@ -12,6 +12,12 @@
     overflow-x: hidden !important;
 }
 
+.chat-list__container ul {
+    width: auto;
+    height: fit-content;
+    padding: 0;
+}
+
 .chat-list__container::-webkit-scrollbar {
     width: 0;
   }
@@ -123,7 +129,26 @@
 .chat-container {
     position: relative;
     width: 970px;
-    height: 90%;
-    /* margin: 5% auto 5% auto; */
+    height: 100%;
     margin-left: 310px;
+
+    background: #c4c3c3;
+
+    border-radius: 0 25px 25px 0;
+}
+
+.chat-container__dummy {
+    position: relative;
+    width: 40%;
+    height: 5%;
+    margin: auto;
+    top: 50%;   
+
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+
+    text-align: center;
 }
