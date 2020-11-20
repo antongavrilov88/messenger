@@ -234,6 +234,16 @@
     background: #c9c7c7;    
 }
 
+.chat-container p {
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+
+    text-align: center;
+}
+
 .messages-container {
     position: relative;
     width: 100%;
@@ -278,7 +288,7 @@
     width: 45%;
     height: fit-content;
     left: 50%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .my-message-box {
@@ -290,14 +300,6 @@
     border-radius: 10px 10px 0 10px;
 
     background: #c8c8c9;
-
-    font-family: monospace;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 15px;
-
-    text-align: center;
 }
 
 .interlocutor-message-container {
@@ -309,7 +311,6 @@
 }
 
 .interlocutor-message-box {
-    position: relative;
     width: fit-content;
     height: 100%;
     float: left;
@@ -318,13 +319,6 @@
     border-radius: 0px 10px 10px 10px;
     background: #c8c8c9;
 
-    font-family: monospace;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 15px;
-
-    text-align: center;
 }
 
 .interlocutor-message-box__message {
