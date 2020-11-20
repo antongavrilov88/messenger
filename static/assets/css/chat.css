@@ -96,7 +96,6 @@
 .chat-list__item:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
-    ;
 }
 
 .chat-list__item__chat-author__container {
