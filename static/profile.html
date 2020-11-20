@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/profile.css">
+    <script src="./assets/js/manageModal.js"></script>
 
 </head>
 
@@ -18,31 +19,37 @@
 
                 </div>
             </div>
-            <div class="profile-info-container__avatar">
+            <div class="profile-info-container__avatar" onclick="openModal('change-avatar-modal')">
 
             </div>
             <div class="profile-info-container">
                 <span class="profile-info-container__property">Почта</span>
                 <span class="profile-info-container__value">anton@hbjh.hj</span>
-                <hr/>
+                <hr />
                 <span class="profile-info-container__property">Логин</span>
                 <span class="profile-info-container__value">anton</span>
-                <hr/>
+                <hr />
                 <span class="profile-info-container__property">Имя</span>
                 <span class="profile-info-container__value">Антон</span>
-                <hr/>
+                <hr />
                 <span class="profile-info-container__property">Фамилия</span>
                 <span class="profile-info-container__value">Гаврилов</span>
-                <hr/>
+                <hr />
                 <span class="profile-info-container__property">Имя в чате</span>
                 <span class="profile-info-container__value">Антоха</span>
-                <hr/>
+                <hr />
                 <span class="profile-info-container__property">Телефон</span>
                 <span class="profile-info-container__value">+ (777) 777-77-77</span>
                 <button class="profile-info-container__submit-button">Сохранить</button>
             </div>
         </div>
     </div>
+    <div id="change-avatar-modal" hidden = true>
+        <div class="modal-dialog__background">
+        </div>
+        <div class="avatar__dialog-modal">
+            <button class="modal-dialog__submit-button" onclick="closeModal('change-avatar-modal')">Изменить</button>
+        </div>
+    </div>
 </body>
-
 </html>
