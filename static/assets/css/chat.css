@@ -281,12 +281,13 @@
     margin-top: 15px;
 }
 
-.my-message-container__message-box {
+.my-message-box {
     width: fit-content;
     height: 100%;
     float: right;
+    padding: 10px;
 
-    border-radius: 5px 5px 0 5px;
+    border-radius: 10px 10px 0 10px;
 
     background: #c8c8c9;
 
@@ -299,17 +300,33 @@
     text-align: center;
 }
 
-.chat-container__messages-container__message-container__interlocutor-message-box {
+.interlocutor-message-container {
+    position: relative;
+    width: 45%;
+    height: fit-content;
+    left: 5%;
+    margin-top: 15px;
+}
+
+.interlocutor-message-box {
     position: relative;
     width: fit-content;
     height: 100%;
     float: left;
+    padding: 10px;
     
-    border-radius: 0px 5px 5px 5px;
-
+    border-radius: 0px 10px 10px 10px;
     background: #c8c8c9;
+
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+
+    text-align: center;
 }
 
-.chat-container__messages-container__message-container__interlocutor-message-box__message {
+.interlocutor-message-box__message {
     position: relative;
 }
