@@ -234,7 +234,7 @@
     background: #c9c7c7;    
 }
 
-.chat-container__messages-container {
+.messages-container {
     position: relative;
     width: 100%;
     height: 80%;
@@ -242,7 +242,7 @@
     overflow-x: hidden !important;
 }
 
-.chat-container__messages-container::-webkit-scrollbar {
+.messages-container::-webkit-scrollbar {
     width: 0;
 }
 
@@ -273,23 +273,22 @@
     height: 10%;
 }
 
-.chat-container__messages-container__message-container {
+.my-message-container {
     position: relative;
     width: 45%;
     height: fit-content;
     left: 50%;
-    top: 5%;
+    margin-top: 15px;
 }
 
-.chat-container__messages-container__message-container__my-message-box {
-    position: relative;
+.my-message-container__message-box {
     width: fit-content;
     height: 100%;
     float: right;
 
     border-radius: 5px 5px 0 5px;
 
-    background: #E4EDFD;
+    background: #c8c8c9;
 
     font-family: monospace;
     font-style: normal;
@@ -308,7 +307,7 @@
     
     border-radius: 0px 5px 5px 5px;
 
-    background: #E4EDFD;
+    background: #c8c8c9;
 }
 
 .chat-container__messages-container__message-container__interlocutor-message-box__message {
