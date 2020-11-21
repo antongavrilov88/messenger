@@ -167,8 +167,8 @@
 
     font-family: monospace;
     font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
+    font-weight: 700;
+    font-size: 16px;
     line-height: 15px;
     color: white;
 }
@@ -257,6 +257,8 @@
     position: relative;
     width: 100%;
     height: 80%;
+    top: 0;
+    left: 0;
     overflow-y: scroll;
     overflow-x: hidden !important;
 }
@@ -297,14 +299,15 @@
     width: 45%;
     height: fit-content;
     left: 50%;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .my-message-box {
     width: fit-content;
-    height: 100%;
+    height: fit-content;
     float: right;
     padding: 10px;
+    margin-bottom: 10px;
 
     border-radius: 10px 10px 0 10px;
 
@@ -316,7 +319,7 @@
     width: 45%;
     height: fit-content;
     left: 5%;
-    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .interlocutor-message-box {
@@ -324,6 +327,7 @@
     height: 100%;
     float: left;
     padding: 10px;
+    margin-bottom: 10px;
     
     border-radius: 0px 10px 10px 10px;
     background: #c8c8c9;
