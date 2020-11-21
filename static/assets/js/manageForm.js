@@ -8,5 +8,3 @@ function formHandler() {
         }
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => formHandler)
