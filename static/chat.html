@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/chat.css">
+    <script src="./assets/js/manageForm.js"></script>
 
 </head>
 
@@ -229,13 +230,15 @@
                         </div>
                     </div>
                     <hr>
-                    <input class="chat-container__message-input" />
-                    <div class="chat-container__send-button">
+                    <form id="messageForm">
+                    <input class="chat-container__message-input" type="text" name="message"/>
+                    <button class="chat-container__send-button" onclick="formHandler()">
                         <h1>&#10148;</h1>
-                    </div>
+                    </button>
                     <div class="chat-container__file-attache-button">
                         <h1>&#128247;</h1>
                     </div>
+                </form>
                 </div>
             </div>
         </div>
