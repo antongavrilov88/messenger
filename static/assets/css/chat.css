@@ -349,3 +349,7 @@
     left: 5%;
     bottom: 14.5%;
 }
+
+.chat-container__file-attache-button:hover, .chat-container__send-button:hover {
+    cursor: pointer;
+}

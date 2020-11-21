@@ -1,6 +1,6 @@
 function openModal( modalID ) {
 
-    let modal = document.getElementById(modalID)
+    let modal = document.getElementById( modalID )
 
     modal.hidden = false
 
@@ -9,7 +9,7 @@ function openModal( modalID ) {
 
 function closeModal( modalID ) {
 
-    let modal = document.getElementById(modalID)
+    let modal = document.getElementById( modalID )
 
     modal.hidden = true
 
