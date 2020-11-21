@@ -3,8 +3,10 @@ function formHandler( formID ) {
     myForm.onsubmit = function( e ) {
         e.preventDefault()
         myFormFields = myForm.getElementsByTagName( "input" )
+        requestObject = {}
         for ( let myFormField of myFormFields) {
-            console.log( `${myFormField.name}: "${myFormField.value}"` )
+            requestObject[`${myFormField.name}`] = myFormField.value
         }
+        console.log( requestObject )
     }
 }
