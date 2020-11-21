@@ -1,5 +1,5 @@
-function formHandler() {
-    let myForm = document.forms[0]
+function formHandler( formID ) {
+    let myForm = document.getElementById( formID )
     myForm.onsubmit = function( e ) {
         e.preventDefault()
         myFormFields = myForm.getElementsByTagName( "input" )
