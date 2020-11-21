@@ -1,17 +1,15 @@
-function openModal( modalID ) {
-
-    let modal = document.getElementById( modalID )
-
-    modal.hidden = false
-
-    return
+function openModal(modalID) {
+    let modal = document.getElementById(modalID)
+    if (modal) {
+        modal.hidden = false
+    }
+    return false
 }
 
-function closeModal( modalID ) {
-
-    let modal = document.getElementById( modalID )
-
-    modal.hidden = true
-
-    return
+function closeModal(modalID) {
+    let modal = document.getElementById(modalID)
+    if (modal) {
+        modal.hidden = true
+    }
+    return false
 }
