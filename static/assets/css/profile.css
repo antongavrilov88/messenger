@@ -81,8 +81,8 @@
     position: relative;
     width: 130px;
     height: 130px;
-    left: 607px;
-    top: 60px;
+    left: 159px;
+    top: 0px;
 
     border-radius: 65px;
     
@@ -203,7 +203,8 @@
     vertical-align: middle;    
 }
 
-.change-password__input {
+
+.change-input {
     position: relative;
     font-family: monospace;
     line-height: 1.2;
@@ -218,10 +219,13 @@
     outline: none;
     border: 1px solid #DDDDDD;
         
-    transition: all .4s; 
+    transition: all .4s;     
+
+    outline: none !important;
+    border: none !important;
 }
 
-.change-password__input:hover, .change-password__input:focus {
+.change-input:hover, .change-input:focus {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
     cursor: pointer;
