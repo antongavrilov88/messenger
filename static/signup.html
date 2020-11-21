@@ -7,30 +7,33 @@
 
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/form.css">
+    <script src="./assets/js/manageForm.js"></script>
 
 </head>
 
 <body>
-    <div class="form-wrapper">
-        <div class="container">
-            <form class="form-container">
-                <span class="form__title">Sign in</span>
-                <span class="form__input__name">Firstname</span>
-                <input class="form__input" />
-                <span class="form__input__name">LastName</span>
-                <input class="form__input" />
-                <span class="form__input__name">LOGIN</span>
-                <input class="form__input" />
-                <span class="form__input__name">E-mail</span>
-                <input class="form__input" />
-                <span class="form__input__name">Password</span>
-                <input class="form__input" />
-                <span class="form__input__name">Phone</span>
-                <input class="form__input" />
-                <button class="form__submit-button">Sign in</button>
-            </form>
+    <main>
+        <div class="form-wrapper">
+            <div class="container">
+                <form class="form-container" id="signupForm">
+                    <span class="form__title">Регистрация</span>
+                    <span class="form__input__name">Имя</span>
+                    <input class="form__input" type="text" name="first_name" />
+                    <span class="form__input__name">Фамилия</span>
+                    <input class="form__input" type="text" name="last_name" />
+                    <span class="form__input__name">Логин</span>
+                    <input class="form__input" type="text" name="login" />
+                    <span class="form__input__name">E-mail</span>
+                    <input class="form__input" type="email" name="e-mail" />
+                    <span class="form__input__name">Пароль</span>
+                    <input class="form__input" type="password" name="password" />
+                    <span class="form__input__name">Телефон</span>
+                    <input class="form__input" type="text" name="phone" />
+                    <button class="form__submit-button" onclick="formHandler()">Зарегистрироваться</button>
+                </form>
+            </div>
         </div>
-    </div>
+    </main>>
 </body>
 
 </html>

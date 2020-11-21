@@ -12,48 +12,52 @@
 </head>
 
 <body>
-    <div class="workspace__wrapper">
-        <div class="workspace__container">
-            <div class="return-container">
-                <div class="return-container__button">
+    <main>
+        <div class="workspace__wrapper">
+            <div class="workspace__container">
+                <div class="return-container">
+                    <div class="return-container__button">
+
+                    </div>
+                </div>
+                <div class="profile-info-container__avatar" onclick="openModal('change-avatar-modal')">
 
                 </div>
-            </div>
-            <div class="profile-info-container__avatar" onclick="openModal('change-avatar-modal')">
-
-            </div>
-            <div class="profile-info-container">
-                <span class="profile-info-container__property">Почта</span>
-                <span class="profile-info-container__value">anton@hbjh.hj</span>
-                <hr />
-                <span class="profile-info-container__property">Логин</span>
-                <span class="profile-info-container__value">anton</span>
-                <hr />
-                <span class="profile-info-container__property">Имя</span>
-                <span class="profile-info-container__value">Антон</span>
-                <hr />
-                <span class="profile-info-container__property">Фамилия</span>
-                <span class="profile-info-container__value">Гаврилов</span>
-                <hr />
-                <span class="profile-info-container__property">Имя в чате</span>
-                <span class="profile-info-container__value">Антоха</span>
-                <hr />
-                <span class="profile-info-container__property">Телефон</span>
-                <span class="profile-info-container__value">+ (777) 777-77-77</span>
-                <button class="profile-info-container__submit-button">Сохранить</button>
+                <div class="profile-info-container">
+                    <span class="profile-info-container__property">Почта</span>
+                    <span class="profile-info-container__value">anton@hbjh.hj</span>
+                    <hr />
+                    <span class="profile-info-container__property">Логин</span>
+                    <span class="profile-info-container__value">anton</span>
+                    <hr />
+                    <span class="profile-info-container__property">Имя</span>
+                    <span class="profile-info-container__value">Антон</span>
+                    <hr />
+                    <span class="profile-info-container__property">Фамилия</span>
+                    <span class="profile-info-container__value">Гаврилов</span>
+                    <hr />
+                    <span class="profile-info-container__property">Имя в чате</span>
+                    <span class="profile-info-container__value">Антоха</span>
+                    <hr />
+                    <span class="profile-info-container__property">Телефон</span>
+                    <span class="profile-info-container__value">+ (777) 777-77-77</span>
+                    <button class="profile-info-container__submit-button">Сохранить</button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="change-avatar-modal" hidden = true>
-        <div class="modal-dialog__background">
-        </div>
-        <div class="avatar__dialog-modal">
-            <h1>Загрузите файл</h1>
-            <div class="modal-dialog__body">
-                <a href="#">Выберите файл на своем компьютере</a>
+        <div id="change-avatar-modal" hidden=true>
+            <div class="modal-dialog__background">
             </div>
-            <button class="modal-dialog__submit-button" onclick="closeModal('change-avatar-modal')">Изменить</button>
+            <div class="avatar__dialog-modal">
+                <h1>Загрузите файл</h1>
+                <div class="modal-dialog__body">
+                    <a href="#">Выберите файл на своем компьютере</a>
+                </div>
+                <button class="modal-dialog__submit-button"
+                    onclick="closeModal('change-avatar-modal')">Изменить</button>
+            </div>
         </div>
-    </div>
+    </main>
 </body>
+
 </html>
