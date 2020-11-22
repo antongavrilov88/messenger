@@ -1,41 +1,53 @@
 .chat-list__container {
-    position: absolute;
-    width: 310px;
-    height: 720px;
-    left: 0px;
-    top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-evenly;
+
+    width: 25%;
+    height: 100%;
+    
     border-radius: 25px 0 0 25px;
 
     background: #f3f2f2;
 
-    overflow-y: scroll;
-    overflow-x: hidden !important;
+    overflow-y: hidden;
+
 }
 
 .chat-list__container__profile-link {
-    position: absolute;
-    width: 66px;
+    width: 100%;
     height: 12px;
-    left: 234px;
-    top: 21px;
+    padding-top: 60px;
+    padding-bottom: 15px;
+    padding-right: 7.5%;
 
     font-family: monospace;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-    overflow: hidden;
+    text-align: right;
 
     color: #999999;
 }
 
-.chat-list__container ul {
-    width: auto;
-    height: fit-content;
-    padding: 0;
+.chat-list__container__list {
+    width: 100%;
+    height: 90%;
+    display: block;
+
+    overflow-y: scroll;
+    overflow-x: hidden !important;
 }
 
-.chat-list__container::-webkit-scrollbar {
+.chat-list__container__list ul {
+    padding: 0;
+    margin-top: 10px;
+}
+
+.chat-list__container__list::-webkit-scrollbar {
     width: 0;
   }
 
@@ -53,27 +65,23 @@
 }
 
 .chat-list__search__container {
-    position: absolute;
-    width: 290px;
+    width: 90%;
     height: 32px;
-    left: 10px;
-    top: 56px;
+    margin-bottom: 15px;
 
     background: #E5E5E5;
     border-radius: 7px;
 }
 
-.chat-list__search__input {
-    position: relative;
+.chat-list__search__input {    
+    width: 100%;
+    height: 30px;
+
     font-family: monospace;
     line-height: 1.2;
     font-size: 18px;
     display: block;
-    width: 100%;
     background: 0 0;
-    height: 30px;
-    margin:  auto;
-    margin-bottom: 10%;
     outline: none !important;
     border: none !important;
     
@@ -89,7 +97,6 @@
     position: relative;
     width: 100%;
     height: 70px;
-    top: 90px;
     border-radius: 5px;
 }
 
@@ -102,7 +109,6 @@
     position: relative;
     width: 100%;
     height: 70px;
-    top: 90px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
@@ -219,10 +225,8 @@
 }
 
 .chat-container {
-    position: relative;
-    width: 970px;
+    width: 75%;
     height: 100%;
-    margin-left: 310px;
 
     background: #ecebeb;
 
