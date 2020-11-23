@@ -225,6 +225,11 @@
 }
 
 .chat-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
     width: 75%;
     height: 100%;
 
@@ -235,10 +240,8 @@
 
 
 .chat-container hr {
-    position: relative;
     width: 90%;
     height: 0.5px;
-    margin:  auto; 
     background-color:#555;
     border:0px none;
     height:1px;
@@ -258,11 +261,8 @@
 }
 
 .messages-container {
-    position: relative;
     width: 100%;
-    height: 80%;
-    top: 0;
-    left: 0;
+    height: 75%;
     overflow-y: scroll;
     overflow-x: hidden !important;
 }
@@ -271,29 +271,7 @@
     width: 0;
 }
 
-
-.chat-container__message-input {
-    position: relative;
-    width: 75%;
-    height: 40px;
-    margin-left: 12.5%;
-    bottom: 10px;
-    padding: 0;
-    
-    background: #d4d4d4;
-    border-radius: 10px;
-
-    outline: none !important;
-    border: none !important;
-}
-
-.chat-container__message-input:hover, .chat-container__message-input:focus {
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);
-}
-
 .chat-container__interlocutor-container {
-    position: relative;
     width: 100%;
     height: 10%;
 }
@@ -342,24 +320,60 @@
     position: relative;
 }
 
-.chat-container__send-button {
-    position: relative;
+.message-form__container {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 10%;
+}
+
+.message-form__container h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.message-form {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.chat-container__file-attache-button {
     width: 34px;
     height: 34px;
-    left: 1%;
-    bottom: 5px;
+    align-self: flex-start;
+}
+
+.chat-container__message-input {
+    width: 85%;
+    height: 34px;
+    
+    background: #d4d4d4;
+    border-radius: 10px;
+
+    outline: none !important;
+    border: none !important;
+}
+
+.chat-container__message-input:hover, .chat-container__message-input:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.chat-container__send-button {
+    width: 34px;
+    height: 34px;
 
     border: none !important;
     outline: none !important;
     background: none;
-}
-
-.chat-container__file-attache-button {
-    position: relative;
-    width: 34px;
-    height: 34px;
-    left: 5%;
-    bottom: 75px;
+    align-self: end;
 }
 
 .chat-container__file-attache-button:hover, .chat-container__send-button:hover {
