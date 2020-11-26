@@ -233,7 +233,7 @@
     width: 75%;
     height: 100%;
 
-    background: #ecebeb;
+    background: #FFFFEE;
 
     border-radius: 0 25px 25px 0;
 }
@@ -345,6 +345,11 @@
 }
 
 .chat-container__file-attache-button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+
     width: 34px;
     height: 34px;
     align-self: flex-start;
@@ -367,6 +372,11 @@
 }
 
 .chat-container__send-button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    
     width: 34px;
     height: 34px;
 
