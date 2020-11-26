@@ -99,6 +99,16 @@
     background: #E5E5E5;    
 }
 
+.profile-info-container__form {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;  
+    align-content: space-evenly;
+    
+    flex-direction: column;
+}
+
 .profile-info-container__avatar {
     align-self: center;
     width: 130px;
@@ -115,12 +125,20 @@
     cursor: pointer;
 }
 
+.profile-info-container__item {    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;  
+    align-content: space-evenly;
+    justify-content: space-between;    
+}
+
 .profile-info-container__submit-button {
-    position: relative;
+    justify-self: end;
+
     width: 60%;
     height: 55px;
-    margin-left: 20%;
-    margin-top: 20%;
 
     background: #333;
     border-radius: 27.5px;

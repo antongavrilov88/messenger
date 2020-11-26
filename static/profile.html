@@ -24,28 +24,40 @@
                 </div>
             <div class="profile-info__wrapper">
                 <div class="profile-info-container">
-                <form id="changePasswordForm">
+                <form id="changeProfileForm" class="profile-info-container__form">
                 <div class="profile-info-container__avatar" onclick="openModal('change-avatar-modal')">
                     <input hidden=true name="avatar"/>
                 </div>
+                <div class="profile-info-container__item">
                     <span class="profile-info-container__property">Имя</span>
                     <input class="change-input" type="text" name="fist_name" placeholder="имя"/>
+                    </div>
                     <hr />
+                    <div class="profile-info-container__item">
                     <span class="profile-info-container__property">Фамилия</span>
                     <input class="change-input" type="text" name="second_name" placeholder="фамиия" />
+                    </div>
                     <hr />
+                    <div class="profile-info-container__item">
                     <span class="profile-info-container__property">Псевдоним</span>
                     <input class="change-input" type="text" name="display_name"  placeholder="псевдоним"/>
+                    </div>
                     <hr />
+                    <div class="profile-info-container__item">
                     <span class="profile-info-container__property">Логин</span>
                     <input class="change-input" type="text" name="login" placeholder="логин" />
+                    </div>
                     <hr />
+                    <div class="profile-info-container__item">
                     <span class="profile-info-container__property">Почта</span>
                     <input class="change-input" type="email" name="email"  placeholder="почта"/>
+                    </div>
                     <hr />
+                    <div class="profile-info-container__item">
                     <span class="profile-info-container__property">Телефон</span>
                     <input class="change-input" type="text" name="phone"  placeholder="телефон"/>
-                    <button class="profile-info-container__submit-button" type="submit" onclick onclick="formHandler( 'changePasswordForm' )">Изменить</button>
+                    </div>
+                    <button class="profile-info-container__submit-button" type="submit" onclick onclick="formHandler( 'changeProfileForm' )">Изменить</button>
                 </form>
                 </div>
                 </div>
