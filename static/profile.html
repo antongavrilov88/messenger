@@ -22,7 +22,9 @@
                         <h1>&#10094;<h1>
                     </div>
                 </div>
-                <form class="profile-info-container" id="changePasswordForm">
+            <div class="profile-info__wrapper">
+                <div class="profile-info-container">
+                <form id="changePasswordForm">
                 <div class="profile-info-container__avatar" onclick="openModal('change-avatar-modal')">
                     <input hidden=true name="avatar"/>
                 </div>
@@ -45,6 +47,8 @@
                     <input class="change-input" type="text" name="phone"  placeholder="телефон"/>
                     <button class="profile-info-container__submit-button" type="submit" onclick onclick="formHandler( 'changePasswordForm' )">Изменить</button>
                 </form>
+                </div>
+                </div>
             </div>
         </div>
         <div id="change-avatar-modal" hidden=true>
