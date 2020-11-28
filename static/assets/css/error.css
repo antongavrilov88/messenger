@@ -1,9 +1,13 @@
 .error-container {
-    position: relative;
     width: 45%;
     height: 45%;
-    margin-left: 27.5%;
-    padding-top: 20%;
+
+    align-self: center;    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     text-align: center;
     vertical-align: middle;

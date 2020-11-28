@@ -53,9 +53,7 @@
     align-items: center;   
 }
 
-.profile-info-container__property {    
-    position: relative;
-    top: 25px;
+.profile-info-container__property {   
 
     font-family: monospace;
     font-style: normal;
@@ -90,7 +88,6 @@
     width: 100%;
     height: 0.5px;
     margin:  auto; 
-    top: 25px;
     background-color:#555;
     border:0px none;
     height:1px;
@@ -105,8 +102,9 @@
     justify-content: center;
     align-items: center;  
     align-content: space-evenly;
-    
     flex-direction: column;
+
+    width: 95%;
 }
 
 .profile-info-container__avatar {
@@ -128,10 +126,21 @@
 .profile-info-container__item {    
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;  
-    align-content: space-evenly;
-    justify-content: space-between;    
+    width: 95%;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.profile-info-container__item__prop-name {
+    justify-self: start;
+    align-self: start;
+}
+
+.profile-info-container__item__prop-input {
+    justify-self: end;
+    align-self: end;
+
+    width: 75%;
 }
 
 .profile-info-container__submit-button {
@@ -139,6 +148,8 @@
 
     width: 60%;
     height: 55px;
+
+    margin-top: 40px;
 
     background: #333;
     border-radius: 27.5px;
@@ -243,12 +254,11 @@
 
 
 .change-input {
-    position: relative;
     font-family: monospace;
     line-height: 1.2;
     font-size: 18px;
     display: block;
-    width: 25%;
+    width: 30%;
     float: right;
     background: 0 0;
     height: 20px;
@@ -256,6 +266,8 @@
     top: 25px;
     outline: none;
     border: 1px solid #DDDDDD;
+    
+    text-align: left;
         
     transition: all .4s;     
 
