@@ -106,3 +106,5 @@ class Block {
       this.getContent().style.display = "none";
     }
   }
+
+export default Block

@@ -7,7 +7,8 @@ app.use(express.static(`${__dirname}/static`));
 
 
 app.use('/', function (request, response) {
-    response.send('<h1>Главная страница</h1>')
+    // response.send('<h1>Главная страница</h1>')
+    response.send( `${__dirname}/static/index.html` )
   })
 
 app.listen(PORT, function () {
