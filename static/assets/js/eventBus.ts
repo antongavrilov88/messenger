@@ -1,9 +1,12 @@
+// нужно уточнить с колбэками
+type callback = ( args?: undefined[] ) => void | boolean
 class EventBus {
+  listeners: {};
     constructor() {
       this.listeners = {};
     }
   
-    on(event, callback) {
+    on(event: string, callback: callback) {
       if (!this.listeners[event]) {
         this.listeners[event] = [];
       }
@@ -11,7 +14,7 @@ class EventBus {
       this.listeners[event].push(callback);
     }
   
-    off(event, callback) {
+    off(event: string, callback: callback) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
       }
@@ -21,7 +24,7 @@ class EventBus {
       );
     }
   
-      emit(event, ...args) {
+      emit(event: string, ...args: undefined[]) {
       if (!this.listeners[event]) {
         throw new Error(`Нет события: ${event}`);
       }

@@ -1,3 +1,5 @@
+import EventBus from './eventBus'
+
 class Block {
     static EVENTS = {
       INIT: "init",
@@ -7,13 +9,17 @@ class Block {
     };
     _element = null;
     _meta = null;
+    props: {
+      text?: string
+    };
+    eventBus: () => EventBus;
     /** JSDoc
      * @param {string} tagName
      * @param {Object} props
      *
      * @returns {void}
      */
-    constructor(tagName = "div", props = {}) {
+    constructor(tagName: string = "div", props: object = {}) {
       const eventBus = new EventBus();
       this._meta = {
         tagName,
@@ -39,7 +45,7 @@ class Block {
       this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _componentDidMount() {
-      this.componentDidMount();
+      // this.componentDidMount();
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
     componentDidMount(oldProps) {}
