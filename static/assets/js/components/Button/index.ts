@@ -6,7 +6,7 @@ const button = new Button({
 });
 
 // app — это id дива в корне DOM
-render("#root", button);
+render(".app", button);
 
 // Через секунду контент изменится сам, достаточно обновить пропсы
 setTimeout(() => {

@@ -1,5 +1,5 @@
-function render(id, block) {
-    const root = document.getElementById(id);
+function render(query, block) {
+    const root = document.querySelector(query);
     root.appendChild(block.getContent());
     return root;
  }
