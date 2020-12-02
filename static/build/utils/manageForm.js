@@ -10,3 +10,4 @@ function formHandler(formID) {
         console.log(requestObject);
     };
 }
+//# sourceMappingURL=manageForm.js.map

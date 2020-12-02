@@ -1,6 +1,6 @@
 import EventBus from './eventBus'
 
-class Block {
+export class Block {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",

@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-class EventBus {
+export class EventBus {
     constructor() {
         this.listeners = {};
     }
@@ -25,4 +23,5 @@ class EventBus {
         });
     }
 }
-exports.default = EventBus;
+export default EventBus;
+//# sourceMappingURL=eventBus.js.map

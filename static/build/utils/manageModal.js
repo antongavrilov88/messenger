@@ -12,3 +12,4 @@ function closeModal(modalID) {
     }
     return;
 }
+//# sourceMappingURL=manageModal.js.map

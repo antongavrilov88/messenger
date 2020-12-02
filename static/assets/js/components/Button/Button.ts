@@ -1,6 +1,6 @@
 import Block from '../../Block'
 
-class Button extends Block {
+export class Button extends Block {
     constructor(props) {
           // Создаём враппер дом-элемент button
       super("button", props);

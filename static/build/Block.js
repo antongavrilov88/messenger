@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const eventBus_1 = require("./eventBus");
-class Block {
+import EventBus from './eventBus';
+export class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
         this._meta = null;
@@ -11,7 +9,7 @@ class Block {
             }
             Object.assign(this.props, nextProps);
         };
-        const eventBus = new eventBus_1.default();
+        const eventBus = new EventBus();
         this._meta = {
             tagName,
             props
@@ -93,4 +91,5 @@ Block.EVENTS = {
     FLOW_CDU: "flow:component-did-update",
     FLOW_RENDER: "flow:render"
 };
-exports.default = Block;
+export default Block;
+//# sourceMappingURL=Block.js.map
