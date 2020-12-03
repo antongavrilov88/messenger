@@ -1,9 +1,8 @@
-import EventBus from './eventBus';
-export class Block {
+import EventBus from './eventBus.js';
+class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
-        this._meta = null;
-        this.setProps = nextProps => {
+        this.setProps = (nextProps) => {
             if (!nextProps) {
                 return;
             }
@@ -92,4 +91,3 @@ Block.EVENTS = {
     FLOW_RENDER: "flow:render"
 };
 export default Block;
-//# sourceMappingURL=Block.js.map

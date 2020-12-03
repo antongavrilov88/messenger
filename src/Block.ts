@@ -1,6 +1,6 @@
-import EventBus from './eventBus'
+import EventBus from './eventBus.js'
 
-export class Block {
+class Block {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",
@@ -8,7 +8,10 @@ export class Block {
       FLOW_RENDER: "flow:render"
     };
     _element = null;
-    _meta = null;
+    _meta: {
+      tagName: string,
+      props: object
+    };
     props: {
       text?: string
     };
@@ -30,7 +33,7 @@ export class Block {
       this._registerEvents(eventBus);
       eventBus.emit(Block.EVENTS.INIT);
     }
-    _registerEvents(eventBus) {
+    _registerEvents(eventBus: EventBus) {
       eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
       eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
       eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -48,18 +51,18 @@ export class Block {
       // this.componentDidMount();
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
-    componentDidMount(oldProps) {}
-    _componentDidUpdate(oldProps, newProps) {
+    componentDidMount(oldProps: object) {}
+    _componentDidUpdate(oldProps: object, newProps: object) {
       const response = this.componentDidUpdate(oldProps, newProps);
       if (!response) {
         return;
       }
       this._render();
     }
-    componentDidUpdate(oldProps, newProps) {
+    componentDidUpdate(oldProps: object, newProps: object) {
       return true;
     }
-    setProps = nextProps => {
+    setProps = (nextProps: object): void | object => {
       if (!nextProps) {
         return;
       }

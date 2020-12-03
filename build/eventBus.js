@@ -1,4 +1,4 @@
-export class EventBus {
+class EventBus {
     constructor() {
         this.listeners = {};
     }
@@ -24,4 +24,3 @@ export class EventBus {
     }
 }
 export default EventBus;
-//# sourceMappingURL=eventBus.js.map

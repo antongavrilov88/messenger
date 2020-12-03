@@ -1,6 +1,6 @@
 // нужно уточнить с колбэками
 type callback = ( args?: undefined[] ) => void | boolean
-export class EventBus {
+class EventBus {
   listeners: {};
     constructor() {
       this.listeners = {};

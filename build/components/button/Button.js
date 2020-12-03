@@ -1,5 +1,5 @@
-import Block from '../../Block';
-export class Button extends Block {
+import Block from '../../Block.js';
+class Button extends Block {
     constructor(props) {
         super("button", props);
     }
@@ -8,4 +8,3 @@ export class Button extends Block {
     }
 }
 export default Button;
-//# sourceMappingURL=Button.js.map

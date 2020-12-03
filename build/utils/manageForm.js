@@ -4,10 +4,6 @@ function formHandler(formID) {
         e.preventDefault();
         let myFormFields = myForm.getElementsByTagName("input");
         let requestObject = {};
-        for (let myFormField of myFormFields) {
-            requestObject[`${myFormField.name}`] = myFormField.value;
-        }
-        console.log(requestObject);
+        console.log(requestObject, myFormFields);
     };
 }
-//# sourceMappingURL=manageForm.js.map

@@ -1,5 +1,5 @@
-import render from '../../utils/render';
-import Button from './Button';
+import { render } from '../../utils/render.js';
+import Button from './Button.js';
 const button = new Button({
     text: 'Click me',
 });
@@ -9,4 +9,3 @@ setTimeout(() => {
         text: 'Click me, please',
     });
 }, 1000);
-//# sourceMappingURL=index.js.map
