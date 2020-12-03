@@ -1,4 +1,5 @@
 import EventBus from './eventBus.js';
+import Handlebars from 'handlebars';
 class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
@@ -51,7 +52,9 @@ class Block {
     }
     _render() {
         const block = this.render();
-        this._element.innerHTML = block;
+        const template = Handlebars.compile(block);
+        const result = template(this.props);
+        console.log(result);
     }
     render() { }
     getContent() {
@@ -91,3 +94,4 @@ Block.EVENTS = {
     FLOW_RENDER: "flow:render"
 };
 export default Block;
+//# sourceMappingURL=Block.js.map

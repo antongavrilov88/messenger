@@ -9,3 +9,4 @@ setTimeout(() => {
         text: 'Click me, please',
     });
 }, 1000);
+//# sourceMappingURL=index.js.map

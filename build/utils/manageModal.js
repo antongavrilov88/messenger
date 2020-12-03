@@ -1,3 +1,4 @@
+"use strict";
 function openModal(modalID) {
     let modal = document.getElementById(modalID);
     if (modal) {
@@ -12,3 +13,4 @@ function closeModal(modalID) {
     }
     return;
 }
+//# sourceMappingURL=manageModal.js.map

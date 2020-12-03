@@ -1,7 +1,7 @@
-import Block  from '../../Block.js'
+import Block  from '../../utils/Block.js'
 
 class Button extends Block {
-    constructor(props) {
+    constructor(props: object) {
           // Создаём враппер дом-элемент button
       super("button", props);
     }

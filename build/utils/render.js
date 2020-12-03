@@ -3,3 +3,4 @@ export function render(query, block) {
     root.appendChild(block.getContent());
     return root;
 }
+//# sourceMappingURL=render.js.map

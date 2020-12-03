@@ -24,3 +24,4 @@ class EventBus {
     }
 }
 export default EventBus;
+//# sourceMappingURL=eventBus.js.map

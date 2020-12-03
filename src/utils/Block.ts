@@ -1,5 +1,5 @@
 import EventBus from './eventBus.js'
-
+import Handlebars from 'handlebars'
 class Block {
     static EVENTS = {
       INIT: "init",
@@ -72,23 +72,21 @@ class Block {
       return this._element;
     }
     _render() {
-      const block = this.render();
-      // Этот небезопасный метод для упрощения логики
-      // Используйте шаблонизатор из npm или напишите свой безопасный
-      // Нужно не в строку компилировать (или делать это правильно),
-      // либо сразу в DOM-элементы возвращать из compile DOM-ноду
-      this._element.innerHTML = block;
+        const block = this.render();
+        const template = Handlebars.compile( block )
+        const result = template( this.props )
+        console.log(result);
     }
     render() {}
     getContent() {
       return this.element;
     }
-    _makePropsProxy(props) {
+    _makePropsProxy(props: object) {
       // Можно и так передать this
       // Такой способ больше не применяется с приходом ES6+
       const self = this;
       return new Proxy(props, {
-        get(target, prop) {
+        get(target: { [prop: string]: string | object | number }, prop: string) {
           const value = target[prop];
           return typeof value === "function" ? value.bind(target) : value;
         },
