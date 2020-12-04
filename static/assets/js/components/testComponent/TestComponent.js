@@ -1,10 +1,10 @@
 import Block from '../../utils/Block.js';
 class TestComponent extends Block {
     constructor(props) {
-        super("button", props);
+        super("fragment", props);
     }
     render() {
-        return `<button>{{ text }}</button>`;
+        return `<button class={{ className }}>{{ buttonText }}</button>`;
     }
 }
 export default TestComponent;

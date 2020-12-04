@@ -53,8 +53,11 @@ class Block {
         const block = this.render();
         const template = window.Handlebars.compile(block);
         const result = template(this.props);
-        console.log(result);
+        console.log('pisa', result, this.element);
         this._element.innerHTML = result;
+    }
+    getHTML() {
+        return this.element.innerHTML;
     }
     render() { }
     getContent() {

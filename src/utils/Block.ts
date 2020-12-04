@@ -16,7 +16,7 @@ class Block {
       props: object
     };
     props: {
-      text?: string
+      [prop: string]: any
     };
     eventBus: () => EventBus;
     /** JSDoc
@@ -54,7 +54,7 @@ class Block {
       // this.componentDidMount();
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
-    componentDidMount(oldProps: object) {}
+    componentDidMount(oldProps?: object) {}
     _componentDidUpdate(oldProps: object, newProps: object) {
       const response = this.componentDidUpdate(oldProps, newProps);
       if (!response) {
@@ -78,8 +78,11 @@ class Block {
         const block = this.render();
         const template = window.Handlebars.compile( block )
         const result = template( this.props )
-        console.log( result );
+        console.log( 'pisa', result, this.element )
         this._element.innerHTML = result
+    }
+    getHTML() {
+      return this.element.innerHTML
     }
     render() {}
     getContent() {

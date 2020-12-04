@@ -2,7 +2,8 @@ import { render } from '../../utils/render.js';
 import Button from './Button.js';
 const button = new Button({
     text: 'Click me',
-    button: ''
+    buttonText: "I'm sooooooo cool",
+    className: "form__submit-button"
 });
 render(".app", button);
 setTimeout(() => {

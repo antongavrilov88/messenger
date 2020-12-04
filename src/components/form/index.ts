@@ -1,7 +1,7 @@
 import { render } from '../../utils/render.js'
-import TestComponent from '../testComponent/TestComponent.js'
+import Form from './Form.js'
 
-const testComponent = new TestComponent({
+const testComponent = new Form({
     text: 'Click me',
 });
 
