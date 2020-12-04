@@ -1,0 +1,1 @@
+{"version":3,"file":"TestComponent.js","sourceRoot":"","sources":["../../../../../src/components/testComponent/TestComponent.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,sBAAsB,CAAA;AAExC,MAAM,aAAc,SAAQ,KAAK;IAC7B,YAAY,KAAa;QAEvB,KAAK,CAAC,QAAQ,EAAE,KAAK,CAAC,CAAC;IACzB,CAAC;IAED,MAAM;QAEJ,OAAO,6BAA6B,CAAC;IACvC,CAAC;CACF;AACH,eAAe,aAAa,CAAA"}

@@ -2,6 +2,7 @@ import { render } from '../../utils/render.js';
 import Button from './Button.js';
 const button = new Button({
     text: 'Click me',
+    button: ''
 });
 render(".app", button);
 setTimeout(() => {

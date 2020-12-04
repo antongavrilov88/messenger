@@ -8,19 +8,19 @@
     ],
     "target": "ES6",
     "module": "ES6",
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "alwaysStrict": true,
     "sourceMap": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "rootDir": "src",
-    "outDir": "build"
+    "outDir": "static/assets/js"
   },
   "exclude": [
     "node_modules"

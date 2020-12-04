@@ -1,5 +1,4 @@
 import EventBus from './eventBus.js';
-import Handlebars from 'handlebars';
 class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
@@ -52,9 +51,10 @@ class Block {
     }
     _render() {
         const block = this.render();
-        const template = Handlebars.compile(block);
+        const template = window.Handlebars.compile(block);
         const result = template(this.props);
         console.log(result);
+        this._element.innerHTML = result;
     }
     render() { }
     getContent() {

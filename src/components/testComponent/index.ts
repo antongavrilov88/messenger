@@ -1,16 +1,16 @@
 import { render } from '../../utils/render.js'
-import Button from './Button.js'
+import TestComponent from '../testComponent/TestComponent.js'
 
-const button = new Button({
+const testComponent = new TestComponent({
     text: 'Click me',
-    button: ''
 });
 
-render(".app", button)
+// app — это id дива в корне DOM
+render(".error-container", testComponent);
 
 // Через секунду контент изменится сам, достаточно обновить пропсы
 setTimeout(() => {
-button.setProps({
+testComponent.setProps({
 text: 'Click me, please',
 });
 }, 1000);

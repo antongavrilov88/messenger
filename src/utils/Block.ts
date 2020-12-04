@@ -1,5 +1,8 @@
 import EventBus from './eventBus.js'
-import Handlebars from 'handlebars'
+declare let window:any;
+declare global {
+  interface Window { Handlebars: object; }
+}
 class Block {
     static EVENTS = {
       INIT: "init",
@@ -73,9 +76,10 @@ class Block {
     }
     _render() {
         const block = this.render();
-        const template = Handlebars.compile( block )
+        const template = window.Handlebars.compile( block )
         const result = template( this.props )
-        console.log(result);
+        console.log( result );
+        this._element.innerHTML = result
     }
     render() {}
     getContent() {
