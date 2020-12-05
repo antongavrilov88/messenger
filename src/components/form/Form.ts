@@ -6,7 +6,6 @@ class Form extends Block {
   }
 
   render() {
-    // В проекте должен быть ваш собственный шаблонизатор
     return (
       `<form class={{ className }} id={{ id }}>
         <span class="form__title">{{ title }}</span>
@@ -18,7 +17,7 @@ class Form extends Block {
         <label class="form__input__name">Password
             <input class="form__input" type="password" name="password" />
         </label>
-        <button class="form__submit-button" type="submit" onclick="formHandler( 'loginForm' )">Вход</button>
+        <button class="form__submit-button" type="submit" onclick="handler( '{{id}}' )">Вход</button>
       </form>`
     );
   }

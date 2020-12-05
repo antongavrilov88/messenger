@@ -15,3 +15,4 @@ function formHandler( formID: string ): void {
         console.log( requestObject, myFormFields )
     }
 }
+export default formHandler

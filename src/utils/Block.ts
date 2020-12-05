@@ -48,11 +48,12 @@ class Block {
     }
     init() {
       this._createResources();
-      this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+      // this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _componentDidMount() {
-      // this.componentDidMount();
-      this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+      this.componentDidMount();
+      // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
     componentDidMount(oldProps?: object) {}
     _componentDidUpdate(oldProps: object, newProps: object) {
@@ -61,6 +62,7 @@ class Block {
         return;
       }
       this._render();
+      console.log( 'UPDATED' )
     }
     componentDidUpdate(oldProps: object, newProps: object) {
       return true;
@@ -75,15 +77,17 @@ class Block {
       return this._element;
     }
     _render() {
-        const block = this.render();
-        const template = window.Handlebars.compile( block )
-        const HTML = template( this.props )
-        console.log( 'pisa', this.element)
-        this._element.innerHTML = HTML
-
+        let elem = this._compile()
+        this._element.appendChild( elem )
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
-    getHTML() {
-      return this.element.innerHTML
+    _compile() {
+      const block = this.render();
+      const template = window.Handlebars.compile( block )
+      const HTML = template( this.props )
+      let tempBlock = document.createElement('div')
+      tempBlock.innerHTML = HTML
+      return tempBlock.firstElementChild
     }
     render() {}
     getContent() {
@@ -103,6 +107,7 @@ class Block {
           // Запускаем обновление компоненты
           // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
           self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+          console.log( 'proxyUpdated' )
           return true;
         },
         deleteProperty() {

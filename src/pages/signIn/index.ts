@@ -1,10 +1,12 @@
 import { render } from '../../utils/render.js'
 import SignIn from './SignIn.js'
 import Form from '../../components/form/Form.js'
+import formHandler from '../../utils/manageForm.js'
 
 
+const handler = formHandler
 
-const signIn = new SignIn({})
+console.log( handler )
 
 const form = new Form({
     className: "form-container",
@@ -25,12 +27,9 @@ const form = new Form({
     ]
     })
 
+    const signIn = new SignIn({
+        child: form.getContent()
+    })
+
 render(".app", signIn)
-render(".container", form)
-
-    setTimeout(() => {
-        form.setProps({
-            id: 'pisunooooook',
-        });
-    }, 10000);
-
+// render(".container", form)

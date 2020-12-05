@@ -30,10 +30,10 @@ class Block {
     }
     init() {
         this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
     _componentDidMount() {
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.componentDidMount();
     }
     componentDidMount(oldProps) { }
     _componentDidUpdate(oldProps, newProps) {
@@ -42,6 +42,7 @@ class Block {
             return;
         }
         this._render();
+        console.log('UPDATED');
     }
     componentDidUpdate(oldProps, newProps) {
         return true;
@@ -50,14 +51,17 @@ class Block {
         return this._element;
     }
     _render() {
+        let elem = this._compile();
+        this._element.appendChild(elem);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    }
+    _compile() {
         const block = this.render();
         const template = window.Handlebars.compile(block);
         const HTML = template(this.props);
-        console.log('pisa', this.element);
-        this._element.innerHTML = HTML;
-    }
-    getHTML() {
-        return this.element.innerHTML;
+        let tempBlock = document.createElement('div');
+        tempBlock.innerHTML = HTML;
+        return tempBlock.firstElementChild;
     }
     render() { }
     getContent() {
@@ -73,6 +77,7 @@ class Block {
             set(target, prop, value) {
                 target[prop] = value;
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, Object.assign({}, target), target);
+                console.log('proxyUpdated');
                 return true;
             },
             deleteProperty() {

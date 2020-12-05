@@ -1,4 +1,3 @@
-"use strict";
 function formHandler(formID) {
     let myForm = document.getElementById(formID);
     myForm.onsubmit = function (e) {
@@ -8,4 +7,5 @@ function formHandler(formID) {
         console.log(requestObject, myFormFields);
     };
 }
+export default formHandler;
 //# sourceMappingURL=manageForm.js.map

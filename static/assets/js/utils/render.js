@@ -1,7 +1,7 @@
 export function render(query, block) {
     const root = document.querySelector(query);
-    let content = block.getContent();
-    root.appendChild(content.firstChild);
+    root.appendChild(block.getContent());
+    console.log('пашет', root);
     return root;
 }
 //# sourceMappingURL=render.js.map
