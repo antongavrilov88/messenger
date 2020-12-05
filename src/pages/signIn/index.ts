@@ -1,17 +1,17 @@
 import { render } from '../../utils/render.js'
-import SignIn from './SignIn.js'
+import UnauthWorkspace from '../../components/UnauthWorkspace.js'
 import Form from '../../components/Form.js'
 import { formCTX } from './contexts.js'
 
 const form = new Form(formCTX)
 
-const signInChildren = [
+const workspaceChildren = [
     {
         parentNodeSelector: '.container',
         node: form.getContent()
     }
 ]
 
-const signIn = new SignIn({}, signInChildren)
+const workspace = new UnauthWorkspace({}, workspaceChildren)
 
-render(".app", signIn)
+render(".app", workspace)

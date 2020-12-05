@@ -1,14 +1,14 @@
 import { render } from '../../utils/render.js';
-import SignUp from './SignUp.js';
+import UnauthWorkspace from '../../components/UnauthWorkspace.js';
 import Form from '../../components/Form.js';
 import { formCTX } from './contexts.js';
 const form = new Form(formCTX);
-const signUpChildren = [
+const workspaceChildren = [
     {
         parentNodeSelector: '.container',
         node: form.getContent()
     }
 ];
-const signIn = new SignUp({}, signUpChildren);
-render(".app", signIn);
+const workspace = new UnauthWorkspace({}, workspaceChildren);
+render(".app", workspace);
 //# sourceMappingURL=index.js.map
