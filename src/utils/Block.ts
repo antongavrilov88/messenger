@@ -56,12 +56,10 @@ class Block {
     init() {
       this._createResources();
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-      // this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _componentDidMount() {
       this.componentDidMount();
       this.eventBus().emit(Block.EVENTS.FLOW_RC)
-      // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
     componentDidMount(oldProps?: object) {}
     _renderChildren() {
@@ -82,7 +80,6 @@ class Block {
       console.log( 'UPDATED' )
     }
     componentDidUpdate(oldProps: object, newProps: object) {
-      // return !( oldProps == newProps )
       console.log( JSON.stringify(oldProps) === JSON.stringify(newProps)  )
       return true
     }
@@ -114,8 +111,6 @@ class Block {
       return this.element;
     }
     _makePropsProxy(props: object) {
-      // Можно и так передать this
-      // Такой способ больше не применяется с приходом ES6+
       const self = this;
       return new Proxy(props, {
         get(target: { [prop: string]: string | object | number }, prop: string) {
@@ -124,8 +119,6 @@ class Block {
         },
         set(target, prop, value) {
           target[prop] = value;
-          // Запускаем обновление компоненты
-          // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
           self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
           console.log( 'proxyUpdated' )
           return true;
@@ -136,7 +129,6 @@ class Block {
       });
     }
     _createDocumentElement(tagName) {
-      // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
       return document.createElement(tagName);
     }
     show() {

@@ -106,3 +106,26 @@
     background: #57b846;
     cursor: pointer;
 }
+
+.account__switch-button {
+    
+    width: 45%;
+    height: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    /* background: #333; */
+    border-radius: 12px;
+
+    transition: all .4s;
+
+    outline: none !important;
+    border: none !important;
+    
+    color:  #333;
+    font-size: large;
+    font-weight: 400;
+    
+    font-family: monospace;
+    font-size: 13px;
+}

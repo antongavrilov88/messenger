@@ -1,5 +1,5 @@
 import Block from '../../utils/Block.js';
-class SignIn extends Block {
+class SignUp extends Block {
     constructor(props, children) {
         super("div", props, children);
     }
@@ -11,5 +11,5 @@ class SignIn extends Block {
             </div>`);
     }
 }
-export default SignIn;
-//# sourceMappingURL=SignIn.js.map
+export default SignUp;
+//# sourceMappingURL=SIgnUp.js.map

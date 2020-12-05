@@ -14,10 +14,7 @@ class Form extends Block {
             <input class="{{ this.input.className }}" type="{{ this.input.type }}" name="{{ this.input.name }}" />
         </label>
         {{/each}}
-        <label class="form__input__name">Password
-            <input class="form__input" type="password" name="password" />
-        </label>
-        <button class="form__submit-button" type="submit" onclick="this.formHandler( '{{id}}' )">Вход</button>
+        <button class="form__submit-button" type="submit" onclick="('{{id}}') => this.formHandler( '{{id}}' )">Вход</button>
       </form>`);
     }
 }

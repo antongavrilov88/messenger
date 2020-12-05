@@ -1,6 +1,6 @@
 import Block from '../../utils/Block.js'
 
-class SignIn extends Block {
+class SignUp extends Block {
     constructor(props, children) {
         super("div", props, children)
     }
@@ -15,4 +15,4 @@ class SignIn extends Block {
         )
     }
 }
-export default SignIn
+export default SignUp

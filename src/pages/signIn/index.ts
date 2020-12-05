@@ -2,8 +2,7 @@ import { render } from '../../utils/render.js'
 import SignIn from './SignIn.js'
 import Form from '../../components/form/Form.js'
 
-
-const form = new Form({
+const formCTX = {
     className: "form-container",
     id: "loginForm",
     title: "Авторизация",
@@ -18,9 +17,22 @@ const form = new Form({
                 type: "text",
                 name: "login"
             }
+        },
+        {
+            lable: {
+                className: "form__input__name",
+                title: "ПАРОЛЬ"
+            },
+            input: {
+                className: "form__input",
+                type: "password",
+                name: "password"
+            }
         }
     ]
-    })
+    }
+
+const form = new Form(formCTX)
 
 const signInChildren = [
     {
@@ -30,18 +42,6 @@ const signInChildren = [
 ]
 
 const signIn = new SignIn({}, signInChildren)
-
-setTimeout( () => {
-    signIn.setProps({
-        id: 'PISKAAA'
-    })
-}, 4000)
-
-setTimeout( () => {
-    form.setProps({
-        title: 'PISKAAA'
-    })
-}, 4000)
 
 render(".app", signIn)
 // render(".container", form)
