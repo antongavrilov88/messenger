@@ -1,7 +1,7 @@
 import Block from '../utils/Block.js';
 class Form extends Block {
     constructor(props) {
-        super('div', props);
+        super('fragment', props);
     }
     render() {
         return (`<form class={{ className }} id={{ id }}>

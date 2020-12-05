@@ -1,6 +1,6 @@
 import EventBus from './eventBus.js';
 class Block {
-    constructor(tagName = "div", props = {}, children = []) {
+    constructor(tagName = "fragment", props = {}, children = []) {
         this._element = null;
         this.setProps = (nextProps) => {
             if (!nextProps) {
@@ -40,6 +40,7 @@ class Block {
     }
     componentDidMount(oldProps) { }
     _renderChildren() {
+        console.log('выыыызвал', this, this.children);
         if (this.children) {
             this.children.map(child => {
                 let parentNode = this._element.querySelector(child.parentNodeSelector);
@@ -54,7 +55,6 @@ class Block {
             return;
         }
         this._render();
-        console.log('UPDATED');
     }
     componentDidUpdate(oldProps, newProps) {
         console.log(JSON.stringify(oldProps) === JSON.stringify(newProps));
@@ -66,16 +66,16 @@ class Block {
     _render() {
         let elem = this._compile();
         this.element.innerHTML = '';
-        this._element.appendChild(elem);
+        this._element = elem;
+        console.log('pisa');
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _compile() {
         const block = this.render();
         const template = window.Handlebars.compile(block);
         const HTML = template(this.props);
-        let tempBlock = document.createElement('div');
-        tempBlock.innerHTML = HTML;
-        return tempBlock.firstElementChild;
+        this._element.innerHTML = HTML;
+        return this._element.firstElementChild;
     }
     render() { }
     getContent() {
@@ -91,7 +91,6 @@ class Block {
             set(target, prop, value) {
                 target[prop] = value;
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, Object.assign({}, target), target);
-                console.log('proxyUpdated');
                 return true;
             },
             deleteProperty() {

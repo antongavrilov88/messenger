@@ -11,4 +11,9 @@ const workspaceChildren = [
 ];
 const workspace = new UnauthWorkspace({}, workspaceChildren);
 render(".app", workspace);
+setTimeout(() => {
+    form.setProps({
+        title: 'pisun'
+    });
+}, 3000);
 //# sourceMappingURL=index.js.map

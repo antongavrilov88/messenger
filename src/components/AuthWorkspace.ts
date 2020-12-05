@@ -5,9 +5,9 @@ const form = new Form({
     buttonText: 'Click me CHILD',
 })
 
-class Workspace extends Block {
-    constructor(props: object) {
-      super( "div", props);
+class AuthWorkspace extends Block {
+    constructor(props: object, children) {
+      super( "fragment", props, children);
     }    
   
     render() {
@@ -15,12 +15,11 @@ class Workspace extends Block {
       `<main>
           <div class="workspace__wrapper">
               <div class="workspace__container">
-                      {{ content }}
-                      ${form.render()}
+
               </div>
           </div>
       </main>`
       )
     }
   }
-export default Workspace
+export default AuthWorkspace
