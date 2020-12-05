@@ -1,7 +1,10 @@
 import Block from '../../utils/Block.js';
+import formHandler from '../../utils/manageForm.js';
 class Form extends Block {
     constructor(props) {
         super('div', props);
+        this.formHandler = id => formHandler(id);
+        this.formHandler = this.formHandler.bind(this);
     }
     render() {
         return (`<form class={{ className }} id={{ id }}>
@@ -14,7 +17,7 @@ class Form extends Block {
         <label class="form__input__name">Password
             <input class="form__input" type="password" name="password" />
         </label>
-        <button class="form__submit-button" type="submit" onclick="handler( '{{id}}' )">Вход</button>
+        <button class="form__submit-button" type="submit" onclick="this.formHandler( '{{id}}' )">Вход</button>
       </form>`);
     }
 }

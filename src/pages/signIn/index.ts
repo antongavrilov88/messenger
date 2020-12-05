@@ -1,12 +1,7 @@
 import { render } from '../../utils/render.js'
 import SignIn from './SignIn.js'
 import Form from '../../components/form/Form.js'
-import formHandler from '../../utils/manageForm.js'
 
-
-const handler = formHandler
-
-console.log( handler )
 
 const form = new Form({
     className: "form-container",
@@ -27,9 +22,26 @@ const form = new Form({
     ]
     })
 
-    const signIn = new SignIn({
-        child: form.getContent()
+const signInChildren = [
+    {
+        parentNodeSelector: '.container',
+        node: form.getContent()
+    }
+]
+
+const signIn = new SignIn({}, signInChildren)
+
+setTimeout( () => {
+    signIn.setProps({
+        id: 'PISKAAA'
     })
+}, 4000)
+
+setTimeout( () => {
+    form.setProps({
+        title: 'PISKAAA'
+    })
+}, 4000)
 
 render(".app", signIn)
 // render(".container", form)

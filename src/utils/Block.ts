@@ -3,12 +3,16 @@ declare let window:any;
 declare global {
   interface Window { Handlebars: object; }
 }
+type child = {
+  [prop: string]: string | HTMLElement,
+}
 class Block {
     static EVENTS = {
       INIT: "init",
       FLOW_CDM: "flow:component-did-mount",
       FLOW_CDU: "flow:component-did-update",
-      FLOW_RENDER: "flow:render"
+      FLOW_RENDER: "flow:render",
+      FLOW_RC: "flow:render-children" 
     };
     _element = null;
     _meta: {
@@ -18,6 +22,7 @@ class Block {
     props: {
       [prop: string]: any
     };
+    children: child[]
     eventBus: () => EventBus;
     /** JSDoc
      * @param {string} tagName
@@ -25,12 +30,13 @@ class Block {
      *
      * @returns {void}
      */
-    constructor(tagName: string = "div", props: object = {}) {
+    constructor(tagName: string = "div", props: object = {}, children: child[] = []) {
       const eventBus = new EventBus();
       this._meta = {
         tagName,
         props
       };
+      this.children = children
       this.props = this._makePropsProxy(props);
       this.eventBus = () => eventBus;
       this._registerEvents(eventBus);
@@ -41,6 +47,7 @@ class Block {
       eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
       eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
       eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+      eventBus.on(Block.EVENTS.FLOW_RC, this._renderChildren.bind(this))
     }
     _createResources() {
       const { tagName } = this._meta;
@@ -53,9 +60,19 @@ class Block {
     }
     _componentDidMount() {
       this.componentDidMount();
+      this.eventBus().emit(Block.EVENTS.FLOW_RC)
       // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
     componentDidMount(oldProps?: object) {}
+    _renderChildren() {
+      if ( this.children ) {
+      this.children.map( child => {
+          let parentNode = this._element.querySelector( child.parentNodeSelector )
+          parentNode.appendChild( child.node )
+      })
+      }
+      return
+    }
     _componentDidUpdate(oldProps: object, newProps: object) {
       const response = this.componentDidUpdate(oldProps, newProps);
       if (!response) {
@@ -65,7 +82,9 @@ class Block {
       console.log( 'UPDATED' )
     }
     componentDidUpdate(oldProps: object, newProps: object) {
-      return true;
+      // return !( oldProps == newProps )
+      console.log( JSON.stringify(oldProps) === JSON.stringify(newProps)  )
+      return true
     }
     setProps = (nextProps: object): void | object => {
       if (!nextProps) {
@@ -78,6 +97,7 @@ class Block {
     }
     _render() {
         let elem = this._compile()
+        this.element.innerHTML = ''
         this._element.appendChild( elem )
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }

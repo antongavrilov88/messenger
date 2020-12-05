@@ -1,6 +1,6 @@
 import EventBus from './eventBus.js';
 class Block {
-    constructor(tagName = "div", props = {}) {
+    constructor(tagName = "div", props = {}, children = []) {
         this._element = null;
         this.setProps = (nextProps) => {
             if (!nextProps) {
@@ -13,6 +13,7 @@ class Block {
             tagName,
             props
         };
+        this.children = children;
         this.props = this._makePropsProxy(props);
         this.eventBus = () => eventBus;
         this._registerEvents(eventBus);
@@ -23,6 +24,7 @@ class Block {
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_RC, this._renderChildren.bind(this));
     }
     _createResources() {
         const { tagName } = this._meta;
@@ -34,8 +36,18 @@ class Block {
     }
     _componentDidMount() {
         this.componentDidMount();
+        this.eventBus().emit(Block.EVENTS.FLOW_RC);
     }
     componentDidMount(oldProps) { }
+    _renderChildren() {
+        if (this.children) {
+            this.children.map(child => {
+                let parentNode = this._element.querySelector(child.parentNodeSelector);
+                parentNode.appendChild(child.node);
+            });
+        }
+        return;
+    }
     _componentDidUpdate(oldProps, newProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) {
@@ -45,6 +57,7 @@ class Block {
         console.log('UPDATED');
     }
     componentDidUpdate(oldProps, newProps) {
+        console.log(JSON.stringify(oldProps) === JSON.stringify(newProps));
         return true;
     }
     get element() {
@@ -52,6 +65,7 @@ class Block {
     }
     _render() {
         let elem = this._compile();
+        this.element.innerHTML = '';
         this._element.appendChild(elem);
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
@@ -99,7 +113,8 @@ Block.EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    FLOW_RENDER: "flow:render",
+    FLOW_RC: "flow:render-children"
 };
 export default Block;
 //# sourceMappingURL=Block.js.map

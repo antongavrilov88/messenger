@@ -1,17 +1,12 @@
 import Block from '../../utils/Block.js';
 class SignIn extends Block {
-    constructor(props) {
-        super("div", props);
-    }
-    componentDidMount() {
-        console.log('монтаж закончен', this.getContent());
-        console.log(this._element.querySelector('.container'), this._element);
-        let parentNode = this._element.querySelector('.container');
-        parentNode.appendChild(this.props.child);
+    constructor(props, children) {
+        super("div", props, children);
     }
     render() {
         return (`<div class="form-wrapper">
                 <div class="container">
+                ${this.props.id ? this.props.id : null}
                 </div>
             </div>`);
     }
