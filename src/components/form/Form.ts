@@ -4,12 +4,11 @@ import formHandler from '../../utils/manageForm.js';
 class Form extends Block {
   constructor(props: object) {
     super( 'div', props);
-    this.formHandler = this.formHandler.bind(this)
   }
 
-  formHandler = id => formHandler(id)
 
   render() {
+    console.log( window.formHandler, formHandler )
     return (
       `<form class={{ className }} id={{ id }}>
         <span class="form__title">{{ title }}</span>
@@ -18,7 +17,7 @@ class Form extends Block {
             <input class="{{ this.input.className }}" type="{{ this.input.type }}" name="{{ this.input.name }}" />
         </label>
         {{/each}}
-        <button class="form__submit-button" type="submit" onclick="('{{id}}') => this.formHandler( '{{id}}' )">Вход</button>
+        <button class="form__submit-button" type="submit" onclick="window.formHandler( '{{id}}' )">Вход</button>
       </form>`
     );
   }

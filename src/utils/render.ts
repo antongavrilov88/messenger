@@ -5,6 +5,5 @@ export function render(query, block) {
     // return root;
     const root = document.querySelector(query);
     root.appendChild(block.getContent());
-    console.log( 'пашет', root )
     return root;
  }

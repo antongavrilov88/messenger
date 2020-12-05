@@ -1,7 +1,10 @@
 import EventBus from './eventBus.js'
 declare let window:any;
 declare global {
-  interface Window { Handlebars: object; }
+  interface Window {
+    Handlebars: object,
+    formHandler: ( id: string ) => void
+  }
 }
 type child = {
   [prop: string]: string | HTMLElement,

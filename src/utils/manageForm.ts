@@ -9,10 +9,11 @@ function formHandler( formID: string ): void {
         e.preventDefault()
         let myFormFields: HTMLCollectionOf<formField> = myForm.getElementsByTagName( "input" )
         let requestObject = {}
-        // for ( let myFormField of myFormFields) {
-        //     requestObject[`${myFormField.name}`] = myFormField.value
-        // }
-        console.log( requestObject, myFormFields )
+        for ( let i = 0; i < myFormFields.length; i++ ) {
+            requestObject[`${myFormFields[i].name}`] = myFormFields[i].value
+        }
+        console.log( requestObject )
     }
 }
+window.formHandler = formHandler
 export default formHandler
