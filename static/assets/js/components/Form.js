@@ -1,16 +1,10 @@
-import Block from '../../utils/Block.js'
-import formHandler from '../../utils/manageForm.js';
-
+import Block from '../utils/Block.js';
 class Form extends Block {
-  constructor(props: object) {
-    super( 'div', props);
-  }
-
-
-  render() {
-    console.log( window.formHandler, formHandler )
-    return (
-      `<form class={{ className }} id={{ id }}>
+    constructor(props) {
+        super('div', props);
+    }
+    render() {
+        return (`<form class={{ className }} id={{ id }}>
         <span class="form__title">{{ title }}</span>
         {{#each inputs}}
         <label class="{{ this.lable.className }}"> {{ this.lable.title }}
@@ -18,8 +12,8 @@ class Form extends Block {
         </label>
         {{/each}}
         <button class="form__submit-button" type="submit" onclick="window.formHandler( '{{id}}' )">Вход</button>
-      </form>`
-    );
-  }
+      </form>`);
+    }
 }
-export default Form
+export default Form;
+//# sourceMappingURL=Form.js.map

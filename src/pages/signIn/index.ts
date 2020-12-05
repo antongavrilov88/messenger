@@ -1,7 +1,7 @@
 import { render } from '../../utils/render.js'
 import SignIn from './SignIn.js'
-import Form from '../../components/form/Form.js'
-import { formCTX } from './contexts'
+import Form from '../../components/Form.js'
+import { formCTX } from './contexts.js'
 
 const form = new Form(formCTX)
 

@@ -1,4 +1,4 @@
-import Block from '../../utils/Block.js'
+import Block from '../utils/Block.js'
 
 class Button extends Block {
     constructor(props) {
@@ -7,7 +7,7 @@ class Button extends Block {
 
     render() {
         return(
-            `<button href='{{ url }}' class='{{ className }}'>
+            `<button  class='{{ className }}'>
             {{ text }}
             </button>`
         )

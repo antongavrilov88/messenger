@@ -1,5 +1,5 @@
-import Block  from '../../utils/Block.js'
-import Form from '../form/Form.js'
+import Block  from '../utils/Block.js'
+import Form from './Form.js'
 
 const form = new Form({
     buttonText: 'Click me CHILD',
