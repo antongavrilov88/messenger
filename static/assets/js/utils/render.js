@@ -1,6 +1,7 @@
 export function render(query, block) {
     const root = document.querySelector(query);
-    root.appendChild(block.getContent());
+    let content = block.getContent();
+    root.appendChild(content.firstChild);
     return root;
 }
 //# sourceMappingURL=render.js.map

@@ -7,7 +7,7 @@ const form = new Form({
 
 class Workspace extends Block {
     constructor(props: object) {
-      super("div", props);
+      super( "div", props);
     }    
   
     render() {

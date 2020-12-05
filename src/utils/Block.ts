@@ -77,9 +77,10 @@ class Block {
     _render() {
         const block = this.render();
         const template = window.Handlebars.compile( block )
-        const result = template( this.props )
-        console.log( 'pisa', result, this.element )
-        this._element.innerHTML = result
+        const HTML = template( this.props )
+        console.log( 'pisa', this.element)
+        this._element.innerHTML = HTML
+
     }
     getHTML() {
       return this.element.innerHTML
