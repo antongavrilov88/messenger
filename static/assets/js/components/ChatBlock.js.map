@@ -1,0 +1,1 @@
+{"version":3,"file":"ChatBlock.js","sourceRoot":"","sources":["../../../../src/components/ChatBlock.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,mBAAmB,CAAA;AAGrC,MAAM,SAAU,SAAQ,KAAK;IACzB,YAAY,KAAK,EAAE,QAAQ;QACvB,KAAK,CAAC,KAAK,EAAE,KAAK,EAAE,QAAQ,CAAC,CAAA;IACjC,CAAC;IAED,MAAM;QACF,OAAM,CACF;mBACO,CACV,CAAA;IACL,CAAC;CACJ;AACD,eAAe,SAAS,CAAA"}
