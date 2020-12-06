@@ -1,14 +1,13 @@
+import { chatCTX } from './contexts.js'
 import { chatListCTX } from './contexts.js'
 import { render } from '../../utils/render.js'
 import AuthWorkspace from '../../components/AuthWorkspace.js'
 import ChatListBlock from '../../components/ChatListBlock.js'
-import DummyChatBlock from '../../components/DummyChatBlock.js'
-import { dummyChatBlockCTX } from './contexts.js'
-
+import ChatBlock from '../../components/ChatBlock.js'
 
 const chatListBlock = new ChatListBlock(chatListCTX, [])
 
-const dummyChatBlock = new DummyChatBlock(dummyChatBlockCTX, [])
+const chatBlock = new ChatBlock(chatCTX, [])
 
 const workspaceChildren = [
     {
@@ -17,7 +16,7 @@ const workspaceChildren = [
     },
     {
         parentNodeSelector: '.workspace__container',
-        node: dummyChatBlock.getContent()
+        node: chatBlock.getContent()
     }
 ]
 

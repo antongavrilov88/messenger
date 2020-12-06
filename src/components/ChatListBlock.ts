@@ -9,6 +9,10 @@ class ChatListBlock extends Block {
     render() {
         return(
             `<div class="chat-list__container">
+                    <div class="chat-list__container__profile-link"><a href="{{header.linkUrl}}">{{ header.linkText }}</a></div>
+                    <div class="chat-list__search__container">
+                        <input class="chat-list__search__input" placeholder="Поиск..." />
+                    </div>
                     <div class="chat-list__container__list">
                         <ul>
                         {{#each chats}}

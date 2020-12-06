@@ -1,4 +1,8 @@
 export const chatListCTX = {
+    header: {
+        linkUrl: './profile.html',
+        linkText: 'Профиль'
+    },
     chats: [
         {
             name: 'Денис',
@@ -26,5 +30,8 @@ export const chatListCTX = {
             time: '15:22'
         }
     ]
+};
+export const dummyChatBlockCTX = {
+    text: 'Выберите чат, чтобы написать сообщение'
 };
 //# sourceMappingURL=contexts.js.map
