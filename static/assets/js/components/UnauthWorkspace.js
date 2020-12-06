@@ -1,7 +1,7 @@
 import Block from '../utils/Block.js';
 class SignIn extends Block {
     constructor(props, children) {
-        super("fragment", props, children);
+        super("div", props, children);
     }
     render() {
         return (`<div class="form-wrapper">

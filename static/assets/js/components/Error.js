@@ -1,7 +1,7 @@
 import Block from '../utils/Block.js';
 class Error extends Block {
     constructor(props) {
-        super("fragment", props);
+        super("div", props);
     }
     render() {
         return (`<div class="error-container">

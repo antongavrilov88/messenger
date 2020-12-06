@@ -16,4 +16,9 @@ setTimeout(() => {
         title: 'pisun'
     });
 }, 3000);
+setTimeout(() => {
+    form.setProps({
+        title: 'Снова Авториз'
+    });
+}, 5000);
 //# sourceMappingURL=index.js.map

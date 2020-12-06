@@ -33,7 +33,7 @@ class Block {
      *
      * @returns {void}
      */
-    constructor(tagName: string = "fragment", props: object = {}, children: child[] = []) {
+    constructor(tagName: string = "div", props: object = {}, children: child[] = []) {
       const eventBus = new EventBus();
       this._meta = {
         tagName,
@@ -97,9 +97,13 @@ class Block {
       return this._element;
     }
     _render() {
-        let elem = this._compile()
-        this.element.innerHTML = ''
-        this._element.appendChild( elem )
+        let compiled = this._compile()
+        let elems = compiled.children
+        this._element.innerHTML = ''
+        for ( let i = 0; i < elems.length; i++ ) {
+          this._element.appendChild( elems[i] )
+        }
+        this._element.classList.add( compiled.classList.value )
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _compile() {

@@ -3,7 +3,7 @@ import formHandler from '../utils/manageForm.js';
 
 class Form extends Block {
   constructor(props: object) {
-    super( 'fragment', props);
+    super( 'form', props);
   }
 
 
