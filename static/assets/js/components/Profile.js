@@ -21,7 +21,7 @@ class Profile extends Block {
                         </div>
                         <hr />
                         {{/each}}
-                        <button class="profile-info-container__submit-button" type="submit" onclick="window.formHandler( 'changeProfileForm' )">Изменить</button>
+                        <button class="profile-info-container__submit-button" type="submit" onclick="{{handler}}">Изменить</button>
                     </form>
                 </div>
             </div>`);

@@ -36,7 +36,8 @@ export const profileCTX = {
             inputName: 'phone',
             inputPlaceholder: '+7-925-777-77-77'
         }
-    ]
+    ],
+    handler: "window.formHandler( 'changeProfileForm' )"
 };
 export const returnBlockCTX = {
     linkUrl: "./chat.html"
