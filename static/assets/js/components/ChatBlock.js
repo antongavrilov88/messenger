@@ -32,7 +32,7 @@ class DummyChatBlock extends Block {
                     <input class="chat-container__message-input" type="text" name="message" />
                 </div>
                 <button class="chat-container__send-button" type="submit"
-                    onclick="formHandler( 'messageForm' )">
+                    onclick="window.formHandler( 'messageForm' )">
                     <h1>&#10148;</h1>
                 </button>
             </form>
