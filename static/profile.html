@@ -7,100 +7,18 @@
 
     <link rel="stylesheet" href="./assets/css/main.css">
     <link rel="stylesheet" href="./assets/css/profile.css">
-    <link rel="stylesheet" href="./assets/css/form.css">
-    <script src="./build/utils/manageModal.js"></script>
-    <script src="./build/utils/manageForm.js"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"
+        integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw=="
+        crossorigin="anonymous"></script>
+    <script type="module" src="./assets/js/pages/profile/index.js"></script>
+    <script type="module" src="./assets/js/utils/manageForm.js"></script>
+    <script type="module" src="./assets/js/utils/manageModal.js"></script>
 </head>
 
 <body>
-    <main>
-        <div class="workspace__wrapper">
-            <div class="workspace__container">
-                <div class="return-container">
-                    <div class="return-container__button">
-                        <h1>&#10094;<h1>
-                    </div>
-                </div>
-                <div class="profile-info__wrapper">
-                    <div class="profile-info-container">
-                        <form id="changeProfileForm" class="profile-info-container__form">
-                            <div class="profile-info-container__avatar" onclick="openModal('change-avatar-modal')">
-                                <input hidden=true name="avatar" />
-                            </div>
-                            <div class="profile-info-container__item">
-                                <div class="profile-info-container__item__prop-name">
-                                    <span class="profile-info-container__property">Имя</span>
-                                </div>
-                                <div class="profile-info-container__item__prop-input">
-                                    <input class="change-input" type="text" name="fist_name" placeholder="имя" />
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="profile-info-container__item">
-                                <div class="profile-info-container__item__prop-name">
-                                    <span class="profile-info-container__property">Фамилия</span>
-                                </div>
-                                <div class="profile-info-container__item__prop-input">
-                                    <input class="change-input" type="text" name="second_name" placeholder="фамиия" />
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="profile-info-container__item">
-                                <div class="profile-info-container__item__prop-name">
-                                    <span class="profile-info-container__property">Псевдоним</span>
-                                </div>
-                                <div class="profile-info-container__item__prop-input">
-                                    <input class="change-input" type="text" name="display_name" placeholder="псевдоним" />
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="profile-info-container__item">
-                                <div class="profile-info-container__item__prop-name">
-                                    <span class="profile-info-container__property">Логин</span>
-                                </div>
-                                <div class="profile-info-container__item__prop-input">
-                                    <input class="change-input" type="text" name="login" placeholder="логин" />
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="profile-info-container__item">
-                                <div class="profile-info-container__item__prop-name">
-                                    <span class="profile-info-container__property">Почта</span>
-                                </div>
-                                <div class="profile-info-container__item__prop-input">
-                                    <input class="change-input" type="email" name="email" placeholder="почта" />
-                                </div>
-                            </div>
-                            <hr />
-                            <div class="profile-info-container__item">
-                                <div class="profile-info-container__item__prop-name">
-                                    <span class="profile-info-container__property">Телефон</span>
-                                </div>
-                                <div class="profile-info-container__item__prop-input">
-                                    <input class="change-input" type="text" name="phone" placeholder="телефон" />
-                                </div>
-                            </div>
-                            <button class="profile-info-container__submit-button" type="submit" onclick
-                                onclick="formHandler( 'changeProfileForm' )">Изменить</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="change-avatar-modal" hidden=true>
-            <div class="modal-dialog__background">
-            </div>
-            <div class="avatar__dialog-modal">
-                <h1>Загрузите файл</h1>
-                <div class="modal-dialog__body">
-                    <a href="#">Выберите файл на своем компьютере</a>
-                </div>
-                <button class="modal-dialog__submit-button"
-                    onclick="closeModal('change-avatar-modal')">Изменить</button>
-            </div>
-        </div>
-    </main>
+<div class="app"></div>
 </body>
 
 </html>

@@ -13,4 +13,6 @@ function closeModal(modalID) {
     }
     return;
 }
+window.openModal = openModal;
+window.closeModal = closeModal;
 //# sourceMappingURL=manageModal.js.map
