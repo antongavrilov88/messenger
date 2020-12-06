@@ -81,7 +81,6 @@ class Block {
         return;
       }
       this._render();
-      console.log( 'UPDATED' )
     }
     componentDidUpdate(oldProps: object, newProps: object) {
       console.log( JSON.stringify(oldProps) === JSON.stringify(newProps)  )
@@ -100,11 +99,12 @@ class Block {
         let compiled = this._compile()
         this._element.innerHTML = ''
         this._element.innerHTML = compiled.innerHTML
+        if (compiled.classList.value) {
         this._element.classList.add( compiled.classList.value )
+        }
         if (compiled.id) {
           this._element.id = compiled.id
         }
-        console.log( 'компайлед', compiled, compiled.innerHTML )
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _compile() {
@@ -114,7 +114,6 @@ class Block {
       let tempBlock = document.createElement('div')
       tempBlock.innerHTML = ''
       tempBlock.innerHTML = HTML
-      console.log('piskaaaa', tempBlock.innerHTML, tempBlock, HTML)
       return tempBlock.firstElementChild
     }
     render() {}
