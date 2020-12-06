@@ -98,12 +98,13 @@ class Block {
     }
     _render() {
         let compiled = this._compile()
-        let elems = compiled.children
         this._element.innerHTML = ''
-        for ( let i = 0; i < elems.length; i++ ) {
-          this._element.appendChild( elems[i] )
-        }
+        this._element.innerHTML = compiled.innerHTML
         this._element.classList.add( compiled.classList.value )
+        if (compiled.id) {
+          this._element.id = compiled.id
+        }
+        console.log( 'компайлед', compiled, compiled.innerHTML )
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _compile() {
@@ -111,7 +112,9 @@ class Block {
       const template = window.Handlebars.compile( block )
       const HTML = template( this.props )
       let tempBlock = document.createElement('div')
+      tempBlock.innerHTML = ''
       tempBlock.innerHTML = HTML
+      console.log('piskaaaa', tempBlock.innerHTML, tempBlock, HTML)
       return tempBlock.firstElementChild
     }
     render() {}

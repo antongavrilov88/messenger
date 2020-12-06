@@ -1,6 +1,6 @@
 export const formCTX = {
     className: "form-container",
-    id: "loginForm",
+    id: "signUpForm",
     title: "Авторизация",
     inputs: [
         {
