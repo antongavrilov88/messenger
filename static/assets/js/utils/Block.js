@@ -68,7 +68,6 @@ class Block {
         let compiled = this._compile();
         let elems = compiled.children;
         this._element.innerHTML = '';
-        console.log(compiled.classList.value);
         for (let i = 0; i < elems.length; i++) {
             this._element.appendChild(elems[i]);
         }
