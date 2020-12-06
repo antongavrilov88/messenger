@@ -66,7 +66,7 @@ class Block {
     }
     componentDidMount(oldProps?: object) {}
     _renderChildren() {
-      console.log('выыыызвал', this, this.children)
+      console.log( this )
       if ( this.children ) {
       this.children.map( child => {
           let parentNode = this._element.querySelector( child.parentNodeSelector )
@@ -81,6 +81,7 @@ class Block {
         return;
       }
       this._render();
+      console.log( 'UPDATED' )
     }
     componentDidUpdate(oldProps: object, newProps: object) {
       console.log( JSON.stringify(oldProps) === JSON.stringify(newProps)  )
@@ -98,17 +99,16 @@ class Block {
     _render() {
         let elem = this._compile()
         this.element.innerHTML = ''
-        // this._element.appendChild( elem )
-        this._element = elem
-        console.log( 'pisa' )
+        this._element.appendChild( elem )
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _compile() {
       const block = this.render();
       const template = window.Handlebars.compile( block )
       const HTML = template( this.props )
-      this._element.innerHTML = HTML
-      return this._element.firstElementChild
+      let tempBlock = document.createElement('div')
+      tempBlock.innerHTML = HTML
+      return tempBlock.firstElementChild
     }
     render() {}
     getContent() {
@@ -124,6 +124,7 @@ class Block {
         set(target, prop, value) {
           target[prop] = value;
           self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+          console.log( 'proxyUpdated' )
           return true;
         },
         deleteProperty() {
