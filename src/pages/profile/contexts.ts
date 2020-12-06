@@ -38,57 +38,6 @@ export const profileCTX = {
         }
     ]
 }
-
-// <div class="profile-info-container__item">
-// <div class="profile-info-container__item__prop-name">
-//     <span class="profile-info-container__property">Имя</span>
-// </div>
-// <div class="profile-info-container__item__prop-input">
-//     <input class="change-input" type="text" name="fist_name" placeholder="имя" />
-// </div>
-// </div>
-// <hr />
-// <div class="profile-info-container__item">
-// <div class="profile-info-container__item__prop-name">
-//     <span class="profile-info-container__property">Фамилия</span>
-// </div>
-// <div class="profile-info-container__item__prop-input">
-//     <input class="change-input" type="text" name="second_name" placeholder="фамиия" />
-// </div>
-// </div>
-// <hr />
-// <div class="profile-info-container__item">
-// <div class="profile-info-container__item__prop-name">
-//     <span class="profile-info-container__property">Псевдоним</span>
-// </div>
-// <div class="profile-info-container__item__prop-input">
-//     <input class="change-input" type="text" name="display_name" placeholder="псевдоним" />
-// </div>
-// </div>
-// <hr />
-// <div class="profile-info-container__item">
-// <div class="profile-info-container__item__prop-name">
-//     <span class="profile-info-container__property">Логин</span>
-// </div>
-// <div class="profile-info-container__item__prop-input">
-//     <input class="change-input" type="text" name="login" placeholder="логин" />
-// </div>
-// </div>
-// <hr />
-// <div class="profile-info-container__item">
-// <div class="profile-info-container__item__prop-name">
-//     <span class="profile-info-container__property">Почта</span>
-// </div>
-// <div class="profile-info-container__item__prop-input">
-//     <input class="change-input" type="email" name="email" placeholder="почта" />
-// </div>
-// </div>
-// <hr />
-// <div class="profile-info-container__item">
-// <div class="profile-info-container__item__prop-name">
-//     <span class="profile-info-container__property">Телефон</span>
-// </div>
-// <div class="profile-info-container__item__prop-input">
-//     <input class="change-input" type="text" name="phone" placeholder="телефон" />
-// </div>
-// </div>
+export const returnBlockCTX = {
+    linkUrl: "./chat.html"
+}

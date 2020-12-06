@@ -38,4 +38,7 @@ export const profileCTX = {
         }
     ]
 };
+export const returnBlockCTX = {
+    linkUrl: "./chat.html"
+};
 //# sourceMappingURL=contexts.js.map

@@ -1,6 +1,6 @@
 import Block from '../utils/Block.js'
 
-class ProfileReturnBlock extends Block {
+class ReturnBlock extends Block {
     constructor(props) {
         super("div", props)
     }
@@ -8,7 +8,7 @@ class ProfileReturnBlock extends Block {
     render() {
         return(
             `<div class="return-container">
-                <a href="./chat.html">
+                <a href="{{likUrl}}">
                     <div class="return-container__button">
                         <h1>❮</h1>
                     </div>
@@ -17,4 +17,4 @@ class ProfileReturnBlock extends Block {
         )
     }
 }
-export default ProfileReturnBlock
+export default ReturnBlock

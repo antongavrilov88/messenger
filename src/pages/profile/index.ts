@@ -3,11 +3,12 @@ import { profileCTX } from './contexts.js'
 import AuthWorkspace from '../../components/AuthWorkspace.js'
 import { render } from '../../utils/render.js'
 import Modal from '../../components/Modal.js'
-import ProfileReturnBlock from '../../components/ProfileReturnBlock.js'
+import ReturnBlock from '../../components/ReturnBlock.js'
+import { returnBlockCTX } from './contexts.js'
 
 const profileForm = new Profile(profileCTX)
 
-const profileReturnBlock = new ProfileReturnBlock({})
+const profileReturnBlock = new ReturnBlock(returnBlockCTX)
 
 const profileModal = new Modal({})
 
