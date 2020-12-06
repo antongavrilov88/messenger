@@ -9,6 +9,8 @@ const profileForm = new Profile(profileCTX)
 
 const profileReturnBlock = new ProfileReturnBlock({})
 
+const profileModal = new Modal({})
+
 const workspaceChildren = [
     {
         parentNodeSelector: '.workspace__container',
@@ -17,6 +19,10 @@ const workspaceChildren = [
     {
         parentNodeSelector: '.workspace__container',
         node: profileForm.getContent()
+    },
+    {
+        parentNodeSelector: '.workspace__container',
+        node: profileModal.getContent()
     }
 ]
 
