@@ -1,10 +1,11 @@
+import { render } from '../../utils/render.js'
 import UnauthWorkspace from '../../components/UnauthWorkspace.js'
 import { formCTX } from './contexts.js'
 import Block from '../../utils/Block.js'
 import Form from '../../components/form/Form.js'
 import { tpl } from './template.js'
 
-class SignIn extends Block {
+class SignUp extends Block {
     constructor() {
         super("div", {
             workspace: new UnauthWorkspace({
@@ -19,4 +20,4 @@ class SignIn extends Block {
         })
     }
 }
-export default SignIn
+export default SignUp
