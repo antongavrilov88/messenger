@@ -1,6 +1,6 @@
 import { render } from '../../utils/render.js'
 import UnauthWorkspace from '../../components/UnauthWorkspace.js'
-import Form from '../../components/Form.js'
+import Form from '../../components/form/Form.js'
 import { formCTX } from './contexts.js'
 
 const form = new Form(formCTX)

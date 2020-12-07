@@ -1,5 +1,4 @@
 import Block from '../utils/Block.js'
-import Form from '../components/Form.js'
 
 const tpl = `<div class="form-wrapper">
 <div class="container">
