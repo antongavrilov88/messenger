@@ -1,4 +1,4 @@
-import AuthWorkspace from '../../components/AuthWorkspace.js';
+import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace.js';
 import { render } from '../../utils/render.js';
 import ReturnBlock from '../../components/ReturnBlock.js';
 import ChangePassword from '../../components/ChangePassword.js';

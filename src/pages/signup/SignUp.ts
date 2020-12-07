@@ -1,5 +1,5 @@
 import { render } from '../../utils/render.js'
-import UnauthWorkspace from '../../components/UnauthWorkspace.js'
+import UnauthWorkspace from '../../components/unauthWorkSpace/UnauthWorkspace.js'
 import { formCTX } from './contexts.js'
 import Block from '../../utils/Block.js'
 import Form from '../../components/form/Form.js'

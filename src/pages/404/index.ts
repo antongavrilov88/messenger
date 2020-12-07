@@ -1,4 +1,4 @@
-import AuthWorkspace from '../../components/AuthWorkspace.js'
+import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace.js'
 import { render } from '../../utils/render.js'
 import { errorCTX } from './contexts.js'
 import Error from '../../components/Error.js'
