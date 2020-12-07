@@ -1,5 +1,4 @@
 import Block from '../../utils/Block.js'
-import formHandler from '../../utils/manageForm.js';
 import { tpl } from './template.js'
 
 class Form extends Block {
