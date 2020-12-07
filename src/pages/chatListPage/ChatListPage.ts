@@ -13,7 +13,7 @@ class ChatListPage extends Block {
             workspace: new AuthWorkSpace({
                 child: [new ChatListBlock({
                     child: [                    
-                        new ChatListHeaderLink(chatListCTX ),
+                        new ChatListHeaderLink(chatListCTX.header ),
                         new ChatListHeaderSearch(chatListCTX ),
                         new ChatList(chatListCTX )]
                 })]
