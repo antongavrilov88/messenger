@@ -1,7 +1,7 @@
 import Block from '../utils/Block.js'
 import formHandler from '../utils/manageForm.js';
 
-const tpl = `<form class={{ className }} id={{ id }}>
+const tpl = `<form class={{className}} id={{id}}>
 <span class="form__title">{{ title }}</span>
 {{#each inputs}}
 <label class="{{ this.lable.className }}"> {{ this.lable.title }}
@@ -18,7 +18,9 @@ class Form extends Block {
 
   render() {
     return this.compile(tpl, {
-      inputs: this.props.inputs
+      inputs: this.props.inputs,
+      className: this.props.className,
+      id: this.props.id
     })
   }
 }
