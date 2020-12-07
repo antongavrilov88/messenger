@@ -9,7 +9,7 @@ const workspaceChildren = [
         node: form.getContent()
     }
 ];
-const workspace = new UnauthWorkspace({}, workspaceChildren);
+const workspace = new UnauthWorkspace({});
 render(".app", workspace);
 setTimeout(() => {
     form.setProps({

@@ -1,8 +1,9 @@
 import EventBus from './eventBus.js';
 class Block {
-    constructor(tagName = "div", props = {}, children = []) {
+    constructor(tagName = "div", props = {}) {
         this._element = null;
-        this.setProps = (nextProps) => {
+        this._meta = null;
+        this.setProps = nextProps => {
             if (!nextProps) {
                 return;
             }
@@ -13,7 +14,6 @@ class Block {
             tagName,
             props
         };
-        this.children = children;
         this.props = this._makePropsProxy(props);
         this.eventBus = () => eventBus;
         this._registerEvents(eventBus);
@@ -24,7 +24,6 @@ class Block {
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RC, this._renderChildren.bind(this));
     }
     _createResources() {
         const { tagName } = this._meta;
@@ -32,23 +31,13 @@ class Block {
     }
     init() {
         this._createResources();
-        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
     _componentDidMount() {
         this.componentDidMount();
-        this.eventBus().emit(Block.EVENTS.FLOW_RC);
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
-    componentDidMount(oldProps) { }
-    _renderChildren() {
-        console.log(this);
-        if (this.children) {
-            this.children.map(child => {
-                let parentNode = this._element.querySelector(child.parentNodeSelector);
-                parentNode.appendChild(child.node);
-            });
-        }
-        return;
-    }
+    componentDidMount() { }
     _componentDidUpdate(oldProps, newProps) {
         const response = this.componentDidUpdate(oldProps, newProps);
         if (!response) {
@@ -57,28 +46,19 @@ class Block {
         this._render();
     }
     componentDidUpdate(oldProps, newProps) {
-        console.log(JSON.stringify(oldProps) === JSON.stringify(newProps));
         return true;
     }
     get element() {
         return this._element;
     }
     _render() {
-        let compiled = this.render();
-        this._element.innerHTML = '';
-        this._element.innerHTML = compiled;
-        this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+        const block = this.render();
+        this._element.innerHTML = block;
+        console.log(this._element);
     }
-    compile(tpl, ctx) {
-        return this._compile(tpl, ctx);
-    }
-    _compile(tpl, props) {
-        const template = window.Handlebars.compile(tpl);
-        const HTML = template(props);
-        let tempBlock = document.createElement('div');
-        tempBlock.innerHTML = '';
-        tempBlock.innerHTML = HTML;
-        return tempBlock.firstElementChild;
+    compile(template, ctx) {
+        let block = window.Handlebars.compile(template);
+        return block(ctx);
     }
     render() { }
     getContent() {
@@ -94,7 +74,6 @@ class Block {
             set(target, prop, value) {
                 target[prop] = value;
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, Object.assign({}, target), target);
-                console.log('proxyUpdated');
                 return true;
             },
             deleteProperty() {
@@ -116,8 +95,7 @@ Block.EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render",
-    FLOW_RC: "flow:render-children"
+    FLOW_RENDER: "flow:render"
 };
 export default Block;
 //# sourceMappingURL=Block.js.map

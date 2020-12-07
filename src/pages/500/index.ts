@@ -12,6 +12,6 @@ const workspaceChildren = [
     }
 ]
 
-const workspace = new AuthWorkspace({}, workspaceChildren)
+const workspace = new AuthWorkspace({})
 
 render( '.app', workspace )

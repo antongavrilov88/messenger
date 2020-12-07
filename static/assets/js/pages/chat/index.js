@@ -16,6 +16,6 @@ const workspaceChildren = [
         node: chatBlock.getContent()
     }
 ];
-const workspace = new AuthWorkspace({}, workspaceChildren);
+const workspace = new AuthWorkspace({});
 render('.app', workspace);
 //# sourceMappingURL=index.js.map

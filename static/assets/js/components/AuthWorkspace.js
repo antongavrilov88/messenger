@@ -4,8 +4,8 @@ const form = new Form({
     buttonText: 'Click me CHILD',
 });
 class AuthWorkspace extends Block {
-    constructor(props, children) {
-        super("main", props, children);
+    constructor(props) {
+        super("main", props);
     }
     render() {
         return (`<main>

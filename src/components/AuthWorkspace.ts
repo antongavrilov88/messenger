@@ -6,8 +6,8 @@ const form = new Form({
 })
 
 class AuthWorkspace extends Block {
-    constructor(props: object, children) {
-      super( "main", props, children);
+    constructor(props: object) {
+      super( "main", props);
     }    
   
     render() {

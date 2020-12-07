@@ -3,7 +3,7 @@ import Block from '../utils/Block.js'
 
 class DummyChatBlock extends Block {
     constructor(props, children) {
-        super("div", props, children)
+        super("div", props)
     }
 
     render() {

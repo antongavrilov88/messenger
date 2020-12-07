@@ -17,7 +17,9 @@ class Form extends Block {
 
 
   render() {
-    return this.compile(tpl, this.props)
+    return this.compile(tpl, {
+      inputs: this.props.inputs
+    })
   }
 }
 export default Form
