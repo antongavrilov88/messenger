@@ -96,21 +96,24 @@ class Block {
       return this._element;
     }
     _render() {
-        let compiled = this._compile()
+        let compiled = this.render()
         this._element.innerHTML = ''
-        this._element.innerHTML = compiled.innerHTML
-        if (compiled.classList.value) {
-        this._element.classList.add( compiled.classList.value )
-        }
-        if (compiled.id) {
-          this._element.id = compiled.id
-        }
+        this._element.innerHTML = compiled
+        // if (compiled.classList.value) {
+        // this._element.classList.add( compiled.classList.value )
+        // }
+        // if (compiled.id) {
+        //   this._element.id = compiled.id
+        // }
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
     }
-    _compile() {
-      const block = this.render();
-      const template = window.Handlebars.compile( block )
-      const HTML = template( this.props )
+    compile(tpl, ctx) {
+      return this._compile(tpl, ctx)
+    }
+    _compile(tpl, props) {
+      // const block = this.render();
+      const template = window.Handlebars.compile( tpl )
+      const HTML = template( props )
       let tempBlock = document.createElement('div')
       tempBlock.innerHTML = ''
       tempBlock.innerHTML = HTML

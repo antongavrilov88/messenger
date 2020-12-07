@@ -2,16 +2,28 @@ import { render } from '../../utils/render.js'
 import UnauthWorkspace from '../../components/UnauthWorkspace.js'
 import Form from '../../components/Form.js'
 import { formCTX } from './contexts.js'
+import Block from '../../utils/Block.js'
 
-const form = new Form(formCTX)
+const tpl = `{{ workspace }}`
 
-const workspaceChildren = [
-    {
-        parentNodeSelector: '.container',
-        node: form.getContent()
+export default class SignIn extends Block {
+    constructor() {
+        super("div", {
+            workspace: new UnauthWorkspace({
+                content: new Form(formCTX)
+            }, [])
+        })
     }
-]
 
-const workspace = new UnauthWorkspace({}, workspaceChildren)
+    render() {
+        return this.compile(tpl, {
+            workspace: this.props.workspace.render()
+        })
+    }
+}
 
-render(".app", workspace)
+const signIn = new SignIn()
+
+console.log(signIn )
+
+render(".app", signIn)

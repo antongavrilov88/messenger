@@ -1,18 +1,18 @@
 import Block from '../utils/Block.js'
 
-class SignIn extends Block {
+const tpl = `<div class="form-wrapper">
+<div class="container">
+{{ content }}
+</div>
+</div>`
+
+class UnauthWorkSpace extends Block {
     constructor(props, children) {
         super("div", props, children)
     }
 
     render() {
-        return(
-            `<div class="form-wrapper">
-                <div class="container">
-                
-                </div>
-            </div>`
-        )
+        return this.compile(tpl, this.props)
     }
 }
-export default SignIn
+export default UnauthWorkSpace
