@@ -31,6 +31,27 @@ export const chatListCTX = {
         }
     ]        
 }
-export const dummyChatBlockCTX = {
-    text: 'Выберите чат, чтобы написать сообщение'
+export const chatCTX = {
+    messages: [
+        {
+            containerClass: "interlocutor-message-container",
+            boxClass: "interlocutor-message-box",
+            message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam autem sint minima natus sit odio in. Iure aliquid quos nobis magnam aliquam blanditiis saepe. Tempora beatae ea fuga ex eligendi?"
+        },
+        {
+            containerClass: "my-message-container",
+            boxClass: "my-message-box",
+            message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam autem sint minima natus sit odio in. Iure aliquid quos nobis magnam aliquam blanditiis saepe. Tempora beatae ea fuga ex eligendi?"
+        },
+        {
+            containerClass: "interlocutor-message-container",
+            boxClass: "interlocutor-message-box",
+            message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam autem sint minima natus sit odio in. Iure aliquid quos nobis magnam aliquam blanditiis saepe. Tempora beatae ea fuga ex eligendi?"
+        },
+        {
+            containerClass: "my-message-container",
+            boxClass: "my-message-box",
+            message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam autem sint minima natus sit odio in. Iure aliquid quos nobis magnam aliquam blanditiis saepe. Tempora beatae ea fuga ex eligendi?"
+        },
+    ]        
 }

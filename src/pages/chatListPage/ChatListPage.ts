@@ -4,8 +4,9 @@ import ChatListHeaderLink from '../../components/ChatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
 import { tpl } from './template.js'
-import { chatListCTX  } from './contexts.js'
+import { chatListCTX, chatCTX  } from './contexts.js'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
+import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 
 class ChatListPage extends Block {
     constructor() {
@@ -13,10 +14,12 @@ class ChatListPage extends Block {
             workspace: new AuthWorkSpace({
                 child: [new ChatListBlock({
                     child: [                    
-                        new ChatListHeaderLink(chatListCTX.header ),
-                        new ChatListHeaderSearch(chatListCTX ),
-                        new ChatList(chatListCTX )]
-                })]
+                        new ChatListHeaderLink(chatListCTX.header),
+                        new ChatListHeaderSearch(chatListCTX),
+                        new ChatList(chatListCTX)]
+                }),
+                new ChatBlock(chatCTX)
+            ]
             })
         })
     }

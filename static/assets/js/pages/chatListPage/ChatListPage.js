@@ -4,8 +4,9 @@ import ChatListHeaderLink from '../../components/ChatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js';
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js';
 import { tpl } from './template.js';
-import { chatListCTX } from './contexts.js';
+import { chatListCTX, chatCTX } from './contexts.js';
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js';
+import ChatBlock from '../../components/chatBlock/ChatBlock.js';
 class ChatListPage extends Block {
     constructor() {
         super("div", {
@@ -16,7 +17,9 @@ class ChatListPage extends Block {
                             new ChatListHeaderSearch(chatListCTX),
                             new ChatList(chatListCTX)
                         ]
-                    })]
+                    }),
+                    new ChatBlock(chatCTX)
+                ]
             })
         });
     }
