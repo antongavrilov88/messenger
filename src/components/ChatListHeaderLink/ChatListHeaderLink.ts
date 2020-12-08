@@ -1,5 +1,4 @@
 import Block from '../../utils/Block.js'
-import ChangePassword from '../ChangePassword.js'
 import { tpl } from './template.js'
 
 class ChatListHeaderLink extends Block {
