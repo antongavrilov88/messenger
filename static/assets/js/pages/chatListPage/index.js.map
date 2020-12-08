@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../src/pages/chatListPage/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,uBAAuB,CAAA;AAC9C,OAAO,YAAY,MAAM,mBAAmB,CAAA;AAE5C,MAAM,YAAY,GAAG,IAAI,YAAY,EAAE,CAAA;AAEvC,MAAM,CAAE,MAAM,EAAE,YAAY,CAAE,CAAA"}
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../src/pages/chatListPage/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,uBAAuB,CAAA;AAC9C,OAAO,YAAY,MAAM,mBAAmB,CAAA;AAE5C,MAAM,QAAQ,GAAG,IAAI,YAAY,EAAE,CAAA;AAEnC,MAAM,CAAE,MAAM,EAAE,QAAQ,CAAE,CAAA"}

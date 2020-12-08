@@ -1,6 +1,6 @@
 import { render } from '../../utils/render.js'
 import ChatListPage from './ChatListPage.js'
 
-const chatListPage = new ChatListPage()
+const chatPage = new ChatListPage()
 
-render( '.app', chatListPage )
+render( '.app', chatPage )

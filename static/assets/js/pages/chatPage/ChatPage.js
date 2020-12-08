@@ -4,10 +4,10 @@ import ChatListHeaderLink from '../../components/ChatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js';
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js';
 import { tpl } from './template.js';
-import { chatListCTX, dummyChatCTX } from './contexts.js';
+import { chatListCTX, chatCTX } from './contexts.js';
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js';
-import DummyChatBlock from '../../components/DummyChatBlock/DummyChatBlock.js';
-class ChatListPage extends Block {
+import ChatBlock from '../../components/chatBlock/ChatBlock.js';
+class ChatPage extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkSpace({
@@ -18,7 +18,7 @@ class ChatListPage extends Block {
                             new ChatList(chatListCTX)
                         ]
                     }),
-                    new DummyChatBlock(dummyChatCTX)
+                    new ChatBlock(chatCTX)
                 ]
             })
         });
@@ -29,5 +29,5 @@ class ChatListPage extends Block {
         });
     }
 }
-export default ChatListPage;
-//# sourceMappingURL=ChatListPage.js.map
+export default ChatPage;
+//# sourceMappingURL=ChatPage.js.map
