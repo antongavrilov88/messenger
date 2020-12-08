@@ -1,13 +1,17 @@
 import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace.js';
-import { profileCTX } from './contexts.js';
+import { profileCTX, returnBlockCTX } from './contexts.js';
 import Block from '../../utils/Block.js';
 import { tpl } from './template.js';
 import ProfileForm from '../../components/profileForm/ProfileForm.js';
+import ReturnBlock from '../../components/returnBlock/ReturnBlock.js';
 class Profile extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkspace({
-                child: [new ProfileForm(profileCTX)]
+                child: [
+                    new ReturnBlock(returnBlockCTX),
+                    new ProfileForm(profileCTX)
+                ]
             })
         });
     }

@@ -2,12 +2,17 @@ import Block from '../../utils/Block.js'
 import ChangePassword from '../../components/changePassword/ChangePassword.js'
 import { tpl } from './template.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
+import ReturnBlock from '../../components/returnBlock/ReturnBlock.js'
+import { returnBlockCTX } from './contexts.js'
 
 class ChangePasswordPage extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkSpace({
-                child: [new ChangePassword({})]
+                child: [
+                    new ReturnBlock(returnBlockCTX),
+                    new ChangePassword({})
+                ]
             })
         })
     }
