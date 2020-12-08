@@ -1,4 +1,4 @@
-import validateForm from './validateForm.js'
+import { validateForm } from './validateForm.js'
 
 interface formField extends HTMLElement {
     name: string,
@@ -6,13 +6,13 @@ interface formField extends HTMLElement {
 }
 declare global {
     interface Window {
-      formHandler: (formID: string) => void
+      formHandler: (form: HTMLFormElement) => void
     }
   }
 
-function formHandler( formID: string ): void {
-    let myForm = document.getElementById( formID )
-    validateForm(formID)
+function formHandler( form: HTMLFormElement ): void {
+    let myForm = form
+    console.log( '' )
     myForm.onsubmit = function( e ): void {
         e.preventDefault()
         let myFormFields: HTMLCollectionOf<formField> = myForm.getElementsByTagName( "input" )
@@ -20,7 +20,7 @@ function formHandler( formID: string ): void {
         for ( let i = 0; i < myFormFields.length; i++ ) {
             requestObject[`${myFormFields[i].name}`] = myFormFields[i].value
         }
-        console.log( requestObject )
+        validateForm(form) ? console.log( requestObject ) : console.log( 'Invalid values' )
     }
 }
 window.formHandler = formHandler

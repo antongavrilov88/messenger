@@ -2,8 +2,7 @@ import EventBus from './eventBus.js'
 declare let window:any;
 declare global {
   interface Window {
-    Handlebars: object,
-    formHandler: ( id: string ) => void
+    Handlebars: object
   }
 }
 class Block {
