@@ -43,8 +43,9 @@ export const formCTX = {
             },
             input: {
                 className: "form__input",
-                type: "text",
-                name: "email"
+                type: "email",
+                name: "email",
+                placeholder: "abcd@efg.hi"
             }
         },
         {
@@ -61,12 +62,13 @@ export const formCTX = {
         {
             lable: {
                 className: "form__input__name",
-                title: "ПАРОЛЬ"
+                title: "Телефон"
             },
             input: {
                 className: "form__input",
-                type: "password",
-                name: "phone"
+                type: "text",
+                name: "phone",
+                placeholder: "+7 (777) 777-77-77"
             }
         }
     ]

@@ -67,10 +67,20 @@
     transition: all .4s; 
 }
 
-.form__input:hover, .form__input:focus {
+.form__input_valid {
+    box-shadow: 0 0 5px rgb(6, 143, 58);
+    border: 1px solid rgba(6, 143, 58, 1);
+}
+
+.form__input_invalid {
+    box-shadow: 0 0 5px rgb(238, 62, 18);
+    border: 1px solid rgba(238, 62, 18, 1);
+}
+
+/* .form__input:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
-}
+} */
 
 .form__input__name {
     padding: 10px;

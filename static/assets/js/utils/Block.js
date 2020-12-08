@@ -54,7 +54,6 @@ class Block {
     _render() {
         const block = this.render();
         this._element.innerHTML = block;
-        console.log(this._element);
     }
     compile(template, ctx) {
         let block = window.Handlebars.compile(template);

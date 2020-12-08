@@ -26,7 +26,7 @@ export const profileCTX = {
         },
         {
             label: 'E-mail',
-            inputType: 'text',
+            inputType: 'email',
             inputName: 'email',
             inputPlaceholder: 'mail'
         },

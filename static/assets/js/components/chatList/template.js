@@ -7,7 +7,7 @@ export const tpl = `<div class="chat-list__container__list">
                                 </div>
                                 <span class="chat-list__item__chat-author__container">{{ this.name }}</span>
                                 <div class="chat-list__item__last-message__container">
-                                {{ this.message }}
+                                {{this.message}}
                                 </div>
                                 <span class="chat-list__item__time">{{ this.time }}</span>
                             </li>

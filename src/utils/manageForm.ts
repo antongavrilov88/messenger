@@ -1,10 +1,18 @@
+import validateForm from './validateForm.js'
+
 interface formField extends HTMLElement {
     name: string,
     value: number | string
 }
+declare global {
+    interface Window {
+      formHandler: (formID: string) => void
+    }
+  }
 
 function formHandler( formID: string ): void {
     let myForm = document.getElementById( formID )
+    validateForm(formID)
     myForm.onsubmit = function( e ): void {
         e.preventDefault()
         let myFormFields: HTMLCollectionOf<formField> = myForm.getElementsByTagName( "input" )

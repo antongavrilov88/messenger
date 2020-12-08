@@ -74,12 +74,7 @@ class Block {
   }
   _render() {
     const block: any = this.render();
-    // Этот небезопасный метод для упрощения логики
-    // Используйте шаблонизатор из npm или напишите свой безопасный
-    // Нужно не в строку компилировать (или делать это правильно),
-    // либо сразу в DOM-элементы возвращать из compile DOM-ноду
     this._element.innerHTML = block
-    console.log( this._element )
   }
   compile(template, ctx) {
     let block = window.Handlebars.compile(template)
@@ -90,8 +85,6 @@ class Block {
     return this.element;
   }
   _makePropsProxy(props) {
-    // Можно и так передать this
-    // Такой способ больше не применяется с приходом ES6+
     const self = this;
     return new Proxy(props, {
       get(target, prop) {
@@ -111,7 +104,6 @@ class Block {
     });
   }
   _createDocumentElement(tagName) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
   show() {

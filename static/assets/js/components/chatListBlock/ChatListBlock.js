@@ -6,9 +6,7 @@ class ChatListBlock extends Block {
     }
     render() {
         return this.compile(tpl, {
-            linkBlock: this.props.child[0].render(),
-            searchBlock: this.props.child[1].render(),
-            chatListBlock: this.props.child[2].render()
+            content: this.props.child.map(child => child.render()).join('')
         });
     }
 }
