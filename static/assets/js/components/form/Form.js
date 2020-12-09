@@ -6,12 +6,12 @@ class Form extends Block {
     }
     render() {
         return this.compile(tpl, {
-            title: this.props.title,
-            inputs: this.props.inputs,
-            className: this.props.className,
-            id: this.props.id,
-            inputHandler: this.props.inputHandler,
-            handler: this.props.handler
+            title: this.props ? this.props.title : null,
+            inputs: this.props ? this.props.inputs : null,
+            className: this.props ? this.props.className : null,
+            id: this.props ? this.props.id : null,
+            inputHandler: this.props ? this.props.inputHandler : null,
+            handler: this.props ? this.props.handler : null
         });
     }
 }

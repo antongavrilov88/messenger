@@ -2,7 +2,7 @@ import EventBus from './eventBus.js';
 class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
-        this.setProps = nextProps => {
+        this.setProps = (nextProps) => {
             if (!nextProps) {
                 return;
             }
@@ -42,11 +42,9 @@ class Block {
         if (!response) {
             return;
         }
-        console.log('идем рендерить');
         this._render();
     }
     componentDidUpdate(oldProps, newProps) {
-        console.log(oldProps, newProps);
         return true;
     }
     get element() {
@@ -54,7 +52,9 @@ class Block {
     }
     _render() {
         const block = this.render();
-        this._element.innerHTML = block;
+        if (block && this._element) {
+            this._element.innerHTML = block;
+        }
     }
     compile(template, ctx) {
         let block = window.Handlebars.compile(template);
@@ -83,12 +83,6 @@ class Block {
     }
     _createDocumentElement(tagName) {
         return document.createElement(tagName);
-    }
-    show() {
-        this.getContent().style.display = "block";
-    }
-    hide() {
-        this.getContent().style.display = "none";
     }
 }
 Block.EVENTS = {

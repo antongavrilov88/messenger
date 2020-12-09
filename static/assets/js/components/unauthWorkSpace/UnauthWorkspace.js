@@ -6,7 +6,7 @@ class UnauthWorkSpace extends Block {
     }
     render() {
         return this.compile(tpl, {
-            content: this.props.child.render()
+            content: this.props ? this.props.child.render() : null
         });
     }
 }

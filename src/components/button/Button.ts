@@ -2,7 +2,7 @@ import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
 
 class Button extends Block {
-    constructor(props) {
+    constructor(props: object | undefined) {
         super("button", props)
     }
 

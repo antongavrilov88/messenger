@@ -11,9 +11,26 @@ class SignIn extends Block {
             })
         });
     }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setProps({ workspace: new UnauthWorkspace({
+                    child: new Form(Object.assign(Object.assign({}, formCTX), { title: 'Так могу' }))
+                }) });
+        }, 1000);
+        setTimeout(() => {
+            this.setProps({ workspace: new UnauthWorkspace({
+                    child: new Form(Object.assign(Object.assign({}, formCTX), { title: 'И так могу' }))
+                }) });
+        }, 2500);
+        setTimeout(() => {
+            this.setProps({ workspace: new UnauthWorkspace({
+                    child: new Form(Object.assign(Object.assign({}, formCTX), { title: 'Авторизация' }))
+                }) });
+        }, 4000);
+    }
     render() {
         return this.compile(tpl, {
-            content: this.props.workspace.render()
+            content: this.props ? this.props.workspace.render() : null
         });
     }
 }

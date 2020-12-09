@@ -6,7 +6,8 @@ class DummyChatBlock extends Block {
     }
     render() {
         return this.compile(tpl, {
-            messages: this.props.messages
+            messages: this.props ? this.props.messages : null,
+            messageHandler: this.props ? this.props.messageHandler : null
         });
     }
 }

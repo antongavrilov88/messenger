@@ -1,3 +1,5 @@
+import formHandler from '../../utils/manageForm.js';
+import funcString from '../../utils/funcString.js';
 export const chatListCTX = {
     header: {
         linkUrl: './profile.html',
@@ -29,7 +31,7 @@ export const chatListCTX = {
             message: 'Как дела?',
             time: '15:22'
         }
-    ]
+    ],
 };
 export const chatCTX = {
     messages: [
@@ -53,6 +55,7 @@ export const chatCTX = {
             boxClass: "my-message-box",
             message: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam autem sint minima natus sit odio in. Iure aliquid quos nobis magnam aliquam blanditiis saepe. Tempora beatae ea fuga ex eligendi?"
         },
-    ]
+    ],
+    messageHandler: funcString(formHandler, 'this.parentNode')
 };
 //# sourceMappingURL=contexts.js.map

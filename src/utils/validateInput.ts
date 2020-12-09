@@ -12,6 +12,7 @@ function validateInput(elem: HTMLInputElement) {
         case 'second_name':
         case 'display_name':
         case 'login':
+        case 'message':
             status = value.length > 4 ? true : false
             break;
         case 'password':
@@ -24,7 +25,6 @@ function validateInput(elem: HTMLInputElement) {
         case 'phone':
             const regexpPhone = /\+\d{1,3}\s?\(\d{3}\)\s?\d{3}(-\d{2}){2}/g
             status = regexpPhone.test(value)
-            console.log( value.length, status )
             break
         default:
             break;

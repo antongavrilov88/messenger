@@ -3,13 +3,14 @@ import { tpl } from './template.js'
 
 
 class DummyChatBlock extends Block {
-    constructor(props) {
+    constructor(props: object | undefined) {
         super("div", props)
     }
 
     render() {
         return this.compile(tpl, {
-            messages: this.props.messages
+            messages:  this.props ? this.props.messages : null,
+            messageHandler: this.props ? this.props.messageHandler : null
         })
     }
 }

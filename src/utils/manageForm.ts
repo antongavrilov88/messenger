@@ -7,7 +7,6 @@ declare global {
 
 function formHandler( form: HTMLFormElement ): void {
     let myForm = form
-    console.log( form )
     myForm.onsubmit = function( e ): void {
         e.preventDefault()
         let myFormFields: HTMLCollectionOf<HTMLInputElement> = myForm.getElementsByTagName( "input" )

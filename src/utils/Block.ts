@@ -13,10 +13,12 @@ class Block {
     FLOW_CDU: "flow:component-did-update",
     FLOW_RENDER: "flow:render"
   };
-  _element = null;
+  _element: null | Element = null;
   _meta: { tagName: any; props?: object; };
   eventBus: () => EventBus;
-  props;
+  props?: {
+    [key:string]: any
+  };
   constructor(tagName: string = "div", props: object = {}) {
     const eventBus = new EventBus();
     this._meta = {
@@ -28,7 +30,7 @@ class Block {
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
   }
-  _registerEvents(eventBus) {
+  _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
@@ -47,19 +49,17 @@ class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
   componentDidMount() {}
-  _componentDidUpdate(oldProps, newProps) {
+  _componentDidUpdate(oldProps: any, newProps: any) {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
     }
-    console.log('идем рендерить')
     this._render();
   }
-  componentDidUpdate(oldProps, newProps) {
-    console.log(oldProps, newProps)
+  componentDidUpdate(oldProps: any, newProps: any) {
     return true;
   }
-  setProps = nextProps => {
+  setProps = (nextProps: any) => {
     if (!nextProps) {
       return;
     }
@@ -70,27 +70,27 @@ class Block {
   }
   _render() {
     const block = this.render();
+    if ( block && this._element ) {
     this._element.innerHTML = block
+    }
   }
-  compile(template, ctx) {
+  compile(template: string, ctx: {[prop: string]: any}) {
     let block = window.Handlebars.compile(template)
     return block(ctx)
   }
-  render() {}
+  render(): void | string {}
   getContent() {
     return this.element;
   }
-  _makePropsProxy(props) {
+  _makePropsProxy(props: object) {
     const self = this;
     return new Proxy(props, {
-      get(target, prop) {
+      get(target: {[prop: string]: any}, prop: any) {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target: {[prop: string]: any}, prop: any, value: any) {
         target[prop] = value;
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
         return true;
       },
@@ -99,14 +99,8 @@ class Block {
       }
     });
   }
-  _createDocumentElement(tagName) {
+  _createDocumentElement(tagName: any) {
     return document.createElement(tagName);
-  }
-  show() {
-    this.getContent().style.display = "block";
-  }
-  hide() {
-    this.getContent().style.display = "none";
   }
 }
 export default Block

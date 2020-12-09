@@ -1,6 +1,5 @@
-export function render(query: string, block) {
-    console.log( query, block )
-    const root: null | Node = document.querySelector(query);
+export function render(query: string, block: any) {
+    const root = document.querySelector(query);
     if ( root ) {
     root.appendChild(block.getContent());
     }

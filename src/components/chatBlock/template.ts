@@ -26,7 +26,7 @@ export const tpl = `<div class="chat-container">
                                     <input class="chat-container__message-input" type="text" name="message" />
                                 </div>
                                 <button class="chat-container__send-button" type="submit"
-                                    onclick="window.formHandler( 'messageForm' )">
+                                    onclick="{{messageHandler}}">
                                     <h1>&#10148;</h1>
                                 </button>
                             </form>

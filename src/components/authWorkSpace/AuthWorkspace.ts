@@ -7,7 +7,7 @@ class AuthWorkspace extends Block {
   
     render() {
       return this.compile(tpl, {
-        content:  this.props.child.map(child => child.render()).join('')
+        content:  this.props ? this.props.child.map((child: { render: () => any; }) => child.render()).join('') : null
       })
     }
   }

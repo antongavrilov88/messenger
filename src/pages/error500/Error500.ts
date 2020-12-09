@@ -15,7 +15,7 @@ class Error500 extends Block {
 
     render() {
         return this.compile(tpl, {
-            content: this.props.workspace.render()
+            content: this.props ? this.props.workspace.render() : null
         })
     }
 }

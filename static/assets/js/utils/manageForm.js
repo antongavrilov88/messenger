@@ -1,7 +1,6 @@
 import { validateForm } from './validateForm.js';
 function formHandler(form) {
     let myForm = form;
-    console.log(form);
     myForm.onsubmit = function (e) {
         e.preventDefault();
         let myFormFields = myForm.getElementsByTagName("input");
