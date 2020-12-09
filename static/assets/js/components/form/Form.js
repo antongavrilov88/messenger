@@ -11,7 +11,8 @@ class Form extends Block {
             className: this.props ? this.props.className : null,
             id: this.props ? this.props.id : null,
             inputHandler: this.props ? this.props.inputHandler : null,
-            handler: this.props ? this.props.handler : null
+            handler: this.props ? this.props.handler : null,
+            submitButton: this.props ? this.props.submitButton.render() : null
         });
     }
 }

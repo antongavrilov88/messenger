@@ -1,11 +1,21 @@
 import formHandler from '../../utils/manageForm.js'
 import funcString  from '../../utils/funcString.js'
 import validateInput from '../../utils/validateInput.js'
+import Button from '../../components/button/Button.js'
 
+
+export const submitButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Войти'
+}
 export const formCTX = {
     className: "form-container",
     id: "loginForm",
     title: "Авторизация",
+    submitButton: new Button(submitButtonCTX),
     inputs: [
         {
             lable: {

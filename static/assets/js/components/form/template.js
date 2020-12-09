@@ -5,6 +5,6 @@ export const tpl = `<form class={{className}} id={{id}}>
                                 <input class="{{this.input.className}}" type="{{this.input.type}}" name="{{this.input.name}}" placeholder="{{this.input.placeholder}}" onfocus="{{this.handler}}" onblur="{{this.handler}}"/>
                             </label>
                         {{/each}}
-                        <button class="form__submit-button" id="pisa" type="submit" onclick="{{handler}}">Вход</button>
+                        {{{submitButton}}}
                     </form>`;
 //# sourceMappingURL=template.js.map
