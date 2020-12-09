@@ -1,6 +1,6 @@
 import ChatList from '../../components/chatList/ChatList.js'
 import Block from '../../utils/Block.js'
-import ChatListHeaderLink from '../../components/ChatListHeaderLink/ChatListHeaderLink.js'
+import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHeaderLink.js'
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
 import { tpl } from './template.js'

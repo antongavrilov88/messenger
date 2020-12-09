@@ -1,8 +1,4 @@
 import validateInput  from './validateInput.js'
-interface formField extends HTMLElement {
-    name: string,
-    value: number | string
-}
 declare global {
     interface Window {
       validateForm: (form: HTMLFormElement) => boolean

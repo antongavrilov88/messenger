@@ -1,5 +1,3 @@
-import { modalCTX } from "../pages/profile/contexts"
-
 declare global {
     interface Window {
       openModal: (id: string) => void,

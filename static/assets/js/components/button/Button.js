@@ -6,11 +6,11 @@ class Button extends Block {
     }
     render() {
         return this.compile(tpl, {
-            className: this.props.className,
-            type: this.props.type,
-            event: this.props.event,
-            handler: this.props.handler,
-            text: this.props.text
+            className: this.props ? this.props.className : null,
+            type: this.props ? this.props.type : null,
+            event: this.props ? this.props.event : null,
+            handler: this.props ? this.props.handler : null,
+            text: this.props ? this.props.text : null
         });
     }
 }

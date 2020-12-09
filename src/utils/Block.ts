@@ -6,10 +6,6 @@ declare global {
   }
 }
 
-window.Handlebars.registerHelper('funcRender', function(fn) {
-  console.log( 'helper is working', fn )
-  return fn.toString().replace(/\"/g,"'");
-});
 class Block {
   static EVENTS = {
     INIT: "init",
@@ -18,16 +14,10 @@ class Block {
     FLOW_RENDER: "flow:render"
   };
   _element = null;
-  _meta = null;
+  _meta: { tagName: any; props?: object; };
   eventBus: () => EventBus;
-  props: any;
-  /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
-   *
-   * @returns {void}
-   */
-  constructor(tagName = "div", props = {}) {
+  props;
+  constructor(tagName: string = "div", props: object = {}) {
     const eventBus = new EventBus();
     this._meta = {
       tagName,
@@ -62,9 +52,11 @@ class Block {
     if (!response) {
       return;
     }
+    console.log('идем рендерить')
     this._render();
   }
   componentDidUpdate(oldProps, newProps) {
+    console.log(oldProps, newProps)
     return true;
   }
   setProps = nextProps => {
@@ -77,7 +69,7 @@ class Block {
     return this._element;
   }
   _render() {
-    const block: any = this.render();
+    const block = this.render();
     this._element.innerHTML = block
   }
   compile(template, ctx) {

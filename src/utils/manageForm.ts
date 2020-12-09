@@ -1,9 +1,4 @@
 import { validateForm } from './validateForm.js'
-
-interface formField extends HTMLElement {
-    name: string,
-    value: number | string
-}
 declare global {
     interface Window {
       formHandler: (form: HTMLFormElement) => void
@@ -15,8 +10,8 @@ function formHandler( form: HTMLFormElement ): void {
     console.log( form )
     myForm.onsubmit = function( e ): void {
         e.preventDefault()
-        let myFormFields: HTMLCollectionOf<formField> = myForm.getElementsByTagName( "input" )
-        let requestObject = {}
+        let myFormFields: HTMLCollectionOf<HTMLInputElement> = myForm.getElementsByTagName( "input" )
+        let requestObject: {[formFieldName: string]: string} = {}
         for ( let i = 0; i < myFormFields.length; i++ ) {
             requestObject[`${myFormFields[i].name}`] = myFormFields[i].value
         }
