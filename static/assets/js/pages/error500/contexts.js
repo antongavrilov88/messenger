@@ -1,5 +1,5 @@
 export const errorCTX = {
     errorCode: '500',
-    errorMessage: 'Что-то пошло не так...'
+    errorMessage: 'Уже решаем...'
 };
 //# sourceMappingURL=contexts.js.map

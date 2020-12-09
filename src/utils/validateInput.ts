@@ -4,7 +4,7 @@ declare global {
     }
   }
 
-export function validateInput(elem: HTMLInputElement) {
+function validateInput(elem: HTMLInputElement) {
     let value = elem.value
     let status = false
     switch (elem.name) {
@@ -37,3 +37,4 @@ export function validateInput(elem: HTMLInputElement) {
       return status
 }
 window.validateInput = validateInput
+export default validateInput

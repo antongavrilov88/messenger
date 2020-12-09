@@ -275,8 +275,8 @@
     border: none !important;
 }
 
-.change-input:hover, .change-input:focus {
+/* .change-input:hover {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
     cursor: pointer;
-}
+} */

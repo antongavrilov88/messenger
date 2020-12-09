@@ -1,4 +1,4 @@
-import { validateInput } from './validateInput.js'
+import validateInput  from './validateInput.js'
 interface formField extends HTMLElement {
     name: string,
     value: number | string

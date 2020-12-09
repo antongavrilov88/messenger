@@ -6,7 +6,7 @@ import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js';
 import { tpl } from './template.js';
 import { chatListCTX, dummyChatCTX } from './contexts.js';
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js';
-import DummyChatBlock from '../../components/DummyChatBlock/DummyChatBlock.js';
+import DummyChatBlock from '../../components/dummyChatBlock/DummyChatBlock.js';
 class ChatListPage extends Block {
     constructor() {
         super("div", {

@@ -1,4 +1,4 @@
-export function validateInput(elem) {
+function validateInput(elem) {
     let value = elem.value;
     let status = false;
     switch (elem.name) {
@@ -31,4 +31,5 @@ export function validateInput(elem) {
     return status;
 }
 window.validateInput = validateInput;
+export default validateInput;
 //# sourceMappingURL=validateInput.js.map

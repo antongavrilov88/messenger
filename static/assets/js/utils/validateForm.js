@@ -1,4 +1,4 @@
-import { validateInput } from './validateInput.js';
+import validateInput from './validateInput.js';
 export function validateForm(form) {
     let myForm = form;
     let myFormFields = myForm.getElementsByTagName("input");

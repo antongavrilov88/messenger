@@ -10,12 +10,12 @@ export const tpl = `<div class="profile-info__wrapper">
                                             <span class="profile-info-container__property">{{this.label}}</span>
                                         </div>
                                         <div class="profile-info-container__item__prop-input">
-                                            <input class="change-input" type="{{this.inputType}}" name="{{this.inputName}}" placeholder="{{this.inputPlaceholder}}" onfocus="window.validateInput(this)" onblur="window.validateInput(this)"/>
+                                            <input class="change-input" type="{{this.inputType}}" name="{{this.inputName}}" placeholder="{{this.inputPlaceholder}}" onfocus="this.handler" onblur="this.handler"/>
                                         </div>
                                     </div>
                                     <hr />
                                 {{/each}}
-                                <button class="profile-info-container__submit-button" type="submit" onclick="window.formHandler(this.parentNode)">Изменить</button>
+                                <button class="profile-info-container__submit-button" type="submit" onclick="{{handler}}">Изменить</button>
                             </form>
                         </div>
                     </div>`
