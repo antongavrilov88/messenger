@@ -7,7 +7,11 @@ class ChangePassword extends Block {
     }
 
     render() {
-        return this.compile(tpl, {})
+        return this.compile(tpl, {
+            formHandler: this.props ? this.props.formHandler : null,
+            inputHandler: this.props ? this.props.inputHandler : null,
+            submitButton: this.props ? this.props.submitButton.render() : null
+        })
     }
 }
 export default ChangePassword

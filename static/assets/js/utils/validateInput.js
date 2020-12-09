@@ -10,6 +10,8 @@ function validateInput(elem) {
             status = value.length > 4 ? true : false;
             break;
         case 'password':
+        case 'oldPassword':
+        case 'newPassword':
             status = value.length > 6 ? true : false;
             break;
         case 'email':

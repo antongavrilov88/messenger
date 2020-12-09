@@ -41,6 +41,5 @@ export const formCTX = {
             },
             handler: funcString(validateInput, 'this')
         }
-    ],
-    handler: funcString(formHandler, 'this.parentNode')
+    ]
 }
