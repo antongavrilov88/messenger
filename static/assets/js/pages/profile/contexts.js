@@ -1,6 +1,7 @@
 import formHandler from '../../utils/manageForm.js';
 import funcString from '../../utils/funcString.js';
 import validateInput from '../../utils/validateInput.js';
+import { closeModal, openModal } from '../../utils/manageModal.js';
 export const profileCTX = {
     profileData: [
         {
@@ -46,9 +47,13 @@ export const profileCTX = {
             handler: funcString(validateInput, 'this')
         }
     ],
-    handler: funcString(formHandler, 'this.parentNode')
+    formHandler: funcString(formHandler, 'this.parentNode'),
+    modalHandler: funcString(openModal, "'changeAvatarModal'")
 };
 export const returnBlockCTX = {
     linkUrl: "./chat.html"
+};
+export const modalCTX = {
+    modalHandler: funcString(closeModal, "'changeAvatarModal'")
 };
 //# sourceMappingURL=contexts.js.map
