@@ -4,14 +4,6 @@ class Form extends Block {
     constructor(props) {
         super('form', props);
     }
-    componentDidMount() {
-        setTimeout(() => {
-            this.setProps({
-                title: 'piska-pipiska'
-            }),
-                console.log('pisa', this.props.title);
-        }, 3000);
-    }
     render() {
         return this.compile(tpl, {
             title: this.props.title,
