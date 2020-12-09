@@ -5,6 +5,11 @@ declare global {
     Handlebars: object
   }
 }
+
+window.Handlebars.registerHelper('funcRender', function(fn) {
+  console.log( 'helper is working', fn )
+  return fn.toString().replace(/\"/g,"'");
+});
 class Block {
   static EVENTS = {
     INIT: "init",

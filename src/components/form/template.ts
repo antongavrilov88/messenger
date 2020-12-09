@@ -5,5 +5,5 @@ export const tpl = `<form class={{className}} id={{id}}>
                                 <input class="{{this.input.className}}" type="{{this.input.type}}" name="{{this.input.name}}" placeholder="{{this.input.placeholder}}" onfocus="window.validateInput(this)" onblur="window.validateInput(this)"/>
                             </label>
                         {{/each}}
-                        <button class="form__submit-button" type="submit" onclick="window.formHandler({{id}})">Вход</button>
+                        <button class="form__submit-button" id="pisa" type="submit" onclick="{{handler}}">Вход</button>
                     </form>`

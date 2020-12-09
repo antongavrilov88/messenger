@@ -1,3 +1,6 @@
+import formHandler from '../../utils/manageForm.js'
+import funcString  from '../../utils/funcString.js'
+
 export const formCTX = {
     className: "form-container",
     id: "loginForm",
@@ -25,5 +28,6 @@ export const formCTX = {
                 name: "password"
             }
         }
-    ]
-    }
+    ],
+    handler: funcString(formHandler, 'this.parentNode')
+}

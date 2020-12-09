@@ -1,4 +1,8 @@
 import EventBus from './eventBus.js';
+window.Handlebars.registerHelper('funcRender', function (fn) {
+    console.log('helper is working', fn);
+    return fn.toString().replace(/\"/g, "'");
+});
 class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
