@@ -1,14 +1,14 @@
-// нужно уточнить с колбэками
-type callback = ( args?: object | null ) => void | boolean
+type Сallback = (...args: any) => void
 class EventBus {
-  listeners: {
-    [event: string]: callback[]
-  };
+  // listeners: {
+  //   [event: string]: Сallback[]
+  // };
+  listeners: Record<string, Сallback[]>
     constructor() {
       this.listeners = {};
     }
   
-    on(event: string, callback: callback) {
+    on(event: string, callback: Сallback) {
       if (!this.listeners[event]) {
         this.listeners[event] = [];
       }
@@ -16,7 +16,7 @@ class EventBus {
       this.listeners[event].push(callback);
     }
   
-    off(event: string, callback: callback) {
+    off(event: string, callback: Сallback) {
         if (!this.listeners[event]) {
             throw new Error(`Нет события: ${event}`);
       }
