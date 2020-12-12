@@ -3,5 +3,5 @@ import ProfileForm from "../profileForm/ProfileForm";
 import ReturnBlock from "../returnBlock/ReturnBlock";
 
 export type AuthWorkspaceProps = {
-        content: (Modal | ProfileForm | ReturnBlock)[];
+        child: (Modal | ProfileForm | ReturnBlock)[];
   }

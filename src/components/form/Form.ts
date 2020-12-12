@@ -15,7 +15,6 @@ class Form extends Block {
 
   componentDidMount() {
     window.validateInput = validateInput
-    console.log( this.props ? this.props : null )
 }
 
   render() {

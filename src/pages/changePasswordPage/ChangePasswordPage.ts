@@ -9,7 +9,7 @@ class ChangePasswordPage extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkSpace({
-                content: [
+                child: [
                     new ReturnBlock(returnBlockCTX),
                     new ChangePassword(changPasswordFormCTX)
                 ]

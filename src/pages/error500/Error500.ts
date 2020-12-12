@@ -8,7 +8,7 @@ class Error500 extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkspace({
-                content: [new Error(errorCTX)]
+                child: [new Error(errorCTX)]
             })
         })
     }
