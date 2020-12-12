@@ -20,5 +20,3 @@ export function closeModal( modalID: string ): void {
     }
     return
 }
-// window.openModal = openModal
-// window.closeModal = closeModal
