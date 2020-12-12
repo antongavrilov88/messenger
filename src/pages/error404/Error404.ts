@@ -8,7 +8,7 @@ class Error404 extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkspace({
-                child: [new Error(errorCTX)]
+                content: [new Error(errorCTX)]
             })
         })
     }

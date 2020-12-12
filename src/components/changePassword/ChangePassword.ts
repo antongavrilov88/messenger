@@ -4,6 +4,7 @@ import validateInput from '../../utils/validateInput.js'
 import { tpl } from './template.js'
 import { ChangePasswordProps } from './types.js'
 
+
 class ChangePassword extends Block {
     constructor(props: ChangePasswordProps) {
         super("div", props)
@@ -13,6 +14,12 @@ class ChangePassword extends Block {
         window.formHandler = formHandler
         window.validateInput = validateInput
     }
+
+    componentDidMount() {
+      window.validateInput = validateInput
+      window.formHandler = formHandler
+
+  }
 
     render() {
         return this.compile(tpl, {

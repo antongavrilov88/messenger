@@ -1,16 +1,16 @@
 import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
-import { UnauthWorkSpaceProps } from './types.js'
+import { UnauthWorkspaceProps } from './types.js'
 
-class UnauthWorkSpace extends Block {
-    constructor(props: UnauthWorkSpaceProps) {
+class UnauthWorkspace extends Block {
+    constructor(props: UnauthWorkspaceProps) {
         super("main", props)
     }
 
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.child.render() : null
+            content: this.props ? this.props.content.render() : null
         })
     }
 }
-export default UnauthWorkSpace
+export default UnauthWorkspace
