@@ -8,8 +8,8 @@ import Modal from '../../components/modal/Modal.js';
 class Profile extends Block {
     constructor() {
         super("div", {
-            workspace: new AuthWorkspace({
-                child: [
+            content: new AuthWorkspace({
+                content: [
                     new ReturnBlock(returnBlockCTX),
                     new ProfileForm(profileCTX),
                     new Modal(modalCTX)
@@ -19,7 +19,7 @@ class Profile extends Block {
     }
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         });
     }
 }

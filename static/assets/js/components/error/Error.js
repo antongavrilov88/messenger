@@ -6,8 +6,8 @@ class Error extends Block {
     }
     render() {
         return this.compile(tpl, {
-            errorCode: this.props ? this.props.errorCode : null,
-            errorMessage: this.props ? this.props.errorMessage : null
+            errorCode: this.props.errorCode,
+            errorMessage: this.props.errorMessage
         });
     }
 }

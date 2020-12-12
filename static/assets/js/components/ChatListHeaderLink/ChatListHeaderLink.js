@@ -6,8 +6,8 @@ class ChatListHeaderLink extends Block {
     }
     render() {
         return this.compile(tpl, {
-            linkUrl: this.props ? this.props.linkUrl : null,
-            linkText: this.props ? this.props.linkText : null
+            linkUrl: this.props.linkUrl,
+            linkText: this.props.linkText
         });
     }
 }

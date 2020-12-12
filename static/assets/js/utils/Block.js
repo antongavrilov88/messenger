@@ -2,6 +2,7 @@ import EventBus from './eventBus.js';
 class Block {
     constructor(tagName = "div", props = {}) {
         this._element = null;
+        this.props = {};
         this.setProps = (nextProps) => {
             if (!nextProps) {
                 return;

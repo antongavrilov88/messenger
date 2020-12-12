@@ -12,8 +12,8 @@ class ChatBlock extends Block {
     }
     render() {
         return this.compile(tpl, {
-            messages: this.props ? this.props.messages : null,
-            messageHandler: this.props ? this.props.messageHandler : null
+            messages: this.props.messages,
+            messageHandler: this.props.messageHandler
         });
     }
 }

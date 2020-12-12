@@ -6,7 +6,7 @@ class Modal extends Block {
     }
     render() {
         return this.compile(tpl, {
-            modalHandler: this.props ? this.props.modalHandler : null
+            modalHandler: this.props.modalHandler
         });
     }
 }

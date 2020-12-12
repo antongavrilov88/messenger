@@ -6,7 +6,7 @@ class ReturnBlock extends Block {
     }
     render() {
         return this.compile(tpl, {
-            linkUrl: this.props ? this.props.urlLink : null
+            linkUrl: this.props.urlLink
         });
     }
 }

@@ -6,7 +6,7 @@ class ChatList extends Block {
     }
     render() {
         return this.compile(tpl, {
-            chats: this.props ? this.props.chats : null
+            chats: this.props.chats
         });
     }
 }

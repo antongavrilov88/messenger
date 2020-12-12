@@ -6,14 +6,14 @@ import { tpl } from './template.js';
 class SignUp extends Block {
     constructor() {
         super("div", {
-            workspace: new UnauthWorkspace({
-                child: new Form(formCTX)
+            content: new UnauthWorkspace({
+                content: new Form(formCTX)
             })
         });
     }
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         });
     }
 }

@@ -6,31 +6,31 @@ import { tpl } from './template.js';
 class SignIn extends Block {
     constructor() {
         super("div", {
-            workspace: new UnauthWorkspace({
-                child: new Form(formCTX)
+            content: new UnauthWorkspace({
+                content: new Form(formCTX)
             })
         });
     }
     componentDidMount() {
         setTimeout(() => {
-            this.setProps({ workspace: new UnauthWorkspace({
-                    child: new Form(Object.assign(Object.assign({}, formCTX), { title: 'Так могу' }))
+            this.setProps({ content: new UnauthWorkspace({
+                    content: new Form(Object.assign(Object.assign({}, formCTX), { title: 'Так могу' }))
                 }) });
         }, 1000);
         setTimeout(() => {
-            this.setProps({ workspace: new UnauthWorkspace({
-                    child: new Form(Object.assign(Object.assign({}, formCTX), { title: 'И так могу' }))
+            this.setProps({ content: new UnauthWorkspace({
+                    content: new Form(Object.assign(Object.assign({}, formCTX), { title: 'И так могу' }))
                 }) });
         }, 2500);
         setTimeout(() => {
-            this.setProps({ workspace: new UnauthWorkspace({
-                    child: new Form(Object.assign(Object.assign({}, formCTX), { title: 'Авторизация' }))
+            this.setProps({ content: new UnauthWorkspace({
+                    content: new Form(Object.assign(Object.assign({}, formCTX), { title: 'Авторизация' }))
                 }) });
         }, 4000);
     }
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         });
     }
 }

@@ -6,14 +6,16 @@ import { tpl } from './template.js';
 class Error404 extends Block {
     constructor() {
         super("div", {
-            workspace: new AuthWorkspace({
-                child: [new Error(errorCTX)]
+            content: new AuthWorkspace({
+                content: [
+                    new Error(errorCTX)
+                ]
             })
         });
     }
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         });
     }
 }

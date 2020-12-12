@@ -10,9 +10,10 @@ import DummyChatBlock from '../../components/dummyChatBlock/DummyChatBlock.js';
 class ChatListPage extends Block {
     constructor() {
         super("div", {
-            workspace: new AuthWorkSpace({
-                child: [new ChatListBlock({
-                        child: [
+            content: new AuthWorkSpace({
+                content: [
+                    new ChatListBlock({
+                        content: [
                             new ChatListHeaderLink(chatListCTX.header),
                             new ChatListHeaderSearch(chatListCTX),
                             new ChatList(chatListCTX)
@@ -25,7 +26,7 @@ class ChatListPage extends Block {
     }
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         });
     }
 }

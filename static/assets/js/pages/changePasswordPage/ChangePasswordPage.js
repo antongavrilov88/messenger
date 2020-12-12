@@ -7,8 +7,8 @@ import { returnBlockCTX, changPasswordFormCTX } from './contexts.js';
 class ChangePasswordPage extends Block {
     constructor() {
         super("div", {
-            workspace: new AuthWorkSpace({
-                child: [
+            content: new AuthWorkSpace({
+                content: [
                     new ReturnBlock(returnBlockCTX),
                     new ChangePassword(changPasswordFormCTX)
                 ]
@@ -17,7 +17,7 @@ class ChangePasswordPage extends Block {
     }
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         });
     }
 }
