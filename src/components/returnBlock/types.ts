@@ -1,3 +1,3 @@
 export type ReturnBlockProps = {
-    urlLink: string;
+    linkUrl: string;
 }
