@@ -9,6 +9,11 @@ class ChangePassword extends Block {
     constructor(props: ChangePasswordProps) {
         super("div", props)
     }
+    
+    componentDidMount() {
+        window.formHandler = formHandler
+        window.validateInput = validateInput
+    }
 
     componentDidMount() {
       window.validateInput = validateInput

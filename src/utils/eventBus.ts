@@ -1,8 +1,5 @@
 type Сallback = (...args: any) => void
 class EventBus {
-  // listeners: {
-  //   [event: string]: Сallback[]
-  // };
   listeners: Record<string, Сallback[]>
     constructor() {
       this.listeners = {};
