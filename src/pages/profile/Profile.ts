@@ -5,13 +5,14 @@ import { tpl } from './template.js'
 import ProfileForm from '../../components/profileForm/ProfileForm.js'
 import ReturnBlock from '../../components/returnBlock/ReturnBlock.js'
 import Modal from '../../components/modal/Modal.js'
+import { ProfileProps } from './types.js'
 
 
-class Profile extends Block {
+class Profile extends Block<ProfileProps> {
     constructor() {
         super("div", {
-            workspace: new AuthWorkspace({
-                child: [
+            content: new AuthWorkspace({
+                content: [
                     new ReturnBlock(returnBlockCTX),
                     new ProfileForm(profileCTX),
                     new Modal(modalCTX)
@@ -22,7 +23,7 @@ class Profile extends Block {
 
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         })
     }
 }

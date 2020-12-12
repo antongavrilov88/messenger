@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-class Block {
+class Block<Props> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -16,9 +16,9 @@ class Block {
   _element: null | Element = null;
   _meta: { tagName: string; props?: object; };
   eventBus: () => EventBus;
-  props?: {
+  props: {
     [key:string]: any
-  };
+  } = {}
   constructor(tagName: string = "div", props: object = {}) {
     const eventBus = new EventBus();
     this._meta = {
@@ -74,7 +74,7 @@ class Block {
     this._element.innerHTML = block
     }
   }
-  compile(template: string, ctx: {[prop: string]: any}) {
+  compile(template: string, ctx: Props) {
     let block = window.Handlebars.compile(template)
     return block(ctx)
   }

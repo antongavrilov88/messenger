@@ -3,19 +3,22 @@ import { errorCTX } from './contexts.js'
 import Block from '../../utils/Block.js'
 import Error from '../../components/error/Error.js'
 import { tpl } from './template.js'
+import { ErrorProps } from './types.js'
 
-class Error500 extends Block {
+class Error500 extends Block<ErrorProps> {
     constructor() {
         super("div", {
-            workspace: new AuthWorkspace({
-                child: [new Error(errorCTX)]
+            content: new AuthWorkspace({
+                content: [
+                    new Error(errorCTX)
+                ]
             })
         })
     }
 
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props.content.render()
         })
     }
 }

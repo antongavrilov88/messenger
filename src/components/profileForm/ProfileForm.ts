@@ -5,7 +5,7 @@ import formHandler from '../../utils/manageForm.js'
 import { openModal, closeModal } from '../../utils/manageModal.js'
 import validateInput from '../../utils/validateInput.js'
 
-class ProfileForm extends Block {
+class ProfileForm extends Block<ProfileFormProps> {
     constructor(props: ProfileFormProps) {
         super("div", props)
     }
@@ -19,9 +19,9 @@ class ProfileForm extends Block {
 
     render() {
         return this.compile(tpl, {
-            profileData: this.props ? this.props.profileData : null,
-            formHandler: this.props ? this.props.formHandler : null,
-            modalHandler: this.props ? this.props.modalHandler : null
+            profileData: this.props.profileData,
+            formHandler: this.props.formHandler,
+            modalHandler: this.props.modalHandler
         })
     }
 }

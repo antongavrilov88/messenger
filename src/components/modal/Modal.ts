@@ -2,14 +2,14 @@ import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
 import { ModalProps } from './types.js'
 
-class Modal extends Block {
+class Modal extends Block<ModalProps> {
     constructor(props: ModalProps) {
         super("div", props)
     }
 
     render() {
         return this.compile(tpl, {
-            modalHandler: this.props ? this.props.modalHandler : null
+            modalHandler: this.props.modalHandler
         })
     }
 }

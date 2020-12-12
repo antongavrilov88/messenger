@@ -7,16 +7,19 @@ import { tpl } from './template.js'
 import { chatListCTX, chatCTX  } from './contexts.js'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import ChatBlock from '../../components/chatBlock/ChatBlock.js'
+import { ChatPageProps } from './types.js'
 
-class ChatPage extends Block {
+class ChatPage extends Block<ChatPageProps> {
     constructor() {
         super("div", {
             workspace: new AuthWorkSpace({
-                child: [new ChatListBlock({
-                    child: [                    
+                content: [
+                    new ChatListBlock({
+                    content: [                    
                         new ChatListHeaderLink(chatListCTX.header),
                         new ChatListHeaderSearch(chatListCTX),
-                        new ChatList(chatListCTX)]
+                        new ChatList(chatListCTX)
+                    ]
                 }),
                 new ChatBlock(chatCTX)
             ]
@@ -26,7 +29,7 @@ class ChatPage extends Block {
 
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null      
+            content: this.props.content.render()
         })
     }
 }

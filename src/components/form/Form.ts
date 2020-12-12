@@ -8,7 +8,7 @@ declare global {
     validateInput: (input: HTMLInputElement) => boolean
   }
 }
-class Form extends Block {
+class Form extends Block<FormProps> {
   constructor(props: FormProps) {
     super( 'form', props);
   }
@@ -18,17 +18,16 @@ class Form extends Block {
     // в строки внутри друг друга, то мне бы все равно пришлось делать это после всего рендеринга страницы. Все равно что через глобальный объект.
     // Однако, изучаю пространства имен
     window.validateInput = validateInput
+    console.log( this.props.title )
 }
 
   render() {
     return this.compile(tpl, {
-      title: this.props ? this.props.title : null,
-      inputs: this.props ? this.props.inputs : null,
-      className: this.props ? this.props.className : null,
-      id: this.props ? this.props.id : null,
-      inputHandler: this.props ? this.props.inputHandler : null,
-      handler: this.props ? this.props.handler : null,
-      submitButton: this.props ? this.props.submitButton.render() : null
+      title: this.props.title,
+      inputs: this.props.inputs,
+      className: this.props.className,
+      id: this.props.id,
+      submitButton: this.props.submitButton.render()
     })
   }
 }
