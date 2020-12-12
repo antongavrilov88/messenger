@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-class Block<Props> {
+abstract class Block<Props> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
