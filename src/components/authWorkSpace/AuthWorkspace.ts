@@ -1,7 +1,8 @@
 import Block  from '../../utils/Block.js'
 import { tpl } from './template.js'
+import { AuthWorkspaceProps } from './types.js'
 class AuthWorkspace extends Block {
-    constructor(props: object) {
+    constructor(props: AuthWorkspaceProps) {
       super( "main", props);
     }    
   

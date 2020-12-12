@@ -6,7 +6,7 @@ import Button from '../../components/button/Button.js'
 
 export const submitButtonCTX = {
     className: 'form__submit-button',
-    type: 'submit',
+    type: '',
     e: 'click',
     handler: funcString(formHandler, 'this.parentNode'),
     text: 'Регистрация'
@@ -91,6 +91,5 @@ export const formCTX = {
             },
             handler: funcString(validateInput, 'this')
         }
-    ],
-    handler: funcString(formHandler, 'this.parentNode')
+    ]
     }

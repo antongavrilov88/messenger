@@ -1,11 +1,21 @@
 import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
+import validateInput from '../../utils/validateInput.js'
+import { FormProps } from './types.js'
 
+declare global {
+  interface Window {
+    validateInput: (input: HTMLInputElement) => boolean
+  }
+}
 class Form extends Block {
-  constructor(props: object) {
+  constructor(props: FormProps) {
     super( 'form', props);
   }
 
+  componentDidMount() {
+    window.validateInput = validateInput
+}
 
   render() {
     return this.compile(tpl, {

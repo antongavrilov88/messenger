@@ -1,8 +1,9 @@
 import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
+import { ChatListBlockProps } from './types'
 
 class ChatListBlock extends Block {
-    constructor(props: object | undefined) {
+    constructor(props: ChatListBlockProps) {
         super("div", props)
     }
 

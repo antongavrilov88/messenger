@@ -8,7 +8,7 @@ export const profileCTX = {
         {
             label: 'Имя',
             inputType: 'text',
-            inputName: 'fist_name',
+            inputName: 'first_name',
             inputPlaceholder: 'имя',
             handler: funcString(validateInput, 'this')
         },

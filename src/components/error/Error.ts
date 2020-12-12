@@ -1,8 +1,9 @@
 import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
+import { ErrorProps } from './types.js'
 
 class Error extends Block {
-    constructor(props: object | undefined) {
+    constructor(props: ErrorProps) {
         super("div", props)
     }
 

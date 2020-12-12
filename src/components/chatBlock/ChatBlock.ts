@@ -1,9 +1,10 @@
 import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
+import { ChatBlockProps } from './types.js'
 
 
-class DummyChatBlock extends Block {
-    constructor(props: object | undefined) {
+class ChatBlock extends Block {
+    constructor(props: ChatBlockProps) {
         super("div", props)
     }
 
@@ -14,4 +15,4 @@ class DummyChatBlock extends Block {
         })
     }
 }
-export default DummyChatBlock
+export default ChatBlock

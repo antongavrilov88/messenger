@@ -1,15 +1,10 @@
-import { validateForm } from './validateForm.js'
-declare global {
-    interface Window {
-      formHandler: (form: HTMLFormElement) => void
-    }
-  }
+import validateForm from './validateForm.js'
 
 function formHandler( form: HTMLFormElement ): void {
     let myForm = form
     myForm.onsubmit = function( e ): void {
         e.preventDefault()
-        let myFormFields: HTMLCollectionOf<HTMLInputElement> = myForm.getElementsByTagName( "input" )
+        let myFormFields = myForm.getElementsByTagName( "input" )
         let requestObject: {[formFieldName: string]: string} = {}
         for ( let i = 0; i < myFormFields.length; i++ ) {
             requestObject[`${myFormFields[i].name}`] = myFormFields[i].value
@@ -17,5 +12,4 @@ function formHandler( form: HTMLFormElement ): void {
         validateForm(form) ? console.log( requestObject ) : console.log( 'Invalid values' )
     }
 }
-window.formHandler = formHandler
 export default formHandler

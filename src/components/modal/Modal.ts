@@ -1,8 +1,9 @@
 import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
+import { ModalProps } from './types.js'
 
 class Modal extends Block {
-    constructor(props: object | undefined) {
+    constructor(props: ModalProps) {
         super("div", props)
     }
 
