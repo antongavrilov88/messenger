@@ -8,7 +8,7 @@ class SignUp extends Block {
     constructor() {
         super("div", {
             workspace: new UnauthWorkspace({
-                child: new Form(formCTX)
+                content: new Form(formCTX)
             })
         })
     }

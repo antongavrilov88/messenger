@@ -11,7 +11,7 @@ class Profile extends Block {
     constructor() {
         super("div", {
             workspace: new AuthWorkspace({
-                child: [
+                content: [
                     new ReturnBlock(returnBlockCTX),
                     new ProfileForm(profileCTX),
                     new Modal(modalCTX)

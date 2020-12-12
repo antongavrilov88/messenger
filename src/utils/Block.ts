@@ -14,7 +14,7 @@ class Block {
     FLOW_RENDER: "flow:render"
   };
   _element: null | Element = null;
-  _meta: { tagName: any; props?: object; };
+  _meta: { tagName: string; props?: object; };
   eventBus: () => EventBus;
   props?: {
     [key:string]: any

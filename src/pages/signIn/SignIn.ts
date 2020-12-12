@@ -7,32 +7,32 @@ import { tpl } from './template.js'
 class SignIn extends Block {
     constructor() {
         super("div", {
-            workspace: new UnauthWorkspace({
-                child: new Form(formCTX)
+            content: new UnauthWorkspace({
+                content: new Form(formCTX)
             })
         })
     }
     componentDidMount() {
         setTimeout(() => {
             this.setProps({workspace: new UnauthWorkspace({
-                child: new Form( {...formCTX, title: 'Так могу'} )
+                content: new Form( formCTX )
             })})
-        }, 1000);
+        }, 5000);
         setTimeout(() => {
             this.setProps({workspace: new UnauthWorkspace({
-                child: new Form( {...formCTX, title: 'И так могу'} )
+                content: new Form( {...formCTX, title: 'И так могу'} )
             })})
-        }, 2500);
+        }, 7500);
         setTimeout(() => {
             this.setProps({workspace: new UnauthWorkspace({
-                child: new Form( {...formCTX, title: 'Авторизация'} )
+                content: new Form( {...formCTX, title: 'Авторизация'} )
             })})
-        }, 4000);
+        }, 9000);
     }
 
     render() {
         return this.compile(tpl, {
-            content: this.props ? this.props.workspace.render() : null
+            content: this.props ? this.props.content.render() : null
         })
     }
 }
