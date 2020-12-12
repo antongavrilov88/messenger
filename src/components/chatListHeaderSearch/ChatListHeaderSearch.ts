@@ -2,7 +2,7 @@ import Block from '../../utils/Block.js'
 import { tpl } from './template.js'
 import { ChatListHeaderSearchProps } from './types.js'
 
-class ChatListHeaderSearch extends Block {
+class ChatListHeaderSearch extends Block<ChatListHeaderSearchProps> {
     constructor(props: ChatListHeaderSearchProps) {
         super("div", props)
     }

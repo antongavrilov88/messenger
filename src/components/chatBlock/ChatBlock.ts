@@ -5,7 +5,7 @@ import { tpl } from './template.js'
 import { ChatBlockProps } from './types.js'
 
 
-class ChatBlock extends Block {
+class ChatBlock extends Block<ChatBlockProps> {
     constructor(props: ChatBlockProps) {
         super("div", props)
     }
@@ -17,8 +17,8 @@ class ChatBlock extends Block {
 
     render() {
         return this.compile(tpl, {
-            messages:  this.props ? this.props.messages : null,
-            messageHandler: this.props ? this.props.messageHandler : null
+            messages:  this.props.messages,
+            messageHandler: this.props.messageHandler
         })
     }
 }
