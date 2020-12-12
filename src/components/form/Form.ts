@@ -18,7 +18,6 @@ class Form extends Block<FormProps> {
     // в строки внутри друг друга, то мне бы все равно пришлось делать это после всего рендеринга страницы. Все равно что через глобальный объект.
     // Однако, изучаю пространства имен
     window.validateInput = validateInput
-    console.log( this.props.title )
 }
 
   render() {
