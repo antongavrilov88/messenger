@@ -15,17 +15,17 @@ class SignIn extends Block<SignInProps> {
     }
     componentDidMount() {
         setTimeout(() => {
-            this.setProps({workspace: new UnauthWorkspace({
+            this.setProps({content: new UnauthWorkspace({
                 content: new Form( {...formCTX, title: 'Так могу'} )
             })})
         }, 1000);
         setTimeout(() => {
-            this.setProps({workspace: new UnauthWorkspace({
+            this.setProps({content: new UnauthWorkspace({
                 content: new Form( {...formCTX, title: 'И так могу'} )
             })})
         }, 2500);
         setTimeout(() => {
-            this.setProps({workspace: new UnauthWorkspace({
+            this.setProps({content: new UnauthWorkspace({
                 content: new Form( {...formCTX, title: 'Авторизация'} )
             })})
         }, 4000);
