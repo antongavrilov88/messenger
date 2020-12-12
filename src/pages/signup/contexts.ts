@@ -6,8 +6,8 @@ import Button from '../../components/button/Button.js'
 
 export const submitButtonCTX = {
     className: 'form__submit-button',
-    type: '',
-    e: 'click',
+    type: 'submit',
+    e: 'submit',
     handler: funcString(formHandler, 'this.parentNode'),
     text: 'Регистрация'
 }
