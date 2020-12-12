@@ -12,7 +12,7 @@ import { ChatPageProps } from './types.js'
 class ChatPage extends Block<ChatPageProps> {
     constructor() {
         super("div", {
-            workspace: new AuthWorkSpace({
+            content: new AuthWorkSpace({
                 content: [
                     new ChatListBlock({
                     content: [                    

@@ -9,7 +9,7 @@ class ChatListBlock extends Block<ChatListBlockProps> {
 
     render() {
         return this.compile(tpl, {
-            content: this.props.child.map((child: { render: () => any }) => child.render()).join('')
+            content: this.props.content.map((child: { render: () => any }) => child.render()).join('')
         })
     }
 }
