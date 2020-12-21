@@ -17,8 +17,7 @@ export function isArrayOrObject(value: unknown): value is ([] | PlainObject) {
     return isPlainObject(value) || isArray(value);
 }
 
-function isEqual(lhs: PlainObject, rhs: PlainObject) {
-    // Сравнение количества ключей объектов и массивов
+export function isEqual(lhs: PlainObject, rhs: PlainObject) {
     if (Object.keys(lhs).length !== Object.keys(rhs).length) {
         return false;
     }
@@ -26,11 +25,9 @@ function isEqual(lhs: PlainObject, rhs: PlainObject) {
     for (const [key, value] of Object.entries(lhs)) {
         const rightValue = rhs[key];
         if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
-            // Здесь value и rightValue может быть только массивом или объектом
-            // И TypeScript это обрабатывает
-            if (isEqual(value, rightValue)) {
-                continue;
-            }
+            // if (isEqual(value, rightValue)) {
+            //     continue;
+            // }
             return false;
         }
 
@@ -40,4 +37,8 @@ function isEqual(lhs: PlainObject, rhs: PlainObject) {
     }
 
     return true;
-} 
+}
+
+export function isEqualPrim(lhs: string | number | boolean, rhs: string | number | boolean) {
+    return lhs === rhs;
+  }

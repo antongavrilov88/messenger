@@ -1,3 +1,9 @@
+declare global {
+    interface Window {
+      validateInput: (input: HTMLInputElement) => boolean
+    }
+  }
+
 function validateInput(elem: HTMLInputElement) {
     let value = elem.value
     let status = false
@@ -32,4 +38,5 @@ function validateInput(elem: HTMLInputElement) {
       status ? elem.classList.add( 'form__input_valid' ) : elem.classList.add( 'form__input_invalid' )
       return status
 }
+window.validateInput = validateInput
 export default validateInput

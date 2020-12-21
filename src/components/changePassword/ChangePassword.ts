@@ -1,17 +1,10 @@
 import Block from '../../utils/Block.js'
-import formHandler from '../../utils/manageForm.js'
-import validateInput from '../../utils/validateInput.js'
 import { tpl } from './template.js'
 import { ChangePasswordProps } from './types.js'
 
 class ChangePassword extends Block<ChangePasswordProps> {
     constructor(props: ChangePasswordProps) {
         super("div", props)
-    }
-    
-    componentDidMount() {
-        window.formHandler = formHandler
-        window.validateInput = validateInput
     }
 
     render() {
