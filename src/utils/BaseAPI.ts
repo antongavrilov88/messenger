@@ -1,5 +1,5 @@
 export class BaseAPI {
-    create() { throw new Error('Not implemented'); }
+    create(obj: object) { throw new Error('Not implemented'); }
 
     get() { throw new Error('Not implemented'); }
 

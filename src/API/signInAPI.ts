@@ -4,8 +4,8 @@ import { BaseAPI } from '../utils/BaseAPI.js'
 const signInAPIInstance = new HTTP('/auth')
 
 class SignInAPI extends BaseAPI {
-    create() {
-        return signInAPIInstance.post('/signin', {data: {login: 'Anton', password: 'Gavrilov'}})
+    create(obj: object) {
+        return signInAPIInstance.post('/signin', obj)
     }
 }
 export default SignInAPI
