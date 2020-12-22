@@ -13,7 +13,6 @@ class SignIn extends Block<SignInProps> {
             })
         })
     }
-    componentDidMount() {}
 
     render() {
         return this.compile(tpl, {

@@ -41,6 +41,7 @@ class HTTP {
             const xhr = new XMLHttpRequest();
             xhr.open(method, `${this._baseURL}${this._subURL}${url}`);
             xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+            xhr.withCredentials = true
 
             xhr.onload = function () {
                 resolve(xhr);

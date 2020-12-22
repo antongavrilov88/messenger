@@ -11,7 +11,8 @@ class Button extends Block<ButtonProps> {
             className: this.props.className,
             type: this.props.type,
             e: this.props.e,
-            handler: this.props.handler,
+            // handler: this.props.handler,
+            handler: '',
             text: this.props.text
         })
     }

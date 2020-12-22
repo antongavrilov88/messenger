@@ -20,17 +20,11 @@ function formHandler(form: HTMLFormElement): void {
       console.log(requestObject)
 
       const obj = {
-        method: 'GET',
-        data: JSON.stringify(requestObject),
-        headers: {
-          'content-type': 'application/json',
-        },
-        mode: 'cors',
-        credentials: 'include'
+        data: JSON.stringify(requestObject)
       }
 
-      const reqHandler = FormHandlerFactory.createHandler(myForm.id) !
-      reqHandler.create(obj)
+      const request = FormHandlerFactory.createHandler(myForm.id) !
+      request.create(obj)
 
     } else {
       console.log('Invalid values')

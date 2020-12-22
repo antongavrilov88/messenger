@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && npx tsc && npm start"
+    "build": "npx tsc && npm start"
   },
   "repository": {
     "type": "git",
