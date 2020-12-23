@@ -5,18 +5,23 @@ import Form from '../../components/form/Form.js'
 import { tpl } from './template.js'
 import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
-import state from '../../state/State.js'
+// import state from '../../state/State.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
-import { TEST_ACTION } from '../../actions.js'
+import { TEST_ACTION, ON_LOGIN } from '../../actions.js'
+// import state from '../../state/State.js'
+import SignInAPI from "../../API/SignUpAPI.js";
 
 
 let store = Store.getInstance()
 
-
+let api = new SignInAPI
 
 const updateState = {
-    onLoad: (actionType: any) => {
-        stateUpdater(actionType)
+    onLoad: (action: any) => {
+        stateUpdater(action)
+    },
+    onLogin: (action: any) => {
+        stateUpdater(action)
     }
 }
 
@@ -32,31 +37,23 @@ class SignIn extends Block<SignInProps> {
     }
 
     stateToProps(state: { user: { userID: any } }) {
-        console.log(state)
         this.setProps({
             content: new UnauthWorkspace({
                 content: new Form({ ...formCTX, title: state.user.userID })
             })
         })
-        console.log(state)
     }
 
 
 
     componentDidMount() {
-        console.log(state)
-        setTimeout(() => {
-            Store.setState({
-                user: {
-                    userID: 'PISA'
-                }
-            })
-            console.log(state)
-        }, 3000);
 
         setTimeout(() => {
-            updateState.onLoad(TEST_ACTION)
-            console.log(state)
+            updateState.onLoad({type: TEST_ACTION})
+        }, 3000);
+
+        setTimeout(async () => {
+            updateState.onLogin({type: ON_LOGIN, payload: await api.create({login: 'Anton', password: 'Gavrilov'}).then(  res => res.response )})
         }, 5000);
 
 

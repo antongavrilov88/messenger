@@ -1,21 +1,15 @@
-import { TEST_ACTION } from '../actions.js'
-import state from '../state/State.js'
+import { TEST_ACTION, ON_LOGIN } from '../actions.js'
 import Store from '../utils/Store.js'
 
-// let store = Store.getInstance()
-
-export const userStateUpdater = (actionType: any) => {
-    switch (actionType) {
+export const userStateUpdater = async (action: any) => {
+    switch (action.type) {
         case TEST_ACTION:
-            // return {
-            //     ...state,
-            //     user: {
-            //         userID: 'TEST user Id'
-            //     }
-            // }    
             Store.setState( {user: { userID: 'TEST MY REDUX' }} )
-            // state.user.userID = 'TEST MY REDUX'
-            console.log( 'action is ok, update is not', state )
+            break
+        case ON_LOGIN:
+            console.log(action.payload)
+            Store.setState( {user: { userID: JSON.parse( action.payload ).error  ? '...went wrong' : action.payload }} )
+            break
         default:
             break;
     }
