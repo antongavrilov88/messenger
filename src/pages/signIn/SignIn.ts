@@ -5,11 +5,19 @@ import Form from '../../components/form/Form.js'
 import { tpl } from './template.js'
 import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
+import state from '../../state/State.js'
+// import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 
 
 let store = Store.getInstance()
 
 
+
+// const updateState = {
+//     onLoad: (actionType: any) => {
+//         return stateUpdater(actionType)
+//     }
+// }
 
 class SignIn extends Block<SignInProps> {
     constructor() {
@@ -22,23 +30,35 @@ class SignIn extends Block<SignInProps> {
         store.subscribe(this.stateToProps)
     }
 
-    stateToProps(state: { auth: any }) {
-        console.log(`вызываем с ${state.auth}`)
-        const self = this
-        self.setProps({
+    stateToProps(state: { user: { userID: any } }) {
+        console.log(state)
+        this.setProps({
             content: new UnauthWorkspace({
-                content: new Form({ ...formCTX, title: state.auth })
+                content: new Form({ ...formCTX, title: state.user.userID })
             })
         })
+        console.log(state)
     }
 
+
+
     componentDidMount() {
+        console.log(state)
         setTimeout(() => {
-            store.state.auth = 'PISA'
-            setTimeout(() => {
-                store.state.auth = 'PISA2'
-            }, 4000);
+            store.setState({
+                user: {
+                    userID: 'PISA'
+                }
+            })
+            console.log(state)
         }, 3000);
+
+        setTimeout(() => {
+            state.user.userID = 'PISA3'
+            console.log(state)
+        }, 5000);
+
+
     }
 
     render() {

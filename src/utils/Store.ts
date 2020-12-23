@@ -9,7 +9,7 @@ class Store {
     eventBus: () => EventBus;
     state: {
         [key: string]: any
-    } = {auth: { title: ''} }
+    } = {auth: { title: ''}, reg: { title: '' } }
     static state: any;
     static eventBus: any;
     private constructor(state = {}) {
@@ -28,10 +28,6 @@ class Store {
             Store._instance = new Store
         }
         return Store._instance
-    }
-
-    static getState(): { auth: { "title": any } } {
-        return this.state
     }
 
     _registerEvents(eventBus: EventBus) {
@@ -57,6 +53,13 @@ class Store {
         return true
     }
 
+    setState = (nextState: object) => {
+        if (!nextState) {
+          return;
+        }
+        Object.assign(this.state, nextState);
+      };
+
     _makeStateProxy(obj: {}) {
         const self = this;
         return new Proxy(obj, {
@@ -67,6 +70,7 @@ class Store {
             set(target: { [prop: string]: any }, prop: any, value: any) {
                 target[prop] = value;
                 self.eventBus().emit(Store.EVENTS.FLOW_SDU, { ...target }, target);
+                console.log( 'event emited' )
                 return true;
             },
             deleteProperty() {
