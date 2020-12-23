@@ -39,7 +39,6 @@ class Store {
     }
 
     subscribe( callback: (state: any) => void) {
-        console.log( this.eventBus )
         this.eventBus().on(Store.EVENTS.FLOW_SNSTP, callback)
     }
 
@@ -50,7 +49,6 @@ class Store {
         if (!response) {
             return;
         }
-        console.log(newState)
         this.eventBus().emit(Store.EVENTS.FLOW_SNSTP, newState)
     }
 
