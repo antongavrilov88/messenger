@@ -53,11 +53,12 @@ class Store {
         return true
     }
 
-    setState = (nextState: object) => {
+    static setState = (nextState: object) => {
         if (!nextState) {
           return;
         }
-        Object.assign(this.state, nextState);
+        const store = Store.getInstance()
+        Object.assign(store.state, nextState);
       };
 
     _makeStateProxy(obj: {}) {
@@ -69,8 +70,8 @@ class Store {
             },
             set(target: { [prop: string]: any }, prop: any, value: any) {
                 target[prop] = value;
+                console.log( 'event is to be emited' )
                 self.eventBus().emit(Store.EVENTS.FLOW_SDU, { ...target }, target);
-                console.log( 'event emited' )
                 return true;
             },
             deleteProperty() {

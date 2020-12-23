@@ -6,18 +6,19 @@ import { tpl } from './template.js'
 import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
 import state from '../../state/State.js'
-// import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
+import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
+import { TEST_ACTION } from '../../actions.js'
 
 
 let store = Store.getInstance()
 
 
 
-// const updateState = {
-//     onLoad: (actionType: any) => {
-//         return stateUpdater(actionType)
-//     }
-// }
+const updateState = {
+    onLoad: (actionType: any) => {
+        stateUpdater(actionType)
+    }
+}
 
 class SignIn extends Block<SignInProps> {
     constructor() {
@@ -45,7 +46,7 @@ class SignIn extends Block<SignInProps> {
     componentDidMount() {
         console.log(state)
         setTimeout(() => {
-            store.setState({
+            Store.setState({
                 user: {
                     userID: 'PISA'
                 }
@@ -54,7 +55,7 @@ class SignIn extends Block<SignInProps> {
         }, 3000);
 
         setTimeout(() => {
-            state.user.userID = 'PISA3'
+            updateState.onLoad(TEST_ACTION)
             console.log(state)
         }, 5000);
 
