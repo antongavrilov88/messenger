@@ -11,16 +11,18 @@ const signIn = new SignIn()
 let store = Store.getInstance()
 
 function stateToProps(state: { auth: { "title": any } }) {
-    this.setProps({content: new UnauthWorkspace({
+    signIn.setProps({content: new UnauthWorkspace({
         content: new Form( {...formCTX, title: state.auth.title} )
     })})
 }
 
 store.subscribe(stateToProps)
-
+console.log( JSON.stringify(store.state) )
 setTimeout(() => {
+    store.state.auth = {}
     store.state.auth.title = 'PISA'
 }, 3000);
+console.log( JSON.stringify(store.state) )
 
 render(".app", signIn)
 let form = document.getElementById( 'loginForm' )
