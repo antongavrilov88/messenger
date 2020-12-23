@@ -1,7 +1,7 @@
 import EventBus from './eventBus.js'
 
 class Store {
-    protected static _instance: Store = new Store
+    protected static _instance: Store
     static EVENTS = {
         FLOW_SDU: "flow:store-did-update",
         FLOW_SNSTP: "flow:set-new-state-to-props"
@@ -12,14 +12,22 @@ class Store {
     } = {auth: { title: ''} }
     static state: any;
     static eventBus: any;
-    constructor(state = {}) {
+    private constructor(state = {}) {
         if (Store._instance) {
             throw new Error('Can not create new instance')
         }
+        Store._instance = this
         const eventBus = new EventBus
         this.eventBus = () => eventBus
         this._registerEvents(eventBus)
         this.state = this._makeStateProxy(state)
+    }
+
+    public static getInstance() {
+        if ( !Store._instance ) {
+            Store._instance = new Store
+        }
+        return Store._instance
     }
 
     static getState(): { auth: { "title": any } } {
@@ -30,7 +38,8 @@ class Store {
         eventBus.on(Store.EVENTS.FLOW_SDU, this._storeDidUpdate.bind(this));
     }
 
-    static subscribe(callback: (state: any) => void) {
+    subscribe( callback: (state: any) => void) {
+        console.log( this.eventBus )
         this.eventBus().on(Store.EVENTS.FLOW_SNSTP, callback)
     }
 

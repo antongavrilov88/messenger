@@ -8,7 +8,7 @@ import { formCTX } from './contexts.js'
 
 const signIn = new SignIn()
 
-let store = Store
+let store = Store.getInstance()
 
 function stateToProps(state: { auth: { "title": any } }) {
     this.setProps({content: new UnauthWorkspace({
