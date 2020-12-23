@@ -50,7 +50,8 @@ class Store {
         if (!response) {
             return;
         }
-        this.eventBus().emit(Store.EVENTS.FLOW_SNSTP, this.state)
+        console.log(newState)
+        this.eventBus().emit(Store.EVENTS.FLOW_SNSTP, newState)
     }
 
     storeDidUpdate(oldState: {}, newState: {}) {
