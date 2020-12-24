@@ -9,6 +9,7 @@ class ChangePassword extends Block<ChangePasswordProps> {
 
     render() {
         return this.compile(tpl, {
+            id: this.props.id,
             formHandler: this.props.formHandler,
             inputHandler: this.props.inputHandler,
             submitButton: this.props.submitButton.render()
