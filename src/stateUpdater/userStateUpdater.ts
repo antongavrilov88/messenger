@@ -7,8 +7,10 @@ export const userStateUpdater = async (action: any) => {
             Store.setState( {user: { userID: 'TEST MY REDUX' }} )
             break
         case ON_LOGIN:
-            console.log(action.payload)
-            Store.setState( {user: { userID: JSON.parse( action.payload ).error  ? '...went wrong' : action.payload }} )
+            Store.setState({
+                user: { userID: action.payload.error  ? '...went wrong' : action.payload,
+                        error: action.payload.error ? action.payload.reason : null
+        }} )
             break
         default:
             break;

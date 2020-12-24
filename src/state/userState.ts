@@ -4,7 +4,8 @@ export const userStore = (state: any) => {
         user: {
             token: localStorage.getItem('token') ? localStorage.getItem('token') : null,
             userData: null,
-            userID: null
+            userID: null,
+            error: null
         }
     }
 }

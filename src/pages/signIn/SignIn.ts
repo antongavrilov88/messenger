@@ -5,10 +5,8 @@ import Form from '../../components/form/Form.js'
 import { tpl } from './template.js'
 import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
-// import state from '../../state/State.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { TEST_ACTION, ON_LOGIN } from '../../actions.js'
-// import state from '../../state/State.js'
 import SignInAPI from "../../API/SignUpAPI.js";
 
 
@@ -17,11 +15,11 @@ let store = Store.getInstance()
 let api = new SignInAPI
 
 const updateState = {
-    onLoad: (action: any) => {
-        stateUpdater(action)
+    onLoad: () => {
+        stateUpdater({type: TEST_ACTION})
     },
-    onLogin: (action: any) => {
-        stateUpdater(action)
+    onLogin: (payload: any) => {
+        stateUpdater({type: ON_LOGIN, payload: payload})
     }
 }
 
@@ -49,11 +47,12 @@ class SignIn extends Block<SignInProps> {
     componentDidMount() {
 
         setTimeout(() => {
-            updateState.onLoad({type: TEST_ACTION})
+            updateState.onLoad()
         }, 3000);
 
         setTimeout(async () => {
-            updateState.onLogin({type: ON_LOGIN, payload: await api.create({login: 'Anton', password: 'Gavrilov'}).then(  res => res.response )})
+            updateState.onLogin(api.create({login: 'Anton', password: 'Gavrilov'}))
+            console.log( store.state )
         }, 5000);
 
 
