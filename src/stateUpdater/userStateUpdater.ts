@@ -1,10 +1,10 @@
-import { TEST_ACTION, ON_LOGIN } from '../actions.js'
+import { ON_LOAD, ON_LOGIN } from '../actions.js'
 import Store from '../utils/Store.js'
 
 export const userStateUpdater = async (action: any) => {
     switch (action.type) {
-        case TEST_ACTION:
-            Store.setState( {user: { userID: 'TEST MY REDUX' }} )
+        case ON_LOAD:
+            Store.setState( {user: action.payload } )
             break
         case ON_LOGIN:
             Store.setState({

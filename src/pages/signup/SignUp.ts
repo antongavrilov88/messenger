@@ -34,7 +34,7 @@ class SignUp extends Block<SignUpProps> {
     stateToProps(state: any ) {
         this.setProps({
             content: new UnauthWorkspace({
-                content: new Form({ ...formCTX, title: state.user.id })
+                content: new Form({ ...formCTX })
             })
         })
     }
