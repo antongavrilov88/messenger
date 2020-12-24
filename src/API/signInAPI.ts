@@ -5,8 +5,10 @@ const signInAPIInstance = new HTTP('/auth')
 
 class SignInAPI extends BaseAPI {
     create(obj: object) {
-        console.log(obj)
         return signInAPIInstance.post('/signin', obj)
+    }
+    get() {
+        return signInAPIInstance.get('/user')
     }
 }
 export default SignInAPI

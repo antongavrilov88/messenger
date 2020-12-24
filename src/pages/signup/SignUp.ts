@@ -5,8 +5,20 @@ import Form from '../../components/form/Form.js'
 import { tpl } from './template.js'
 import { SignUpProps } from './types.js'
 import Store from '../../utils/Store.js'
+import SignUpAPI from '../../API/SignUpAPI.js'
+import { ON_SIGNUP } from '../../actions.js'
+import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
+import formHandler from '../../utils/manageForm.js'
 
 let store = Store.getInstance()
+
+let api = new SignUpAPI
+
+const updateState = {
+    onSignUp: (payload: any) => {
+        stateUpdater({type: ON_SIGNUP, payload: payload})
+    }
+}
 
 class SignUp extends Block<SignUpProps> {
     constructor() {
@@ -19,23 +31,23 @@ class SignUp extends Block<SignUpProps> {
         store.subscribe(this.stateToProps)
     }
 
-    stateToProps(state: { auth: any, reg: any }) {
+    stateToProps(state: any ) {
         this.setProps({
             content: new UnauthWorkspace({
-                content: new Form({ ...formCTX, title: state.reg })
+                content: new Form({ ...formCTX, title: state.user.id })
             })
         })
     }
 
-    componentDidMount() {
-        setTimeout(() => {
-            store.state.reg = 'REG_PISA'
-        }, 3000);
-        
-        setTimeout(() => {
-            store.state.reg = 'REG_PISA3'
-        }, 4000);
+    formHandler = (ev: Event) => {
+        ev.preventDefault()
+        let res = formHandler(formCTX.id)
+        if (res) {
+            updateState.onSignUp(api.create(res))
+        }
+        console.log( store.state )
     }
+
 
     render() {
         return this.compile(tpl, {

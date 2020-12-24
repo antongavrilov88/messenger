@@ -24,7 +24,6 @@ const updateState = {
 }
 
 class SignIn extends Block<SignInProps> {
-    listners: {[ev: string]: any}
     constructor() {
         super("div", {
             content: new UnauthWorkspace({
@@ -53,17 +52,10 @@ class SignIn extends Block<SignInProps> {
     }
 
     componentDidMount() {
-
-        // setTimeout(() => {
-        //     updateState.onLoad()
-        // }, 3000);
-
-        // setTimeout(async () => {
-        //     updateState.onLogin(api.create({login: 'Anton', password: 'Gavrilov'}))
-        //     console.log( store.state )
-        // }, 5000);
-
-
+        
+        setTimeout(async () => {
+            console.log( await api.get() )
+        }, 2000);
     }
 
     render() {
