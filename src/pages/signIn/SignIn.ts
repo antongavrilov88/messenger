@@ -7,7 +7,7 @@ import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { TEST_ACTION, ON_LOGIN } from '../../actions.js'
-import SignInAPI from "../../API/signInAPI.js";
+import SignInAPI from "../../API/AuthAPI.js";
 import formHandler from '../../utils/manageForm.js'
 
 let store = Store.getInstance()
@@ -46,7 +46,7 @@ class SignIn extends Block<SignInProps> {
         ev.preventDefault()
         let res = formHandler(formCTX.id)
         if (res) {
-            updateState.onLogin(api.create(res))
+            updateState.onLogin(api.signIn(res))
         }
         console.log( store.state )
     }

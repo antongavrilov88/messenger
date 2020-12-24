@@ -5,14 +5,14 @@ import Form from '../../components/form/Form.js'
 import { tpl } from './template.js'
 import { SignUpProps } from './types.js'
 import Store from '../../utils/Store.js'
-import SignUpAPI from '../../API/SignUpAPI.js'
+import AuthAPI from '../../API/AuthAPI.js'
 import { ON_SIGNUP } from '../../actions.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import formHandler from '../../utils/manageForm.js'
 
 let store = Store.getInstance()
 
-let api = new SignUpAPI
+let api = new AuthAPI
 
 const updateState = {
     onSignUp: (payload: any) => {
@@ -43,7 +43,7 @@ class SignUp extends Block<SignUpProps> {
         ev.preventDefault()
         let res = formHandler(formCTX.id)
         if (res) {
-            updateState.onSignUp(api.create(res))
+            updateState.onSignUp(api.signUp(res))
         }
         console.log( store.state )
     }
