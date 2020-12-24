@@ -5,6 +5,7 @@ const signUpAPIInstance = new HTTP('/auth')
 
 class SignUpAPI extends BaseAPI {
     create(obj: object) {
+        console.log(obj)
         return signUpAPIInstance.post('/signup', obj)
     }
 }

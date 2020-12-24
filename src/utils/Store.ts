@@ -70,7 +70,6 @@ class Store {
             },
             set(target: { [prop: string]: any }, prop: any, value: any) {
                 target[prop] = value;
-                console.log( 'event is to be emited' )
                 self.eventBus().emit(Store.EVENTS.FLOW_SDU, { ...target }, target);
                 return true;
             },

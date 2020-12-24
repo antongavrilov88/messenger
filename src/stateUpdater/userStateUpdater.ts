@@ -8,8 +8,8 @@ export const userStateUpdater = async (action: any) => {
             break
         case ON_LOGIN:
             Store.setState({
-                user: { userID: action.payload.error  ? '...went wrong' : action.payload,
-                        error: action.payload.error ? action.payload.reason : null
+                user: { userID: action.payload.reason  ? '...went wrong' : action.payload,
+                        error: action.payload.reason ? action.payload.reason : null
         }} )
             break
         default:

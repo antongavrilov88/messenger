@@ -7,8 +7,8 @@ import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { TEST_ACTION, ON_LOGIN } from '../../actions.js'
-import SignInAPI from "../../API/SignUpAPI.js";
-
+import SignInAPI from "../../API/signInAPI.js";
+import formHandler from '../../utils/manageForm.js'
 
 let store = Store.getInstance()
 
@@ -24,6 +24,7 @@ const updateState = {
 }
 
 class SignIn extends Block<SignInProps> {
+    listners: {[ev: string]: any}
     constructor() {
         super("div", {
             content: new UnauthWorkspace({
@@ -42,18 +43,25 @@ class SignIn extends Block<SignInProps> {
         })
     }
 
-
+    formHandler = (ev: Event) => {
+        ev.preventDefault()
+        let res = formHandler(formCTX.id)
+        if (res) {
+            updateState.onLogin(api.create(res))
+        }
+        console.log( store.state )
+    }
 
     componentDidMount() {
 
-        setTimeout(() => {
-            updateState.onLoad()
-        }, 3000);
+        // setTimeout(() => {
+        //     updateState.onLoad()
+        // }, 3000);
 
-        setTimeout(async () => {
-            updateState.onLogin(api.create({login: 'Anton', password: 'Gavrilov'}))
-            console.log( store.state )
-        }, 5000);
+        // setTimeout(async () => {
+        //     updateState.onLogin(api.create({login: 'Anton', password: 'Gavrilov'}))
+        //     console.log( store.state )
+        // }, 5000);
 
 
     }
