@@ -4,6 +4,9 @@ import { BaseAPI } from '../utils/BaseAPI.js'
 const authAPIInstance = new HTTP('/auth')
 
 class AuthAPI extends BaseAPI {
+    signUp(obj: object) {
+        return authAPIInstance.post('/signup', obj)
+    }
     signIn(obj: object) {
         return authAPIInstance.post('/signin', obj)
     }
@@ -12,10 +15,6 @@ class AuthAPI extends BaseAPI {
     }
     getUser() {
         return authAPIInstance.get('/user')
-    }
-    signUp(obj: object) {
-        console.log(obj)
-        return authAPIInstance.post('/signup', obj)
     }
 }
 export default AuthAPI
