@@ -7,14 +7,15 @@ import ReturnBlock from '../../components/returnBlock/ReturnBlock.js'
 import Modal from '../../components/modal/Modal.js'
 import { ProfileProps } from './types.js'
 import Store from '../../utils/Store.js'
-// import UserAPI from '../../API/UserAPI.js'
+import UserAPI from '../../API/UserAPI.js'
 import AuthAPI from '../../API/AuthAPI.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { ON_AVATAR_CHANGE, ON_LOAD } from '../../actions.js'
+import formHandler from '../../utils/manageForm.js'
 
 let store = Store.getInstance()
 
-// let userAPI = new UserAPI
+let userAPI = new UserAPI
 let authAPI = new AuthAPI
 
 const updateState = {
@@ -53,9 +54,17 @@ class Profile extends Block<ProfileProps> {
         })
     }
 
+    avatarFormHandler = (ev: Event) => {
+        ev.preventDefault()
+        let res = formHandler(modalCTX.id)
+        if (res) {
+            updateState.onAvavtarChange(userAPI.updateAvatar(res))
+        }
+        console.log( store.state )
+    }
+
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())
-        console.log( store.state )
     }
 
     render() {

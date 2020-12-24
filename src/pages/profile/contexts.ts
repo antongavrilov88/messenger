@@ -55,5 +55,6 @@ export const returnBlockCTX = {
     linkUrl: "./chat.html"
 }
 export const modalCTX = {
+    id: 'avatarForm',
     modalHandler: funcString(closeModal, "'changeAvatarModal'")
 }
