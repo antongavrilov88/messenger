@@ -54,7 +54,7 @@ class SignIn extends Block<SignInProps> {
     componentDidMount() {
         
         setTimeout(async () => {
-            console.log( await api.get() )
+            console.log( await api.getUser() )
         }, 2000);
     }
 
