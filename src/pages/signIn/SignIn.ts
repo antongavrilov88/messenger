@@ -6,7 +6,7 @@ import { tpl } from './template.js'
 import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
-import { TEST_ACTION, ON_LOGIN } from '../../actions.js'
+import { ON_LOGIN } from '../../actions.js'
 import AuthAPI from "../../API/AuthAPI.js";
 import formHandler from '../../utils/manageForm.js'
 
@@ -15,9 +15,6 @@ let store = Store.getInstance()
 let api = new AuthAPI
 
 const updateState = {
-    onLoad: (payload: any) => {
-        stateUpdater({type: TEST_ACTION, payload: payload})
-    },
     onLogin: (payload: any) => {
         stateUpdater({type: ON_LOGIN, payload: payload})
     }
@@ -49,10 +46,6 @@ class SignIn extends Block<SignInProps> {
             updateState.onLogin(api.signIn(res))
         }
         console.log( store.state )
-    }
-
-    componentDidMount() {
-        updateState.onLoad(api.getUser())
     }
 
     render() {

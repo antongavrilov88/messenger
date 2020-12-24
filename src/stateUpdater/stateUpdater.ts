@@ -1,3 +1,4 @@
+import state from '../state/State.js'
 import { authStateUpdater } from './authStateUpdater.js'
 import { userStateUpdater } from './userStateUpdater.js'
 
@@ -11,6 +12,8 @@ export const stateUpdater = async (action: any) => {
     if ( action.payload ) {
         action = {...action, payload: await payloadHandler(action.payload)}
     }
+    console.log(action.payload)
     authStateUpdater(action)
     userStateUpdater(action)
+    console.log(state)
 }
