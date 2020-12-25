@@ -6,17 +6,21 @@ import { tpl } from './template.js'
 import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
-import { ON_LOGIN } from '../../actions.js'
+import { ON_LOGIN, ON_LOAD } from '../../actions.js'
 import AuthAPI from "../../API/AuthAPI.js";
 import formHandler from '../../utils/manageForm.js'
+import { render } from '../../utils/render.js'
 
 let store = Store.getInstance()
 
-let api = new AuthAPI
+let authAPI = new AuthAPI
 
 const updateState = {
     onLogin: (payload: any) => {
         stateUpdater({type: ON_LOGIN, payload: payload})
+    },
+    onLoad: (payload: any) => {
+        stateUpdater({ type: ON_LOAD, payload: payload })
     }
 }
 
@@ -43,8 +47,21 @@ class SignIn extends Block<SignInProps> {
         ev.preventDefault()
         let res = formHandler(formCTX.id)
         if (res) {
-            updateState.onLogin(api.signIn(res))
+            updateState.onLogin(authAPI.signIn(res))
         }
+    }
+    show() {
+        render(".app", this)
+
+        let formH: EventListener = this.formHandler
+        let form: Node = document.getElementById('loginForm')!
+        console.log(form)
+        form.addEventListener('submit', formH)        
+    }    
+    
+    componentDidMount() {
+        updateState.onLoad(authAPI.getUser())
+        console.log(store.state)
     }
 
     render() {

@@ -72,7 +72,6 @@ class Profile extends Block<ProfileProps> {
     }
 
     profileFormHandler = (ev: Event) => {
-        console.log('pipiska')
         ev.preventDefault()
         let res: any = formHandler(profileCTX.id)
         if (res) {
