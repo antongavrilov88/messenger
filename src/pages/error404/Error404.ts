@@ -4,6 +4,7 @@ import Block from '../../utils/Block.js'
 import Error from '../../components/error/Error.js'
 import { tpl } from './template.js'
 import { ErrorProps } from './types.js'
+import { render } from '../../utils/render.js'
 
 class Error404 extends Block<ErrorProps> {
     constructor() {
@@ -14,6 +15,10 @@ class Error404 extends Block<ErrorProps> {
                 ]
             })
         })
+    }
+
+    show() {
+        render( '.app', this )
     }
 
     render() {

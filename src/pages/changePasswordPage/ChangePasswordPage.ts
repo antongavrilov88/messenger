@@ -7,18 +7,24 @@ import { returnBlockCTX, changPasswordFormCTX } from './contexts.js'
 import { ChangePasswordPageProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
-import { ON_CHANGE_PASSWORD } from '../../actions.js'
+import { ON_CHANGE_PASSWORD, ON_LOAD } from '../../actions.js'
 import formHandler from '../../utils/manageForm.js'
 import UserAPI from '../../API/UserAPI.js'
+import { render } from '../../utils/render.js'
+import AuthAPI from '../../API/AuthAPI.js'
 
 
 let store = Store.getInstance()
 
-let api = new UserAPI
+let userAPI = new UserAPI
+let authAPI = new AuthAPI
 
 const updateState = {
     onChangePassword: (payload: any) => {
         stateUpdater({type: ON_CHANGE_PASSWORD, payload: payload})
+    },
+    onLoad: (payload: any) => {
+        stateUpdater({ type: ON_LOAD, payload: payload })
     }
 }
 
@@ -51,9 +57,22 @@ class ChangePasswordPage extends Block<ChangePasswordPageProps> {
         ev.preventDefault()
         let res = formHandler(changPasswordFormCTX.id)
         if (res) {
-            updateState.onChangePassword(api.updatePassword(res))
+            updateState.onChangePassword(userAPI.updatePassword(res))
         }
         console.log( store.state )
+    }
+
+    show() {
+        render(".app", this)
+        
+        let formH: EventListener = this.formHandler
+        let form: Node = document.getElementById('changePasswordForm')!
+        form.addEventListener('submit', formH)
+    }
+    
+    componentDidMount() {
+        updateState.onLoad(authAPI.getUser())
+        console.log(store.state)
     }
 
 

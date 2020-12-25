@@ -8,6 +8,7 @@ import { chatListCTX, dummyChatCTX  } from './contexts.js'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import DummyChatBlock from '../../components/dummyChatBlock/DummyChatBlock.js'
 import { ChatListPageProps } from './types.js'
+import { render } from '../../utils/render.js'
 
 class ChatListPage extends Block<ChatListPageProps> {
     constructor() {
@@ -25,6 +26,10 @@ class ChatListPage extends Block<ChatListPageProps> {
             ]
             })
         })
+    }
+
+    show() {
+        render( '.app', this )
     }
 
     render() {
