@@ -8,7 +8,10 @@ class AuthAPI extends BaseAPI {
         return userAPIInstance.put('/password', obj)
     }
     updateAvatar(obj: object) {
-        return userAPIInstance.put('/profile/avatar', obj)
+        return userAPIInstance.put('/profile/avatar', {...obj, headers: true})
+    }
+    updateProfile(obj: object) {
+        return userAPIInstance.put('/profile')
     }
 }
 export default AuthAPI

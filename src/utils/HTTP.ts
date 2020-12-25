@@ -8,6 +8,7 @@ enum METHOD {
 
 type Options = {
     method: METHOD;
+    headers?: any
     data?: any;
 };
 
@@ -40,9 +41,12 @@ class HTTP {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open(method, `${this._baseURL}${this._subURL}${url}`);
+            if ( !options.headers ) {
             xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+            }
+            
             xhr.withCredentials = true
-
+        
             xhr.onload = function () {
                 resolve(xhr);
             };

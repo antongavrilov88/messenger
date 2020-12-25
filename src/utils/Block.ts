@@ -11,7 +11,8 @@ abstract class Block<Props> {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    FLOW_RENDER: "flow:render",
+    FLOW_SHOW: "flow:show"
   };
   _element: null | Element = null;
   _meta: { tagName: string; props?: object; };
@@ -35,6 +36,7 @@ abstract class Block<Props> {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_SHOW, this.show.bind(this));
   }
   _createResources() {
     const { tagName } = this._meta;
@@ -73,6 +75,7 @@ abstract class Block<Props> {
     if ( block && this._element ) {
     this._element.innerHTML = block
     }
+    this.eventBus().emit(Block.EVENTS.FLOW_SHOW)
   }
   compile(template: string, ctx: Props) {
     let block = window.Handlebars.compile(template)
@@ -102,5 +105,6 @@ abstract class Block<Props> {
   _createDocumentElement(tagName: any) {
     return document.createElement(tagName);
   }
+  show() {}
 }
 export default Block

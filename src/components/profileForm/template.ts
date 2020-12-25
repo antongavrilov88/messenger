@@ -1,8 +1,7 @@
 export const tpl = `<div class="profile-info__wrapper">
                         <div class="profile-info-container">
-                            <form id="changeProfileForm" class="profile-info-container__form">
+                            <form id="{{id}}" class="profile-info-container__form">
                                 <div class="profile-info-container__avatar" onclick="{{modalHandler}}">
-                                    <input hidden=true name="avatar" />
                                 </div>
                                 {{#each profileData}}
                                     <div class="profile-info-container__item">
@@ -15,7 +14,7 @@ export const tpl = `<div class="profile-info__wrapper">
                                     </div>
                                     <hr />
                                 {{/each}}
-                                <button class="profile-info-container__submit-button" type="submit" onclick="{{formHandler}}">Изменить</button>
+                                {{{submitButton}}}
                             </form>
                         </div>
                     </div>`

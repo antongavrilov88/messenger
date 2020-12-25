@@ -45,7 +45,6 @@ class SignIn extends Block<SignInProps> {
         if (res) {
             updateState.onLogin(api.signIn(res))
         }
-        console.log( store.state )
     }
 
     render() {

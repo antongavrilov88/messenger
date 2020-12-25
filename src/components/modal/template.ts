@@ -5,7 +5,7 @@ export const tpl = `<div id="changeAvatarModal" hidden=true>
                             <form id="{{id}}">
                                 <h1>Загрузите файл</h1>
                                 <div class="modal-dialog__body">
-                                    <input type="file">Выберите файл на своем компьютере</input>
+                                    <input name="avatar" type="file" accept="image/*">Выберите файл на своем компьютере</input>
                                 </div>
                                 <button class="modal-dialog__submit-button">Изменить</button>
                             </form>
