@@ -32,6 +32,11 @@ class ChatPage extends Block<ChatPageProps> {
         render( '.app', this )        
     }
 
+    hide() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
+    }
+
     render() {
         return this.compile(tpl, {
             content: this.props.content.render()
