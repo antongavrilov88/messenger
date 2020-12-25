@@ -57,7 +57,12 @@ class SignIn extends Block<SignInProps> {
         let form: Node = document.getElementById('loginForm')!
         console.log(form)
         form.addEventListener('submit', formH)        
-    }    
+    }
+
+    hide() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
+    }
     
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())

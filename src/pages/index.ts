@@ -17,3 +17,11 @@ router
     console.log(store.state)
 
 store.state.user ? router.go('/chats') : router.go('/signin')
+
+setTimeout(() => {
+    router.go('/signup')
+}, 3000);
+
+setTimeout(() => {
+    router.go('/')
+}, 5000);

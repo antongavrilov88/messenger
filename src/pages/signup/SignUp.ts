@@ -59,7 +59,12 @@ class SignUp extends Block<SignUpProps> {
         let formH: EventListener = this.formHandler
         let form: Node = document.getElementById('signUpForm')!
         form.addEventListener('submit', formH)   
-    }    
+    }
+
+    hide() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
+    }
     
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())
