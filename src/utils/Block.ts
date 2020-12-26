@@ -12,7 +12,7 @@ abstract class Block<Props> {
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
     FLOW_RENDER: "flow:render",
-    FLOW_SHOW: "flow:show"
+    FLOW_ADD_LISTENERS: "flow:add-listeners"
   };
   _element: null | Element = null;
   _meta: { tagName: string; props?: object; };
@@ -36,7 +36,7 @@ abstract class Block<Props> {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-    eventBus.on(Block.EVENTS.FLOW_SHOW, this.show.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_ADD_LISTENERS, this.addListeners.bind(this));
   }
   _createResources() {
     const { tagName } = this._meta;
@@ -75,7 +75,7 @@ abstract class Block<Props> {
     if ( block && this._element ) {
     this._element.innerHTML = block
     }
-    this.eventBus().emit(Block.EVENTS.FLOW_SHOW)
+    // this.eventBus().emit(Block.EVENTS.FLOW_ADD_LISTENERS)
   }
   compile(template: string, ctx: Props) {
     let block = window.Handlebars.compile(template)
@@ -106,5 +106,6 @@ abstract class Block<Props> {
     return document.createElement(tagName);
   }
   show() {}
+  addListeners() {}
 }
 export default Block

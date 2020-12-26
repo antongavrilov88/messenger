@@ -41,7 +41,7 @@ class SignIn extends Block<SignInProps> {
             content: new UnauthWorkspace({
                 content: new Form({ ...formCTX })
             }),
-            user: store.state.user
+            auth: store.state.auth
         })
         console.log(this.props)
     }
@@ -55,11 +55,14 @@ class SignIn extends Block<SignInProps> {
     }
     show() {
         render(".app", this)
+    }
 
+    addListeners() {  
+        console.log('pisa')
         let formH: EventListener = this.formHandler
         let form: Node = document.getElementById('loginForm')!
         console.log(form)
-        form.addEventListener('submit', formH)        
+        form.addEventListener('submit', formH)      
     }
 
     hide() {
@@ -68,13 +71,13 @@ class SignIn extends Block<SignInProps> {
     }
     
     componentDidMount() {
-        updateState.onLoad(authAPI.getUser())
-        console.log( this.props.user )
+        // updateState.onLoad(authAPI.getUser())
+        console.log( this.props )
     }
 
     componentDidUpdate() {
         console.log(this.props)
-        if (this.props.user && !this.props.user.reason) {        
+        if (this.props.auth && !this.props.auth.reason) {        
         router.go('/chats')
         }
         return true

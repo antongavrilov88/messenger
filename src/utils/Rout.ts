@@ -31,6 +31,8 @@ class Route {
     if (!this._block) {
       this._block = new this._blockClass();
       render(this._props.rootQuery, this._block);
+      this._block.addListeners()
+      console.log('pisun')
       return;
     }
     this._block.show();
