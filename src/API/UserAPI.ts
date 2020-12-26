@@ -3,7 +3,7 @@ import { BaseAPI } from '../utils/BaseAPI.js'
 
 const userAPIInstance = new HTTP('/user')
 
-class AuthAPI extends BaseAPI {
+class UserAPI extends BaseAPI {
     updatePassword(obj: object) {
         return userAPIInstance.put('/password', obj)
     }
@@ -14,4 +14,4 @@ class AuthAPI extends BaseAPI {
         return userAPIInstance.put('/profile')
     }
 }
-export default AuthAPI
+export default UserAPI

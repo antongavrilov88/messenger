@@ -1,3 +1,4 @@
+import App from "../app/App";
 import ChangePassword from "../changePassword/ChangePassword";
 import ChatBlock from "../chatBlock/ChatBlock";
 import ChatListBlock from "../chatListBlock/ChatListBlock";
@@ -8,5 +9,5 @@ import ProfileForm from "../profileForm/ProfileForm";
 import ReturnBlock from "../returnBlock/ReturnBlock";
 
 export type AuthWorkspaceProps = {
-        content: (Modal | ProfileForm | ReturnBlock | ChangePassword | ChatListBlock | DummyChatBlock | ChatBlock | Error)[];
+        content: (Modal | ProfileForm | ReturnBlock | ChangePassword | ChatListBlock | DummyChatBlock | ChatBlock | Error | App)[];
   }
