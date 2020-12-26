@@ -10,6 +10,7 @@ import { ON_LOGIN, ON_LOAD } from '../../actions.js'
 import AuthAPI from "../../API/AuthAPI.js";
 import formHandler from '../../utils/manageForm.js'
 import { render } from '../../utils/render.js'
+import { router } from '../index.js'
 
 let store = Store.getInstance()
 
@@ -35,12 +36,14 @@ class SignIn extends Block<SignInProps> {
         store.subscribe(this.stateToProps)
     }
 
-    stateToProps(state: { user: { userID: any } }) {
+    stateToProps(state: any) {
         this.setProps({
             content: new UnauthWorkspace({
                 content: new Form({ ...formCTX })
-            })
+            }),
+            user: store.state.user
         })
+        console.log(this.props)
     }
 
     formHandler = (ev: Event) => {
@@ -66,7 +69,15 @@ class SignIn extends Block<SignInProps> {
     
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())
-        console.log(store.state)
+        console.log( this.props.user )
+    }
+
+    componentDidUpdate() {
+        console.log(this.props)
+        if (this.props.user && !this.props.user.reason) {        
+        router.go('/chats')
+        }
+        return true
     }
 
     render() {

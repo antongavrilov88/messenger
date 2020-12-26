@@ -58,7 +58,7 @@ abstract class Block<Props> {
     }
     this._render();
   }
-  componentDidUpdate(oldProps: any, newProps: any) {
+  componentDidUpdate(oldProps: any = null, newProps: any = null) {
     return true;
   }
   setProps = (nextProps: any) => {

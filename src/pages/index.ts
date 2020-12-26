@@ -3,10 +3,11 @@ import SignIn from '../pages/signIn/SignIn.js'
 import SignUp from './signup/SignUp.js'
 import ChatPage from './chatPage/ChatPage.js'
 
-const router = new Router('.app')
+export const router = new Router('.app')
 
 router
     .use('/signin', SignIn)
     .use('/signup', SignUp)
-    .use('/', ChatPage)
+    .use('/chats', ChatPage)
+    .use('/', SignIn)
     .start()

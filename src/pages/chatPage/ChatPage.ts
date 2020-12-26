@@ -9,6 +9,9 @@ import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 import { ChatPageProps } from './types.js'
 import { render } from '../../utils/render.js'
+import AuthAPI from '../../API/AuthAPI.js'
+
+const authAPI= new AuthAPI
 
 class ChatPage extends Block<ChatPageProps> {
     constructor() {
@@ -27,8 +30,16 @@ class ChatPage extends Block<ChatPageProps> {
             })
         })
     }
+    
+    componentDidMount() {
+        setTimeout(() => {
+            authAPI.logout()
+        }, 3000);
+    }
 
     show() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
         render( '.app', this )        
     }
 
