@@ -57,6 +57,7 @@ abstract class Block<Props> {
       return;
     }
     this._render();
+    this.addListeners()
   }
   componentDidUpdate(oldProps: any = null, newProps: any = null) {
     return true;

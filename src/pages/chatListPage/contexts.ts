@@ -3,6 +3,7 @@ export const dummyChatCTX = {
 }
 export const chatListCTX = {
     header: {
+        logoutText: 'Выйти',
         linkUrl: './profile.html',
         linkText: 'Профиль'
     },

@@ -9,6 +9,7 @@ class ChatListHeaderLink extends Block<ChatListHeaderLinkProps> {
 
     render() {
         return this.compile(tpl, {
+            logoutText: this.props.logoutText,
             linkUrl: this.props.linkUrl,
             linkText: this.props.linkText
         })

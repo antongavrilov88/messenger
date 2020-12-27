@@ -40,16 +40,15 @@ class InitPage extends Block<InitPageProps> {
 
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())
-        console.log( this.props )
     }
     
     componentDidUpdate() {
         console.log(this.props)
-        if (this.props.auth && !this.props.auth.reason) {        
-            router.go('/chats')
+        if (this.props.auth && !this.props.auth.status === true) {        
+        router.go('/chats')
         }
-        if ( this.props.auth && this.props.auth.reason ) {
-            router.go('/signin')
+        if (this.props.auth && this.props.auth.status === false) {        
+        router.go('/signin')
         }
         return true
     }    

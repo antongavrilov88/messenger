@@ -3,6 +3,7 @@ import funcString  from '../../utils/funcString.js'
 
 export const chatListCTX = {
     header: {
+        logoutText: 'Выйти',
         linkUrl: './profile.html',
         linkText: 'Профиль'
     },

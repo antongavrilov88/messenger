@@ -55,14 +55,20 @@ class SignIn extends Block<SignInProps> {
     }
     show() {
         render(".app", this)
+        console.log('pisa')
+        let formH: EventListener = this.formHandler
+        let form: Node = document.getElementById('loginForm')!
+        console.log(form)
+        form.addEventListener('submit', formH) 
     }
 
     addListeners() {  
         console.log('pisa')
         let formH: EventListener = this.formHandler
-        let form: Node = document.getElementById('loginForm')!
-        console.log(form)
+        let form: Node | null = document.getElementById('loginForm')
+        if ( form ) {
         form.addEventListener('submit', formH)      
+        }
     }
 
     hide() {
@@ -71,13 +77,13 @@ class SignIn extends Block<SignInProps> {
     }
     
     componentDidMount() {
-        // updateState.onLoad(authAPI.getUser())
+        updateState.onLoad(authAPI.getUser())
         console.log( this.props )
     }
 
     componentDidUpdate() {
         console.log(this.props)
-        if (this.props.auth && !this.props.auth.reason) {        
+        if (this.props.auth && this.props.auth.status === true) {        
         router.go('/chats')
         }
         return true

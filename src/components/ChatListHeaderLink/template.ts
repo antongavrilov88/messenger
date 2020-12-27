@@ -1,12 +1,8 @@
-export const tpl = `<div>
-                        <div class="chat-list__container__profile-link">
-                            <a href="{{linkUrl}}">
-                                {{linkText}}
-                            </a>
-                        </div>
-                        <div class="chat-list__container__profile-link">
-                            <a href="{{linkUrl}}">
-                                {{linkText}}
-                            </a>
-                        </div>
+export const tpl = `<div class="chat-list__container__profile-link">
+                        <a style="float: left; margin-left: 7%" id="logoutHeaderButton">
+                            {{logoutText}}
+                        </a>
+                        <a href="{{linkUrl}}" id="profileHeaderButton">
+                            {{linkText}}
+                        </a>
                     </div>`

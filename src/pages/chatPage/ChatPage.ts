@@ -9,9 +9,22 @@ import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 import { ChatPageProps } from './types.js'
 import { render } from '../../utils/render.js'
-// import AuthAPI from '../../API/AuthAPI.js'
+// import Store from '../../utils/Store.js'
+import AuthAPI from '../../API/AuthAPI.js'
+import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
+import { ON_LOGOUT } from '../../actions.js'
+import { router } from '../index.js'
+// import { router } from '../index.js'
 
-// const authAPI= new AuthAPI
+// let store = Store.getInstance()
+
+let authAPI = new AuthAPI
+
+const updateState = {
+    onLogout: (payload: any) => {
+        stateUpdater({type: ON_LOGOUT, payload: payload})
+    }
+}
 
 class ChatPage extends Block<ChatPageProps> {
     constructor() {
@@ -31,12 +44,6 @@ class ChatPage extends Block<ChatPageProps> {
         })
     }
     
-    // componentDidMount() {
-    //     setTimeout(() => {
-    //         authAPI.logout()
-    //     }, 3000);
-    // }
-
     show() {
         let root = document.querySelector('.app')!
         root.innerHTML = ''
@@ -46,6 +53,14 @@ class ChatPage extends Block<ChatPageProps> {
     hide() {
         let root = document.querySelector('.app')!
         root.innerHTML = ''
+    }
+
+    addListeners() {
+        let button = document.getElementById('logoutHeaderButton')
+        button?.addEventListener('click',function() {
+            updateState.onLogout(authAPI.logout())
+            router.go('/')
+        })
     }
 
     render() {

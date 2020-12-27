@@ -3,5 +3,6 @@ export function render(query: string, block: any) {
     if ( root ) {
     root.appendChild(block.getContent());
     }
+    block.addListeners()
     return root;
  }
