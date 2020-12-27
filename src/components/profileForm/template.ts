@@ -1,7 +1,7 @@
 export const tpl = `<div class="profile-info__wrapper">
                         <div class="profile-info-container">
                             <form id="{{id}}" class="profile-info-container__form">
-                                <div class="profile-info-container__avatar" onclick="{{modalHandler}}">
+                                <div class="profile-info-container__avatar" id="avatarOpenModalButton">
                                 </div>
                                 {{#each profileData}}
                                     <div class="profile-info-container__item">

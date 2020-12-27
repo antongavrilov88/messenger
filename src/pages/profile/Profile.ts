@@ -12,6 +12,7 @@ import { ON_AVATAR_CHANGE, ON_LOAD, ON_PROFILE_CHANGE } from '../../actions.js'
 import formHandler from '../../utils/manageForm.js'
 import { render } from '../../utils/render.js'
 import { API } from '../../API/mainAPI.js'
+import { openModal } from '../../utils/manageModal.js'
 
 let store = Store.getInstance()
 
@@ -43,7 +44,6 @@ class Profile extends Block<ProfileProps> {
     }
 
     stateToProps(state: { user: { userID: any } }) {
-        console.log(store.state.user)
         this.setProps({
             content: new AuthWorkspace({
                 content: [
@@ -68,24 +68,19 @@ class Profile extends Block<ProfileProps> {
     profileFormHandler = (ev: Event) => {
         ev.preventDefault()
         let res: any = formHandler(profileCTX.id)
-        console.log('А вот в чем дело:', res)
         if (res) {
-            console.log('Я ТУУУУУУУТ', res)
-
             updateState.onProfileChange(API.user.updateProfile(res))
         }
     }
 
     show() {
         render(".app", this)
+        this.addListeners()
+    }
 
-        let formH: EventListener = this.avatarFormHandler
-        let form: Node = document.getElementById('avatarForm')!
-        form.addEventListener('submit', formH)
-
-        let formH2: EventListener = this.profileFormHandler
-        let form2: Node = document.getElementById('changeProfileForm')!
-        form2.addEventListener('submit', formH2)
+    hide() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
     }
 
     addListeners() {
@@ -96,11 +91,15 @@ class Profile extends Block<ProfileProps> {
         let formH2: EventListener = this.profileFormHandler
         let form2: Node = document.getElementById('changeProfileForm')!
         form2.addEventListener('submit', formH2)
+
+        let avatarButton = document.getElementById('avatarOpenModalButton')
+        avatarButton?.addEventListener('click', function() {
+            openModal('avatarForm')
+        })
     }
 
     componentDidMount() {
         updateState.onLoad(API.auth.getUser())
-        console.log(store.state)
     }
 
     render() {

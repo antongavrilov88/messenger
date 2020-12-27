@@ -1,14 +1,17 @@
 import formHandler from '../../utils/manageForm.js'
 import funcString  from '../../utils/funcString.js'
 import validateInput from '../../utils/validateInput.js'
-import { closeModal, openModal } from '../../utils/manageModal.js'
+import { closeModal } from '../../utils/manageModal.js'
+import Form from '../../components/form/Form.js'
+import Button from '../../components/button/Button.js'
 
 export const submitButtonCTX = {
     className: 'form__submit-button',
     type: 'submit',
     e: 'click',
     handler: funcString(formHandler, 'this.parentNode'),
-    text: 'Изменить'
+    text: 'Изменить',
+    id: 'submitProfilFormButton'
 }
 
 export const profileCTX = {
@@ -58,12 +61,44 @@ export const profileCTX = {
         }
     ],
     formHandler: funcString(formHandler, 'this.parentNode'),
-    modalHandler: funcString(openModal, "'changeAvatarModal'")
+    modalHandler: ''
 }
 export const returnBlockCTX = {
     linkUrl: "./chat.html"
 }
+
+export const modalButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Новый чат' ,
+    id: 'modalSubmitButtonCTX'
+}
+
+export const modalFormCTX = {
+    className: "form-container",
+    id: "loginForm",
+    title: "Изменить аватар",
+    submitButton: new Button(modalButtonCTX),
+    inputs: [
+        {
+            lable: {
+                className: "form__input__name",
+                title: "Выберите файл"
+            },
+            input: {
+                className: "form__input",
+                type: "file",
+                name: "avatar"
+            },
+            handler: funcString(validateInput, 'this')
+        }
+    ]
+}
+
 export const modalCTX = {
     id: 'avatarForm',
-    modalHandler: funcString(closeModal, "'changeAvatarModal'")
+    modalHandler: funcString(closeModal, "'changeAvatarModal'"),
+    form: new Form(modalFormCTX)
 }

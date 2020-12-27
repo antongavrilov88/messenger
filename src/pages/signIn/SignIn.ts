@@ -41,7 +41,6 @@ class SignIn extends Block<SignInProps> {
             }),
             auth: store.state.auth
         })
-        console.log(this.props)
     }
 
     formHandler = (ev: Event) => {
@@ -55,15 +54,12 @@ class SignIn extends Block<SignInProps> {
         let root = document.querySelector('.app')!
         root.innerHTML = ''
         render(".app", this)
-        console.log('pisa')
         let formH: EventListener = this.formHandler
         let form: Node = document.getElementById('loginForm')!
-        console.log(form)
         form.addEventListener('submit', formH) 
     }
 
     addListeners() {  
-        console.log('pisa')
         let formH: EventListener = this.formHandler
         let form: Node | null = document.getElementById('loginForm')
         if ( form ) {
@@ -81,7 +77,6 @@ class SignIn extends Block<SignInProps> {
     }
 
     componentDidUpdate() {
-        console.log(this.props)
         if (this.props.auth && this.props.auth.status === true) {        
         router.go('/chats')
         }

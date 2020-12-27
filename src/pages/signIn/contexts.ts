@@ -9,7 +9,8 @@ export const submitButtonCTX = {
     type: 'submit',
     e: 'click',
     handler: funcString(formHandler, 'this.parentNode'),
-    text: 'Войти'
+    text: 'Войти',
+    id: 'signInButton'
 }
 export const formCTX = {
     className: "form-container",

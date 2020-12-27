@@ -10,7 +10,7 @@ class Modal extends Block<ModalProps> {
     render() {
         return this.compile(tpl, {
             id: this.props.id,
-            modalHandler: this.props.modalHandler
+            form: this.props.form.render()
         })
     }
 }

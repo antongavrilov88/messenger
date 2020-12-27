@@ -13,4 +13,7 @@ export const tpl = `<div class="chat-list__container__list">
                             </li>
                         {{/each}}
                         </ul>
+                        <div style="display: flex; justify-content: center;">
+                            {{{createButton}}}
+                        </div>
                     </div>`

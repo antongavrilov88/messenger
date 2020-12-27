@@ -4,7 +4,7 @@ import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
 import { tpl } from './template.js'
-import { chatListCTX, chatCTX  } from './contexts.js'
+import { chatListCTX, chatCTX, modalCTX  } from './contexts.js'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 import { ChatPageProps } from './types.js'
@@ -14,6 +14,8 @@ import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { ON_LOAD, ON_LOGOUT } from '../../actions.js'
 import { router } from '../index.js'
 import { API } from '../../API/mainAPI.js'
+import { openModal } from '../../utils/manageModal.js'
+import Modal from '../../components/modal/Modal.js'
 
 let store = Store.getInstance()
 
@@ -54,7 +56,8 @@ class ChatPage extends Block<ChatPageProps> {
                     content: [                    
                         new ChatListHeaderLink(chatListCTX.header),
                         new ChatListHeaderSearch(chatListCTX),
-                        new ChatList(chatListCTX)
+                        new ChatList(chatListCTX),
+                        new Modal(modalCTX)
                     ]
                 }),
                 new ChatBlock(chatCTX)
@@ -62,16 +65,13 @@ class ChatPage extends Block<ChatPageProps> {
             }),
             auth: store.state.auth
         })
-        console.log(this.props)
     }
 
     componentDidMount() {
-        console.log('fff')
         updateState.onLoad(API.auth.getUser())
     }
 
     componentDidUpdate() {
-        console.log(this.props)
         if (this.props.auth && this.props.auth.status === false) {        
         router.go('/')
         }
@@ -90,9 +90,20 @@ class ChatPage extends Block<ChatPageProps> {
     }
 
     addListeners() {
-        let button = document.getElementById('logoutHeaderButton')
-        button?.addEventListener('click',function() {
+
+        let logoutButton = document.getElementById('logoutHeaderButton')
+        logoutButton?.addEventListener('click', function() {
             updateState.onLogout(API.auth.logout())
+        })
+
+        let profileButton = document.getElementById('profileHeaderButton')
+        profileButton?.addEventListener('click', function() {
+            router.go('/profile')
+        })
+
+        let newChatButton = document.getElementById('newChatCreateButton')
+        newChatButton?.addEventListener('click', function() {
+            openModal('newChatModal')
         })
     }
 

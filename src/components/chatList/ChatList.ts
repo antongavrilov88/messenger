@@ -9,7 +9,8 @@ class ChatList extends Block<ChatListProps> {
 
     render() {
         return this.compile(tpl, {
-            chats: this.props.chats
+            chats: this.props.chats,
+            createButton: this.props.createButton.render()
         })
     }
 }

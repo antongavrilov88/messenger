@@ -9,7 +9,8 @@ export const submitButtonCTX = {
     type: 'submit',
     e: 'click',
     handler: funcString(formHandler, 'this.parentNode'),
-    text: 'Изменить'
+    text: 'Изменить',
+    id: 'changePasswordSubmitButton'
 }
 export const returnBlockCTX = {
     linkUrl: "./profile"

@@ -59,7 +59,6 @@ class HTTP {
             xhr.ontimeout = reject;
 
             if (method === METHOD.GET || !data) {
-                console.log('таааак бля')
                 xhr.send();
             } else {
                 console.log(data)

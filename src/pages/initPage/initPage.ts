@@ -43,7 +43,6 @@ class InitPage extends Block<InitPageProps> {
     }
     
     componentDidUpdate() {
-        console.log(this.props)
         if (this.props.auth && this.props.auth.status === true) {        
             console.log('КОРЕНЬ ЗЛА', this.props.auth.status)
         router.go('/chats')
@@ -68,7 +67,6 @@ class InitPage extends Block<InitPageProps> {
             }),
             auth: store.state.auth
         })
-        console.log(this.props)
     }
 
     render() {

@@ -1,5 +1,18 @@
 import formHandler from '../../utils/manageForm.js'
 import funcString  from '../../utils/funcString.js'
+import Button from '../../components/button/Button.js'
+import validateInput from '../../utils/validateInput.js'
+import Form from '../../components/form/Form.js'
+import { closeModal } from '../../utils/manageModal.js'
+
+const createButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    // handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Новый чат',
+    id: 'newChatCreateButton'
+}
 
 export const chatListCTX = {
     header: {
@@ -34,6 +47,7 @@ export const chatListCTX = {
             time: '15:22'
         }
     ],
+    createButton: new Button(createButtonCTX)
 }
 export const chatCTX = {
     messages: [
@@ -59,4 +73,39 @@ export const chatCTX = {
         },
     ],
     messageHandler: funcString(formHandler, 'this.parentNode')
+}
+
+export const modalButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Новый чат',
+    id: 'newChatSubmitButton'
+}
+
+export const modalFormCTX = {
+    className: "form-container",
+    id: "loginForm",
+    title: "Новый чат",
+    submitButton: new Button(modalButtonCTX),
+    inputs: [
+        {
+            lable: {
+                className: "form__input__name",
+                title: "Название чата"
+            },
+            input: {
+                className: "form__input",
+                type: "text",
+                name: "title"
+            },
+            handler: funcString(validateInput, 'this')
+        }
+    ]
+}
+export const modalCTX = {
+    id: 'newChatModal',
+    modalHandler: funcString(closeModal, "'changeAvatarModal'"),
+    form: new Form(modalFormCTX)
 }
