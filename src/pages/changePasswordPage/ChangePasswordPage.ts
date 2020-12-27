@@ -3,21 +3,18 @@ import ChangePassword from '../../components/changePassword/ChangePassword.js'
 import { tpl } from './template.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
 import ReturnBlock from '../../components/returnBlock/ReturnBlock.js'
-import { returnBlockCTX, changPasswordFormCTX } from './contexts.js'
+import { returnBlockCTX, changePasswordFormCTX } from './contexts.js'
 import { ChangePasswordPageProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { ON_CHANGE_PASSWORD, ON_LOAD } from '../../actions.js'
 import formHandler from '../../utils/manageForm.js'
-import UserAPI from '../../API/UserAPI.js'
 import { render } from '../../utils/render.js'
-import AuthAPI from '../../API/AuthAPI.js'
+import { router } from '../index.js'
+import { API } from '../../API/mainApi.js'
 
 
 let store = Store.getInstance()
-
-let userAPI = new UserAPI
-let authAPI = new AuthAPI
 
 const updateState = {
     onChangePassword: (payload: any) => {
@@ -34,7 +31,7 @@ class ChangePasswordPage extends Block<ChangePasswordPageProps> {
             content: new AuthWorkSpace({
                 content: [
                     new ReturnBlock(returnBlockCTX),
-                    new ChangePassword(changPasswordFormCTX)
+                    new ChangePassword(changePasswordFormCTX)
                 ]
             })
         })
@@ -42,37 +39,59 @@ class ChangePasswordPage extends Block<ChangePasswordPageProps> {
         store.subscribe(this.stateToProps)
     }
 
-    stateToProps(state: { user: { userID: any } }) {
+    stateToProps(state: any) {
         this.setProps({
             content: new AuthWorkSpace({
                 content: [
                     new ReturnBlock(returnBlockCTX),
-                    new ChangePassword(changPasswordFormCTX)
+                    new ChangePassword(changePasswordFormCTX)
                 ]
-            })
+            }),
+            auth: store.state.auth
         })
     }
 
     formHandler = (ev: Event) => {
         ev.preventDefault()
-        let res = formHandler(changPasswordFormCTX.id)
+        let res = formHandler(changePasswordFormCTX.id)
         if (res) {
-            updateState.onChangePassword(userAPI.updatePassword(res))
+            updateState.onChangePassword(API.user.updatePassword(res))
         }
         console.log( store.state )
     }
 
     show() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
         render(".app", this)
         
         let formH: EventListener = this.formHandler
         let form: Node = document.getElementById('changePasswordForm')!
         form.addEventListener('submit', formH)
     }
+
+    hide() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''        
+    }
+
+    addListeners() {        
+        let formH: EventListener = this.formHandler
+        let form: Node = document.getElementById('changePasswordForm')!
+        form.addEventListener('submit', formH)        
+    }
     
     componentDidMount() {
-        updateState.onLoad(authAPI.getUser())
+        updateState.onLoad(API.auth.getUser())
         console.log(store.state)
+    }
+
+    componentDidUpdate() {
+        console.log(this.props)
+        if (this.props.auth && this.props.auth.status === false) {        
+        router.go('/')
+        }
+        return true
     }
 
 

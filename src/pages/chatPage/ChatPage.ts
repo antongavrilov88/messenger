@@ -10,14 +10,12 @@ import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 import { ChatPageProps } from './types.js'
 import { render } from '../../utils/render.js'
 import Store from '../../utils/Store.js'
-import AuthAPI from '../../API/AuthAPI.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { ON_LOAD, ON_LOGOUT } from '../../actions.js'
 import { router } from '../index.js'
+import { API } from '../../API/mainAPI.js'
 
 let store = Store.getInstance()
-
-let authAPI = new AuthAPI
 
 const updateState = {
     onLogout: (payload: any) => {
@@ -44,6 +42,40 @@ class ChatPage extends Block<ChatPageProps> {
             ]
             })
         })
+        this.stateToProps = this.stateToProps.bind(this)
+        store.subscribe(this.stateToProps)
+    }
+
+    stateToProps(state: any) {
+        this.setProps({
+            content: new AuthWorkSpace({
+                content: [
+                    new ChatListBlock({
+                    content: [                    
+                        new ChatListHeaderLink(chatListCTX.header),
+                        new ChatListHeaderSearch(chatListCTX),
+                        new ChatList(chatListCTX)
+                    ]
+                }),
+                new ChatBlock(chatCTX)
+            ]
+            }),
+            auth: store.state.auth
+        })
+        console.log(this.props)
+    }
+
+    componentDidMount() {
+        console.log('fff')
+        updateState.onLoad(API.auth.getUser())
+    }
+
+    componentDidUpdate() {
+        console.log(this.props)
+        if (this.props.auth && this.props.auth.status === false) {        
+        router.go('/')
+        }
+        return true
     }
     
     show() {
@@ -60,8 +92,7 @@ class ChatPage extends Block<ChatPageProps> {
     addListeners() {
         let button = document.getElementById('logoutHeaderButton')
         button?.addEventListener('click',function() {
-            updateState.onLogout(authAPI.logout())
-            router.go('/')
+            updateState.onLogout(API.auth.logout())
         })
     }
 

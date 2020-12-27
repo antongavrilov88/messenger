@@ -7,14 +7,12 @@ import { SignInProps } from './types.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { ON_LOGIN, ON_LOAD } from '../../actions.js'
-import AuthAPI from "../../API/AuthAPI.js";
 import formHandler from '../../utils/manageForm.js'
 import { render } from '../../utils/render.js'
 import { router } from '../index.js'
+import { API } from '../../API/mainAPI.js'
 
 let store = Store.getInstance()
-
-let authAPI = new AuthAPI
 
 const updateState = {
     onLogin: (payload: any) => {
@@ -50,10 +48,12 @@ class SignIn extends Block<SignInProps> {
         ev.preventDefault()
         let res = formHandler(formCTX.id)
         if (res) {
-            updateState.onLogin(authAPI.signIn(res))
+            updateState.onLogin(API.auth.signIn(res))
         }
     }
     show() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
         render(".app", this)
         console.log('pisa')
         let formH: EventListener = this.formHandler
@@ -77,7 +77,7 @@ class SignIn extends Block<SignInProps> {
     }
     
     componentDidMount() {
-        updateState.onLoad(authAPI.getUser())
+        updateState.onLoad(API.auth.getUser())
     }
 
     componentDidUpdate() {

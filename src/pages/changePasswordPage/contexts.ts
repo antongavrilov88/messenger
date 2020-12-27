@@ -14,7 +14,7 @@ export const submitButtonCTX = {
 export const returnBlockCTX = {
     linkUrl: "./profile"
 }
-export const changPasswordFormCTX = {
+export const changePasswordFormCTX = {
     id: 'changePasswordForm',
     formHandler: funcString(formHandler, 'this.parentNode'),
     inputHandler: funcString(validateInput, 'this'),

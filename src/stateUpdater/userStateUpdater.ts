@@ -6,10 +6,7 @@ export const userStateUpdater = async (action: any) => {
     switch (action.type) {
         case ON_LOAD:
             Store.setState({
-                user: action.payload,
-                auth: {
-                    status: action.payload.reason ? false : true
-                }
+                user: action.payload
             })
             break
         case ON_CHANGE_PASSWORD:

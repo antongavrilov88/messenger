@@ -6,14 +6,12 @@ import { InitPageProps } from './types.js'
 import { render } from '../../utils/render.js'
 import App from '../../components/app/App.js'
 import Store from '../../utils/Store.js'
-import AuthAPI from '../../API/AuthAPI.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
 import { ON_LOAD } from '../../actions.js'
 import { router } from '../index.js'
+import { API } from '../../API/mainAPI.js'
 
 const store = Store.getInstance()
-
-let authAPI = new AuthAPI
 
 const updateState = {
     onLoad: (payload: any) => {
@@ -35,16 +33,19 @@ class InitPage extends Block<InitPageProps> {
     }
 
     show() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
         render( '.app', this )
     }
 
     componentDidMount() {
-        updateState.onLoad(authAPI.getUser())
+        updateState.onLoad(API.auth.getUser())
     }
     
     componentDidUpdate() {
         console.log(this.props)
         if (this.props.auth && this.props.auth.status === true) {        
+            console.log('КОРЕНЬ ЗЛА', this.props.auth.status)
         router.go('/chats')
         }
         if (this.props.auth && this.props.auth.status === false) {        

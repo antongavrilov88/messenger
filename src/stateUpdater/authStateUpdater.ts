@@ -1,4 +1,4 @@
-import { ON_LOGIN, ON_LOGOUT } from '../actions.js'
+import { ON_LOGIN, ON_LOGOUT,ON_LOAD } from '../actions.js'
 import Store from '../utils/Store.js'
 
 export const authStateUpdater = async (action: any) => {
@@ -6,7 +6,7 @@ export const authStateUpdater = async (action: any) => {
         case ON_LOGIN:
             Store.setState({
                 auth: {
-                    status: action.payload.reason ? action.payload.reason : true
+                    status: action.payload.reason ? false : true
                 }
             })
             break
@@ -14,6 +14,12 @@ export const authStateUpdater = async (action: any) => {
             Store.setState({
                 auth:{
                     status: false
+                }
+            })
+        case ON_LOAD:
+            Store.setState({
+                auth: {
+                    status: action.payload.reason ? false : true
                 }
             })
         default:
