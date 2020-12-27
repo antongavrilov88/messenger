@@ -1,3 +1,3 @@
 export const appCTX = {
-    initMessage: ''
+    initMessage: "...I'm still working on it))"
 }

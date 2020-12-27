@@ -78,7 +78,6 @@ class SignIn extends Block<SignInProps> {
     
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())
-        console.log( this.props )
     }
 
     componentDidUpdate() {

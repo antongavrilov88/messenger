@@ -57,7 +57,7 @@ abstract class Block<Props> {
       return;
     }
     this._render();
-    this.addListeners()
+    this.eventBus().emit(Block.EVENTS.FLOW_ADD_LISTENERS)
   }
   componentDidUpdate(oldProps: any = null, newProps: any = null) {
     return true;
@@ -76,7 +76,6 @@ abstract class Block<Props> {
     if ( block && this._element ) {
     this._element.innerHTML = block
     }
-    // this.eventBus().emit(Block.EVENTS.FLOW_ADD_LISTENERS)
   }
   compile(template: string, ctx: Props) {
     let block = window.Handlebars.compile(template)

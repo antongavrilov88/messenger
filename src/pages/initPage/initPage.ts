@@ -44,7 +44,7 @@ class InitPage extends Block<InitPageProps> {
     
     componentDidUpdate() {
         console.log(this.props)
-        if (this.props.auth && !this.props.auth.status === true) {        
+        if (this.props.auth && this.props.auth.status === true) {        
         router.go('/chats')
         }
         if (this.props.auth && this.props.auth.status === false) {        
