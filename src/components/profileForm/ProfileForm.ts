@@ -12,8 +12,7 @@ class ProfileForm extends Block<ProfileFormProps> {
             id: this.props.id,
             profileData: this.props.profileData,
             formHandler: this.props.formHandler,
-            modalHandler: this.props.modalHandler,
-            submitButton: this.props.submitButton.render()
+            modalHandler: this.props.modalHandler
         })
     }
 }

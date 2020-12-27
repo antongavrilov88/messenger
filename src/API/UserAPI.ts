@@ -11,7 +11,7 @@ class UserAPI extends BaseAPI {
         return userAPIInstance.put('/profile/avatar', {...obj, headers: true})
     }
     updateProfile(obj: object) {
-        return userAPIInstance.put('/profile')
+        return userAPIInstance.put('/profile', obj)
     }
 }
 export default UserAPI

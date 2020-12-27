@@ -57,7 +57,6 @@ class ChangePasswordPage extends Block<ChangePasswordPageProps> {
         if (res) {
             updateState.onChangePassword(API.user.updatePassword(res))
         }
-        console.log( store.state )
     }
 
     show() {

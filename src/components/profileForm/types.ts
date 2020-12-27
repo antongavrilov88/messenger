@@ -1,5 +1,3 @@
-import Button from "../button/Button.js"
-
 export type ProfileInputProps = {
     label: string;
     inputType: string;
@@ -13,5 +11,4 @@ export type ProfileFormProps = {
     profileData: ProfileInputProps[]
     formHandler: string;
     modalHandler: string;
-    submitButton: Button
 }

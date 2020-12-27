@@ -2,7 +2,6 @@ import formHandler from '../../utils/manageForm.js'
 import funcString  from '../../utils/funcString.js'
 import validateInput from '../../utils/validateInput.js'
 import { closeModal, openModal } from '../../utils/manageModal.js'
-import Button from '../../components/button/Button.js'
 
 export const submitButtonCTX = {
     className: 'form__submit-button',
@@ -14,7 +13,6 @@ export const submitButtonCTX = {
 
 export const profileCTX = {
     id: 'changeProfileForm',
-    submitButton: new Button(submitButtonCTX),
     profileData: [
         {
             label: 'Имя',

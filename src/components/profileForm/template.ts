@@ -14,7 +14,7 @@ export const tpl = `<div class="profile-info__wrapper">
                                     </div>
                                     <hr />
                                 {{/each}}
-                                {{{submitButton}}}
+                                <button class="modal-dialog__submit-button">Изменить</button>
                             </form>
                         </div>
                     </div>`

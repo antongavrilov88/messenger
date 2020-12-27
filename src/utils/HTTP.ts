@@ -37,12 +37,15 @@ class HTTP {
     }
 
     request(url: string, options: Options): Promise<XMLHttpRequest> {
-        const { method, data } = options;
+        const { method, data, headers } = options;
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open(method, `${this._baseURL}${this._subURL}${url}`);
-            if ( !options.headers ) {
-            xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+            
+            if (headers) {
+                xhr.setRequestHeader('Content-Type', 'multipart/form-data;')
+            } else {
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
             }
             
             xhr.withCredentials = true
@@ -56,8 +59,10 @@ class HTTP {
             xhr.ontimeout = reject;
 
             if (method === METHOD.GET || !data) {
+                console.log('таааак бля')
                 xhr.send();
             } else {
+                console.log(data)
                 xhr.send(data);
             }
         });
