@@ -1,5 +1,6 @@
 import { authStateUpdater } from './authStateUpdater.js'
 import { userStateUpdater } from './userStateUpdater.js'
+import { chatStateUpdater } from './chatStateUpdater.js'
 
 const payloadHandler = async (payload:any) => {
     let result = await payload.then( (result: any) => result )
@@ -17,4 +18,5 @@ export const stateUpdater = async (action: any) => {
     }
     authStateUpdater(action)
     userStateUpdater(action)
+    chatStateUpdater(action)
 }

@@ -86,7 +86,7 @@ export const modalButtonCTX = {
 
 export const modalFormCTX = {
     className: "form-container",
-    id: "loginForm",
+    id: "newChat",
     title: "Новый чат",
     submitButton: new Button(modalButtonCTX),
     inputs: [

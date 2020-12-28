@@ -1,7 +1,7 @@
 import { ON_LOGIN, ON_LOGOUT,ON_LOAD } from '../actions.js'
 import Store from '../utils/Store.js'
 
-export const authStateUpdater = async (action: any) => {
+export const authStateUpdater = (action: any) => {
     switch (action.type) {
         case ON_LOGIN:
             Store.setState({

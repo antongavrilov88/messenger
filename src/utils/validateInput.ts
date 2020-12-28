@@ -13,6 +13,7 @@ function validateInput(elem: HTMLInputElement) {
         case 'display_name':
         case 'login':
         case 'message':
+        case 'title':
             status = value.length > 4 ? true : false
             break;
         case 'password':

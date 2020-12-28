@@ -2,7 +2,7 @@ import { ON_CHANGE_PASSWORD, ON_LOAD } from '../actions.js'
 import state from '../state/State.js'
 import Store from '../utils/Store.js'
 
-export const userStateUpdater = async (action: any) => {
+export const userStateUpdater = (action: any) => {
     switch (action.type) {
         case ON_LOAD:
             Store.setState({

@@ -4,18 +4,19 @@ import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
 import { tpl } from './template.js'
-import { chatListCTX, chatCTX, modalCTX  } from './contexts.js'
+import { chatListCTX, chatCTX, modalCTX, modalFormCTX  } from './contexts.js'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 import { ChatPageProps } from './types.js'
 import { render } from '../../utils/render.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
-import { ON_LOAD, ON_LOGOUT } from '../../actions.js'
+import { ON_LOAD, ON_LOGOUT, ON_CREATE_CHAT, ON_CHAT_LIST_LOAD } from '../../actions.js'
 import { router } from '../index.js'
 import { API } from '../../API/mainAPI.js'
 import { openModal } from '../../utils/manageModal.js'
 import Modal from '../../components/modal/Modal.js'
+import formHandler from '../../utils/manageForm.js'
 
 let store = Store.getInstance()
 
@@ -25,6 +26,12 @@ const updateState = {
     },
     onLoad: (payload: any) => {
         stateUpdater({type: ON_LOAD, payload: payload})
+    },
+    onCreateChat: (payload: any) => {
+        stateUpdater({type: ON_CREATE_CHAT, payload: payload})
+    },
+    onChatListLoad: (payload: any) => {
+        stateUpdater({type: ON_CHAT_LIST_LOAD, payload: payload})
     }
 }
 
@@ -63,18 +70,24 @@ class ChatPage extends Block<ChatPageProps> {
                 new ChatBlock(chatCTX)
             ]
             }),
-            auth: store.state.auth
+            auth: store.state.auth,
+            chats: store.state.chats
         })
     }
 
     componentDidMount() {
         updateState.onLoad(API.auth.getUser())
+        updateState.onChatListLoad(API.chat.getChatList())
     }
 
     componentDidUpdate() {
         if (this.props.auth && this.props.auth.status === false) {        
         router.go('/')
         }
+        if (this.props.chats && this.props.chats.chatCreated === true) {
+            updateState.onChatListLoad(API.chat.getChatList())
+        }
+        console.log(this.props.chats)
         return true
     }
     
@@ -105,6 +118,20 @@ class ChatPage extends Block<ChatPageProps> {
         newChatButton?.addEventListener('click', function() {
             openModal('newChatModal')
         })
+
+        let formH: EventListener = this.formHandler
+        let form: Node | null = document.getElementById(modalFormCTX.id)
+        if ( form ) {
+            form.addEventListener('submit', formH)      
+        }
+    }
+    
+    formHandler = (ev: Event) => {
+        ev.preventDefault()
+        let res = formHandler(modalFormCTX.id)
+        if (res) {
+            updateState.onCreateChat(API.chat.createChat(res))
+        }
     }
 
     render() {

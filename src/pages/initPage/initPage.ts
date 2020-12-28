@@ -43,15 +43,14 @@ class InitPage extends Block<InitPageProps> {
     }
     
     componentDidUpdate() {
-        if (this.props.auth && this.props.auth.status === true) {        
-            console.log('КОРЕНЬ ЗЛА', this.props.auth.status)
+        if (this.props.auth && this.props.auth.status === true) {
         router.go('/chats')
         }
         if (this.props.auth && this.props.auth.status === false) {        
         router.go('/signin')
         }
         return true
-    }    
+    }
     
     hide() {
         let root = document.querySelector('.app')!
