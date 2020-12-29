@@ -1,11 +1,11 @@
 export const tpl = `<div class="chat-list__container__list">
-                        <ul>
+                        <ul id="chatList">
                         {{#each chats}}
                             <li class="chat-list__item" id="{{this.id}}">
                                 <hr>
                                 <div class="chat-list__item__avatar__container">
                                 </div>
-                                <span class="chat-list__item__chat-author__container">{{this.title}}   <span>&#10008;</span></span>
+                                <span class="chat-list__item__chat-author__container">{{this.title}}   <span class="chat-list__delete_button">&#10008;</span></span>
                                 <div class="chat-list__item__last-message__container">
                                 {{this.created_by}}
                                 </div>

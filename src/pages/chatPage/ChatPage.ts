@@ -4,14 +4,14 @@ import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
 import { tpl } from './template.js'
-import { chatListCTX, chatCTX, modalCTX, modalFormCTX  } from './contexts.js'
+import { chatListCTX, chatCTX, modalCTX, modalFormCTX } from './contexts.js'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
 import ChatBlock from '../../components/chatBlock/ChatBlock.js'
 import { ChatPageProps } from './types.js'
 import { render } from '../../utils/render.js'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater.js'
-import { ON_LOAD, ON_LOGOUT, ON_CREATE_CHAT, ON_CHAT_LIST_LOAD } from '../../actions.js'
+import { ON_LOAD, ON_LOGOUT, ON_CREATE_CHAT, ON_CHAT_LIST_LOAD, ON_DELETE_CHAT } from '../../actions.js'
 import { router } from '../index.js'
 import { API } from '../../API/mainAPI.js'
 import { openModal } from '../../utils/manageModal.js'
@@ -32,6 +32,9 @@ const updateState = {
     },
     onChatListLoad: (payload: any) => {
         stateUpdater({type: ON_CHAT_LIST_LOAD, payload: payload})
+    },
+    onDeleteChat: (payload: any) => {
+        stateUpdater({type: ON_DELETE_CHAT, payload: payload})
     }
 }
 
@@ -124,6 +127,16 @@ class ChatPage extends Block<ChatPageProps> {
         if ( form ) {
             form.addEventListener('submit', formH)      
         }
+
+        let chatList = document.getElementById('chatList')
+        chatList?.addEventListener('click', function(e) {
+            let target = e.target
+            let deleteButton: HTMLElement = target as HTMLElement
+            if ( deleteButton && deleteButton.classList.contains('chat-list__delete_button') ) {
+                let chatToDeleteID = Number(deleteButton.closest('li')?.id)
+                updateState.onDeleteChat(API.chat.deleteChat(chatToDeleteID))
+            }
+        })
     }
     
     formHandler = (ev: Event) => {
