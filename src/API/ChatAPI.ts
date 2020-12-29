@@ -10,8 +10,8 @@ class ChatAPI extends BaseAPI {
     getChatList() {
         return chatAPIInstance.get('')
     }
-    deleteChat(id: Number) {
-        return chatAPIInstance.delete('', {data: JSON.stringify({chatId: id})})
+    deleteChat(obj: object) {
+        return chatAPIInstance.delete('', obj)
     }
 }
 export default ChatAPI
