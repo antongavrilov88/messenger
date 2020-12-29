@@ -14,7 +14,8 @@ export const chatStateUpdater = (action: any) => {
         case ON_CHAT_LIST_LOAD:
             Store.setState({
                 chats: {
-                    data: action.payload.reason ? [] : action.payload,
+                    ...state,
+                    data: action.payload.reason ? null : action.payload,
                     chatCreated: false
                 }
             })

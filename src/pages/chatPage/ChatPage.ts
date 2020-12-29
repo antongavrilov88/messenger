@@ -63,7 +63,7 @@ class ChatPage extends Block<ChatPageProps> {
                     content: [                    
                         new ChatListHeaderLink(chatListCTX.header),
                         new ChatListHeaderSearch(chatListCTX),
-                        new ChatList(chatListCTX),
+                        new ChatList({...chatListCTX, chats: store.state.chats.data}),
                         new Modal(modalCTX)
                     ]
                 }),
@@ -71,7 +71,7 @@ class ChatPage extends Block<ChatPageProps> {
             ]
             }),
             auth: store.state.auth,
-            chats: store.state.chats
+            chats: store.state.chats ? store.state.chats.data : null
         })
     }
 
