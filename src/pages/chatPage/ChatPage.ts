@@ -71,7 +71,7 @@ class ChatPage extends Block<ChatPageProps> {
             ]
             }),
             auth: store.state.auth,
-            chats: store.state.chats ? store.state.chats.data : null
+            chats: store.state.chats ? store.state.chats : null
         })
     }
 
@@ -84,7 +84,7 @@ class ChatPage extends Block<ChatPageProps> {
         if (this.props.auth && this.props.auth.status === false) {        
         router.go('/')
         }
-        if (this.props.chats && this.props.chats.chatCreated === true) {
+        if (this.props.chats && this.props.chats.listUpdated === true) {
             updateState.onChatListLoad(API.chat.getChatList())
         }
         console.log(this.props.chats)

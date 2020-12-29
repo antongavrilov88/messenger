@@ -3,7 +3,7 @@ export const chatStore = (state: any) => {
         ...state,
         chats: {
             data: [],
-            chatCreated: false
+            listUpdated: false
         }
         
     }
