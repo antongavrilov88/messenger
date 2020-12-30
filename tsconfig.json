@@ -18,9 +18,10 @@
     "experimentalDecorators": true,
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
-    "rootDir": "src",
+    "rootDir": "../",
     "outDir": "static/assets/js"
   },
+  "include": ["src", "test"],
   "exclude": [
     "node_modules"
   ]
