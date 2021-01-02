@@ -1,9 +1,9 @@
-import formHandler from '../../utils/manageForm.js'
-import funcString  from '../../utils/funcString.js'
-import Button from '../../components/button/Button.js'
-import validateInput from '../../utils/validateInput.js'
-import Form from '../../components/form/Form.js'
-import { closeModal } from '../../utils/manageModal.js'
+import formHandler from '../../utils/manageForm'
+import funcString  from '../../utils/funcString'
+import Button from '../../components/button/Button'
+import validateInput from '../../utils/validateInput'
+import Form from '../../components/form/Form'
+import { closeModal } from '../../utils/manageModal'
 
 const createButtonCTX = {
     className: 'form__submit-button',

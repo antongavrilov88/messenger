@@ -10,9 +10,6 @@ class Button extends Block<ButtonProps> {
         return this.compile(tpl, {
             className: this.props.className,
             type: this.props.type,
-            e: this.props.e,
-            // handler: this.props.handler,
-            // handler: '',
             text: this.props.text,
             id: this.props.id
         })

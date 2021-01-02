@@ -4,7 +4,6 @@ import { chatStateUpdater } from './chatStateUpdater'
 
 const payloadHandler = async (payload:any) => {
     let result = await payload.then( (result: any) => result )
-    console.log( result )
     try {
         return JSON.parse(result.response)
     } catch (error) {

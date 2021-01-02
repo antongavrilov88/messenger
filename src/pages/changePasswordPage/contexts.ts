@@ -1,7 +1,7 @@
-import formHandler from '../../utils/manageForm.js'
-import funcString  from '../../utils/funcString.js'
-import validateInput from '../../utils/validateInput.js'
-import Button from '../../components/button/Button.js'
+import formHandler from '../../utils/manageForm'
+import funcString  from '../../utils/funcString'
+import validateInput from '../../utils/validateInput'
+import Button from '../../components/button/Button'
 
 
 export const submitButtonCTX = {
