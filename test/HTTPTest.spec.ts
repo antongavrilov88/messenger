@@ -51,6 +51,20 @@ describe('Should test auth requests', () => {
                 expect(result.response).to.eql('OK')
             }
         })
+        it('Check login with wrong data', async () => {        
+            const request = http('/auth').post('/signin', {data: '{"login":"HBHUsjkdhds","password":"jdhsbvjhsdbv"}'})
+            let result: XMLHttpRequest
+            let error: any
+            try {
+                result = await request
+            } catch (err) {
+                error = err
+            } finally {
+                expect(result.response).to.eql( '{"reason":"Login or password is incorrect"}' )
+                expect(result.status).to.equal(401)
+                expect(error).to.be.undefined;
+            }        
+        })
     })
 
     describe('Should test get-user request', () => {
