@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ChatListProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ChatListProps } from './types'
 
 class ChatList extends Block<ChatListProps> {
     constructor(props: ChatListProps) {

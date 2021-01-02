@@ -1,4 +1,4 @@
-import validateForm from './validateForm.js'
+import validateForm from './validateForm'
 
 function formHandler(formID: string): object | void {
   let form: any = document.getElementById(formID) 

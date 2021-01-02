@@ -1,5 +1,5 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
 import { ChatListBlockProps } from './types'
 
 class ChatListBlock extends Block<ChatListBlockProps> {

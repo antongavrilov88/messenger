@@ -1,6 +1,6 @@
-import { ON_CHANGE_PASSWORD, ON_LOAD } from '../actions.js'
-import state from '../state/State.js'
-import Store from '../utils/Store.js'
+import { ON_CHANGE_PASSWORD, ON_LOAD } from '../actions'
+import state from '../state/State'
+import Store from '../utils/Store'
 
 export const userStateUpdater = (action: any) => {
     switch (action.type) {

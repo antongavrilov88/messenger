@@ -1,5 +1,5 @@
-import { isEqualPrim } from './isEqual.js'
-import { render } from './render.js'
+import { isEqualPrim } from './isEqual'
+import { render } from './render'
 
 class Route {
   _pathname: string

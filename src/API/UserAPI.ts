@@ -1,5 +1,5 @@
-import HTTP from '../utils/HTTP.js'
-import { BaseAPI } from '../utils/BaseAPI.js'
+import HTTP from '../utils/HTTP'
+import { BaseAPI } from '../utils/BaseAPI'
 
 const userAPIInstance = new HTTP('/user')
 

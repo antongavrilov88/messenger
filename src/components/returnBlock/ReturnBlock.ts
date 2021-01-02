@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ReturnBlockProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ReturnBlockProps } from './types'
 
 class ReturnBlock extends Block<ReturnBlockProps> {
     constructor(props: ReturnBlockProps) {

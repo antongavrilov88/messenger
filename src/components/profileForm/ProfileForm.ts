@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ProfileFormProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ProfileFormProps } from './types'
 
 class ProfileForm extends Block<ProfileFormProps> {
     constructor(props: ProfileFormProps) {

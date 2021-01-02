@@ -1,4 +1,4 @@
-import EventBus from './eventBus.js'
+import EventBus from './eventBus'
 
 class Store {
     protected static _instance: Store

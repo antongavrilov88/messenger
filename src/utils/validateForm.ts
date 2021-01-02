@@ -1,4 +1,4 @@
-import validateInput  from './validateInput.js'
+import validateInput  from './validateInput'
 
 function validateForm( form: HTMLFormElement ) {
     let myForm = form

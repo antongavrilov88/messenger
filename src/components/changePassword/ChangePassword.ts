@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ChangePasswordProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ChangePasswordProps } from './types'
 
 class ChangePassword extends Block<ChangePasswordProps> {
     constructor(props: ChangePasswordProps) {

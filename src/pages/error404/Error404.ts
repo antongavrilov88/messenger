@@ -1,10 +1,10 @@
-import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace.js'
-import { errorCTX } from './contexts.js'
-import Block from '../../utils/Block.js'
-import Error from '../../components/error/Error.js'
-import { tpl } from './template.js'
-import { ErrorProps } from './types.js'
-import { render } from '../../utils/render.js'
+import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace'
+import { errorCTX } from './contexts'
+import Block from '../../utils/Block'
+import Error from '../../components/error/Error'
+import { tpl } from './template'
+import { ErrorProps } from './types'
+import { render } from '../../utils/render'
 
 class Error404 extends Block<ErrorProps> {
     constructor() {

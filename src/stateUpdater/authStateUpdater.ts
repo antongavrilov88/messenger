@@ -1,5 +1,5 @@
-import { ON_LOGIN, ON_LOGOUT,ON_LOAD } from '../actions.js'
-import Store from '../utils/Store.js'
+import { ON_LOGIN, ON_LOGOUT,ON_LOAD } from '../actions'
+import Store from '../utils/Store'
 
 export const authStateUpdater = (action: any) => {
     switch (action.type) {

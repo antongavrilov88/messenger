@@ -1,7 +1,7 @@
-import Store from '../utils/Store.js'
-import { userStore, } from './userState.js'
-import { authStore } from './authState.js'
-import { chatStore } from './chatState.js'
+import Store from '../utils/Store'
+import { userStore, } from './userState'
+import { authStore } from './authState'
+import { chatStore } from './chatState'
 
 let store = Store.getInstance()
 let state = store.state

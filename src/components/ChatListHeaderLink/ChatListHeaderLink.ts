@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ChatListHeaderLinkProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ChatListHeaderLinkProps } from './types'
 
 class ChatListHeaderLink extends Block<ChatListHeaderLinkProps> {
     constructor(props: ChatListHeaderLinkProps) {

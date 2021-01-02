@@ -1,6 +1,6 @@
-import AuthAPI from "./AuthAPI.js";
-import UserAPI from "./UserAPI.js";
-import ChatAPI from './ChatAPI.js'
+import AuthAPI from "./AuthAPI";
+import UserAPI from "./UserAPI";
+import ChatAPI from './ChatAPI';
 
 export const API = {
     user: new UserAPI,

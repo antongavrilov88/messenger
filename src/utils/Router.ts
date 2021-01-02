@@ -1,4 +1,4 @@
-import Route from "./Rout.js";
+import Route from "./Rout";
 
 class Router {
     _rootQuery: any;

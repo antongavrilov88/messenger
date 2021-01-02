@@ -1,5 +1,5 @@
-import { ON_CREATE_CHAT, ON_CHAT_LIST_LOAD, ON_DELETE_CHAT } from '../actions.js'
-import Store from '../utils/Store.js'
+import { ON_CREATE_CHAT, ON_CHAT_LIST_LOAD, ON_DELETE_CHAT } from '../actions'
+import Store from '../utils/Store'
 
 export const chatStateUpdater = (action: any) => {
     switch (action.type) {

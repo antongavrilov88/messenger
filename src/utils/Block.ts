@@ -1,4 +1,4 @@
-import EventBus from './eventBus.js'
+import EventBus from './eventBus'
 declare let window:any;
 declare global {
   interface Window {

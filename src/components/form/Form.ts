@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { FormProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { FormProps } from './types'
 
 class Form extends Block<FormProps> {
   constructor(props: FormProps) {

@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { UnauthWorkSpaceProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { UnauthWorkSpaceProps } from './types'
 
 class UnauthWorkSpace extends Block<UnauthWorkSpaceProps> {
     constructor(props: UnauthWorkSpaceProps) {

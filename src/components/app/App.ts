@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { AppProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { AppProps } from './types'
 
 class App extends Block<AppProps> {
     constructor(props: AppProps) {
