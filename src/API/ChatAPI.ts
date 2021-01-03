@@ -10,6 +10,9 @@ class ChatAPI extends BaseAPI {
     getChatList() {
         return chatAPIInstance.get('')
     }
+    getChatUsers(id: number) {
+        return chatAPIInstance.get(`/${id}/users`)
+    }
     deleteChat(obj: object) {
         return chatAPIInstance.delete('', obj)
     }

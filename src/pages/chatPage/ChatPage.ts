@@ -11,7 +11,12 @@ import { ChatPageProps } from './types'
 import { render } from '../../utils/render'
 import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater'
-import { ON_LOAD, ON_LOGOUT, ON_CREATE_CHAT, ON_CHAT_LIST_LOAD, ON_DELETE_CHAT } from '../../actions'
+import { ON_LOAD,
+         ON_LOGOUT,
+         ON_CREATE_CHAT,
+         ON_CHAT_LIST_LOAD,
+         ON_DELETE_CHAT,
+        ON_CHAT_USERS_LIST_LOAD } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
 import { openModal } from '../../utils/manageModal'
@@ -37,6 +42,9 @@ const updateState = {
     },
     onDeleteChat: (payload: any) => {
         stateUpdater({ type: ON_DELETE_CHAT, payload: payload })
+    },
+    onChatUsersListLoad: (payload: any) => {
+        stateUpdater({ type: ON_CHAT_USERS_LIST_LOAD, payload: payload })
     }
 }
 
@@ -55,8 +63,6 @@ class ChatPage extends Block<ChatPageProps> {
                     new ChatBlock(chatCTX),
                     new ChatUsersListBlock({
                         content: [
-                            // new ChatListHeaderLink(chatListCTX.header),
-                            // new ChatListHeaderSearch(chatListCTX),
                             new ChatUsersList(chatUsersListCTX)
                         ]
                     })
@@ -81,8 +87,6 @@ class ChatPage extends Block<ChatPageProps> {
                     new ChatBlock(chatCTX),
                     new ChatUsersListBlock({
                         content: [
-                            // new ChatListHeaderLink(chatListCTX.header),
-                            // new ChatListHeaderSearch(chatListCTX),
                             new ChatUsersList(chatUsersListCTX)
                         ]
                     }),
@@ -90,7 +94,8 @@ class ChatPage extends Block<ChatPageProps> {
                 ]
             }),
             auth: store.state.auth,
-            chats: store.state.chats ? store.state.chats : null
+            chats: store.state.chats ? store.state.chats : null,
+            chat: store.state.chat ? store.state.chat : null,
         })
     }
 
@@ -106,7 +111,7 @@ class ChatPage extends Block<ChatPageProps> {
         if (this.props.chats && this.props.chats.listUpdated === true) {
             updateState.onChatListLoad(API.chat.getChatList())
         }
-        console.log(this.props.chats)
+        console.log(this.props.chats, this.props.chat)
         return true
     }
 
@@ -147,13 +152,20 @@ class ChatPage extends Block<ChatPageProps> {
         let chatList = document.getElementById('chatList')
         chatList?.addEventListener('click', function (e) {
             let target = e.target
+            console.log('клик проходит')
             let deleteButton: HTMLElement = target as HTMLElement
             if (deleteButton && deleteButton.classList.contains('chat-list__delete_button')) {
                 let chatToDeleteID = Number(deleteButton.closest('li')?.id)
                 let obj = { data: JSON.stringify({ chatId: chatToDeleteID }) }
                 updateState.onDeleteChat(API.chat.deleteChat(obj))
             }
+            let chatListItem: HTMLElement = target as HTMLElement
+            if (chatListItem && chatListItem.classList.contains('chat-list__item') && !chatListItem.classList.contains('chat-list__delete_button')) {
+                let chatToGetUsersID = Number(chatListItem.id)
+                updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
+            }
         })
+
     }
 
     formHandler = (ev: Event) => {

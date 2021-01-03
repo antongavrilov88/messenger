@@ -1,4 +1,7 @@
-import { ON_CREATE_CHAT, ON_CHAT_LIST_LOAD, ON_DELETE_CHAT } from '../actions'
+import { ON_CREATE_CHAT,
+         ON_CHAT_LIST_LOAD,
+         ON_DELETE_CHAT,
+        ON_CHAT_USERS_LIST_LOAD } from '../actions'
 import Store from '../utils/Store'
 
 export const chatStateUpdater = (action: any) => {
@@ -18,6 +21,13 @@ export const chatStateUpdater = (action: any) => {
                 }
             })
             break
+        case ON_CHAT_USERS_LIST_LOAD:
+            Store.setState({
+                chat: {
+                    users: action.payload.reason ? null : action.payload,
+                    listUpdated: false
+                }
+            })
         default:
             break;
     }
