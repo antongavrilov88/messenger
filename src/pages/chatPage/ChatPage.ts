@@ -4,7 +4,7 @@ import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace'
 import { tpl } from './template'
-import { chatListCTX, chatCTX, modalCTX, modalFormCTX } from './contexts'
+import { chatListCTX, chatCTX, newChatModalCTX, modalFormCTX, chatUsersListCTX } from './contexts'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock'
 import ChatBlock from '../../components/chatBlock/ChatBlock'
 import { ChatPageProps } from './types'
@@ -17,24 +17,26 @@ import { API } from '../../API/mainAPI'
 import { openModal } from '../../utils/manageModal'
 import Modal from '../../components/modal/Modal'
 import formHandler from '../../utils/manageForm'
+import ChatUsersListBlock from '../../components/chatUsersListBlock/ChatUsersListBlock'
+import ChatUsersList from '../../components/chatUsersList/ChatUsersList'
 
 let store = Store.getInstance()
 
 const updateState = {
     onLogout: (payload: any) => {
-        stateUpdater({type: ON_LOGOUT, payload: payload})
+        stateUpdater({ type: ON_LOGOUT, payload: payload })
     },
     onLoad: (payload: any) => {
-        stateUpdater({type: ON_LOAD, payload: payload})
+        stateUpdater({ type: ON_LOAD, payload: payload })
     },
     onCreateChat: (payload: any) => {
-        stateUpdater({type: ON_CREATE_CHAT, payload: payload})
+        stateUpdater({ type: ON_CREATE_CHAT, payload: payload })
     },
     onChatListLoad: (payload: any) => {
-        stateUpdater({type: ON_CHAT_LIST_LOAD, payload: payload})
+        stateUpdater({ type: ON_CHAT_LIST_LOAD, payload: payload })
     },
     onDeleteChat: (payload: any) => {
-        stateUpdater({type: ON_DELETE_CHAT, payload: payload})
+        stateUpdater({ type: ON_DELETE_CHAT, payload: payload })
     }
 }
 
@@ -44,14 +46,21 @@ class ChatPage extends Block<ChatPageProps> {
             content: new AuthWorkSpace({
                 content: [
                     new ChatListBlock({
-                    content: [                    
-                        new ChatListHeaderLink(chatListCTX.header),
-                        new ChatListHeaderSearch(chatListCTX),
-                        new ChatList(chatListCTX)
-                    ]
-                }),
-                new ChatBlock(chatCTX)
-            ]
+                        content: [
+                            new ChatListHeaderLink(chatListCTX.header),
+                            new ChatListHeaderSearch(chatListCTX),
+                            new ChatList(chatListCTX)
+                        ]
+                    }),
+                    new ChatBlock(chatCTX),
+                    new ChatUsersListBlock({
+                        content: [
+                            // new ChatListHeaderLink(chatListCTX.header),
+                            // new ChatListHeaderSearch(chatListCTX),
+                            new ChatUsersList(chatUsersListCTX)
+                        ]
+                    })
+                ]   
             })
         })
         this.stateToProps = this.stateToProps.bind(this)
@@ -63,15 +72,22 @@ class ChatPage extends Block<ChatPageProps> {
             content: new AuthWorkSpace({
                 content: [
                     new ChatListBlock({
-                    content: [                    
-                        new ChatListHeaderLink(chatListCTX.header),
-                        new ChatListHeaderSearch(chatListCTX),
-                        new ChatList({...chatListCTX, chats: store.state.chats.data}),
-                        new Modal(modalCTX)
-                    ]
-                }),
-                new ChatBlock(chatCTX)
-            ]
+                        content: [
+                            new ChatListHeaderLink(chatListCTX.header),
+                            new ChatListHeaderSearch(chatListCTX),
+                            new ChatList({ ...chatListCTX, chats: store.state.chats.data })
+                        ]
+                    }),
+                    new ChatBlock(chatCTX),
+                    new ChatUsersListBlock({
+                        content: [
+                            // new ChatListHeaderLink(chatListCTX.header),
+                            // new ChatListHeaderSearch(chatListCTX),
+                            new ChatUsersList(chatUsersListCTX)
+                        ]
+                    }),
+                    new Modal(newChatModalCTX)
+                ]
             }),
             auth: store.state.auth,
             chats: store.state.chats ? store.state.chats : null
@@ -84,8 +100,8 @@ class ChatPage extends Block<ChatPageProps> {
     }
 
     componentDidUpdate() {
-        if (this.props.auth && this.props.auth.status === false) {        
-        router.go('/')
+        if (this.props.auth && this.props.auth.status === false) {
+            router.go('/')
         }
         if (this.props.chats && this.props.chats.listUpdated === true) {
             updateState.onChatListLoad(API.chat.getChatList())
@@ -93,11 +109,11 @@ class ChatPage extends Block<ChatPageProps> {
         console.log(this.props.chats)
         return true
     }
-    
+
     show() {
         let root = document.querySelector('.app')!
         root.innerHTML = ''
-        render( '.app', this )        
+        render('.app', this)
     }
 
     hide() {
@@ -108,38 +124,38 @@ class ChatPage extends Block<ChatPageProps> {
     addListeners() {
 
         let logoutButton = document.getElementById('logoutHeaderButton')
-        logoutButton?.addEventListener('click', function() {
+        logoutButton?.addEventListener('click', function () {
             updateState.onLogout(API.auth.logout())
         })
 
         let profileButton = document.getElementById('profileHeaderButton')
-        profileButton?.addEventListener('click', function() {
+        profileButton?.addEventListener('click', function () {
             router.go('/profile')
         })
 
         let newChatButton = document.getElementById('newChatCreateButton')
-        newChatButton?.addEventListener('click', function() {
+        newChatButton?.addEventListener('click', function () {
             openModal('newChatModal')
         })
 
         let formH: EventListener = this.formHandler
         let form: Node | null = document.getElementById(modalFormCTX.id)
-        if ( form ) {
-            form.addEventListener('submit', formH)      
+        if (form) {
+            form.addEventListener('submit', formH)
         }
 
         let chatList = document.getElementById('chatList')
-        chatList?.addEventListener('click', function(e) {
+        chatList?.addEventListener('click', function (e) {
             let target = e.target
             let deleteButton: HTMLElement = target as HTMLElement
-            if ( deleteButton && deleteButton.classList.contains('chat-list__delete_button') ) {
+            if (deleteButton && deleteButton.classList.contains('chat-list__delete_button')) {
                 let chatToDeleteID = Number(deleteButton.closest('li')?.id)
-                let obj = {data: JSON.stringify({chatId: chatToDeleteID})}
+                let obj = { data: JSON.stringify({ chatId: chatToDeleteID }) }
                 updateState.onDeleteChat(API.chat.deleteChat(obj))
             }
         })
     }
-    
+
     formHandler = (ev: Event) => {
         ev.preventDefault()
         let res = formHandler(modalFormCTX.id)

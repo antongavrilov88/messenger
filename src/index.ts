@@ -12,7 +12,7 @@ router
     .use('/', InitPage)
     .use('/signin', SignIn)
     .use('/signup', SignUp)
-    .use('/chats', ChatPage)
+    .use('/chat', ChatPage)
     .use('/changepassword', ChangePasswordPage)
     .use('/profile', Profile)
     .start()

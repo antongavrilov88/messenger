@@ -9,7 +9,6 @@ const createButtonCTX = {
     className: 'form__submit-button',
     type: 'submit',
     e: 'click',
-    // handler: funcString(formHandler, 'this.parentNode'),
     text: 'Новый чат',
     id: 'newChatCreateButton'
 }
@@ -20,33 +19,7 @@ export const chatListCTX = {
         linkUrl: './profile.html',
         linkText: 'Профиль'
     },
-    chats: [
-        {
-            name: 'Денис',
-            message: 'Как дела?',
-            time: '15:22'
-        },
-        {
-            name: 'Мама',
-            message: 'Что делаешь?',
-            time: '15:22'
-        },
-        {
-            name: 'Папа',
-            message: 'Привет!',
-            time: '15:22'
-        },
-        {
-            name: 'Драконы комитет',
-            message: 'Норм в цедлом',
-            time: '15:22'
-        },
-        {
-            name: 'Друг',
-            message: 'Как дела?',
-            time: '15:22'
-        }
-    ],
+    chats: [],
     createButton: new Button(createButtonCTX)
 }
 export const chatCTX = {
@@ -104,8 +77,42 @@ export const modalFormCTX = {
         }
     ]
 }
-export const modalCTX = {
+export const newChatModalCTX = {
     id: 'newChatModal',
     modalHandler: funcString(closeModal, "'changeAvatarModal'"),
     form: new Form(modalFormCTX)
+}
+
+const addUserButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    text: 'Добавить поьзователя',
+    id: 'newChatCreateButton'
+}
+
+export const chatUsersListCTX = {
+    header: {
+        // logoutText: 'Выйти',
+        // linkUrl: './profile.html',
+        // linkText: 'Профиль'
+    },
+    users: [
+        {
+            name: 'Денис',
+        },
+        {
+            name: 'Мама',
+        },
+        {
+            name: 'Папа',
+        },
+        {
+            name: 'Драконы комитет',
+        },
+        {
+            name: 'Друг',
+        }
+    ],
+    addUserButton: new Button(addUserButtonCTX)
 }
