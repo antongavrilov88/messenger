@@ -170,8 +170,8 @@ class ChatPage extends Block<ChatPageProps> {
                 updateState.onDeleteChat(API.chat.deleteChat(obj))
             }
             let chatListItem: HTMLElement = target as HTMLElement
-            if (chatListItem && chatListItem.parentElement?.id === 'chatList') {
-                let chatToGetUsersID = Number(chatListItem.id)
+            if (chatListItem && !chatListItem.classList.contains('chat-list__delete_button')) {
+                let chatToGetUsersID = Number(chatListItem.closest('li')?.id)
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
             }
         })
