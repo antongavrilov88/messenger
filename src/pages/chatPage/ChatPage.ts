@@ -87,7 +87,7 @@ class ChatPage extends Block<ChatPageProps> {
                     new ChatBlock(chatCTX),
                     new ChatUsersListBlock({
                         content: [
-                            new ChatUsersList(chatUsersListCTX)
+                            new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, })
                         ]
                     }),
                     new Modal(newChatModalCTX)
@@ -160,7 +160,7 @@ class ChatPage extends Block<ChatPageProps> {
                 updateState.onDeleteChat(API.chat.deleteChat(obj))
             }
             let chatListItem: HTMLElement = target as HTMLElement
-            if (chatListItem && chatListItem.classList.contains('chat-list__item') && !chatListItem.classList.contains('chat-list__delete_button')) {
+            if (chatListItem && chatListItem.parentElement?.id === 'chatList') {
                 let chatToGetUsersID = Number(chatListItem.id)
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
             }

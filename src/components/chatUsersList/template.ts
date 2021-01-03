@@ -6,7 +6,7 @@ export const tpl = `<div class="chat-users-list__container__list">
                                 <hr>
                                 <div class="chat-users-list__item__avatar__container">
                                 </div>
-                                <span class="chat-users-list__item__chat-author__container">{{this.name}}   <span class="chat-list__delete_button">&#10008;</span></span>
+                                <span class="chat-users-list__item__chat-author__container">{{this.first_name}}  {{this.second_name}} <span class="chat-list__delete_button">&#10008;</span></span>
                                 <div class="chat-users-list__item__last-message__container">
                                 {{this.created_by}}
                                 </div>
