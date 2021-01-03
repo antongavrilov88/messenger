@@ -4,7 +4,11 @@ import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHead
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch'
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace'
 import { tpl } from './template'
-import { chatListCTX, chatCTX, newChatModalCTX, modalFormCTX, chatUsersListCTX } from './contexts'
+import { chatListCTX, chatCTX,
+         newChatModalCTX,
+         modalFormCTX,
+         chatUsersListCTX,
+         addChatUserModalCTX } from './contexts'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock'
 import ChatBlock from '../../components/chatBlock/ChatBlock'
 import { ChatPageProps } from './types'
@@ -90,7 +94,8 @@ class ChatPage extends Block<ChatPageProps> {
                             new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, })
                         ]
                     }),
-                    new Modal(newChatModalCTX)
+                    new Modal(newChatModalCTX),
+                    new Modal(addChatUserModalCTX)
                 ]
             }),
             auth: store.state.auth,
@@ -141,6 +146,11 @@ class ChatPage extends Block<ChatPageProps> {
         let newChatButton = document.getElementById('newChatCreateButton')
         newChatButton?.addEventListener('click', function () {
             openModal('newChatModal')
+        })
+
+        let newChatUserAddButton = document.getElementById('newChatUserAddButton')
+        newChatUserAddButton?.addEventListener('click', function() {
+            openModal('newChatUserModal')
         })
 
         let formH: EventListener = this.formHandler

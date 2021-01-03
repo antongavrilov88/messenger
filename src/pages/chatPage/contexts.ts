@@ -85,10 +85,10 @@ export const newChatModalCTX = {
 
 const addUserButtonCTX = {
     className: 'form__submit-button',
-    type: 'submit',
+    type: '',
     e: 'click',
     text: 'Добавить поьзователя',
-    id: 'newChatCreateButton'
+    id: 'newChatUserAddButton'
 }
 
 export const chatUsersListCTX = {
@@ -115,4 +115,41 @@ export const chatUsersListCTX = {
         }
     ],
     addUserButton: new Button(addUserButtonCTX)
+}
+
+
+
+export const addChatUserModalButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Новый пользователь',
+    id: 'newChatUserSubmitButton'
+}
+
+export const addChatUserModalFormCTX = {
+    className: "form-container",
+    id: "newChatUser",
+    title: "Добавить пользоваетеля",
+    submitButton: new Button(addChatUserModalButtonCTX),
+    inputs: [
+        {
+            lable: {
+                className: "form__input__name",
+                title: "Пользователь"
+            },
+            input: {
+                className: "form__input",
+                type: "text",
+                name: "title"
+            },
+            handler: funcString(validateInput, 'this')
+        }
+    ]
+}
+export const addChatUserModalCTX = {
+    id: 'newChatUserModal',
+    modalHandler: funcString(closeModal, "'changeAvatarModal'"),
+    form: new Form(addChatUserModalFormCTX)
 }
