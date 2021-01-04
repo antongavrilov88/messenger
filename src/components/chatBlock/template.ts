@@ -1,5 +1,5 @@
 export const tpl = `<div class="chat-container">
-                            <div class="chat-container__interlocutor-container">
+                            <div class="chat-container__interlocutor-container" id='changeChatAvatarButton'>
                                 <div class="chat-container__interlocutor-container__avatar-container">
                                 </div>
                             <div class="chat-container__interlocutor-container__name">

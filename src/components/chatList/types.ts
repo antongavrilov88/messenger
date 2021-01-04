@@ -4,6 +4,7 @@ export type ChatProps = {
     name: string;
     message: string;
     time: string;
+    avatar: string;
 }
 
 export type ChatListProps = {
