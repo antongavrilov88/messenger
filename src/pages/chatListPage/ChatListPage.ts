@@ -16,12 +16,12 @@ class ChatListPage extends Block<ChatListPageProps> {
             content: new AuthWorkSpace({
                 content: [
                     new ChatListBlock({
-                    content: [                    
-                        new ChatListHeaderLink(chatListCTX.header),
-                        new ChatListHeaderSearch(chatListCTX),
-                        new ChatList(chatListCTX)
-                    ]
-                }),
+                            content: [
+                                new ChatListHeaderLink(chatListCTX.header),
+                                new ChatListHeaderSearch(chatListCTX),
+                                new ChatList(chatListCTX)
+                            ]
+                        }),
                 new DummyChatBlock(dummyChatCTX)
             ]
             })
