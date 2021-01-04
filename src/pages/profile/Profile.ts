@@ -1,5 +1,5 @@
 import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace'
-import { profileCTX, returnBlockCTX, modalCTX } from './contexts'
+import { profileCTX, returnBlockCTX, modalCTX, modalFormCTX } from './contexts'
 import Block from '../../utils/Block'
 import { tpl } from './template'
 import ProfileForm from '../../components/profileForm/ProfileForm'
@@ -55,15 +55,12 @@ class Profile extends Block<ProfileProps> {
         })
     }
 
-    avatarFormHandler = (ev: Event) => {
-        ev.preventDefault()
-        let form = document.getElementById(modalCTX.id)!
-        let myForm: HTMLFormElement = form as HTMLFormElement
-        let res = new FormData(myForm)
-        if (res) {
-            updateState.onAvavtarChange(API.user.updateAvatar(res))
+    avatarFormHandler = (event: Event) => {
+            event.preventDefault();
+            const myUserForm: HTMLFormElement = document.getElementById(modalFormCTX.id) as HTMLFormElement
+            const form = new FormData(myUserForm);
+            updateState.onAvavtarChange(API.user.updateAvatar({data: form}))
         }
-    }
 
     profileFormHandler = (ev: Event) => {
         ev.preventDefault()
@@ -84,16 +81,15 @@ class Profile extends Block<ProfileProps> {
     }
 
     addListeners() {
-        let formH: EventListener = this.avatarFormHandler
-        let form: Node = document.getElementById('avatarForm')!
-        form.addEventListener('submit', formH)
+        const myUserForm: HTMLFormElement = document.getElementById(modalFormCTX.id) as HTMLFormElement
+        myUserForm.addEventListener('submit', this.avatarFormHandler);
 
-        let formH2: EventListener = this.profileFormHandler
-        let form2: Node = document.getElementById('changeProfileForm')!
-        form2.addEventListener('submit', formH2)
+        let profileFormHandler: EventListener = this.profileFormHandler
+        let profileForm: Node = document.getElementById('changeProfileForm')!
+        profileForm.addEventListener('submit', profileFormHandler)
 
         let avatarButton = document.getElementById('avatarOpenModalButton')
-        avatarButton?.addEventListener('click', function() {
+        avatarButton?.addEventListener('click', function () {
             openModal('avatarForm')
         })
     }

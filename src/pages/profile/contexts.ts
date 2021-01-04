@@ -72,13 +72,13 @@ export const modalButtonCTX = {
     type: 'submit',
     e: 'click',
     handler: funcString(formHandler, 'this.parentNode'),
-    text: 'Новый чат' ,
+    text: 'Изменить аватар' ,
     id: 'modalSubmitButtonCTX'
 }
 
 export const modalFormCTX = {
     className: "form-container",
-    id: "loginForm",
+    id: "avatarChangeForm",
     title: "Изменить аватар",
     submitButton: new Button(modalButtonCTX),
     inputs: [

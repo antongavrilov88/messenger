@@ -9,7 +9,7 @@ export const tpl = `<div class="profile-info__wrapper">
                                             <span class="profile-info-container__property">{{this.label}}</span>
                                         </div>
                                         <div class="profile-info-container__item__prop-input">
-                                            <input class="change-input" type="{{this.inputType}}" name="{{this.inputName}}" placeholder="{{this.inputPlaceholder}}" onfocus="{{this.handler}}" onblur="{{this.handler}}"/>
+                                            <input id="avatarInput" class="change-input" type="{{this.inputType}}" name="{{this.inputName}}" placeholder="{{this.inputPlaceholder}}"/>
                                         </div>
                                     </div>
                                     <hr />

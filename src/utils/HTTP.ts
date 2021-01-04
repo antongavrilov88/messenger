@@ -37,15 +37,15 @@ class HTTP {
     }
 
     request(url: string, options: Options): Promise<XMLHttpRequest> {
-        const { method, data, headers } = options;
+        let { method, data, headers } = options;
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open(method, `${this._baseURL}${this._subURL}${url}`);
             
             if (headers) {
-                xhr.setRequestHeader('Content-Type', 'multipart/form-data;')
+                data = options.data
             } else {
-                xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+                xhr.setRequestHeader('Content-Type', 'application/json')
             }
             
             xhr.withCredentials = true
