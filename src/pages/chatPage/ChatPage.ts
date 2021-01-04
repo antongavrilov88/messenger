@@ -21,7 +21,9 @@ import { ON_LOAD,
          ON_DELETE_CHAT,
          ON_CHAT_USERS_LIST_LOAD,
          ON_SEARCH_USER_BY_LOGIN,
-         ON_ADD_CHAT_USER } from '../../actions'
+         ON_ADD_CHAT_USER,
+         ON_DELETE_USER_FROM_CHAT
+        } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
 import { openModal } from '../../utils/manageModal'
@@ -58,6 +60,9 @@ const updateState = {
     },
     onAddChatUser: (payload: any) => {
         stateUpdater({ type: ON_ADD_CHAT_USER, payload: payload })
+    },
+    onDeleteChatUser: (payload: any) => {
+        stateUpdater({ type: ON_DELETE_USER_FROM_CHAT, payload: payload })
     }
 }
 
@@ -198,14 +203,25 @@ class ChatPage extends Block<ChatPageProps> {
             addUserForm.addEventListener('submit', addUserHandler)
         }
 
-        let usersToAddList = document.getElementById('usersToAddList')
-        usersToAddList?.addEventListener('click', function (e) {
+        let chatUsersList = document.getElementById('usersToAddList')
+        chatUsersList?.addEventListener('click', function (e) {
             let target = e.target
             let addButton: HTMLElement = target as HTMLElement
             if (addButton && addButton.classList.contains('chat-list__add-user_button')) {
                 let userToAddID = Number(addButton.closest('li')?.id)
                 let obj = { data: JSON.stringify({ users: [Number(userToAddID)], chatId: Number(store.state.currentChat) }) }
                 updateState.onAddChatUser(API.chat.addChatUser(obj))
+            }
+        })
+
+        let usersToAddList = document.getElementById('chatUsersList')
+        usersToAddList?.addEventListener('click', function (e) {
+            let target = e.target
+            let deleteButton: HTMLElement = target as HTMLElement
+            if (deleteButton && deleteButton.classList.contains('chat-users-list__delete_button')) {
+                let userToDeleteID = Number(deleteButton.closest('li')?.id)
+                let obj = { data: JSON.stringify({ users: [Number(userToDeleteID)], chatId: Number(store.state.currentChat) }) }
+                updateState.onDeleteChatUser(API.chat.deleteChatUser(obj))
             }
         })
     }

@@ -3,7 +3,9 @@ import { ON_CREATE_CHAT,
          ON_DELETE_CHAT,
          ON_CHAT_USERS_LIST_LOAD, 
          ON_SEARCH_USER_BY_LOGIN,
-         ON_ADD_CHAT_USER} from '../actions'
+         ON_ADD_CHAT_USER,
+         ON_DELETE_USER_FROM_CHAT
+        } from '../actions'
 import Store from '../utils/Store'
 
 export const chatStateUpdater = (action: any) => {
@@ -39,6 +41,7 @@ export const chatStateUpdater = (action: any) => {
             })
             break
         case ON_ADD_CHAT_USER:
+        case ON_DELETE_USER_FROM_CHAT:
             Store.setState({
                 chat: {
                     listUpdated: true
