@@ -11,7 +11,7 @@ class ChatUsersList extends Block<ChatUsersListProps> {
         return this.compile(tpl, {
             users: this.props.users,
             usersToAdd: this.props.usersToAdd,
-            addUserButton: this.props.addUserButton.render()
+            addUserButton: this.props.addUserButton.render(),
         })
     }
 }

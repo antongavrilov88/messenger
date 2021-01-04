@@ -53,7 +53,6 @@ class Profile extends Block<ProfileProps> {
                 ],
             }),
             profileUpdated: store.state.userProfileUpdated ? store.state.userProfileUpdated : false,
-            // user: store.state.user ? store.state.user : null
         })
     }
 
@@ -84,7 +83,7 @@ class Profile extends Block<ProfileProps> {
 
     addListeners() {
         const myUserForm: HTMLFormElement = document.getElementById(modalFormCTX.id) as HTMLFormElement
-        myUserForm.addEventListener('submit', this.avatarFormHandler);
+        myUserForm?.addEventListener('submit', this.avatarFormHandler);
 
         let profileFormHandler: EventListener = this.profileFormHandler
         let profileForm: Node = document.getElementById('changeProfileForm')!

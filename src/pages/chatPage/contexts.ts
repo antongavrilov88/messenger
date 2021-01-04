@@ -101,18 +101,23 @@ export const chatUsersListCTX = {
     users: [
         {
             name: 'Денис',
+            avatarPath: ''
         },
         {
             name: 'Мама',
+            avatarPath: ''
         },
         {
             name: 'Папа',
+            avatarPath: ''
         },
         {
             name: 'Драконы комитет',
+            avatarPath: ''
         },
         {
             name: 'Друг',
+            avatarPath: ''
         }
     ],
     addUserButton: new Button(addUserButtonCTX)
