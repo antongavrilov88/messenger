@@ -7,14 +7,17 @@ class ChatAPI extends BaseAPI {
     createChat(obj: object) {
         return chatAPIInstance.post('', obj)
     }
+    deleteChat(obj: object) {
+        return chatAPIInstance.delete('', obj)
+    }
     getChatList() {
         return chatAPIInstance.get('')
     }
     getChatUsers(id: number) {
         return chatAPIInstance.get(`/${id}/users`)
     }
-    deleteChat(obj: object) {
-        return chatAPIInstance.delete('', obj)
+    addChatUser(obj: object) {
+        return chatAPIInstance.put('/users', obj)
     }
 }
 export default ChatAPI

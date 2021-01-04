@@ -105,6 +105,16 @@
     border: 1px solid rgba(81, 203, 238, 1);
 }
 
+.chat-list__add-user_button {
+    position: relative;
+}
+
+.chat-list__add-user_button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
 .chat-users-list__item__avatar__container {
     position: relative;
     width: 47px;

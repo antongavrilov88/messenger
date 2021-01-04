@@ -13,7 +13,6 @@ import ChatListBlock from '../../components/chatListBlock/ChatListBlock'
 import ChatBlock from '../../components/chatBlock/ChatBlock'
 import { ChatPageProps } from './types'
 import { render } from '../../utils/render'
-// import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater'
 import { ON_LOAD,
          ON_LOGOUT,
@@ -21,7 +20,8 @@ import { ON_LOAD,
          ON_CHAT_LIST_LOAD,
          ON_DELETE_CHAT,
          ON_CHAT_USERS_LIST_LOAD,
-         ON_SEARCH_USER_BY_LOGIN } from '../../actions'
+         ON_SEARCH_USER_BY_LOGIN,
+         ON_ADD_CHAT_USER } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
 import { openModal } from '../../utils/manageModal'
@@ -30,6 +30,7 @@ import formHandler from '../../utils/manageForm'
 import ChatUsersListBlock from '../../components/chatUsersListBlock/ChatUsersListBlock'
 import ChatUsersList from '../../components/chatUsersList/ChatUsersList'
 import { store } from '../../state/State'
+import Store from '../../utils/Store'
 
 // let store = Store.getInstance()
 
@@ -54,6 +55,9 @@ const updateState = {
     },
     onSearchUserByLogin: (payload: any) => {
         stateUpdater({ type: ON_SEARCH_USER_BY_LOGIN, payload: payload })
+    },
+    onAddChatUser: (payload: any) => {
+        stateUpdater({ type: ON_ADD_CHAT_USER, payload: payload })
     }
 }
 
@@ -124,6 +128,10 @@ class ChatPage extends Block<ChatPageProps> {
             updateState.onChatListLoad(API.chat.getChatList())
             return false
         }
+        if (this.props.chat && this.props.chat.listUpdated === true) {
+            updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat))
+            return false
+        }
         console.log(this.props ? this.props : null)
         return true
     }
@@ -179,6 +187,7 @@ class ChatPage extends Block<ChatPageProps> {
             let chatListItem: HTMLElement = target as HTMLElement
             if (chatListItem && !chatListItem.classList.contains('chat-list__delete_button')) {
                 let chatToGetUsersID = Number(chatListItem.closest('li')?.id)
+                Store.setState({currentChat: chatToGetUsersID})
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
             }
         })
@@ -188,6 +197,17 @@ class ChatPage extends Block<ChatPageProps> {
         if (addUserForm) {
             addUserForm.addEventListener('submit', addUserHandler)
         }
+
+        let usersToAddList = document.getElementById('usersToAddList')
+        usersToAddList?.addEventListener('click', function (e) {
+            let target = e.target
+            let addButton: HTMLElement = target as HTMLElement
+            if (addButton && addButton.classList.contains('chat-list__add-user_button')) {
+                let userToAddID = Number(addButton.closest('li')?.id)
+                let obj = { data: JSON.stringify({ users: [Number(userToAddID)], chatId: Number(store.state.currentChat) }) }
+                updateState.onAddChatUser(API.chat.addChatUser(obj))
+            }
+        })
     }
 
     formHandler = (ev: Event) => {
