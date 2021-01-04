@@ -6,7 +6,7 @@
       "es6",
       "DOM"
     ],
-    "target": "es5",
+    "target": "ES6",
     "module": "es2015",
     "noImplicitAny": true,
     "noUnusedLocals": true,
