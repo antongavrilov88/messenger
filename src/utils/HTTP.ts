@@ -61,7 +61,6 @@ class HTTP {
             if (method === METHOD.GET || !data) {
                 xhr.send();
             } else {
-                console.log(data)
                 xhr.send(data);
             }
         });

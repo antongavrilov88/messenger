@@ -13,14 +13,15 @@ import ChatListBlock from '../../components/chatListBlock/ChatListBlock'
 import ChatBlock from '../../components/chatBlock/ChatBlock'
 import { ChatPageProps } from './types'
 import { render } from '../../utils/render'
-import Store from '../../utils/Store.js'
+// import Store from '../../utils/Store.js'
 import { stateUpdater } from '../../stateUpdater/stateUpdater'
 import { ON_LOAD,
          ON_LOGOUT,
          ON_CREATE_CHAT,
          ON_CHAT_LIST_LOAD,
          ON_DELETE_CHAT,
-        ON_CHAT_USERS_LIST_LOAD } from '../../actions'
+         ON_CHAT_USERS_LIST_LOAD,
+         ON_SEARCH_USER_BY_LOGIN } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
 import { openModal } from '../../utils/manageModal'
@@ -28,8 +29,9 @@ import Modal from '../../components/modal/Modal'
 import formHandler from '../../utils/manageForm'
 import ChatUsersListBlock from '../../components/chatUsersListBlock/ChatUsersListBlock'
 import ChatUsersList from '../../components/chatUsersList/ChatUsersList'
+import { store } from '../../state/State'
 
-let store = Store.getInstance()
+// let store = Store.getInstance()
 
 const updateState = {
     onLogout: (payload: any) => {
@@ -49,6 +51,9 @@ const updateState = {
     },
     onChatUsersListLoad: (payload: any) => {
         stateUpdater({ type: ON_CHAT_USERS_LIST_LOAD, payload: payload })
+    },
+    onSearchUserByLogin: (payload: any) => {
+        stateUpdater({ type: ON_SEARCH_USER_BY_LOGIN, payload: payload })
     }
 }
 
@@ -85,13 +90,13 @@ class ChatPage extends Block<ChatPageProps> {
                         content: [
                             new ChatListHeaderLink(chatListCTX.header),
                             new ChatListHeaderSearch(chatListCTX),
-                            new ChatList({ ...chatListCTX, chats: store.state.chats.data })
+                            new ChatList({ ...chatListCTX, chats: store.state.chats ? store.state.chats.data : null })
                         ]
                     }),
                     new ChatBlock(chatCTX),
                     new ChatUsersListBlock({
                         content: [
-                            new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, })
+                            new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : [] })
                         ]
                     }),
                     new Modal(newChatModalCTX),
@@ -101,6 +106,7 @@ class ChatPage extends Block<ChatPageProps> {
             auth: store.state.auth,
             chats: store.state.chats ? store.state.chats : null,
             chat: store.state.chat ? store.state.chat : null,
+            usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : []
         })
     }
 
@@ -112,11 +118,13 @@ class ChatPage extends Block<ChatPageProps> {
     componentDidUpdate() {
         if (this.props.auth && this.props.auth.status === false) {
             router.go('/')
+            return true
         }
         if (this.props.chats && this.props.chats.listUpdated === true) {
             updateState.onChatListLoad(API.chat.getChatList())
+            return false
         }
-        console.log(this.props.chats, this.props.chat)
+        console.log(this.props ? this.props : null)
         return true
     }
 
@@ -162,7 +170,6 @@ class ChatPage extends Block<ChatPageProps> {
         let chatList = document.getElementById('chatList')
         chatList?.addEventListener('click', function (e) {
             let target = e.target
-            console.log('клик проходит')
             let deleteButton: HTMLElement = target as HTMLElement
             if (deleteButton && deleteButton.classList.contains('chat-list__delete_button')) {
                 let chatToDeleteID = Number(deleteButton.closest('li')?.id)
@@ -176,6 +183,11 @@ class ChatPage extends Block<ChatPageProps> {
             }
         })
 
+        let addUserHandler: EventListener = this.addUserFormHandler
+        let addUserForm: Node | null = document.getElementById('newChatUser')
+        if (addUserForm) {
+            addUserForm.addEventListener('submit', addUserHandler)
+        }
     }
 
     formHandler = (ev: Event) => {
@@ -183,6 +195,14 @@ class ChatPage extends Block<ChatPageProps> {
         let res = formHandler(modalFormCTX.id)
         if (res) {
             updateState.onCreateChat(API.chat.createChat(res))
+        }
+    }
+
+    addUserFormHandler = (ev: Event) => {
+        ev.preventDefault()
+        let res = formHandler(addChatUserModalCTX.id)
+        if (res) {
+            updateState.onSearchUserByLogin(API.user.searchUser(res))
         }
     }
 

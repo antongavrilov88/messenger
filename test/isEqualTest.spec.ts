@@ -18,4 +18,7 @@ describe('Should say if two objects are equal', () => {
     it('Compare two equal objects with arrays and null. Should return "true"', () => {
         expect(isEqual({a: 'test', b: [1,2,{c: 'test', f:{g: [5,6,null]}}]}, {a: 'test', b: [1,2,{c: 'test', f:{g: [5,6,null]}}]})).to.be.true
     })
+    it('Compare two not equal objects. Should return false', () => {
+        expect(isEqual({auth: {status: true}}, {auth: {status: false}})).to.be.false
+    })
 })

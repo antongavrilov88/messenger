@@ -3,7 +3,7 @@ import { userStore, } from './userState'
 import { authStore } from './authState'
 import { chatStore } from './chatState'
 
-let store = Store.getInstance()
+export const store = Store.getInstance()
 let state = store.state
 
 state = userStore(state)

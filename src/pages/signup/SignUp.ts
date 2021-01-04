@@ -44,6 +44,14 @@ class SignUp extends Block<SignUpProps> {
         })
     }
 
+    addListeners() {  
+        let formH: EventListener = this.formHandler
+        let form: Node | null = document.getElementById('signUpForm')
+        if ( form ) {
+        form.addEventListener('submit', formH)      
+        }
+    }
+
     formHandler = (ev: Event) => {
         ev.preventDefault()
         let res = formHandler(formCTX.id)

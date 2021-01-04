@@ -10,12 +10,10 @@ function formHandler(formID: string): object | void {
   }
 
   if (validateForm(form)) {
-    console.log(requestObject)
 
     const obj = {
       data: JSON.stringify(requestObject)
     }
-    console.log( obj )
     return obj
   }
 }

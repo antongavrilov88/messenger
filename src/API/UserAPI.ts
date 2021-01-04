@@ -13,5 +13,8 @@ class UserAPI extends BaseAPI {
     updateProfile(obj: object) {
         return userAPIInstance.put('/profile', obj)
     }
+    searchUser(obj: object) {
+        return userAPIInstance.post('/search', obj)
+    }
 }
 export default UserAPI
