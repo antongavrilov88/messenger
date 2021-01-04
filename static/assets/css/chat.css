@@ -116,7 +116,8 @@
 }
 
 .chat-users-list__item__avatar__container {
-    align-self: center;
+    /* align-self: center; */
+    position: relative;
     width: 47px;
     height: 47px;
     left: 10px;
