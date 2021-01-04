@@ -17,7 +17,7 @@ import { openModal } from '../../utils/manageModal'
 let store = Store.getInstance()
 
 const updateState = {
-    onAvavtarChange: (payload: any) => {
+    onAvatarChange: (payload: any) => {
         stateUpdater({ type: ON_AVATAR_CHANGE, payload: payload })
     },
     onLoad: (payload: any) => {
@@ -34,7 +34,7 @@ class Profile extends Block<ProfileProps> {
             content: new AuthWorkspace({
                 content: [
                     new ReturnBlock(returnBlockCTX),
-                    new ProfileForm(profileCTX),
+                    new ProfileForm({...profileCTX, avatarPath: store.state.user ? store.state.user.avatar : ''}),
                     new Modal(modalCTX)
                 ],
             })
@@ -48,10 +48,12 @@ class Profile extends Block<ProfileProps> {
             content: new AuthWorkspace({
                 content: [
                     new ReturnBlock(returnBlockCTX),
-                    new ProfileForm(profileCTX),
+                    new ProfileForm({...profileCTX, avatarPath: store.state.user ? store.state.user.avatar : ''}),
                     new Modal(modalCTX)
                 ],
-            })
+            }),
+            profileUpdated: store.state.userProfileUpdated ? store.state.userProfileUpdated : false,
+            // user: store.state.user ? store.state.user : null
         })
     }
 
@@ -59,7 +61,7 @@ class Profile extends Block<ProfileProps> {
             event.preventDefault();
             const myUserForm: HTMLFormElement = document.getElementById(modalFormCTX.id) as HTMLFormElement
             const form = new FormData(myUserForm);
-            updateState.onAvavtarChange(API.user.updateAvatar({data: form}))
+            updateState.onAvatarChange(API.user.updateAvatar({data: form}))
         }
 
     profileFormHandler = (ev: Event) => {
@@ -96,6 +98,13 @@ class Profile extends Block<ProfileProps> {
 
     componentDidMount() {
         updateState.onLoad(API.auth.getUser())
+    }
+
+    componentDidUpdate() {
+        if ( this.props.profileUpdated && this.props.profileUpdated === true ) {
+            updateState.onLoad(API.auth.getUser())
+        }
+        return true
     }
 
     render() {

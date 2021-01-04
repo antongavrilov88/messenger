@@ -12,7 +12,8 @@ class ProfileForm extends Block<ProfileFormProps> {
             id: this.props.id,
             profileData: this.props.profileData,
             formHandler: this.props.formHandler,
-            modalHandler: this.props.modalHandler
+            modalHandler: this.props.modalHandler,
+            avatarPath: this.props.avatarPath
         })
     }
 }

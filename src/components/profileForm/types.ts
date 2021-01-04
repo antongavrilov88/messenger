@@ -11,4 +11,5 @@ export type ProfileFormProps = {
     profileData: ProfileInputProps[]
     formHandler: string;
     modalHandler: string;
+    avatarPath: string;
 }
