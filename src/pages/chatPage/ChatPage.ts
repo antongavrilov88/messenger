@@ -8,7 +8,10 @@ import { chatListCTX, chatCTX,
          newChatModalCTX,
          modalFormCTX,
          chatUsersListCTX,
-         addChatUserModalCTX } from './contexts'
+         addChatUserModalCTX,
+         changeChatAvatarModalCTX,
+         changeChatAvatarModalFormCTX
+        } from './contexts'
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock'
 import ChatBlock from '../../components/chatBlock/ChatBlock'
 import { ChatPageProps } from './types'
@@ -22,7 +25,8 @@ import { ON_LOAD,
          ON_CHAT_USERS_LIST_LOAD,
          ON_SEARCH_USER_BY_LOGIN,
          ON_ADD_CHAT_USER,
-         ON_DELETE_USER_FROM_CHAT
+         ON_DELETE_USER_FROM_CHAT,
+         ON_CHANGE_CHAT_AVATAR
         } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
@@ -33,8 +37,6 @@ import ChatUsersListBlock from '../../components/chatUsersListBlock/ChatUsersLis
 import ChatUsersList from '../../components/chatUsersList/ChatUsersList'
 import { store } from '../../state/State'
 import Store from '../../utils/Store'
-
-// let store = Store.getInstance()
 
 const updateState = {
     onLogout: (payload: any) => {
@@ -63,6 +65,9 @@ const updateState = {
     },
     onDeleteChatUser: (payload: any) => {
         stateUpdater({ type: ON_DELETE_USER_FROM_CHAT, payload: payload })
+    },
+    onChangeChatAvatar: (payload: any) => {
+        stateUpdater({ type: ON_CHANGE_CHAT_AVATAR, payload: payload })
     }
 }
 
@@ -109,7 +114,8 @@ class ChatPage extends Block<ChatPageProps> {
                         ]
                     }),
                     new Modal(newChatModalCTX),
-                    new Modal(addChatUserModalCTX)
+                    new Modal(addChatUserModalCTX),
+                    new Modal(changeChatAvatarModalCTX)
                 ]
             }),
             auth: store.state.auth,
@@ -225,6 +231,22 @@ class ChatPage extends Block<ChatPageProps> {
                 updateState.onDeleteChatUser(API.chat.deleteChatUser(obj))
             }
         })
+
+        let changeChatAvatarButton = document.getElementById('changeChatAvatarButton')
+        changeChatAvatarButton?.addEventListener('click', function() {
+            openModal('changeChatAvatar')
+        })
+
+        let changeChatAvatarForm = document.getElementById('changeChatAvatarForm')
+        changeChatAvatarForm?.addEventListener('submit', this.chatAvatarFormHandler)
+    }
+
+    chatAvatarFormHandler = (event: Event) => {
+        event.preventDefault();
+        const myUserForm: HTMLFormElement = document.getElementById(changeChatAvatarModalFormCTX.id) as HTMLFormElement
+        const form = new FormData(myUserForm);
+        form.append('chatId', store.state.currentChat.id)
+        updateState.onChangeChatAvatar(API.chat.updateAvatar({data: form}))
     }
 
     formHandler = (ev: Event) => {
