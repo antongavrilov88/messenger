@@ -7,7 +7,3 @@
 
 [build]
   publish = "static"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
