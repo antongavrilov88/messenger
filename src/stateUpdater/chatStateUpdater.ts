@@ -4,7 +4,8 @@ import { ON_CREATE_CHAT,
          ON_CHAT_USERS_LIST_LOAD, 
          ON_SEARCH_USER_BY_LOGIN,
          ON_ADD_CHAT_USER,
-         ON_DELETE_USER_FROM_CHAT
+         ON_DELETE_USER_FROM_CHAT,
+         ON_CHANGE_CHAT_AVATAR
         } from '../actions'
 import Store from '../utils/Store'
 
@@ -12,6 +13,7 @@ export const chatStateUpdater = (action: any) => {
     switch (action.type) {
         case ON_CREATE_CHAT:
         case ON_DELETE_CHAT:
+        case ON_CHANGE_CHAT_AVATAR:
             Store.setState({
                 chats: {
                     listUpdated: true
