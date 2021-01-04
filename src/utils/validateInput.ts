@@ -1,3 +1,9 @@
+declare global {
+    interface Window {
+      validateInput: (input: HTMLInputElement) => boolean
+    }
+  }
+
 function validateInput(elem: HTMLInputElement) {
     let value = elem.value
     let status = false
@@ -7,6 +13,7 @@ function validateInput(elem: HTMLInputElement) {
         case 'display_name':
         case 'login':
         case 'message':
+        case 'title':
             status = value.length > 4 ? true : false
             break;
         case 'password':
@@ -32,4 +39,5 @@ function validateInput(elem: HTMLInputElement) {
       status ? elem.classList.add( 'form__input_valid' ) : elem.classList.add( 'form__input_invalid' )
       return status
 }
+window.validateInput = validateInput
 export default validateInput

@@ -1,8 +1,6 @@
-import Block from '../../utils/Block.js'
-import formHandler from '../../utils/manageForm.js'
-import validateInput from '../../utils/validateInput.js'
-import { tpl } from './template.js'
-import { ChatBlockProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ChatBlockProps } from './types'
 
 
 class ChatBlock extends Block<ChatBlockProps> {
@@ -10,15 +8,12 @@ class ChatBlock extends Block<ChatBlockProps> {
         super("div", props)
     }
 
-    componentDidMount() {
-        window.formHandler = formHandler
-        window.validateInput = validateInput
-    }
 
     render() {
         return this.compile(tpl, {
             messages:  this.props.messages,
-            messageHandler: this.props.messageHandler
+            messageHandler: this.props.messageHandler,
+            currentChatTitle: this.props.currentChatTitle
         })
     }
 }

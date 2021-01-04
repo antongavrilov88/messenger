@@ -7,7 +7,9 @@ export type ProfileInputProps = {
 }
 
 export type ProfileFormProps = {
+    id: string
     profileData: ProfileInputProps[]
     formHandler: string;
     modalHandler: string;
+    avatarPath: string;
 }

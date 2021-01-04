@@ -1,4 +1,4 @@
-import EventBus from './eventBus.js'
+import EventBus from './eventBus'
 declare let window:any;
 declare global {
   interface Window {
@@ -11,7 +11,8 @@ abstract class Block<Props> {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
     FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    FLOW_RENDER: "flow:render",
+    FLOW_ADD_LISTENERS: "flow:add-listeners"
   };
   _element: null | Element = null;
   _meta: { tagName: string; props?: object; };
@@ -35,6 +36,7 @@ abstract class Block<Props> {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+    eventBus.on(Block.EVENTS.FLOW_ADD_LISTENERS, this.addListeners.bind(this));
   }
   _createResources() {
     const { tagName } = this._meta;
@@ -55,8 +57,9 @@ abstract class Block<Props> {
       return;
     }
     this._render();
+    this.eventBus().emit(Block.EVENTS.FLOW_ADD_LISTENERS)
   }
-  componentDidUpdate(oldProps: any, newProps: any) {
+  componentDidUpdate(oldProps: any = null, newProps: any = null) {
     return true;
   }
   setProps = (nextProps: any) => {
@@ -102,5 +105,7 @@ abstract class Block<Props> {
   _createDocumentElement(tagName: any) {
     return document.createElement(tagName);
   }
+  show() {}
+  addListeners() {}
 }
 export default Block

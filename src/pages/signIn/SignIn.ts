@@ -1,9 +1,27 @@
-import UnauthWorkspace from '../../components/unauthWorkSpace/UnauthWorkspace.js'
-import { formCTX } from './contexts.js'
-import Block from '../../utils/Block.js'
-import Form from '../../components/form/Form.js'
-import { tpl } from './template.js'
-import { SignInProps } from './types.js'
+import UnauthWorkspace from '../../components/unauthWorkSpace/UnauthWorkspace'
+import { formCTX } from './contexts'
+import Block from '../../utils/Block'
+import Form from '../../components/form/Form'
+import { tpl } from './template'
+import { SignInProps } from './types'
+import Store from '../../utils/Store'
+import { stateUpdater } from '../../stateUpdater/stateUpdater'
+import { ON_LOGIN, ON_LOAD } from '../../actions'
+import formHandler from '../../utils/manageForm'
+import { render } from '../../utils/render'
+import { router } from '../../index'
+import { API } from '../../API/mainAPI'
+
+let store = Store.getInstance()
+
+const updateState = {
+    onLogin: (payload: any) => {
+        stateUpdater({type: ON_LOGIN, payload: payload})
+    },
+    onLoad: (payload: any) => {
+        stateUpdater({ type: ON_LOAD, payload: payload })
+    }
+}
 
 class SignIn extends Block<SignInProps> {
     constructor() {
@@ -12,23 +30,57 @@ class SignIn extends Block<SignInProps> {
                 content: new Form(formCTX)
             })
         })
+        this.stateToProps = this.stateToProps.bind(this)
+        store.subscribe(this.stateToProps)
     }
+
+    stateToProps(state: any) {
+        this.setProps({
+            content: new UnauthWorkspace({
+                content: new Form({ ...formCTX })
+            }),
+            auth: store.state.auth
+        })
+    }
+
+    formHandler = (ev: Event) => {
+        ev.preventDefault()
+        let res = formHandler(formCTX.id)
+        if (res) {
+            updateState.onLogin(API.auth.signIn(res))
+        }
+    }
+    show() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
+        render(".app", this)
+        let formH: EventListener = this.formHandler
+        let form: Node = document.getElementById('loginForm')!
+        form.addEventListener('submit', formH) 
+    }
+
+    addListeners() {  
+        let formH: EventListener = this.formHandler
+        let form: Node | null = document.getElementById('loginForm')
+        if ( form ) {
+        form.addEventListener('submit', formH)      
+        }
+    }
+
+    hide() {
+        let root = document.querySelector('.app')!
+        root.innerHTML = ''
+    }
+    
     componentDidMount() {
-        setTimeout(() => {
-            this.setProps({content: new UnauthWorkspace({
-                content: new Form( {...formCTX, title: 'Так могу'} )
-            })})
-        }, 1000);
-        setTimeout(() => {
-            this.setProps({content: new UnauthWorkspace({
-                content: new Form( {...formCTX, title: 'И так могу'} )
-            })})
-        }, 2500);
-        setTimeout(() => {
-            this.setProps({content: new UnauthWorkspace({
-                content: new Form( {...formCTX, title: 'Авторизация'} )
-            })})
-        }, 4000);
+        updateState.onLoad(API.auth.getUser())
+    }
+
+    componentDidUpdate() {
+        if (this.props.auth && this.props.auth.status === true) {        
+        router.go('/chats')
+        }
+        return true
     }
 
     render() {

@@ -6,5 +6,6 @@ export type MessageProps = {
 
 export type ChatBlockProps = {
     messages: MessageProps[],
-    messageHandler: string
+    messageHandler: string,
+    currentChatTitle: string
 }

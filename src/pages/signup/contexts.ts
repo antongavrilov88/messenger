@@ -1,7 +1,7 @@
-import formHandler from '../../utils/manageForm.js'
-import funcString  from '../../utils/funcString.js'
-import validateInput from '../../utils/validateInput.js'
-import Button from '../../components/button/Button.js'
+import formHandler from '../../utils/manageForm'
+import funcString  from '../../utils/funcString'
+import validateInput from '../../utils/validateInput'
+import Button from '../../components/button/Button'
 
 
 export const submitButtonCTX = {
@@ -9,7 +9,8 @@ export const submitButtonCTX = {
     type: '',
     e: 'click',
     handler: funcString(formHandler, 'this.parentNode'),
-    text: 'Регистрация'
+    text: 'Регистрация',
+    id: 'signUpButton'
 }
 export const formCTX = {
     className: "form-container",

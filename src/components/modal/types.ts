@@ -1,3 +1,6 @@
+import Form from "../form/Form";
+
 export type ModalProps = {
-    modalHandler: string;
+    id: string
+    form: Form
 }

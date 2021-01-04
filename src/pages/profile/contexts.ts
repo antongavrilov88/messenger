@@ -1,9 +1,21 @@
-import formHandler from '../../utils/manageForm.js'
-import funcString  from '../../utils/funcString.js'
-import validateInput from '../../utils/validateInput.js'
-import { closeModal, openModal } from '../../utils/manageModal.js'
+import formHandler from '../../utils/manageForm'
+import funcString  from '../../utils/funcString'
+import validateInput from '../../utils/validateInput'
+import { closeModal } from '../../utils/manageModal'
+import Form from '../../components/form/Form'
+import Button from '../../components/button/Button'
+
+export const submitButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Изменить',
+    id: 'submitProfilFormButton'
+}
 
 export const profileCTX = {
+    id: 'changeProfileForm',
     profileData: [
         {
             label: 'Имя',
@@ -49,11 +61,44 @@ export const profileCTX = {
         }
     ],
     formHandler: funcString(formHandler, 'this.parentNode'),
-    modalHandler: funcString(openModal, "'changeAvatarModal'")
+    modalHandler: ''
 }
 export const returnBlockCTX = {
     linkUrl: "./chat.html"
 }
+
+export const modalButtonCTX = {
+    className: 'form__submit-button',
+    type: 'submit',
+    e: 'click',
+    handler: funcString(formHandler, 'this.parentNode'),
+    text: 'Изменить аватар' ,
+    id: 'modalSubmitButtonCTX'
+}
+
+export const modalFormCTX = {
+    className: "form-container",
+    id: "avatarChangeForm",
+    title: "Изменить аватар",
+    submitButton: new Button(modalButtonCTX),
+    inputs: [
+        {
+            lable: {
+                className: "form__input__name",
+                title: "Выберите файл"
+            },
+            input: {
+                className: "form__input",
+                type: "file",
+                name: "avatar"
+            },
+            handler: funcString(validateInput, 'this')
+        }
+    ]
+}
+
 export const modalCTX = {
-    modalHandler: funcString(closeModal, "'changeAvatarModal'")
+    id: 'avatarForm',
+    modalHandler: funcString(closeModal, "'changeAvatarModal'"),
+    form: new Form(modalFormCTX)
 }

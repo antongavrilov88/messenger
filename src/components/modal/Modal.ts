@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ModalProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ModalProps } from './types'
 
 class Modal extends Block<ModalProps> {
     constructor(props: ModalProps) {
@@ -9,7 +9,8 @@ class Modal extends Block<ModalProps> {
 
     render() {
         return this.compile(tpl, {
-            modalHandler: this.props.modalHandler
+            id: this.props.id,
+            form: this.props.form.render()
         })
     }
 }

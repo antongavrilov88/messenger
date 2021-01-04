@@ -1,6 +1,6 @@
-import Block from '../../utils/Block.js'
-import { tpl } from './template.js'
-import { ErrorProps } from './types.js'
+import Block from '../../utils/Block'
+import { tpl } from './template'
+import { ErrorProps } from './types'
 
 class Error extends Block<ErrorProps> {
     constructor(props: ErrorProps) {

@@ -1,13 +1,14 @@
-import ChatList from '../../components/chatList/ChatList.js'
-import Block from '../../utils/Block.js'
-import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHeaderLink.js'
-import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch.js'
-import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace.js'
-import { tpl } from './template.js'
-import { chatListCTX, dummyChatCTX  } from './contexts.js'
-import ChatListBlock from '../../components/chatListBlock/ChatListBlock.js'
-import DummyChatBlock from '../../components/dummyChatBlock/DummyChatBlock.js'
-import { ChatListPageProps } from './types.js'
+import ChatList from '../../components/chatList/ChatList'
+import Block from '../../utils/Block'
+import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHeaderLink'
+import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch'
+import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace'
+import { tpl } from './template'
+import { chatListCTX, dummyChatCTX  } from './contexts'
+import ChatListBlock from '../../components/chatListBlock/ChatListBlock'
+import DummyChatBlock from '../../components/dummyChatBlock/DummyChatBlock'
+import { ChatListPageProps } from './types'
+import { render } from '../../utils/render'
 
 class ChatListPage extends Block<ChatListPageProps> {
     constructor() {
@@ -25,6 +26,10 @@ class ChatListPage extends Block<ChatListPageProps> {
             ]
             })
         })
+    }
+
+    show() {
+        render( '.app', this )
     }
 
     render() {

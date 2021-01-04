@@ -1,15 +1,20 @@
-import validateForm from './validateForm.js'
+import validateForm from './validateForm'
 
-function formHandler( form: HTMLFormElement ): void {
-    let myForm = form
-    myForm.onsubmit = function( e ): void {
-        e.preventDefault()
-        let myFormFields = myForm.getElementsByTagName( "input" )
-        let requestObject: {[formFieldName: string]: string} = {}
-        for ( let i = 0; i < myFormFields.length; i++ ) {
-            requestObject[`${myFormFields[i].name}`] = myFormFields[i].value
-        }
-        validateForm(form) ? console.log( requestObject ) : console.log( 'Invalid values' )
+function formHandler(formID: string): object | void {
+  let form: any = document.getElementById(formID) 
+
+  let myFormFields = form.getElementsByTagName("input")
+  let requestObject: { [formFieldName: string]: string } = {}
+  for (let i = 0; i < myFormFields.length; i++) {
+    requestObject[`${myFormFields[i].name}`] = myFormFields[i].value
+  }
+
+  if (validateForm(form)) {
+
+    const obj = {
+      data: JSON.stringify(requestObject)
     }
+    return obj
+  }
 }
 export default formHandler
