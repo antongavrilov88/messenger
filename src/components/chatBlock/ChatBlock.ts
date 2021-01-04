@@ -12,7 +12,8 @@ class ChatBlock extends Block<ChatBlockProps> {
     render() {
         return this.compile(tpl, {
             messages:  this.props.messages,
-            messageHandler: this.props.messageHandler
+            messageHandler: this.props.messageHandler,
+            currentChatTitle: this.props.currentChatTitle
         })
     }
 }

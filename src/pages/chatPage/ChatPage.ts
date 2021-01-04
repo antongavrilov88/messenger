@@ -78,7 +78,7 @@ class ChatPage extends Block<ChatPageProps> {
                             new ChatList(chatListCTX)
                         ]
                     }),
-                    new ChatBlock(chatCTX),
+                    new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат'}),
                     new ChatUsersListBlock({
                         content: [
                             new ChatUsersList(chatUsersListCTX)
@@ -102,7 +102,7 @@ class ChatPage extends Block<ChatPageProps> {
                             new ChatList({ ...chatListCTX, chats: store.state.chats ? store.state.chats.data : null })
                         ]
                     }),
-                    new ChatBlock(chatCTX),
+                    new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат'}),
                     new ChatUsersListBlock({
                         content: [
                             new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : [] })
@@ -134,7 +134,7 @@ class ChatPage extends Block<ChatPageProps> {
             return false
         }
         if (this.props.chat && this.props.chat.listUpdated === true) {
-            updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat))
+            updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id))
             return false
         }
         console.log(this.props ? this.props : null)
@@ -192,7 +192,8 @@ class ChatPage extends Block<ChatPageProps> {
             let chatListItem: HTMLElement = target as HTMLElement
             if (chatListItem && !chatListItem.classList.contains('chat-list__delete_button')) {
                 let chatToGetUsersID = Number(chatListItem.closest('li')?.id)
-                Store.setState({currentChat: chatToGetUsersID})
+                const currentChatTitle = chatListItem.closest('li')?.querySelector('.chat-list__item__chat-author__container')?.textContent
+                Store.setState({currentChat: {id: chatToGetUsersID, title: currentChatTitle}})
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
             }
         })
@@ -209,7 +210,7 @@ class ChatPage extends Block<ChatPageProps> {
             let addButton: HTMLElement = target as HTMLElement
             if (addButton && addButton.classList.contains('chat-list__add-user_button')) {
                 let userToAddID = Number(addButton.closest('li')?.id)
-                let obj = { data: JSON.stringify({ users: [Number(userToAddID)], chatId: Number(store.state.currentChat) }) }
+                let obj = { data: JSON.stringify({ users: [Number(userToAddID)], chatId: Number(store.state.currentChat.id) }) }
                 updateState.onAddChatUser(API.chat.addChatUser(obj))
             }
         })
@@ -220,7 +221,7 @@ class ChatPage extends Block<ChatPageProps> {
             let deleteButton: HTMLElement = target as HTMLElement
             if (deleteButton && deleteButton.classList.contains('chat-users-list__delete_button')) {
                 let userToDeleteID = Number(deleteButton.closest('li')?.id)
-                let obj = { data: JSON.stringify({ users: [Number(userToDeleteID)], chatId: Number(store.state.currentChat) }) }
+                let obj = { data: JSON.stringify({ users: [Number(userToDeleteID)], chatId: Number(store.state.currentChat.id) }) }
                 updateState.onDeleteChatUser(API.chat.deleteChatUser(obj))
             }
         })
