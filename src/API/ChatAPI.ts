@@ -23,7 +23,7 @@ class ChatAPI extends BaseAPI {
         return chatAPIInstance.delete('/users', obj)
     }
     updateAvatar(obj: object) {
-        return chatAPIInstance.put('/avatar', obj)
+        return chatAPIInstance.put('/avatar', {...obj, headers: true})
     }
 }
 export default ChatAPI

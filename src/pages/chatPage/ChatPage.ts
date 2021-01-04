@@ -30,7 +30,7 @@ import { ON_LOAD,
         } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
-import { openModal } from '../../utils/manageModal'
+import { closeModal, openModal } from '../../utils/manageModal'
 import Modal from '../../components/modal/Modal'
 import formHandler from '../../utils/manageForm'
 import ChatUsersListBlock from '../../components/chatUsersListBlock/ChatUsersListBlock'
@@ -247,6 +247,7 @@ class ChatPage extends Block<ChatPageProps> {
         const form = new FormData(myUserForm);
         form.append('chatId', store.state.currentChat.id)
         updateState.onChangeChatAvatar(API.chat.updateAvatar({data: form}))
+        closeModal('changeChatAvatar')
     }
 
     formHandler = (ev: Event) => {
