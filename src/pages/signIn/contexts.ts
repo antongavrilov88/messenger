@@ -2,6 +2,12 @@ import funcString  from '../../utils/funcString'
 import validateInput from '../../utils/validateInput'
 import Button from '../../components/button/Button'
 
+export const switchFormButtonCTX = {
+    className: 'account__switch-button',
+    type: '',
+    text: 'Еще нет аккаунта',
+    id: 'switchToSignUpButton'    
+}
 
 export const submitButtonCTX = {
     className: 'form__submit-button',

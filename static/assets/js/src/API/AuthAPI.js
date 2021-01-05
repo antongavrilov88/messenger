@@ -3,7 +3,6 @@ import { BaseAPI } from "../utils/BaseAPI.js";
 const authAPIInstance = new HTTP('/auth');
 class AuthAPI extends BaseAPI {
     signUp(obj) {
-        console.log(obj);
         return authAPIInstance.post('/signup', obj);
     }
     signIn(obj) {

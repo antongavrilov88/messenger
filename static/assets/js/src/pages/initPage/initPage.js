@@ -34,16 +34,13 @@ class InitPage extends Block {
     }
     componentDidMount() {
         updateState.onLoad(API.auth.getUser());
-        console.log(this.props.auth);
     }
     componentDidUpdate() {
-        console.log(this.props.auth);
         if (this.props.auth && this.props.auth.status === true) {
             router.go('/chats');
         }
         if (this.props.auth && this.props.auth.status === false) {
             router.go('/signin');
-            console.log(this.props.auth);
         }
         return true;
     }
@@ -60,7 +57,6 @@ class InitPage extends Block {
             }),
             auth: store.state.auth
         });
-        console.log(this.props.auth);
     }
     render() {
         return this.compile(tpl, {

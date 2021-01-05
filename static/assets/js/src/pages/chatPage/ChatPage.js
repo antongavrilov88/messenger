@@ -142,7 +142,6 @@ class ChatPage extends Block {
             updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id));
             return false;
         }
-        console.log(this.props ? this.props : null);
         return true;
     }
     show() {

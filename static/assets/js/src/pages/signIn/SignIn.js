@@ -39,7 +39,7 @@ class SignIn extends Block {
     stateToProps(state) {
         this.setProps({
             content: new UnauthWorkspace({
-                content: new Form(Object.assign({}, formCTX))
+                content: new Form(formCTX)
             }),
             auth: store.state.auth
         });

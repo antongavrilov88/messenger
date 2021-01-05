@@ -22,7 +22,6 @@ class Route {
         if (!this._block) {
             this._block = new this._blockClass();
             render(this._props.rootQuery, this._block);
-            console.log(this._props.rootQuery, this._block);
             return;
         }
         this._block.show();

@@ -1,5 +1,5 @@
 import UnauthWorkspace from '../../components/unauthWorkSpace/UnauthWorkspace'
-import { formCTX } from './contexts'
+import { formCTX, switchFormButtonCTX } from './contexts'
 import Block from '../../utils/Block'
 import Form from '../../components/form/Form'
 import { tpl } from './template'
@@ -11,12 +11,13 @@ import formHandler from '../../utils/manageForm'
 import { render } from '../../utils/render'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
+import Button from '../../components/button/Button'
 
 let store = Store.getInstance()
 
 const updateState = {
     onLogin: (payload: any) => {
-        stateUpdater({type: ON_LOGIN, payload: payload})
+        stateUpdater({ type: ON_LOGIN, payload: payload })
     },
     onLoad: (payload: any) => {
         stateUpdater({ type: ON_LOAD, payload: payload })
@@ -26,9 +27,10 @@ const updateState = {
 class SignIn extends Block<SignInProps> {
     constructor() {
         super("div", {
-            content: new UnauthWorkspace({
-                content: new Form(formCTX)
-            })
+            content:
+                new UnauthWorkspace({
+                    content: new Form(formCTX)
+                })
         })
         this.stateToProps = this.stateToProps.bind(this)
         store.subscribe(this.stateToProps)
@@ -36,9 +38,10 @@ class SignIn extends Block<SignInProps> {
 
     stateToProps(state: any) {
         this.setProps({
-            content: new UnauthWorkspace({
-                content: new Form({ ...formCTX })
-            }),
+            content:
+                new UnauthWorkspace({
+                    content: new Form(formCTX)
+                }),
             auth: store.state.auth
         })
     }
@@ -56,14 +59,14 @@ class SignIn extends Block<SignInProps> {
         render(".app", this)
         let formH: EventListener = this.formHandler
         let form: Node = document.getElementById('loginForm')!
-        form.addEventListener('submit', formH) 
+        form.addEventListener('submit', formH)
     }
 
-    addListeners() {  
+    addListeners() {
         let formH: EventListener = this.formHandler
         let form: Node | null = document.getElementById('loginForm')
-        if ( form ) {
-        form.addEventListener('submit', formH)      
+        if (form) {
+            form.addEventListener('submit', formH)
         }
     }
 
@@ -71,14 +74,14 @@ class SignIn extends Block<SignInProps> {
         let root = document.querySelector('.app')!
         root.innerHTML = ''
     }
-    
+
     componentDidMount() {
         updateState.onLoad(API.auth.getUser())
     }
 
     componentDidUpdate() {
-        if (this.props.auth && this.props.auth.status === true) {        
-        router.go('/chats')
+        if (this.props.auth && this.props.auth.status === true) {
+            router.go('/chats')
         }
         return true
     }

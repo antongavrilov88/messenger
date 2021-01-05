@@ -32,7 +32,6 @@ class SignUp extends Block {
             if (res) {
                 updateState.onSignUp(authAPI.signUp(res));
             }
-            console.log(store.state);
         };
         this.stateToProps = this.stateToProps.bind(this);
         store.subscribe(this.stateToProps);
@@ -63,7 +62,6 @@ class SignUp extends Block {
     }
     componentDidMount() {
         updateState.onLoad(authAPI.getUser());
-        console.log(store.state);
     }
     render() {
         return this.compile(tpl, {

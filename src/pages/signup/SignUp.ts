@@ -58,7 +58,6 @@ class SignUp extends Block<SignUpProps> {
         if (res) {
             updateState.onSignUp(authAPI.signUp(res))
         }
-        console.log( store.state )
     }
     
     show() {
@@ -76,7 +75,6 @@ class SignUp extends Block<SignUpProps> {
     
     componentDidMount() {
         updateState.onLoad(authAPI.getUser())
-        console.log(store.state)
     }
 
 

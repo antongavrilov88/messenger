@@ -70,10 +70,8 @@ class ChangePasswordPage extends Block {
     }
     componentDidMount() {
         updateState.onLoad(API.auth.getUser());
-        console.log(store.state);
     }
     componentDidUpdate() {
-        console.log(this.props);
         if (this.props.auth && this.props.auth.status === false) {
             router.go('/');
         }
