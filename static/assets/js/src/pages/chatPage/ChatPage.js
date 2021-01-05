@@ -63,7 +63,7 @@ class ChatPage extends Block {
                             new ChatList(chatListCTX)
                         ]
                     }),
-                    new ChatBlock(Object.assign(Object.assign({}, chatCTX), { currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат' })),
+                    new ChatBlock(Object.assign(Object.assign({}, chatCTX), { currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат', currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar : null })),
                     new ChatUsersListBlock({
                         content: [
                             new ChatUsersList(chatUsersListCTX)
@@ -108,7 +108,7 @@ class ChatPage extends Block {
                             new ChatList(Object.assign(Object.assign({}, chatListCTX), { chats: store.state.chats ? store.state.chats.data : null }))
                         ]
                     }),
-                    new ChatBlock(Object.assign(Object.assign({}, chatCTX), { currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат' })),
+                    new ChatBlock(Object.assign(Object.assign({}, chatCTX), { currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат', currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar : null })),
                     new ChatUsersListBlock({
                         content: [
                             new ChatUsersList(Object.assign(Object.assign({}, chatUsersListCTX), { users: store.state.chat ? store.state.chat.users : null, usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : [] }))
@@ -190,7 +190,8 @@ class ChatPage extends Block {
             if (chatListItem && !chatListItem.classList.contains('chat-list__delete_button')) {
                 let chatToGetUsersID = Number((_b = chatListItem.closest('li')) === null || _b === void 0 ? void 0 : _b.id);
                 const currentChatTitle = (_d = (_c = chatListItem.closest('li')) === null || _c === void 0 ? void 0 : _c.querySelector('.chat-list__item__chat-author__container')) === null || _d === void 0 ? void 0 : _d.textContent;
-                Store.setState({ currentChat: { id: chatToGetUsersID, title: currentChatTitle } });
+                const currentChatAvatar = document.getElementById(`chat${chatToGetUsersID}Avatar`);
+                Store.setState({ currentChat: { id: chatToGetUsersID, title: currentChatTitle, avatar: currentChatAvatar === null || currentChatAvatar === void 0 ? void 0 : currentChatAvatar.src } });
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID));
             }
         });

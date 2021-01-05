@@ -83,7 +83,7 @@ class ChatPage extends Block<ChatPageProps> {
                             new ChatList(chatListCTX)
                         ]
                     }),
-                    new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат'}),
+                    new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат', currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar: null}),
                     new ChatUsersListBlock({
                         content: [
                             new ChatUsersList(chatUsersListCTX)
@@ -107,7 +107,7 @@ class ChatPage extends Block<ChatPageProps> {
                             new ChatList({ ...chatListCTX, chats: store.state.chats ? store.state.chats.data : null })
                         ]
                     }),
-                    new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат'}),
+                    new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат', currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar: null}),
                     new ChatUsersListBlock({
                         content: [
                             new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : [] })
@@ -199,7 +199,8 @@ class ChatPage extends Block<ChatPageProps> {
             if (chatListItem && !chatListItem.classList.contains('chat-list__delete_button')) {
                 let chatToGetUsersID = Number(chatListItem.closest('li')?.id)
                 const currentChatTitle = chatListItem.closest('li')?.querySelector('.chat-list__item__chat-author__container')?.textContent
-                Store.setState({currentChat: {id: chatToGetUsersID, title: currentChatTitle}})
+                const currentChatAvatar = document.getElementById(`chat${chatToGetUsersID}Avatar`) as unknown as HTMLImageElement
+                Store.setState({currentChat: {id: chatToGetUsersID, title: currentChatTitle, avatar: currentChatAvatar?.src}})
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
             }
         })

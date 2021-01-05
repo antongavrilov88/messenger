@@ -61,15 +61,15 @@ a:visited, a:active {
   height: 10%;
 }
 
-.chat-container__interlocutor-container__avatar-container {
+.chat-container__interlocutor-container .chat-container__interlocutor-container__avatar-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -81,15 +81,15 @@ a:visited, a:active {
   background: #E5E5E5;
 }
 
-.chat-container__interlocutor-container__name {
+.chat-container__interlocutor-container .chat-container__interlocutor-container__name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -157,7 +157,7 @@ a:visited, a:active {
   background: #c8c8c9;
 }
 
-.interlocutor-message-box__message {
+.interlocutor-message-box .interlocutor-message-box__message {
   position: relative;
 }
 
@@ -167,9 +167,9 @@ a:visited, a:active {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -193,15 +193,33 @@ a:visited, a:active {
   height: 100%;
 }
 
-.chat-container__message-input__container {
+.chat-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  height: 100%;
+  background: #FFFFEE;
+  border-radius: 0 25px 25px 0;
+}
+
+.chat-container .chat-container__message-input__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -212,15 +230,15 @@ a:visited, a:active {
   width: 85%;
 }
 
-.chat-container__file-attache-button {
+.chat-container .chat-container__file-attache-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -234,7 +252,11 @@ a:visited, a:active {
       align-self: flex-start;
 }
 
-.chat-container__message-input {
+.chat-container .chat-container__file-attache-button:hover, .chat-container .chat-container__file-attache-button:hover {
+  cursor: pointer;
+}
+
+.chat-container .chat-container__message-input {
   width: 85%;
   height: 34px;
   background: #d4d4d4;
@@ -243,21 +265,21 @@ a:visited, a:active {
   border: none !important;
 }
 
-.chat-container__message-input:hover, .chat-container__message-input:focus {
+.chat-container .chat-container__message-input:hover, .chat-container .chat-container__message-input:focus {
   -webkit-box-shadow: 0 0 5px #51cbee;
           box-shadow: 0 0 5px #51cbee;
   border: 1px solid #51cbee;
 }
 
-.chat-container__send-button {
+.chat-container .chat-container__send-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -272,10 +294,6 @@ a:visited, a:active {
   background: none;
   -ms-flex-item-align: end;
       align-self: end;
-}
-
-.chat-container__file-attache-button:hover, .chat-container__send-button:hover {
-  cursor: pointer;
 }
 
 .chat-container hr {
@@ -295,24 +313,6 @@ a:visited, a:active {
   font-size: 16px;
   line-height: 15px;
   text-align: center;
-}
-
-.chat-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 50%;
-  height: 100%;
-  background: #FFFFEE;
-  border-radius: 0 25px 25px 0;
 }
 
 .chat-container__interlocutor-container {
@@ -331,15 +331,15 @@ a:visited, a:active {
   height: 10%;
 }
 
-.chat-container__interlocutor-container__avatar-container {
+.chat-container__interlocutor-container .chat-container__interlocutor-container__avatar-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -351,15 +351,15 @@ a:visited, a:active {
   background: #E5E5E5;
 }
 
-.chat-container__interlocutor-container__name {
+.chat-container__interlocutor-container .chat-container__interlocutor-container__name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -427,7 +427,7 @@ a:visited, a:active {
   background: #c8c8c9;
 }
 
-.interlocutor-message-box__message {
+.interlocutor-message-box .interlocutor-message-box__message {
   position: relative;
 }
 
@@ -437,9 +437,9 @@ a:visited, a:active {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -463,15 +463,33 @@ a:visited, a:active {
   height: 100%;
 }
 
-.chat-container__message-input__container {
+.chat-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  height: 100%;
+  background: #FFFFEE;
+  border-radius: 0 25px 25px 0;
+}
+
+.chat-container .chat-container__message-input__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -482,15 +500,15 @@ a:visited, a:active {
   width: 85%;
 }
 
-.chat-container__file-attache-button {
+.chat-container .chat-container__file-attache-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -504,7 +522,11 @@ a:visited, a:active {
       align-self: flex-start;
 }
 
-.chat-container__message-input {
+.chat-container .chat-container__file-attache-button:hover, .chat-container .chat-container__file-attache-button:hover {
+  cursor: pointer;
+}
+
+.chat-container .chat-container__message-input {
   width: 85%;
   height: 34px;
   background: #d4d4d4;
@@ -513,21 +535,21 @@ a:visited, a:active {
   border: none !important;
 }
 
-.chat-container__message-input:hover, .chat-container__message-input:focus {
+.chat-container .chat-container__message-input:hover, .chat-container .chat-container__message-input:focus {
   -webkit-box-shadow: 0 0 5px #51cbee;
           box-shadow: 0 0 5px #51cbee;
   border: 1px solid #51cbee;
 }
 
-.chat-container__send-button {
+.chat-container .chat-container__send-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -542,10 +564,6 @@ a:visited, a:active {
   background: none;
   -ms-flex-item-align: end;
       align-self: end;
-}
-
-.chat-container__file-attache-button:hover, .chat-container__send-button:hover {
-  cursor: pointer;
 }
 
 .chat-container hr {
@@ -565,24 +583,6 @@ a:visited, a:active {
   font-size: 16px;
   line-height: 15px;
   text-align: center;
-}
-
-.chat-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 50%;
-  height: 100%;
-  background: #FFFFEE;
-  border-radius: 0 25px 25px 0;
 }
 
 .chat-list__container__list {
@@ -976,7 +976,6 @@ a:visited, a:active {
 }
 
 .form-wrapper {
-  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -988,28 +987,29 @@ a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
   height: 100%;
   width: 100%;
 }
 
 .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 340px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   -ms-flex-item-align: center;
       align-self: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background: #FFFFEE;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -1017,11 +1017,6 @@ a:visited, a:active {
 }
 
 .form-container {
-  width: 70%;
-  height: 85%;
-  -ms-flex-item-align: center;
-      align-self: center;
-  padding: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1033,6 +1028,11 @@ a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 70%;
+  height: 85%;
+  -ms-flex-item-align: center;
+      align-self: center;
+  padding: 25px;
   -ms-flex-line-pack: space-evenly;
       align-content: space-evenly;
 }
