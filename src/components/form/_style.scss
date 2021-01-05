@@ -52,7 +52,7 @@ $font-sizes: (
     text-align: center;
     
     font-family: monospace;
-    font-size: map-get($font-sizes, title)
+    font-size: map-get($font-sizes, title);
     color: #555;
     line-height: 1.2;
     text-transform: uppercase;
@@ -64,7 +64,7 @@ $font-sizes: (
     
     font-family: monospace;
     line-height: 1.2;
-    font-size: map-get($font-sizes, input)
+    font-size: map-get($font-sizes, input);
     display: block;
     
     background: 0 0;
@@ -87,7 +87,7 @@ $font-sizes: (
 .form__input__name {
     padding: 10px;
     font-family: monospace;
-    font-size: 16px;
+    font-size: map-get($font-sizes, input-name);
     color: #555;
     line-height: 1.4;
     text-transform: uppercase;
@@ -110,7 +110,7 @@ $font-sizes: (
     font-weight: 400;
     
     font-family: monospace;
-    font-size: 20px;
+    font-size: map-get($font-sizes, submit-button);
 }
 
 .form__submit-button:hover {

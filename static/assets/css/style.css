@@ -1075,10 +1075,6 @@ a:visited, a:active {
   border: 1px solid #ee3e12;
 }
 
-/* .form__input:hover {
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);
-} */
 .form__input__name {
   padding: 10px;
   font-family: monospace;
@@ -1099,7 +1095,6 @@ a:visited, a:active {
   outline: none !important;
   border: none !important;
   color: honeydew;
-  font-size: large;
   font-weight: 400;
   font-family: monospace;
   font-size: 20px;
