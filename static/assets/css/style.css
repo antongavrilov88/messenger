@@ -78,7 +78,7 @@ a:visited, a:active {
   width: 60px;
   margin-left: 25px;
   border-radius: 30px;
-  background: #E5E5E5;
+  background: #e5e5e5;
 }
 
 .chat-container__interlocutor-container .chat-container__interlocutor-container__name {
@@ -173,7 +173,7 @@ a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 90%;
+  width: 100%;
   height: 10%;
 }
 
@@ -183,14 +183,110 @@ a:visited, a:active {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  align-items: center;
+  -ms-flex-line-pack: space-evenly;
+      align-content: space-evenly;
+  margin-left: 1.5%;
+  width: 97%;
   height: 100%;
+}
+
+.message-form .message-form__message-input__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 85%;
+}
+
+.message-form .message-form__file-attache-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 30px;
+}
+
+.message-form .message-form__file-attache-button:hover, .message-form .message-form__file-attache-button:hover {
+  cursor: pointer;
+}
+
+.message-form .message-form__message-input {
+  width: 100%;
+  height: 34px;
+  background: #d4d4d4;
+  border-radius: 10px;
+  outline: none !important;
+  border: none !important;
+}
+
+.message-form .message-form__message-input:hover, .message-form .message-form__message-input:focus {
+  -webkit-box-shadow: 0 0 5px #51cbee;
+          box-shadow: 0 0 5px #51cbee;
+  border: 1px solid #51cbee;
+}
+
+.message-form .message-form__send-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 34px;
+  height: 34px;
+  border: none !important;
+  outline: none !important;
+  background: none;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 30px;
+}
+
+.message-form .message-form__send-button:hover {
+  cursor: pointer;
 }
 
 .chat-container {
@@ -205,95 +301,14 @@ a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
   width: 50%;
   height: 100%;
-  background: #FFFFEE;
+  background: #ffffee;
   border-radius: 0 25px 25px 0;
-}
-
-.chat-container .chat-container__message-input__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 85%;
-}
-
-.chat-container .chat-container__file-attache-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 34px;
-  height: 34px;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-}
-
-.chat-container .chat-container__file-attache-button:hover, .chat-container .chat-container__file-attache-button:hover {
-  cursor: pointer;
-}
-
-.chat-container .chat-container__message-input {
-  width: 85%;
-  height: 34px;
-  background: #d4d4d4;
-  border-radius: 10px;
-  outline: none !important;
-  border: none !important;
-}
-
-.chat-container .chat-container__message-input:hover, .chat-container .chat-container__message-input:focus {
-  -webkit-box-shadow: 0 0 5px #51cbee;
-          box-shadow: 0 0 5px #51cbee;
-  border: 1px solid #51cbee;
-}
-
-.chat-container .chat-container__send-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 34px;
-  height: 34px;
-  border: none !important;
-  outline: none !important;
-  background: none;
-  -ms-flex-item-align: end;
-      align-self: end;
 }
 
 .chat-container hr {
@@ -348,7 +363,7 @@ a:visited, a:active {
   width: 60px;
   margin-left: 25px;
   border-radius: 30px;
-  background: #E5E5E5;
+  background: #e5e5e5;
 }
 
 .chat-container__interlocutor-container .chat-container__interlocutor-container__name {
@@ -443,7 +458,7 @@ a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 90%;
+  width: 100%;
   height: 10%;
 }
 
@@ -453,14 +468,110 @@ a:visited, a:active {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  align-items: center;
+  -ms-flex-line-pack: space-evenly;
+      align-content: space-evenly;
+  margin-left: 1.5%;
+  width: 97%;
   height: 100%;
+}
+
+.message-form .message-form__message-input__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 85%;
+}
+
+.message-form .message-form__file-attache-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 30px;
+}
+
+.message-form .message-form__file-attache-button:hover, .message-form .message-form__file-attache-button:hover {
+  cursor: pointer;
+}
+
+.message-form .message-form__message-input {
+  width: 100%;
+  height: 34px;
+  background: #d4d4d4;
+  border-radius: 10px;
+  outline: none !important;
+  border: none !important;
+}
+
+.message-form .message-form__message-input:hover, .message-form .message-form__message-input:focus {
+  -webkit-box-shadow: 0 0 5px #51cbee;
+          box-shadow: 0 0 5px #51cbee;
+  border: 1px solid #51cbee;
+}
+
+.message-form .message-form__send-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 34px;
+  height: 34px;
+  border: none !important;
+  outline: none !important;
+  background: none;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 30px;
+}
+
+.message-form .message-form__send-button:hover {
+  cursor: pointer;
 }
 
 .chat-container {
@@ -475,95 +586,14 @@ a:visited, a:active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
   width: 50%;
   height: 100%;
-  background: #FFFFEE;
+  background: #ffffee;
   border-radius: 0 25px 25px 0;
-}
-
-.chat-container .chat-container__message-input__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 85%;
-}
-
-.chat-container .chat-container__file-attache-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 34px;
-  height: 34px;
-  -ms-flex-item-align: start;
-      align-self: flex-start;
-}
-
-.chat-container .chat-container__file-attache-button:hover, .chat-container .chat-container__file-attache-button:hover {
-  cursor: pointer;
-}
-
-.chat-container .chat-container__message-input {
-  width: 85%;
-  height: 34px;
-  background: #d4d4d4;
-  border-radius: 10px;
-  outline: none !important;
-  border: none !important;
-}
-
-.chat-container .chat-container__message-input:hover, .chat-container .chat-container__message-input:focus {
-  -webkit-box-shadow: 0 0 5px #51cbee;
-          box-shadow: 0 0 5px #51cbee;
-  border: 1px solid #51cbee;
-}
-
-.chat-container .chat-container__send-button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 34px;
-  height: 34px;
-  border: none !important;
-  outline: none !important;
-  background: none;
-  -ms-flex-item-align: end;
-      align-self: end;
 }
 
 .chat-container hr {

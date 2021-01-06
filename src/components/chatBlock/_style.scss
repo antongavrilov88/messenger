@@ -1,197 +1,210 @@
 @mixin flexCenter {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: center;    
-};
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+}
 
 @mixin boxShadow {
-    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);    
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
 }
 
 .chat-container__interlocutor-container {
+  @include flexCenter();
+
+  width: 100%;
+  height: 10%;
+
+  #{&}__avatar-container {
     @include flexCenter();
 
-    width: 100%;
-    height: 10%;
+    justify-self: start;
 
-    #{&}__avatar-container {
-        @include flexCenter();
+    height: 60px;
+    width: 60px;
+    margin-left: 25px;
 
-        justify-self: start;
+    border-radius: 30px;
 
-        height: 60px;
-        width: 60px;
-        margin-left: 25px;
+    background: #e5e5e5;
+  }
 
-        border-radius: 30px;
-        
-        background: #E5E5E5;
-    }
-    
-    #{&}__name {
-        @include flexCenter();
-    
-        justify-self: start;
-    
-        height: 40px;
-        width: 30%;
-        margin-left: 25px;
-    
-        text-align: left;
-    }
+  #{&}__name {
+    @include flexCenter();
 
+    justify-self: start;
+
+    height: 40px;
+    width: 30%;
+    margin-left: 25px;
+
+    text-align: left;
+  }
 }
 
 .messages-container {
-    width: 100%;
-    height: 75%;
-    overflow-y: scroll;
-    overflow-x: hidden !important;
+  width: 100%;
+  height: 75%;
+  overflow-y: scroll;
+  overflow-x: hidden !important;
 }
 
 .messages-container::-webkit-scrollbar {
-    width: 0;
+  width: 0;
 }
 
 .my-message-container {
-    position: relative;
-    width: 45%;
-    height: fit-content;
-    left: 50%;
-    margin-bottom: 10px;
+  position: relative;
+  width: 45%;
+  height: fit-content;
+  left: 50%;
+  margin-bottom: 10px;
 }
 
 .my-message-box {
-    width: fit-content;
-    height: fit-content;
-    float: right;
-    padding: 10px;
-    margin-bottom: 10px;
+  width: fit-content;
+  height: fit-content;
+  float: right;
+  padding: 10px;
+  margin-bottom: 10px;
 
-    border-radius: 10px 10px 0 10px;
+  border-radius: 10px 10px 0 10px;
 
-    background: #c8c8c9;
+  background: #c8c8c9;
 }
 
 .interlocutor-message-container {
-    position: relative;
-    width: 45%;
-    height: fit-content;
-    left: 5%;
-    margin-bottom: 10px;
+  position: relative;
+  width: 45%;
+  height: fit-content;
+  left: 5%;
+  margin-bottom: 10px;
 }
 
 .interlocutor-message-box {
-    width: fit-content;
-    height: 100%;
-    float: left;
-    padding: 10px;
-    margin-bottom: 10px;
-    
-    border-radius: 0px 10px 10px 10px;
-    background: #c8c8c9;
+  width: fit-content;
+  height: 100%;
+  float: left;
+  padding: 10px;
+  margin-bottom: 10px;
 
-    #{&}__message {
-        position: relative;
-    }
+  border-radius: 0px 10px 10px 10px;
+  background: #c8c8c9;
+
+  #{&}__message {
+    position: relative;
+  }
 }
 
-.message-form__container {  
+.message-form__container {
+  @include flexCenter();
+
+  width: 100%;
+  height: 10%;
+}
+
+.message-form {
+  @include flexCenter();
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-evenly;
+
+  margin-left: 1.5%;
+
+  width: 97%;
+  height: 100%;
+
+  #{&}__message-input__container {
     @include flexCenter();
+    align-self: center;
 
-    width: 90%;
-    height: 10%;
-}
+    width: 85%;
+  }
 
-.message-form {    
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+  #{&}__file-attache-button {
+    @include flexCenter();
+    justify-content: center;
+    align-content: center;
 
+    width: 34px;
+    height: 34px;
+
+    font-size: 30px;
+
+    &:hover,
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  #{&}__message-input {
     width: 100%;
-    height: 100%;
+    height: 34px;
+
+    background: #d4d4d4;
+    border-radius: 10px;
+
+    outline: none !important;
+    border: none !important;
+
+    &:hover,
+    &:focus {
+      @include boxShadow();
+    }
+  }
+
+  #{&}__send-button {
+    @include flexCenter();
+    justify-content: center;
+    align-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: none !important;
+    outline: none !important;
+    background: none;
+    align-self: center;
+
+    font-size: 30px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .chat-container {
-    @include flexCenter();
+  @include flexCenter();
+  justify-content: space-between;
+  align-items: center;
 
-    width: 50%;
-    height: 100%;
+  width: 50%;
+  height: 100%;
 
-    background: #FFFFEE;
+  background: #ffffee;
 
-    border-radius: 0 25px 25px 0;
+  border-radius: 0 25px 25px 0;
 
-    #{&}__message-input__container {
-        @include flexCenter();   
-        flex-direction: column;
-    
-        width: 85%;
-    }
-    
-    #{&}__file-attache-button {
-        @include flexCenter(); 
-        flex-direction: column;
+  hr {
+    width: 90%;
+    height: 0.5px;
+    background-color: #555;
+    border: 0px none;
+    height: 1px;
+    clear: both;
 
-        width: 34px;
-        height: 34px;
-        align-self: flex-start;
+    background: #c9c7c7;
+  }
 
-        &:hover, &:hover {
-            cursor: pointer;
-        }
-    }
+  p {
+    font-family: monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
 
-    #{&}__message-input {
-        width: 85%;
-        height: 34px;
-        
-        background: #d4d4d4;
-        border-radius: 10px;
-    
-        outline: none !important;
-        border: none !important;
-
-        &:hover, &:focus {
-            @include boxShadow();
-        }
-    }
-
-    
-    #{&}__send-button {
-        @include flexCenter(); 
-        flex-direction: column;
-        
-        width: 34px;
-        height: 34px;
-
-        border: none !important;
-        outline: none !important;
-        background: none;
-        align-self: end;
-    }
-
-    hr {
-        width: 90%;
-        height: 0.5px;
-        background-color:#555;
-        border:0px none;
-        height:1px;
-        clear:both;
-    
-        background: #c9c7c7;    
-    }
-    
-    p {
-        font-family: monospace;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 15px;
-    
-        text-align: center;
-    }
+    text-align: center;
+  }
 }

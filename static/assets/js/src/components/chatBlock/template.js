@@ -20,15 +20,15 @@ export const tpl = `<div class="chat-container">
                             <hr>
                             <div class="message-form__container">
                             <form class="message-form" id="messageForm">
-                                <div class="chat-container__file-attache-button">
-                                    <h1>&#128247;</h1>
+                                <div class="message-form__file-attache-button">
+                                    &#128247;
                                 </div>
-                                <div class="chat-container__message-input__container">
-                                    <input class="chat-container__message-input" type="text" name="message" />
+                                <div class="message-form__message-input__container">
+                                    <input class="message-form__message-input" type="text" name="message" />
                                 </div>
-                                <button class="chat-container__send-button" type="submit"
+                                <button class="message-form__send-button" type="submit"
                                     onclick="{{messageHandler}}">
-                                    <h1>&#10148;</h1>
+                                    &#10148;
                                 </button>
                             </form>
                         </div>
