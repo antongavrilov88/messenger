@@ -239,7 +239,7 @@ a:visited, a:active {
   font-size: 30px;
 }
 
-.message-form .message-form__file-attache-button:hover, .message-form .message-form__file-attache-button:hover {
+.message-form .message-form__file-attache-button:hover {
   cursor: pointer;
 }
 
@@ -524,7 +524,7 @@ a:visited, a:active {
   font-size: 30px;
 }
 
-.message-form .message-form__file-attache-button:hover, .message-form .message-form__file-attache-button:hover {
+.message-form .message-form__file-attache-button:hover {
   cursor: pointer;
 }
 
