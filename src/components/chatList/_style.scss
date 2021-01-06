@@ -38,17 +38,13 @@
     width: 100%;
     height: 70px;
     border-radius: 5px;
+
+    &:hover {
+        @include boxShadow();
+    }
 }
 
-.chat-list__item:hover {
-    @include boxShadow();
-}
-
-.chat-list__item_active {
-    position: relative;
-    width: 100%;
-    height: 70px;
-    border-radius: 5px;
+.active {
     @include boxShadow();
 }
 

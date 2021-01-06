@@ -37,6 +37,7 @@ import ChatUsersListBlock from '../../components/chatUsersListBlock/ChatUsersLis
 import ChatUsersList from '../../components/chatUsersList/ChatUsersList'
 import { store } from '../../state/State'
 import Store from '../../utils/Store'
+import { toggleActiveClassName } from '../../utils/toggleActiveClassName'
 
 const updateState = {
     onLogout: (payload: any) => {
@@ -200,6 +201,7 @@ class ChatPage extends Block<ChatPageProps> {
                 const currentChatTitle = chatListItem.closest('li')?.querySelector('.chat-list__item__chat-author__container')?.textContent
                 const currentChatAvatar = document.getElementById(`chat${chatToGetUsersID}Avatar`) as unknown as HTMLImageElement
                 Store.setState({currentChat: {id: chatToGetUsersID, title: currentChatTitle, avatar: currentChatAvatar?.src}})
+                toggleActiveClassName(chatListItem.closest('li')!, 'active')
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
             }
         })

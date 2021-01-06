@@ -10,7 +10,6 @@ import { ON_SIGNUP, ON_LOAD } from '../../actions'
 import { stateUpdater } from '../../stateUpdater/stateUpdater'
 import formHandler from '../../utils/manageForm'
 import { render } from '../../utils/render'
-// import { authStore } from '../../state/authState.js'
 
 let store = Store.getInstance()
 

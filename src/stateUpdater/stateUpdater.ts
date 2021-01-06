@@ -2,7 +2,7 @@ import { authStateUpdater } from './authStateUpdater'
 import { userStateUpdater } from './userStateUpdater'
 import { chatStateUpdater } from './chatStateUpdater'
 
-const payloadHandler = async (payload:any) => {
+const payloadHandler = async (payload: Promise<any>) => {
     let result = await payload.then( (result: any) => result )
     try {
         return JSON.parse(result.response)

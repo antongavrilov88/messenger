@@ -8,7 +8,11 @@ declare global {
 export function openModal( modalID: string ): void {
     let modal = document.getElementById( modalID )
     if (modal) {
-        modal.hidden = false
+        const modalContent = modal.querySelector('.dialog-modal__content')
+        const modalBackground = modal.querySelector('.dialog-modal__background')
+        modalBackground?.classList.add('open')
+        modal.classList.add('open')
+        modalContent?.classList.add('open')
     }
     return
 }
@@ -16,7 +20,11 @@ export function openModal( modalID: string ): void {
 export function closeModal( modalID: string ): void {
     let modal = document.getElementById( modalID )
     if ( modal ) {
-        modal.hidden = true
+        const modalContent = modal.querySelector('.dialog-modal__content')
+        const modalBackground = modal.querySelector('.dialog-modal__background')
+        modalBackground?.classList.remove('open')
+        modal.classList.remove('open')
+        modalContent?.classList.remove('open')
     }
     return
 }

@@ -1,7 +1,7 @@
-export const tpl = `<div id={{id}} hidden=true>
-                        <div class="modal-dialog__background">
+export const tpl = `<div id={{id}} class="dialog-modal">
+                        <div class="dialog-modal__background">
                         </div>
-                        <div class="avatar__dialog-modal">
+                        <div class="dialog-modal__content">
                             {{{form}}}
                         </div>
                     </div>`

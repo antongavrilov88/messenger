@@ -19,6 +19,7 @@ import ChatUsersListBlock from "../../components/chatUsersListBlock/ChatUsersLis
 import ChatUsersList from "../../components/chatUsersList/ChatUsersList.js";
 import { store } from "../../state/State.js";
 import Store from "../../utils/Store.js";
+import { toggleActiveClassName } from "../../utils/toggleActiveClassName.js";
 const updateState = {
     onLogout: (payload) => {
         stateUpdater({ type: ON_LOGOUT, payload: payload });
@@ -191,6 +192,7 @@ class ChatPage extends Block {
                 const currentChatTitle = (_d = (_c = chatListItem.closest('li')) === null || _c === void 0 ? void 0 : _c.querySelector('.chat-list__item__chat-author__container')) === null || _d === void 0 ? void 0 : _d.textContent;
                 const currentChatAvatar = document.getElementById(`chat${chatToGetUsersID}Avatar`);
                 Store.setState({ currentChat: { id: chatToGetUsersID, title: currentChatTitle, avatar: currentChatAvatar === null || currentChatAvatar === void 0 ? void 0 : currentChatAvatar.src } });
+                toggleActiveClassName(chatListItem.closest('li'), 'active');
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID));
             }
         });
