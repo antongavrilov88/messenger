@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx ttsc && copy .\\static\\*.* .\\build\\*.*",
+    "build": "npx ttsc && copy .\\static\\*.* .\\build\\*.* && mkdir build\\css && cd src\\scss && node-sass style.scss >  ..\\..\\build\\css\\style.css",
     "start": "node server.js",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register"
   },
