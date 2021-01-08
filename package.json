@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx ttsc && copy .\\static\\*.* .\\build\\*.*",
-    "start": "cd ./ && npm start",
+    "start": "node server.js",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register"
   },
   "repository": {
@@ -44,6 +44,8 @@
   "dependencies": {
     "@types/chai-http": "^4.2.0",
     "@types/express": "^4.17.9",
-    "chai-http": "^4.3.0"
+    "chai-http": "^4.3.0",
+    "node-sass": "^5.0.0",
+    "node-sass-watcher": "^0.5.1"
   }
 }
