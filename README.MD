@@ -10,9 +10,13 @@ git clone https://github.com/antongavrilov88/mf.messenger.praktikum.yandex.git
 ```
 npm run test
 ```
-Сборка и запуск
+Сборка
 ```
 npm run build
+```
+Запуск
+```
+npm run start
 ```
 Сайт
 ```
