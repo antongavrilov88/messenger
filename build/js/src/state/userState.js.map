@@ -1,1 +1,0 @@
-{"version":3,"file":"userState.js","sourceRoot":"","sources":["../../../../src/state/userState.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,SAAS,GAAG,CAAC,KAAU,EAAE,EAAE;IACpC,uCACO,KAAK,KACR,IAAI,EAAE;YACF,QAAQ,EAAE,IAAI;YACd,MAAM,EAAE,IAAI;YACZ,KAAK,EAAE,IAAI;SACd,IACJ;AACL,CAAC,CAAA"}
