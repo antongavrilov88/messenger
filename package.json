@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx ttsc && npm start",
+    "build": "npx ttsc && copy .\\static\\*.* .\\build\\*.*",
+    "start": "cd ./ && npm start",
     "test": "./node_modules/.bin/mocha -r jsdom-global/register"
   },
   "repository": {

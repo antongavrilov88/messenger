@@ -19,7 +19,7 @@
     "removeComments": true,
     "allowSyntheticDefaultImports": true,
     "rootDir": "./",
-    "outDir": "static/assets/js",
+    "outDir": "build/js",
   "plugins": [
     {
       "transform": "@zoltu/typescript-transformer-append-js-extension/output/index.js",
