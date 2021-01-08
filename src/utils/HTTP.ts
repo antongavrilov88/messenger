@@ -37,10 +37,10 @@ class HTTP {
     }
 
     request(url: string, options: Options): Promise<XMLHttpRequest> {
-        let { method, data, headers } = options;
+        let { method, data, headers } = options
         return new Promise((resolve, reject) => {
-            const xhr = new XMLHttpRequest();
-            xhr.open(method, `${this._baseURL}${this._subURL}${url}`);
+            const xhr = new XMLHttpRequest()
+            xhr.open(method, `${this._baseURL}${this._subURL}${url}`)
             
             if (headers) {
                 data = options.data
@@ -54,12 +54,12 @@ class HTTP {
                 resolve(xhr);
             };
 
-            xhr.onabort = reject;
-            xhr.onerror = reject;
-            xhr.ontimeout = reject;
+            xhr.onabort = reject
+            xhr.onerror = reject
+            xhr.ontimeout = reject
 
             if (method === METHOD.GET || !data) {
-                xhr.send();
+                xhr.send()
             } else {
                 xhr.send(data);
             }
