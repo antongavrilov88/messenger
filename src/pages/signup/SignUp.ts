@@ -10,6 +10,9 @@ import { ON_SIGNUP, ON_LOAD } from '../../actions'
 import { stateUpdater } from '../../stateUpdater/stateUpdater'
 import formHandler from '../../utils/manageForm'
 import { render } from '../../utils/render'
+import Button from '../../components/button/Button'
+import { router } from '../../index'
+import { switchFormButtonCTX } from '../signup/contexts'
 
 let store = Store.getInstance()
 
@@ -28,7 +31,10 @@ class SignUp extends Block<SignUpProps> {
     constructor() {
         super("div", {
             content: new UnauthWorkspace({
-                content: new Form(formCTX)
+                content: [
+                    new Form(formCTX),
+                    new Button(switchFormButtonCTX)
+                ]
             })
         })
         this.stateToProps = this.stateToProps.bind(this)
@@ -38,7 +44,10 @@ class SignUp extends Block<SignUpProps> {
     stateToProps(state: any ) {
         this.setProps({
             content: new UnauthWorkspace({
-                content: new Form({ ...formCTX })
+                content: [
+                    new Form(formCTX),
+                    new Button(switchFormButtonCTX)
+                ]
             })
         })
     }
@@ -49,6 +58,10 @@ class SignUp extends Block<SignUpProps> {
         if ( form ) {
         form.addEventListener('submit', formH)      
         }
+        const switchFormButton = document.getElementById('switchToSignInButton')
+        switchFormButton?.addEventListener('click', function() {
+            router.go('/signin')
+        })
     }
 
     formHandler = (ev: Event) => {

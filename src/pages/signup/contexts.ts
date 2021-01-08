@@ -4,6 +4,13 @@ import validateInput from '../../utils/validateInput'
 import Button from '../../components/button/Button'
 
 
+export const switchFormButtonCTX = {
+    className: 'account__switch-button',
+    type: '',
+    text: 'Уже есть аккаунт',
+    id: 'switchToSignInButton'    
+}
+
 export const submitButtonCTX = {
     className: 'form__submit-button',
     type: '',

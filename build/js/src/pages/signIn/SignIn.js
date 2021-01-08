@@ -1,5 +1,5 @@
 import UnauthWorkspace from "../../components/unauthWorkSpace/UnauthWorkspace.js";
-import { formCTX } from "./contexts.js";
+import { formCTX, switchFormButtonCTX } from "./contexts.js";
 import Block from "../../utils/Block.js";
 import Form from "../../components/form/Form.js";
 import { tpl } from "./template.js";
@@ -10,6 +10,7 @@ import formHandler from "../../utils/manageForm.js";
 import { render } from "../../utils/render.js";
 import { router } from "../../index.js";
 import { API } from "../../API/mainAPI.js";
+import Button from "../../components/button/Button.js";
 let store = Store.getInstance();
 const updateState = {
     onLogin: (payload) => {
@@ -23,7 +24,10 @@ class SignIn extends Block {
     constructor() {
         super("div", {
             content: new UnauthWorkspace({
-                content: new Form(formCTX)
+                content: [
+                    new Form(formCTX),
+                    new Button(switchFormButtonCTX)
+                ]
             })
         });
         this.formHandler = (ev) => {
@@ -39,7 +43,10 @@ class SignIn extends Block {
     stateToProps(state) {
         this.setProps({
             content: new UnauthWorkspace({
-                content: new Form(formCTX)
+                content: [
+                    new Form(formCTX),
+                    new Button(switchFormButtonCTX)
+                ]
             }),
             auth: store.state.auth
         });
@@ -58,6 +65,10 @@ class SignIn extends Block {
         if (form) {
             form.addEventListener('submit', formH);
         }
+        const switchFormButton = document.getElementById('switchToSignUpButton');
+        switchFormButton === null || switchFormButton === void 0 ? void 0 : switchFormButton.addEventListener('click', function () {
+            router.go('/signup');
+        });
     }
     hide() {
         let root = document.querySelector('.app');

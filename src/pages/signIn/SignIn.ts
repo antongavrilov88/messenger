@@ -29,7 +29,10 @@ class SignIn extends Block<SignInProps> {
         super("div", {
             content:
                 new UnauthWorkspace({
-                    content: new Form(formCTX)
+                    content: [
+                        new Form(formCTX),
+                        new Button(switchFormButtonCTX)
+                    ]
                 })
         })
         this.stateToProps = this.stateToProps.bind(this)
@@ -40,7 +43,10 @@ class SignIn extends Block<SignInProps> {
         this.setProps({
             content:
                 new UnauthWorkspace({
-                    content: new Form(formCTX)
+                    content: [
+                        new Form(formCTX),
+                        new Button(switchFormButtonCTX)
+                    ]
                 }),
             auth: store.state.auth
         })
@@ -68,6 +74,10 @@ class SignIn extends Block<SignInProps> {
         if (form) {
             form.addEventListener('submit', formH)
         }
+        const switchFormButton = document.getElementById('switchToSignUpButton')
+        switchFormButton?.addEventListener('click', function() {
+            router.go('/signup')
+        })
     }
 
     hide() {

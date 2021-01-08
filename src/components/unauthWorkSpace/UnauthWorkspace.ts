@@ -9,7 +9,7 @@ class UnauthWorkSpace extends Block<UnauthWorkSpaceProps> {
 
     render() {
         return this.compile(tpl, {
-            content: this.props.content.render()
+            content: this.props.content.map((child: { render: () => any; }) => child.render()).join('')
         })
     }
 }
