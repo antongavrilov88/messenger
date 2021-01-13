@@ -136,6 +136,7 @@ class ChatPage extends Block<ChatPageProps> {
     }
 
     componentDidUpdate() {
+        console.log(this.props)
         if (this.props.auth && this.props.auth.status === false) {
             router.go('/')
             return true
@@ -148,11 +149,11 @@ class ChatPage extends Block<ChatPageProps> {
             updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id))
             return false
         }
-        // if (store.state.currentChat.id) {
-        //     console.log('ТУТЬ')
-        //     updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
-        //     return false
-        // }
+        if (store.state.currentChat && store.state.currentChat.id) {
+            console.log('ТУТЬ')
+            updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
+            return false
+        }
         return true
     }
 
