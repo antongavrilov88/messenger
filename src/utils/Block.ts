@@ -1,4 +1,3 @@
-import { cloneObj } from './deepClone';
 import EventBus from './eventBus'
 import { isEqual } from './isEqual';
 import { merge } from './merge';

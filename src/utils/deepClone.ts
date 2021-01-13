@@ -1,9 +1,12 @@
-// export function cloneDeep(objArr: any[]) {
-export function cloneObj(obj: any) {
+export function cloneDeep(objArr: any[]) {
+    function cloneObj(obj: any) {
         let clonedObj: any = {}
         for (let key in obj) {
             let valueType = typeof obj[key]
-            if (valueType === 'string' || valueType === 'number' || valueType === 'boolean' || obj[key] === null) {
+            if (valueType === 'string'
+                || valueType === 'number'
+                || valueType === 'boolean'
+                || obj[key] === null) {
                 clonedObj[key] = obj[key]
             }
             else if (valueType === 'object' && obj[key] !== null) {
@@ -19,7 +22,7 @@ export function cloneObj(obj: any) {
         }
         return clonedObj
     }
-//     let clonedObjArr: {}[] = []
-//     objArr.map((obj: any) => clonedObjArr.push(cloneObj(obj)))
-//     return clonedObjArr
-// }
+    let clonedObjArr: {}[] = []
+    objArr.map((obj: any) => clonedObjArr.push(cloneObj(obj)))
+    return clonedObjArr
+}

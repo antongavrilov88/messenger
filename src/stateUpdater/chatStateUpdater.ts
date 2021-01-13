@@ -5,7 +5,8 @@ import { ON_CREATE_CHAT,
          ON_SEARCH_USER_BY_LOGIN,
          ON_ADD_CHAT_USER,
          ON_DELETE_USER_FROM_CHAT,
-         ON_CHANGE_CHAT_AVATAR
+         ON_CHANGE_CHAT_AVATAR,
+         ON_CHAT_LOADED
         } from '../actions'
 import Store from '../utils/Store'
 
@@ -39,7 +40,7 @@ export const chatStateUpdater = (action: any) => {
             break
         case ON_SEARCH_USER_BY_LOGIN:
             Store.setState({
-                    usersToAdd: action.payload.length === 0 ? [] : action.payload
+                usersToAdd: action.payload.length === 0 ? [] : action.payload
             })
             break
         case ON_ADD_CHAT_USER:
@@ -49,7 +50,11 @@ export const chatStateUpdater = (action: any) => {
                     listUpdated: true
                 }
             })
-            break   
+            break 
+        case ON_CHAT_LOADED:
+            Store.setState({
+                currentChatToken: action.payload.reason ? null : action.payload
+            })  
         default:
             break;
     }
