@@ -25,5 +25,8 @@ class ChatAPI extends BaseAPI {
     updateAvatar(obj: object) {
         return chatAPIInstance.put('/avatar', {...obj, headers: true})
     }
+    getToken(id: number) {
+        return chatAPIInstance.post(`/chats/token/${id}`)
+    }
 }
 export default ChatAPI

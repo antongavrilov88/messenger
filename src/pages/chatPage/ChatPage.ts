@@ -26,7 +26,8 @@ import { ON_LOAD,
          ON_SEARCH_USER_BY_LOGIN,
          ON_ADD_CHAT_USER,
          ON_DELETE_USER_FROM_CHAT,
-         ON_CHANGE_CHAT_AVATAR
+         ON_CHANGE_CHAT_AVATAR,
+         ON_CHAT_LOADED
         } from '../../actions'
 import { router } from '../../index'
 import { API } from '../../API/mainAPI'
@@ -69,6 +70,9 @@ const updateState = {
     },
     onChangeChatAvatar: (payload: any) => {
         stateUpdater({ type: ON_CHANGE_CHAT_AVATAR, payload: payload })
+    },
+    onGetToken: (payload: any) => {
+        stateUpdater({ type: ON_CHAT_LOADED, payload: payload })
     }
 }
 
@@ -144,6 +148,11 @@ class ChatPage extends Block<ChatPageProps> {
             updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id))
             return false
         }
+        // if (store.state.currentChat.id) {
+        //     console.log('ТУТЬ')
+        //     updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
+        //     return false
+        // }
         return true
     }
 

@@ -1,4 +1,7 @@
+import { cloneObj } from './deepClone';
 import EventBus from './eventBus'
+import { isEqual } from './isEqual';
+import { merge } from './merge';
 declare let window:any;
 declare global {
   interface Window {
@@ -52,15 +55,14 @@ abstract class Block<Props> {
   }
   componentDidMount() {}
   _componentDidUpdate(oldProps: any, newProps: any) {
-    const response = this.componentDidUpdate(oldProps, newProps);
-    if (!response) {
+    if (isEqual(oldProps, newProps)) {
       return;
     }
+    this.componentDidUpdate(oldProps, newProps);
     this._render();
     this.eventBus().emit(Block.EVENTS.FLOW_ADD_LISTENERS)
   }
   componentDidUpdate(oldProps: any = null, newProps: any = null) {
-    return true;
   }
   setProps = (nextProps: any) => {
     if (!nextProps) {
@@ -93,8 +95,9 @@ abstract class Block<Props> {
         return typeof value === "function" ? value.bind(target) : value;
       },
       set(target: {[prop: string]: any}, prop: any, value: any) {
+        const oldProps = merge({}, target)
         target[prop] = value;
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, {...target}, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, target);
         return true;
       },
       deleteProperty() {

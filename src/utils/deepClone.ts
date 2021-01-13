@@ -1,5 +1,5 @@
-export function cloneDeep(objArr: any[]) {
-    function cloneObj(obj: any) {
+// export function cloneDeep(objArr: any[]) {
+export function cloneObj(obj: any) {
         let clonedObj: any = {}
         for (let key in obj) {
             let valueType = typeof obj[key]
@@ -19,7 +19,7 @@ export function cloneDeep(objArr: any[]) {
         }
         return clonedObj
     }
-    let clonedObjArr: {}[] = []
-    objArr.map((obj: any) => clonedObjArr.push(cloneObj(obj)))
-    return clonedObjArr
-}
+//     let clonedObjArr: {}[] = []
+//     objArr.map((obj: any) => clonedObjArr.push(cloneObj(obj)))
+//     return clonedObjArr
+// }
