@@ -54,7 +54,7 @@ abstract class Block<Props> {
   }
   componentDidMount() {}
   _componentDidUpdate(oldProps: any, newProps: any) {
-    if (isEqual(oldProps, newProps)) {
+    if (!isEqual(oldProps, newProps)) {
       return;
     }
     this.componentDidUpdate(oldProps, newProps);

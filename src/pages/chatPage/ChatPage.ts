@@ -126,7 +126,8 @@ class ChatPage extends Block<ChatPageProps> {
             auth: store.state.auth,
             chats: store.state.chats ? store.state.chats : null,
             chat: store.state.chat ? store.state.chat : null,
-            usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : []
+            usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : [],
+            currentChatToken: store.state.currentChatToken ? store.state.currentChatToken : null
         })
     }
 
@@ -135,8 +136,7 @@ class ChatPage extends Block<ChatPageProps> {
         updateState.onChatListLoad(API.chat.getChatList())
     }
 
-    componentDidUpdate() {
-        console.log(this.props)
+    componentDidUpdate(newProps: any, oldProps: any) {
         if (this.props.auth && this.props.auth.status === false) {
             router.go('/')
             return true
@@ -147,14 +147,13 @@ class ChatPage extends Block<ChatPageProps> {
         }
         if (this.props.chat && this.props.chat.listUpdated === true) {
             updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id))
-            return false
-        }
-        if (store.state.currentChat && store.state.currentChat.id) {
-            console.log('ТУТЬ')
             updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
             return false
         }
-        return true
+        if (this.props.currentChatToken !== null) {
+            console.log('Pipka')
+            return false
+        }
     }
 
     show() {
@@ -213,6 +212,7 @@ class ChatPage extends Block<ChatPageProps> {
                 Store.setState({currentChat: {id: chatToGetUsersID, title: currentChatTitle, avatar: currentChatAvatar?.src}})
                 toggleActiveClassName(chatListItem.closest('li')!, 'active')
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
+                updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
             }
         })
 
