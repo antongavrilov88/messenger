@@ -39,6 +39,7 @@ import ChatUsersList from '../../components/chatUsersList/ChatUsersList'
 import { store } from '../../state/State'
 import Store from '../../utils/Store'
 import { toggleActiveClassName } from '../../utils/toggleActiveClassName'
+import { socketHandler } from '../../utils/SocketHandler'
 
 const updateState = {
     onLogout: (payload: any) => {
@@ -124,10 +125,10 @@ class ChatPage extends Block<ChatPageProps> {
                 ]
             }),
             auth: store.state.auth,
-            chats: store.state.chats ? store.state.chats : null,
-            chat: store.state.chat ? store.state.chat : null,
-            usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : [],
-            currentChatToken: store.state.currentChatToken ? store.state.currentChatToken : null
+            chats: store.state.chats !== this.props.chats ? store.state.chats : null,
+            chat: store.state.chat !== this.props.chat ? store.state.chat : null,
+            usersToAdd: store.state.usersToAdd !== this.props.usersToAdd ? store.state.usersToAdd : [],
+            currentChatToken: store.state.currentChatToken !== this.props.currentChatToken ? store.state.currentChatToken : null
         })
     }
 
@@ -142,18 +143,25 @@ class ChatPage extends Block<ChatPageProps> {
             return true
         }
         if (this.props.chats && this.props.chats.listUpdated === true) {
+            console.log(1)
             updateState.onChatListLoad(API.chat.getChatList())
             return false
         }
         if (this.props.chat && this.props.chat.listUpdated === true) {
+            console.log(2)
             updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id))
             updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
             return false
         }
-        if (this.props.currentChatToken !== null) {
-            console.log('Pipka')
+        if (this.props.currentChatToken) {
+            console.log(3)
+            console.log('Pipka', this.props.currentChatToken)
+            const socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${this.props.currentChatToken}`)
+            socket.OPEN
+            // /<USER_ID>/<CHAT_ID>/<TOKEN_VALUE>');
             return false
         }
+        console.log(newProps, oldProps)
     }
 
     show() {
@@ -209,7 +217,15 @@ class ChatPage extends Block<ChatPageProps> {
                 let chatToGetUsersID = Number(chatListItem.closest('li')?.id)
                 const currentChatTitle = chatListItem.closest('li')?.querySelector('.chat-list__item__chat-author__container')?.textContent
                 const currentChatAvatar = document.getElementById(`chat${chatToGetUsersID}Avatar`) as unknown as HTMLImageElement
-                Store.setState({currentChat: {id: chatToGetUsersID, title: currentChatTitle, avatar: currentChatAvatar?.src}})
+                Store.setState({
+                    ...store.state,
+                    currentChat: {
+                        ...store.state.currentChat,
+                        id: chatToGetUsersID,
+                        title: currentChatTitle,
+                        avatar: currentChatAvatar?.src
+                    }
+                })
                 toggleActiveClassName(chatListItem.closest('li')!, 'active')
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
                 updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
