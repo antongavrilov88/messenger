@@ -7,8 +7,7 @@ module.exports = {
         historyApiFallback: true,
         writeToDisk: true,
         hot: true,
-        port: 9000,
-        watch: true
+        port: 9000
     },
     entry: './src/index.ts',
     output: {
@@ -26,20 +25,17 @@ module.exports = {
                     {
                         loader: 'ts-loader',
                         options: {
-                            configFile: path.resolve(__dirname, 'tsconfig.json'),
-                        },
-                    },
+                            configFile: path.resolve(__dirname, 'tsconfig.json')
+                        }
+                    }
                 ],
                 exclude: /(node_modules)/
             },
             {
               test: /\.s[ac]ss$/i,
               use: [
-                // Creates `style` nodes from JS strings
                 'style-loader',
-                // Translates CSS into CommonJS
                 'css-loader',
-                // Compiles Sass to CSS
                 'sass-loader',
               ],
             },
