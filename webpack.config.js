@@ -1,3 +1,4 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -7,11 +8,8 @@ module.exports = {
         writeToDisk: true,
         hot: true,
         port: 9000,
-        overlay: true,
-        open: true
-      },
-    mode: 'development',
-    entry: './build/js/index.js',
+    },
+    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'project-name.bundle.js'
@@ -28,20 +26,25 @@ module.exports = {
                         loader: 'ts-loader',
                         options: {
                             configFile: path.resolve(__dirname, 'tsconfig.json'),
-                            src: './'
                         },
                     },
                 ],
                 exclude: /(node_modules)/
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'sass-loader'
+                    }
+                ],
             }
         ]
-    }
-}; 
-
-// // module.exports = {
-//     entry: './src/index.js',
-//     output: {
-//       path: path.resolve(__dirname, 'dist'),
-//       filename: 'bundle.js'
-//     }
-//   };
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'My messenger',
+            template: 'static/index.html'
+        })
+    ]
+};
