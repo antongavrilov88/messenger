@@ -128,7 +128,7 @@ class ChatPage extends Block<ChatPageProps> {
             chats: store.state.chats !== this.props.chats ? store.state.chats : null,
             chat: store.state.chat !== this.props.chat ? store.state.chat : null,
             usersToAdd: store.state.usersToAdd !== this.props.usersToAdd ? store.state.usersToAdd : [],
-            currentChatToken: store.state.currentChatToken ? store.state.currentChatToken : null
+            currentChatToken: store.state.currentChatToken !== this.props.currentChatToken ? store.state.currentChatToken : this.props.currentChatToken
         })
     }
 
@@ -138,8 +138,8 @@ class ChatPage extends Block<ChatPageProps> {
     }
 
     componentDidUpdate(newProps: any, oldProps: any) {
-        console.log(this.props.currentChatToken, store.state.currentChatToken, this.props.currentChatToken === store.state.currentChatToken)
-        console.log(newProps.currentChatToken, oldProps.currentChatToken, newProps.currentChatToken === oldProps.currentChatToken)
+        // console.log(this.props.currentChatToken, store.state.currentChatToken, this.props.currentChatToken === store.state.currentChatToken)
+        // console.log(newProps.currentChatToken, oldProps.currentChatToken, newProps.currentChatToken === oldProps.currentChatToken)
         if (this.props.auth && this.props.auth.status === false) {
             router.go('/')
             return true
@@ -152,18 +152,20 @@ class ChatPage extends Block<ChatPageProps> {
         if (this.props.chat && this.props.chat.listUpdated === true) {
             console.log(2)
             updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id))
-            updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
             return false
         }
-        if (store.state.currentChat && store.state.currentChat.id
+        if (store.state.currentChat
+            && store.state.currentChat.id
             && store.state.currentChatToken !== null
             && store.state.currentChatToken !== undefined
             && (this.props.currentChatToken !== store.state.currentChatToken)) {
+                console.log(this.props.currentChatToken, store.state.currentChatToken, this.props.currentChatToken === store.state.currentChatToken)
+                console.log(newProps.currentChatToken, oldProps.currentChatToken, newProps.currentChatToken === oldProps.currentChatToken)
             const socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${store.state.currentChatToken}`)
             socket.OPEN
             return false
         }
-        console.log(newProps, oldProps)
+        // console.log(newProps, oldProps)
     }
 
     show() {
@@ -228,6 +230,7 @@ class ChatPage extends Block<ChatPageProps> {
                         avatar: currentChatAvatar?.src
                     }
                 })
+                updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
                 toggleActiveClassName(chatListItem.closest('li')!, 'active')
                 updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID))
                 updateState.onGetToken(API.chat.getToken(store.state.currentChat.id))
