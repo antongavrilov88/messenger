@@ -1,0 +1,1 @@
+self.webpackHotUpdatemf_messenger_praktikum_yandex(179,{},(function(e){"use strict";e.h=()=>"785d312a698830bb1e66"}));
