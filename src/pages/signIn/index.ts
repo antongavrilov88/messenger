@@ -1,3 +1,3 @@
-import SignIn from './SignIn.js'
+import SignIn from './SignIn.js';
 
-const signIn = new SignIn()
+const signIn = new SignIn();

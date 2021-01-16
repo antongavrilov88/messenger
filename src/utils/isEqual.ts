@@ -1,5 +1,5 @@
 function isArray(value: unknown): value is [] {
-    return Array.isArray(value);
+	return Array.isArray(value);
 }
 
 export type PlainObject<T = unknown> = {
@@ -7,38 +7,39 @@ export type PlainObject<T = unknown> = {
 };
 
 export function isPlainObject(value: unknown): value is PlainObject {
-    return typeof value === 'object'
-        && value !== null
-        && value.constructor === Object
-        && Object.prototype.toString.call(value) === '[object Object]';
+	return typeof value === 'object' &&
+        value !== null &&
+        value.constructor === Object &&
+        Object.prototype.toString.call(value) === '[object Object]';
 }
 
 export function isArrayOrObject(value: unknown): value is ([] | PlainObject) {
-    return isPlainObject(value) || isArray(value);
+	return isPlainObject(value) || isArray(value);
 }
 
 export function isEqual(lhs: any | [] | PlainObject, rhs: any | [] | PlainObject) {
-    if (Object.keys(lhs).length !== Object.keys(rhs).length) {
-        return false;
-    }
+	if (Object.keys(lhs).length !== Object.keys(rhs).length) {
+		return false;
+	}
 
-    for (const [key, value] of Object.entries(lhs)) {
-        const rightValue = rhs[key];
-        if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
-            if (isEqual(value, rightValue)) {
-                continue;
-            }
-            return false;
-        }
+	for (const [key, value] of Object.entries(lhs)) {
+		const rightValue = rhs[key];
+		if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
+			if (isEqual(value, rightValue)) {
+				continue;
+			}
 
-        if (value !== rightValue) {
-            return false;
-        }
-    }
+			return false;
+		}
 
-    return true;
+		if (value !== rightValue) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 export function isEqualPrim(lhs: string | number | boolean, rhs: string | number | boolean) {
-    return lhs === rhs;
+	return lhs === rhs;
 }

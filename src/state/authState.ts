@@ -1,8 +1,8 @@
 export const authStore = (state: any) => {
-    return {
-        ...state,
-        auth: {
-            status: false
-        }
-    }
-}
+	return {
+		...state,
+		auth: {
+			status: false
+		}
+	};
+};

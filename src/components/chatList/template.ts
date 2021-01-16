@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const tpl = `<div class="chat-list__container__list">
                         <ul id="chatList">
                         {{#each chats}}
@@ -17,4 +18,4 @@ export const tpl = `<div class="chat-list__container__list">
                         <div style="display: flex; justify-content: center;">
                             {{{createButton}}}
                         </div>
-                    </div>`
+                    </div>`;

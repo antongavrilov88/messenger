@@ -1,4 +1,4 @@
-import ChatPage from './ChatPage.js'
+import ChatPage from './ChatPage.js';
 
-const chatPage = new ChatPage()
-console.log(chatPage)
+const chatPage = new ChatPage();
+console.log(chatPage);

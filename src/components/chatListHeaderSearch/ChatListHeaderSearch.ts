@@ -1,14 +1,14 @@
-import Block from '../../utils/Block'
-import { tpl } from './template'
-import { ChatListHeaderSearchProps } from './types'
+import Block from '../../utils/Block';
+import {tpl} from './template';
+import {ChatListHeaderSearchProps} from './types';
 
 class ChatListHeaderSearch extends Block<ChatListHeaderSearchProps> {
-    constructor(props: ChatListHeaderSearchProps) {
-        super("div", props)
-    }
+	constructor(props: ChatListHeaderSearchProps) {
+		super('div', props);
+	}
 
-    render() {
-        return this.compile(tpl, {})
-    }
+	render() {
+		return this.compile(tpl, {});
+	}
 }
-export default ChatListHeaderSearch
+export default ChatListHeaderSearch;

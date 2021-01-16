@@ -1,4 +1,4 @@
-import Error404 from './Error404.js'
+import Error404 from './Error404.js';
 
-const error = new Error404()
-console.log( error )
+const error = new Error404();
+console.log(error);

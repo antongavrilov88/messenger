@@ -4,4 +4,4 @@ export const tpl = `<main>
                             {{{content}}}
                             </div>
                         </div>
-                    </main>`
+                    </main>`;

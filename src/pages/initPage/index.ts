@@ -1,3 +1,3 @@
-import InitPage from "./initPage"
+import InitPage from './initPage';
 
-const app = new InitPage
+const app = new InitPage();

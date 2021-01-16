@@ -1,4 +1,4 @@
 export const errorCTX = {
-    errorCode: '500',
-    errorMessage: 'Уже решаем...'
-}
+	errorCode: '500',
+	errorMessage: 'Уже решаем...'
+};

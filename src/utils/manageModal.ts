@@ -5,28 +5,27 @@ declare global {
     }
   }
 
-export function openModal( modalID: string ): void {
-    let modal = document.getElementById( modalID )
-    if (modal) {
-        const modalContent = modal.querySelector('.dialog-modal__content')
-        const modalBackground = modal.querySelector('.dialog-modal__background')
-        modalBackground?.classList.add('open')
-        modal.classList.add('open')
-        modalContent?.classList.add('open')
-    }
-    return
+export function openModal(modalID: string): void {
+	let modal = document.getElementById(modalID);
+	if (modal) {
+		const modalContent = modal.querySelector('.dialog-modal__content');
+		const modalBackground = modal.querySelector('.dialog-modal__background');
+		modalBackground?.classList.add('open');
+		modal.classList.add('open');
+		modalContent?.classList.add('open');
+	}
 }
 
-export function closeModal( modalID: string ): void {
-    let modal = document.getElementById( modalID )
-    if ( modal ) {
-        const modalContent = modal.querySelector('.dialog-modal__content')
-        const modalBackground = modal.querySelector('.dialog-modal__background')
-        modalBackground?.classList.remove('open')
-        modal.classList.remove('open')
-        modalContent?.classList.remove('open')
-    }
-    return
+export function closeModal(modalID: string): void {
+	let modal = document.getElementById(modalID);
+	if (modal) {
+		const modalContent = modal.querySelector('.dialog-modal__content');
+		const modalBackground = modal.querySelector('.dialog-modal__background');
+		modalBackground?.classList.remove('open');
+		modal.classList.remove('open');
+		modalContent?.classList.remove('open');
+	}
 }
-window.openModal = openModal
-window.closeModal = closeModal
+
+window.openModal = openModal;
+window.closeModal = closeModal;

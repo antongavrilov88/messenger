@@ -1,31 +1,31 @@
 export function socketHandler(path: string) {
-    const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats${path}`)
-    
-    socket.addEventListener('open', () => {
-        console.log('Соединение установлено');
+	const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats${path}`);
 
-        socket.send(JSON.stringify({
-            content: 'Моё первое сообщение миру!',
-            type: 'message',
-        }));
-    });
+	socket.addEventListener('open', () => {
+		console.log('Соединение установлено');
 
-    socket.addEventListener('close', event => {
-        if (event.wasClean) {
-            console.log('Соединение закрыто чисто');
-        } else {
-            console.log('Обрыв соединения');
-        }
+		socket.send(JSON.stringify({
+			content: 'Моё первое сообщение миру!',
+			type: 'message'
+		}));
+	});
 
-        console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-    });
+	socket.addEventListener('close', event => {
+		if (event.wasClean) {
+			console.log('Соединение закрыто чисто');
+		} else {
+			console.log('Обрыв соединения');
+		}
 
-    socket.addEventListener('message', event => {
-        console.log('Получены данные', event.data);
-    });
+		console.log(`Код: ${event.code} | Причина: ${event.reason}`);
+	});
 
-    socket.addEventListener('error', event => {
-        // console.log('Ошибка', event.message ? event.message : null);
-    });
-    return socket
+	socket.addEventListener('message', event => {
+		console.log('Получены данные', event.data);
+	});
+
+	socket.addEventListener('error', event => {
+		// Console.log('Ошибка', event.message ? event.message : null);
+	});
+	return socket;
 }

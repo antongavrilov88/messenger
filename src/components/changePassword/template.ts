@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const tpl = `<div class="profile-info__wrapper">
                         <form class="profile-info-container" id="{{id}}">
                             <span class="profile-info-container__property">Старый пароль</span>
@@ -7,4 +8,4 @@ export const tpl = `<div class="profile-info__wrapper">
                             <input class="change-input" type="password" name="newPassword" placeholder="новый пароль"  onfocus="{{inputHandler}}" onblur="{{inputHandler}}"/>
                             {{{submitButton}}}
                         </form>
-                    </div>`
+                    </div>`;

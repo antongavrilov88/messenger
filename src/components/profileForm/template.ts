@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const tpl = `<div class="profile-info__wrapper">
                         <div class="profile-info-container">
                             <form id="{{id}}" class="profile-info-container__form">
@@ -18,4 +19,4 @@ export const tpl = `<div class="profile-info__wrapper">
                                 <button class="modal-dialog__submit-button">Изменить</button>
                             </form>
                         </div>
-                    </div>`
+                    </div>`;

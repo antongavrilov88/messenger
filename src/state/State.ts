@@ -1,13 +1,13 @@
-import Store from '../utils/Store'
-import { userStore, } from './userState'
-import { authStore } from './authState'
-import { chatStore } from './chatState'
+import Store from '../utils/Store';
+import {userStore} from './userState';
+import {authStore} from './authState';
+import {chatStore} from './chatState';
 
-export const store = Store.getInstance()
-let state = store.state
+export const store = Store.getInstance();
+let state = store.state;
 
-state = userStore(state)
-state = authStore(state)
-state = chatStore(state)
+state = userStore(state);
+state = authStore(state);
+state = chatStore(state);
 
-export default state
+export default state;

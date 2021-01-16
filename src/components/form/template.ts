@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const tpl = `<form class={{className}} id={{id}}>
                         <span class="form__title">{{title}}</span>
                         {{#each inputs}}
@@ -6,4 +7,4 @@ export const tpl = `<form class={{className}} id={{id}}>
                             </label>
                         {{/each}}
                         {{{submitButton}}}
-                    </form>`
+                    </form>`;

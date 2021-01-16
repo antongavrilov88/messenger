@@ -5,4 +5,4 @@ export const tpl = `<div class="chat-list__container__profile-link">
                         <a id="profileHeaderButton">
                             {{linkText}}
                         </a>
-                    </div>`
+                    </div>`;

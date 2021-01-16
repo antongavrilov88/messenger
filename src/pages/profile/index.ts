@@ -1,3 +1,3 @@
-import Profile from './Profile.js'
+import Profile from './Profile.js';
 
-const profile = new Profile()
+const profile = new Profile();

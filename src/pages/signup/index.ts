@@ -1,4 +1,3 @@
-import SignUp from './SignUp.js'
+import SignUp from './SignUp.js';
 
-const signUp = new SignUp()
-console.log(signUp)
+const signUp = new SignUp();

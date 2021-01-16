@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const tpl = `<div class="chat-container">
                             <div class="chat-container__interlocutor-container" id='changeChatAvatarButton'>
                                 <div class="chat-container__interlocutor-container__avatar-container">
@@ -32,4 +33,4 @@ export const tpl = `<div class="chat-container">
                                 </button>
                             </form>
                         </div>
-                    </div>`
+                    </div>`;

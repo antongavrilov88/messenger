@@ -1,30 +1,30 @@
-import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace'
-import { errorCTX } from './contexts'
-import Block from '../../utils/Block'
-import Error from '../../components/error/Error'
-import { tpl } from './template'
-import { ErrorProps } from './types'
-import { render } from '../../utils/render'
+import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace';
+import {errorCTX} from './contexts';
+import Block from '../../utils/Block';
+import Error from '../../components/error/Error';
+import {tpl} from './template';
+import {ErrorProps} from './types';
+import {render} from '../../utils/render';
 
 class Error404 extends Block<ErrorProps> {
-    constructor() {
-        super("div", {
-            content: new AuthWorkspace({
-                content: [
-                    new Error(errorCTX)
-                ]
-            })
-        })
-    }
+	constructor() {
+		super('div', {
+			content: new AuthWorkspace({
+				content: [
+					new Error(errorCTX)
+				]
+			})
+		});
+	}
 
-    show() {
-        render( '.app', this )
-    }
+	show() {
+		render('.app', this);
+	}
 
-    render() {
-        return this.compile(tpl, {
-            content: this.props.content.render()
-        })
-    }
+	render() {
+		return this.compile(tpl, {
+			content: this.props.content.render()
+		});
+	}
 }
-export default Error404
+export default Error404;

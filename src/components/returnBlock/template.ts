@@ -4,4 +4,4 @@ export const tpl = `<div class="return-container">
                                 <h1>❮</h1>
                             </div>
                         </a>
-                    </div>`
+                    </div>`;
