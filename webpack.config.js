@@ -8,6 +8,7 @@ module.exports = {
         writeToDisk: true,
         hot: true,
         port: 9000,
+        watch: true
     },
     entry: './src/index.ts',
     output: {
@@ -32,13 +33,17 @@ module.exports = {
                 exclude: /(node_modules)/
             },
             {
-                test: /\.scss$/,
-                use: [
-                    {
-                        loader: 'sass-loader'
-                    }
-                ],
-            }
+              test: /\.s[ac]ss$/i,
+              use: [
+                // Creates `style` nodes from JS strings
+                'style-loader',
+                // Translates CSS into CommonJS
+                'css-loader',
+                // Compiles Sass to CSS
+                'sass-loader',
+              ],
+            },
+      
         ]
     },
     plugins: [
