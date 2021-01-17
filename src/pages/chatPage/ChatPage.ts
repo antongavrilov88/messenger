@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-negated-condition */
 /* eslint-disable max-len */
 import ChatList from '../../components/chatList/ChatList';
 import Block from '../../utils/Block';
-import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHeaderLink';
+import ChatListHeaderLink from '../../components/ChatListHeaderLink/ChatListHeaderLink';
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch';
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace';
 import {tpl} from './template';
@@ -105,7 +108,7 @@ class ChatPage extends Block<ChatPageProps> {
 		store.subscribe(this.stateToProps);
 	}
 
-	stateToProps(state: any) {
+	stateToProps() {
 		this.setProps({
 			content: new AuthWorkSpace({
 				content: [
@@ -169,7 +172,6 @@ class ChatPage extends Block<ChatPageProps> {
 			socket.OPEN;
 			return false;
 		}
-		// Console.log(newProps, oldProps)
 	}
 
 	show() {

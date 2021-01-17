@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import UnauthWorkspace from '../../components/unauthWorkSpace/UnauthWorkspace';
 import {formCTX} from './contexts';
 import Block from '../../utils/Block';

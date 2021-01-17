@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable max-len */
 import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace';
 import {profileCTX, returnBlockCTX, modalCTX, modalFormCTX} from './contexts';

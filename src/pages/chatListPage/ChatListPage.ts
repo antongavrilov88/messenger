@@ -1,12 +1,12 @@
 import ChatList from '../../components/chatList/ChatList';
 import Block from '../../utils/Block';
-import ChatListHeaderLink from '../../components/chatListHeaderLink/ChatListHeaderLink';
+import ChatListHeaderLink from '../../components/ChatListHeaderLink/ChatListHeaderLink';
 import ChatListHeaderSearch from '../../components/chatListHeaderSearch/ChatListHeaderSearch';
 import AuthWorkSpace from '../../components/authWorkSpace/AuthWorkspace';
 import {tpl} from './template';
 import {chatListCTX, dummyChatCTX} from './contexts';
 import ChatListBlock from '../../components/chatListBlock/ChatListBlock';
-import DummyChatBlock from '../../components/dummyChatBlock/DummyChatBlock';
+import DummyChatBlock from '../../components/DummyChatBlock/DummyChatBlock';
 import {ChatListPageProps} from './types';
 import {render} from '../../utils/render';
 

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-undef */
 import {expect} from 'chai';
 import Router from '.././src/utils/Router';
 import App from '../src/components/app/App';

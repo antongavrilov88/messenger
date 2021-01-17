@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Block from '../../utils/Block';
 import ChangePassword from '../../components/changePassword/ChangePassword';
 import {tpl} from './template';
@@ -11,7 +12,7 @@ import {ON_CHANGE_PASSWORD, ON_LOAD} from '../../actions';
 import formHandler from '../../utils/manageForm';
 import {render} from '../../utils/render';
 import {router} from '../../index';
-import {API} from '../../API/mainApi';
+import {API} from '../../API/mainAPI';
 
 let store = Store.getInstance();
 

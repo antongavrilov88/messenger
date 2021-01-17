@@ -1,4 +1,6 @@
-import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace';
+/* eslint-disable no-undef */
+// import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace';
+import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace';
 import {appCTX} from './contexts';
 import Block from '../../utils/Block';
 import {tpl} from './template';

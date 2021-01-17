@@ -1,4 +1,4 @@
-import AuthWorkspace from '../../components/AuthWorkSpace/AuthWorkspace';
+import AuthWorkspace from '../../components/authWorkSpace/AuthWorkspace';
 import {errorCTX} from './contexts';
 import Block from '../../utils/Block';
 import Error from '../../components/error/Error';
