@@ -5,8 +5,8 @@ export type MessageProps = {
 }
 
 export type ChatBlockProps = {
-    messages: MessageProps[],
     messageHandler: string,
     currentChatTitle: string,
-    currentChatAvatar: string
+    currentChatAvatar: string,
+    currentChatMessages: MessageProps[],
 }

@@ -11,6 +11,7 @@ export const chatStore = (state: any) => {
 		},
 		usersToAdd: [],
 		currentChatToken: null,
-		currentChat: {}
+		currentChat: {},
+		currentChatMessages: []
 	};
 };

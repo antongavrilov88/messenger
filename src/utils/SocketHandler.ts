@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 export function socketHandler(path: string) {
 	const socket = new WebSocket(`wss://ya-praktikum.tech/ws/chats${path}`);
 
@@ -20,12 +22,8 @@ export function socketHandler(path: string) {
 		console.log(`Код: ${event.code} | Причина: ${event.reason}`);
 	});
 
-	socket.addEventListener('message', event => {
-		console.log('Получены данные', event.data);
-	});
-
-	socket.addEventListener('error', event => {
-		// Console.log('Ошибка', event.message ? event.message : null);
-	});
+	// Socket.addEventListener('error', event => {
+	// 	console.log('Ошибка', event.message ? event.message : null);
+	// });
 	return socket;
 }

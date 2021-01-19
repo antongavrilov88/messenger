@@ -6,7 +6,8 @@ import {ON_CREATE_CHAT,
 	ON_ADD_CHAT_USER,
 	ON_DELETE_USER_FROM_CHAT,
 	ON_CHANGE_CHAT_AVATAR,
-	ON_CHAT_LOADED
+	ON_CHAT_LOADED,
+	ON_MESSAGE_RECIEVED
 } from '../actions';
 import Store from '../utils/Store';
 import {store} from '../state/State';
@@ -64,8 +65,12 @@ export const chatStateUpdater = (action: any) => {
 		case ON_CHAT_LOADED:
 			Store.setState({
 				...store.state,
-				currentChatToken: action.payload.reason ? null : action.payload.token
+				currentChatToken: action.payload.reason ? null : action.payload.token,
+				currentChatMessages: []
 			});
+			break;
+		case ON_MESSAGE_RECIEVED:
+			store.state.currentChatMessages.push(action.payload);
 			break;
 		default:
 			break;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {authStateUpdater} from './authStateUpdater';
 import {userStateUpdater} from './userStateUpdater';
 import {chatStateUpdater} from './chatStateUpdater';
@@ -12,10 +13,11 @@ const payloadHandler = async (payload: Promise<any>) => {
 };
 
 export const stateUpdater = async (action: any) => {
-	if (action.payload) {
+	if (action.payload && action.payload instanceof Promise) {
 		action = {...action, payload: await payloadHandler(action.payload)};
 	}
 
+	console.log(action.payload);
 	authStateUpdater(action);
 	userStateUpdater(action);
 	chatStateUpdater(action);

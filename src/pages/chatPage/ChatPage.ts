@@ -33,7 +33,8 @@ import {
 	ON_ADD_CHAT_USER,
 	ON_DELETE_USER_FROM_CHAT,
 	ON_CHANGE_CHAT_AVATAR,
-	ON_CHAT_LOADED
+	ON_CHAT_LOADED,
+	ON_MESSAGE_RECIEVED
 } from '../../actions';
 import {router} from '../../index';
 import {API} from '../../API/mainAPI';
@@ -80,6 +81,9 @@ const updateState = {
 	},
 	onGetToken: (payload: any) => {
 		stateUpdater({type: ON_CHAT_LOADED, payload: payload});
+	},
+	onGetMessage: (payload: any) => {
+		stateUpdater({type: ON_MESSAGE_RECIEVED, payload: payload});
 	}
 };
 
@@ -95,7 +99,12 @@ class ChatPage extends Block<ChatPageProps> {
 							new ChatList(chatListCTX)
 						]
 					}),
-					new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат', currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar : null}),
+					new ChatBlock({
+						...chatCTX,
+						currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат',
+						currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar : null,
+						currentChatMessages: store.state.currentChatMessages
+					}),
 					new ChatUsersListBlock({
 						content: [
 							new ChatUsersList(chatUsersListCTX)
@@ -119,7 +128,12 @@ class ChatPage extends Block<ChatPageProps> {
 							new ChatList({...chatListCTX, chats: store.state.chats ? store.state.chats.data : null})
 						]
 					}),
-					new ChatBlock({...chatCTX, currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат', currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar : null}),
+					new ChatBlock({
+						...chatCTX,
+						currentChatTitle: store.state.currentChat ? store.state.currentChat.title : 'Нужно выбрать чат',
+						currentChatAvatar: store.state.currentChat ? store.state.currentChat.avatar : null,
+						currentChatMessages: store.state.currentChatMessages
+					}),
 					new ChatUsersListBlock({
 						content: [
 							new ChatUsersList({...chatUsersListCTX, users: store.state.chat ? store.state.chat.users : null, usersToAdd: store.state.usersToAdd ? store.state.usersToAdd : []})
@@ -143,20 +157,18 @@ class ChatPage extends Block<ChatPageProps> {
 		updateState.onChatListLoad(API.chat.getChatList());
 	}
 
-	componentDidUpdate(newProps: any, oldProps: any) {
+	componentDidUpdate() {
 		if (this.props.auth && this.props.auth.status === false) {
 			router.go('/');
 			return true;
 		}
 
 		if (this.props.chats && this.props.chats.listUpdated === true) {
-			console.log(1);
 			updateState.onChatListLoad(API.chat.getChatList());
 			return false;
 		}
 
 		if (this.props.chat && this.props.chat.listUpdated === true) {
-			console.log(2);
 			updateState.onChatUsersListLoad(API.chat.getChatUsers(store.state.currentChat.id));
 			return false;
 		}
@@ -166,10 +178,14 @@ class ChatPage extends Block<ChatPageProps> {
 			store.state.currentChatToken !== null &&
 			store.state.currentChatToken !== undefined &&
 			(this.props.currentChatToken !== store.state.currentChatToken)) {
-			console.log(this.props.currentChatToken, store.state.currentChatToken, this.props.currentChatToken === store.state.currentChatToken);
-			console.log(newProps.currentChatToken, oldProps.currentChatToken, newProps.currentChatToken === oldProps.currentChatToken);
 			const socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${store.state.currentChatToken}`);
 			socket.OPEN;
+
+			socket.addEventListener('message', event => {
+				console.log(event.data);
+				updateState.onGetMessage(event.data);
+				console.log(store.state);
+			});
 			return false;
 		}
 	}

@@ -9,10 +9,10 @@ class ChatBlock extends Block<ChatBlockProps> {
 
 	render() {
 		return this.compile(tpl, {
-			messages: this.props.messages,
 			messageHandler: this.props.messageHandler,
 			currentChatTitle: this.props.currentChatTitle,
-			currentChatAvatar: this.props.currentChatAvatar
+			currentChatAvatar: this.props.currentChatAvatar,
+			currentChatMessages: this.props.currentChatMessages
 		});
 	}
 }
