@@ -14,6 +14,7 @@ export const tpl = `<div class="chat-container">
                                 <div class="{{this.containerClass}}">
                                     <div class="{{this.boxClass}}">
                                         <p>{{this.message.content}}</p>
+                                        <small><em>{{this.author}}</small></em>
                                     </div>
                                 </div>
                                 {{/each}}

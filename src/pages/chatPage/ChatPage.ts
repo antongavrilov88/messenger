@@ -183,24 +183,28 @@ class ChatPage extends Block<ChatPageProps> {
 			store.state.currentChatToken !== undefined &&
 			(this.props.currentChatToken !== store.state.currentChatToken)) {
 			this.state.socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${store.state.currentChatToken}`);
-			console.log(this.state);
+			console.log(store.state);
 			const socket = this.state.socket;
 			socket.OPEN;
 			socket.addEventListener('message', (event: { data: any; }) => {
 				let message;
-				JSON.parse(event.data).userId === store.state.user.id ?
-					message = {
-						containerClass: 'my-message-container',
-						boxClass: 'my-message-box',
-						message: JSON.parse(event.data)
-					} :
-					message = {
-						containerClass: 'interlocutor-message-container',
-						boxClass: 'interlocutor-message-box',
-						message: JSON.parse(event.data)
-					};
-				
-				updateState.onGetMessage(message);
+				if (JSON.parse(event.data).type === 'message') {
+					JSON.parse(event.data).userId === store.state.user.id ?
+						message = {
+							containerClass: 'my-message-container',
+							boxClass: 'my-message-box',
+							message: JSON.parse(event.data),
+							author: 'Me'
+						} :
+						message = {
+							containerClass: 'interlocutor-message-container',
+							boxClass: 'interlocutor-message-box',
+							message: JSON.parse(event.data),
+							author: store.state.chat.users.filter((item: { id: any; }) => item.id === JSON.parse(event.data).userId)[0].login
+						};
+
+					updateState.onGetMessage(message);
+				}
 			});
 
 			return false;

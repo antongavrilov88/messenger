@@ -71,6 +71,7 @@ export const chatStateUpdater = (action: any) => {
 			});
 			break;
 		case ON_MESSAGE_RECIEVED:
+			console.log(action.payload);
 			Store.setState({
 				...store.state,
 				currentChatMessages:

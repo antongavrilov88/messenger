@@ -1,7 +1,8 @@
 export type MessageProps = {
     containerClass: string;
     boxClass: string,
-    message: any
+    message: any,
+    author: string
 }
 
 export type ChatBlockProps = {
