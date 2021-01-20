@@ -88,6 +88,7 @@ const updateState = {
 };
 
 class ChatPage extends Block<ChatPageProps> {
+	state: { socket: any; };
 	constructor() {
 		super('div', {
 			content: new AuthWorkSpace({
@@ -115,6 +116,9 @@ class ChatPage extends Block<ChatPageProps> {
 		});
 		this.stateToProps = this.stateToProps.bind(this);
 		store.subscribe(this.stateToProps);
+		this.state = {
+			socket: null
+		};
 	}
 
 	stateToProps() {
@@ -148,8 +152,7 @@ class ChatPage extends Block<ChatPageProps> {
 			chats: store.state.chats !== this.props.chats ? store.state.chats : null,
 			chat: store.state.chat !== this.props.chat ? store.state.chat : null,
 			usersToAdd: store.state.usersToAdd !== this.props.usersToAdd ? store.state.usersToAdd : [],
-			currentChatToken: store.state.currentChatToken !== this.props.currentChatToken ? store.state.currentChatToken : this.props.currentChatToken,
-			// currentChatMessages: store.state.currentChatMessages ? store.state.currentChatMessages : []
+			currentChatToken: store.state.currentChatToken !== this.props.currentChatToken ? store.state.currentChatToken : this.props.currentChatToken
 		});
 	}
 
@@ -179,14 +182,27 @@ class ChatPage extends Block<ChatPageProps> {
 			store.state.currentChatToken !== null &&
 			store.state.currentChatToken !== undefined &&
 			(this.props.currentChatToken !== store.state.currentChatToken)) {
-			const socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${store.state.currentChatToken}`);
+			this.state.socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${store.state.currentChatToken}`);
+			console.log(this.state);
+			const socket = this.state.socket;
 			socket.OPEN;
-
-			socket.addEventListener('message', event => {
-				console.log(event.data);
-				updateState.onGetMessage(event.data);
-				console.log(store.state.currentChatMessages);
+			socket.addEventListener('message', (event: { data: any; }) => {
+				let message;
+				JSON.parse(event.data).userId === store.state.user.id ?
+					message = {
+						containerClass: 'my-message-container',
+						boxClass: 'my-message-box',
+						message: JSON.parse(event.data)
+					} :
+					message = {
+						containerClass: 'interlocutor-message-container',
+						boxClass: 'interlocutor-message-box',
+						message: JSON.parse(event.data)
+					};
+				
+				updateState.onGetMessage(message);
 			});
+
 			return false;
 		}
 	}
@@ -291,9 +307,21 @@ class ChatPage extends Block<ChatPageProps> {
 		changeChatAvatarButton?.addEventListener('click', function () {
 			openModal('changeChatAvatar');
 		});
-
+		const self = this;
 		let changeChatAvatarForm = document.getElementById('changeChatAvatarForm');
 		changeChatAvatarForm?.addEventListener('submit', this.chatAvatarFormHandler);
+		const sendMessageForm: Node | null = document.getElementById('messageForm');
+		if (sendMessageForm) {
+			sendMessageForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				const input: HTMLInputElement | null = document.getElementById('messageInput') as HTMLInputElement | null;
+				const socket = self.state.socket;
+				socket.send(JSON.stringify({
+					content: input ? input.value : null,
+					type: 'message'
+				}));
+			});
+		}
 	}
 
 	chatAvatarFormHandler = (event: Event) => {

@@ -71,25 +71,12 @@ export const chatStateUpdater = (action: any) => {
 			});
 			break;
 		case ON_MESSAGE_RECIEVED:
-			// eslint-disable-next-line no-case-declarations
-			let message;
-			action.payload.userId === store.state.user.id ?
-				message = {
-					containerClass: 'my-message-container',
-					boxClass: 'my-message-box',
-					message: JSON.parse(action.payload)
-				} :
-				message = {
-					containerClass: 'interlocutor-message-container',
-					boxClass: 'interlocutor-message-box',
-					message: JSON.parse(action.payload)
-				};
 			Store.setState({
 				...store.state,
 				currentChatMessages:
 				[
 					...store.state.currentChatMessages,
-					message
+					action.payload
 				]
 			});
 			break;

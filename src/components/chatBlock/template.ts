@@ -14,7 +14,6 @@ export const tpl = `<div class="chat-container">
                                 <div class="{{this.containerClass}}">
                                     <div class="{{this.boxClass}}">
                                         <p>{{this.message.content}}</p>
-                                        <p>PISAAAAAA</p>
                                     </div>
                                 </div>
                                 {{/each}}
@@ -26,7 +25,7 @@ export const tpl = `<div class="chat-container">
                                     &#128247;
                                 </div>
                                 <div class="message-form__message-input__container">
-                                    <input class="message-form__message-input" type="text" name="message" />
+                                    <input class="message-form__message-input" type="text" name="message" id="messageInput" />
                                 </div>
                                 <button class="message-form__send-button" type="submit"
                                     onclick="{{messageHandler}}">
