@@ -10,10 +10,11 @@ export const tpl = `<div class="chat-container">
                             </div>
                             <hr>
                             <div class="messages-container">
-                                {{#each messages}}
+                                {{#each currentChatMessages}}
                                 <div class="{{this.containerClass}}">
                                     <div class="{{this.boxClass}}">
-                                        <p>{{this.message}}</p>
+                                        <p>{{this.message.content}}</p>
+                                        <p>PISAAAAAA</p>
                                     </div>
                                 </div>
                                 {{/each}}

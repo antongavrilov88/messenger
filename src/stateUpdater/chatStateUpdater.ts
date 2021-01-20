@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import {ON_CREATE_CHAT,
 	ON_CHAT_LIST_LOAD,
 	ON_DELETE_CHAT,
@@ -70,7 +71,27 @@ export const chatStateUpdater = (action: any) => {
 			});
 			break;
 		case ON_MESSAGE_RECIEVED:
-			store.state.currentChatMessages.push(action.payload);
+			// eslint-disable-next-line no-case-declarations
+			let message;
+			action.payload.userId === store.state.user.id ?
+				message = {
+					containerClass: 'my-message-container',
+					boxClass: 'my-message-box',
+					message: JSON.parse(action.payload)
+				} :
+				message = {
+					containerClass: 'interlocutor-message-container',
+					boxClass: 'interlocutor-message-box',
+					message: JSON.parse(action.payload)
+				};
+			Store.setState({
+				...store.state,
+				currentChatMessages:
+				[
+					...store.state.currentChatMessages,
+					message
+				]
+			});
 			break;
 		default:
 			break;

@@ -148,7 +148,8 @@ class ChatPage extends Block<ChatPageProps> {
 			chats: store.state.chats !== this.props.chats ? store.state.chats : null,
 			chat: store.state.chat !== this.props.chat ? store.state.chat : null,
 			usersToAdd: store.state.usersToAdd !== this.props.usersToAdd ? store.state.usersToAdd : [],
-			currentChatToken: store.state.currentChatToken !== this.props.currentChatToken ? store.state.currentChatToken : this.props.currentChatToken
+			currentChatToken: store.state.currentChatToken !== this.props.currentChatToken ? store.state.currentChatToken : this.props.currentChatToken,
+			// currentChatMessages: store.state.currentChatMessages ? store.state.currentChatMessages : []
 		});
 	}
 
@@ -184,7 +185,7 @@ class ChatPage extends Block<ChatPageProps> {
 			socket.addEventListener('message', event => {
 				console.log(event.data);
 				updateState.onGetMessage(event.data);
-				console.log(store.state);
+				console.log(store.state.currentChatMessages);
 			});
 			return false;
 		}
@@ -252,7 +253,6 @@ class ChatPage extends Block<ChatPageProps> {
 						avatar: currentChatAvatar?.src
 					}
 				});
-				updateState.onGetToken(API.chat.getToken(store.state.currentChat.id));
 				toggleActiveClassName(chatListItem.closest('li')!, 'active');
 				updateState.onChatUsersListLoad(API.chat.getChatUsers(chatToGetUsersID));
 				updateState.onGetToken(API.chat.getToken(store.state.currentChat.id));
