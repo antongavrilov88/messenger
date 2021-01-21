@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-negated-condition */
@@ -187,26 +188,48 @@ class ChatPage extends Block<ChatPageProps> {
 			const socket = this.state.socket;
 			socket.OPEN;
 			socket.addEventListener('message', (event: { data: any; }) => {
-				let message;
+				if (Array.isArray(JSON.parse(event.data))) {
+					JSON.parse(event.data).map((item: any) => console.log(item));
+					let messages: { containerClass: string; boxClass: string; message: any; author: any; }[] = [];
+					JSON.parse(event.data).map((item: any) => {
+						item.user_id === store.state.user.id ?
+							messages.push({
+								containerClass: 'my-message-container',
+								boxClass: 'my-message-box',
+								message: item,
+								author: 'Me'
+							}) :
+							messages.push({
+								containerClass: 'interlocutor-message-container',
+								boxClass: 'interlocutor-message-box',
+								message: item,
+								author: store.state.chat.users.filter((friend: { id: any; }) => friend.id === item.user_id)[0].login
+							});
+					});
+					console.log('PISIWWWWAAA', messages);
+					updateState.onGetMessage(messages.reverse());
+				}
+
 				if (JSON.parse(event.data).type === 'message') {
+					console.log('PISA', JSON.parse(event.data));
+					let message = [];
 					JSON.parse(event.data).userId === store.state.user.id ?
-						message = {
+						message.push({
 							containerClass: 'my-message-container',
 							boxClass: 'my-message-box',
 							message: JSON.parse(event.data),
 							author: 'Me'
-						} :
-						message = {
+						}) :
+						message.push({
 							containerClass: 'interlocutor-message-container',
 							boxClass: 'interlocutor-message-box',
 							message: JSON.parse(event.data),
 							author: store.state.chat.users.filter((item: { id: any; }) => item.id === JSON.parse(event.data).userId)[0].login
-						};
+						});
 
 					updateState.onGetMessage(message);
 				}
 			});
-
 			return false;
 		}
 	}
@@ -330,6 +353,9 @@ class ChatPage extends Block<ChatPageProps> {
 				}));
 			});
 		}
+
+		let chatBlock = document.querySelector('.messages-container')!;
+		chatBlock.scrollTop = chatBlock.scrollHeight;
 	}
 
 	chatAvatarFormHandler = (event: Event) => {

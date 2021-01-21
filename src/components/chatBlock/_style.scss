@@ -47,7 +47,9 @@
   width: 100%;
   height: 75%;
   overflow-y: scroll;
-  overflow-x: hidden !important;
+  overflow-x: hidden !important;  
+  display: flex;
+  flex-direction: column;
 }
 
 .messages-container::-webkit-scrollbar {
@@ -56,18 +58,18 @@
 
 .my-message-container {
   position: relative;
-  width: 45%;
+  width: 90%;
   height: fit-content;
-  left: 50%;
-  margin-bottom: 10px;
+  left: 5%;
 }
 
 .my-message-box {
   width: fit-content;
   height: fit-content;
   float: right;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 3px;
+  margin-bottom: 3px;
+  align-self: flex-end;
 
   border-radius: 10px 10px 0 10px;
 
@@ -76,25 +78,22 @@
 
 .interlocutor-message-container {
   position: relative;
-  width: 45%;
+  width: 90%;
   height: fit-content;
   left: 5%;
-  margin-bottom: 10px;
 }
 
 .interlocutor-message-box {
   width: fit-content;
-  height: 100%;
+  height: fit-content;
   float: left;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 3px;
+  margin-bottom: 3px;
+  align-self: flex-start;
 
-  border-radius: 0px 10px 10px 10px;
+  border-radius: 10px 10px 0 10px;
+
   background: #c8c8c9;
-
-  #{&}__message {
-    position: relative;
-  }
 }
 
 .message-form__container {

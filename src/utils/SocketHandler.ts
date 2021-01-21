@@ -6,9 +6,14 @@ export function socketHandler(path: string) {
 	socket.addEventListener('open', () => {
 		console.log('Соединение установлено');
 
+		// socket.send(JSON.stringify({
+		// 	content: 'Моё первое сообщение миру!',
+		// 	type: 'message'
+		// }));
+
 		socket.send(JSON.stringify({
-			content: 'Моё первое сообщение миру!',
-			type: 'message'
+			content: '0',
+			type: 'get old'
 		}));
 	});
 

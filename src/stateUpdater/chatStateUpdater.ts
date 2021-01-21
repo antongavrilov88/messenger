@@ -71,13 +71,13 @@ export const chatStateUpdater = (action: any) => {
 			});
 			break;
 		case ON_MESSAGE_RECIEVED:
-			console.log(action.payload);
+			console.log('SAKISKA', action.payload);
 			Store.setState({
 				...store.state,
 				currentChatMessages:
 				[
 					...store.state.currentChatMessages,
-					action.payload
+					...action.payload
 				]
 			});
 			break;
