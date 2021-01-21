@@ -6,11 +6,6 @@ export function socketHandler(path: string) {
 	socket.addEventListener('open', () => {
 		console.log('Соединение установлено');
 
-		// socket.send(JSON.stringify({
-		// 	content: 'Моё первое сообщение миру!',
-		// 	type: 'message'
-		// }));
-
 		socket.send(JSON.stringify({
 			content: '0',
 			type: 'get old'
@@ -26,9 +21,5 @@ export function socketHandler(path: string) {
 
 		console.log(`Код: ${event.code} | Причина: ${event.reason}`);
 	});
-
-	// Socket.addEventListener('error', event => {
-	// 	console.log('Ошибка', event.message ? event.message : null);
-	// });
 	return socket;
 }

@@ -17,7 +17,6 @@ export const stateUpdater = async (action: any) => {
 		action = {...action, payload: await payloadHandler(action.payload)};
 	}
 
-	console.log(action.payload);
 	authStateUpdater(action);
 	userStateUpdater(action);
 	chatStateUpdater(action);

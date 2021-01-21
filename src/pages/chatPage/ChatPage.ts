@@ -184,12 +184,10 @@ class ChatPage extends Block<ChatPageProps> {
 			store.state.currentChatToken !== undefined &&
 			(this.props.currentChatToken !== store.state.currentChatToken)) {
 			this.state.socket = socketHandler(`/${store.state.user.id}/${store.state.currentChat.id}/${store.state.currentChatToken}`);
-			console.log(store.state);
 			const socket = this.state.socket;
 			socket.OPEN;
 			socket.addEventListener('message', (event: { data: any; }) => {
 				if (Array.isArray(JSON.parse(event.data))) {
-					JSON.parse(event.data).map((item: any) => console.log(item));
 					let messages: { containerClass: string; boxClass: string; message: any; author: any; }[] = [];
 					JSON.parse(event.data).map((item: any) => {
 						item.user_id === store.state.user.id ?
@@ -206,12 +204,10 @@ class ChatPage extends Block<ChatPageProps> {
 								author: store.state.chat.users.filter((friend: { id: any; }) => friend.id === item.user_id)[0].login
 							});
 					});
-					console.log('PISIWWWWAAA', messages);
 					updateState.onGetMessage(messages.reverse());
 				}
 
 				if (JSON.parse(event.data).type === 'message') {
-					console.log('PISA', JSON.parse(event.data));
 					let message = [];
 					JSON.parse(event.data).userId === store.state.user.id ?
 						message.push({
