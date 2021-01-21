@@ -320,6 +320,10 @@ class ChatPage extends Block<ChatPageProps> {
 				e.preventDefault();
 				const input: HTMLInputElement | null = document.getElementById('messageInput') as HTMLInputElement | null;
 				const socket = self.state.socket;
+				if (socket.readyState !== 1) {
+					socket.OPEN;
+				}
+
 				socket.send(JSON.stringify({
 					content: input ? input.value : null,
 					type: 'message'
