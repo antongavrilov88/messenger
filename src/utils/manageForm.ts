@@ -1,7 +1,10 @@
 import validateForm from './validateForm';
 
 function formHandler(formID: string): object | void {
-	let form: any = document.getElementById(formID);
+	if (!document.getElementById(formID)) {
+		return
+	}
+	let form = document.getElementById(formID);
 
 	let myFormFields = form.getElementsByTagName('input');
 	let requestObject: { [formFieldName: string]: string } = {};

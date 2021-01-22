@@ -6,7 +6,7 @@ declare global {
   }
 
 export function openModal(modalID: string): void {
-	let modal = document.getElementById(modalID);
+	const modal = document.getElementById(modalID);
 	if (modal) {
 		const modalContent = modal.querySelector('.dialog-modal__content');
 		const modalBackground = modal.querySelector('.dialog-modal__background');
@@ -17,7 +17,7 @@ export function openModal(modalID: string): void {
 }
 
 export function closeModal(modalID: string): void {
-	let modal = document.getElementById(modalID);
+	const modal = document.getElementById(modalID);
 	if (modal) {
 		const modalContent = modal.querySelector('.dialog-modal__content');
 		const modalBackground = modal.querySelector('.dialog-modal__background');
