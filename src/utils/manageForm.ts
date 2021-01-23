@@ -4,7 +4,7 @@ function formHandler(formID: string): object | void {
 	if (!document.getElementById(formID)) {
 		return
 	}
-	let form = document.getElementById(formID);
+	let form = document.getElementById(formID) as HTMLFormElement;
 
 	let myFormFields = form.getElementsByTagName('input');
 	let requestObject: { [formFieldName: string]: string } = {};

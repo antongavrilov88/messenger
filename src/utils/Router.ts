@@ -34,9 +34,12 @@ class Router {
 	}
 
 	_onRoute(pathname: string) {
-		let route: any;
-		if (this.getRoute(pathname)) {
-			route = this.getRoute(pathname);
+		
+		const route = this.getRoute(pathname) as Route | null;
+
+		if (!pathname || !route) {
+			this.go('/404')
+			return
 		}
 
 		if (this._currentRoute) {
@@ -44,7 +47,7 @@ class Router {
 		}
 
 		this._currentRoute = route;
-		route.render(route, pathname);
+		route.render()
 	}
 
 	go(pathname: any) {

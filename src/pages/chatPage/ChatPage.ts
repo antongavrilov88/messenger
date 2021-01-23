@@ -307,7 +307,7 @@ class ChatPage extends Block<ChatPageProps> {
 		let chatUsersList = document.getElementById('usersToAddList');
 		chatUsersList?.addEventListener('click', function (e) {
 			let target = e.target;
-			let addButton: HTMLElement = target as HTMLElement;
+			let addButton = target as HTMLElement;
 			if (addButton && addButton.classList.contains('chat-list__add-user_button')) {
 				let userToAddID = Number(addButton.closest('li')?.id);
 				let obj = {data: JSON.stringify({users: [Number(userToAddID)], chatId: Number(store.state.currentChat.id)})};
@@ -318,7 +318,7 @@ class ChatPage extends Block<ChatPageProps> {
 		let usersToAddList = document.getElementById('chatUsersList');
 		usersToAddList?.addEventListener('click', function (e) {
 			let target = e.target;
-			let deleteButton: HTMLElement = target as HTMLElement;
+			let deleteButton = target as HTMLElement;
 			if (deleteButton && deleteButton.classList.contains('chat-users-list__delete_button')) {
 				let userToDeleteID = Number(deleteButton.closest('li')?.id);
 				let obj = {data: JSON.stringify({users: [Number(userToDeleteID)], chatId: Number(store.state.currentChat.id)})};
@@ -330,15 +330,14 @@ class ChatPage extends Block<ChatPageProps> {
 		changeChatAvatarButton?.addEventListener('click', function () {
 			openModal('changeChatAvatar');
 		});
-		const self = this;
 		let changeChatAvatarForm = document.getElementById('changeChatAvatarForm');
 		changeChatAvatarForm?.addEventListener('submit', this.chatAvatarFormHandler);
-		const sendMessageForm: Node | null = document.getElementById('messageForm');
+		const sendMessageForm = document.getElementById('messageForm');
 		if (sendMessageForm) {
-			sendMessageForm.addEventListener('submit', function (e) {
+			sendMessageForm.addEventListener('submit', (e) => {
 				e.preventDefault();
-				const input: HTMLInputElement | null = document.getElementById('messageInput') as HTMLInputElement | null;
-				const socket = self.state.socket;
+				const input = document.getElementById('messageInput') as HTMLInputElement | null;
+				const socket = this.state.socket;
 				if (socket.readyState !== 1) {
 					socket.OPEN;
 				}
@@ -356,7 +355,7 @@ class ChatPage extends Block<ChatPageProps> {
 
 	chatAvatarFormHandler = (event: Event) => {
 		event.preventDefault();
-		const myUserForm: HTMLFormElement = document.getElementById(changeChatAvatarModalFormCTX.id) as HTMLFormElement;
+		const myUserForm = document.getElementById(changeChatAvatarModalFormCTX.id) as HTMLFormElement;
 		const form = new FormData(myUserForm);
 		form.append('chatId', store.state.currentChat.id);
 		updateState.onChangeChatAvatar(API.chat.updateAvatar({data: form}));
