@@ -49,6 +49,13 @@ import Store from '../../utils/Store';
 import {toggleActiveClassName} from '../../utils/toggleActiveClassName';
 import {socketHandler} from '../../utils/SocketHandler';
 
+type RawMessageData = {
+    containerClass: string;
+    boxClass: string;
+    message: any;
+    author: any;
+}
+
 const updateState = {
 	onLogout: (payload: any) => {
 		stateUpdater({type: ON_LOGOUT, payload: payload});
@@ -188,7 +195,7 @@ class ChatPage extends Block<ChatPageProps> {
 			socket.OPEN;
 			socket.addEventListener('message', (event: { data: any; }) => {
 				if (Array.isArray(JSON.parse(event.data))) {
-					let messages: { containerClass: string; boxClass: string; message: any; author: any; }[] = [];
+					let messages: RawMessageData[] = [];
 					JSON.parse(event.data).map((item: any) => {
 						item.user_id === store.state.user.id ?
 							messages.push({
@@ -299,38 +306,38 @@ class ChatPage extends Block<ChatPageProps> {
 		});
 
 		let addUserHandler: EventListener = this.addUserFormHandler;
-		let addUserForm: Node | null = document.getElementById('newChatUser');
+		const addUserForm: Node | null = document.getElementById('newChatUser');
 		if (addUserForm) {
 			addUserForm.addEventListener('submit', addUserHandler);
 		}
 
-		let chatUsersList = document.getElementById('usersToAddList');
+		const chatUsersList = document.getElementById('usersToAddList');
 		chatUsersList?.addEventListener('click', function (e) {
-			let target = e.target;
-			let addButton = target as HTMLElement;
+			const addButton = e.target as HTMLElement;
 			if (addButton && addButton.classList.contains('chat-list__add-user_button')) {
 				let userToAddID = Number(addButton.closest('li')?.id);
 				let obj = {data: JSON.stringify({users: [Number(userToAddID)], chatId: Number(store.state.currentChat.id)})};
 				updateState.onAddChatUser(API.chat.addChatUser(obj));
+				return
 			}
 		});
 
-		let usersToAddList = document.getElementById('chatUsersList');
+		const usersToAddList = document.getElementById('chatUsersList');
 		usersToAddList?.addEventListener('click', function (e) {
-			let target = e.target;
-			let deleteButton = target as HTMLElement;
+			const deleteButton = e.target as HTMLElement;
 			if (deleteButton && deleteButton.classList.contains('chat-users-list__delete_button')) {
 				let userToDeleteID = Number(deleteButton.closest('li')?.id);
 				let obj = {data: JSON.stringify({users: [Number(userToDeleteID)], chatId: Number(store.state.currentChat.id)})};
 				updateState.onDeleteChatUser(API.chat.deleteChatUser(obj));
+				return
 			}
 		});
 
-		let changeChatAvatarButton = document.getElementById('changeChatAvatarButton');
+		const changeChatAvatarButton = document.getElementById('changeChatAvatarButton');
 		changeChatAvatarButton?.addEventListener('click', function () {
 			openModal('changeChatAvatar');
 		});
-		let changeChatAvatarForm = document.getElementById('changeChatAvatarForm');
+		const changeChatAvatarForm = document.getElementById('changeChatAvatarForm');
 		changeChatAvatarForm?.addEventListener('submit', this.chatAvatarFormHandler);
 		const sendMessageForm = document.getElementById('messageForm');
 		if (sendMessageForm) {
@@ -349,7 +356,7 @@ class ChatPage extends Block<ChatPageProps> {
 			});
 		}
 
-		let chatBlock = document.querySelector('.messages-container')!;
+		const chatBlock = document.querySelector('.messages-container')!;
 		chatBlock.scrollTop = chatBlock.scrollHeight;
 	}
 

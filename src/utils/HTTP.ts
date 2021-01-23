@@ -43,9 +43,10 @@ class HTTP {
 			const xhr = new XMLHttpRequest();
 			xhr.open(method, `${this._baseURL}${this._subURL}${url}`);
 
-			if (headers) {
-				data = options.data;
-			} else {
+
+			const requestData = headers ? options.data : data;
+
+			if (!headers) {
 				xhr.setRequestHeader('Content-Type', 'application/json');
 			}
 
@@ -59,10 +60,10 @@ class HTTP {
 			xhr.onerror = reject;
 			xhr.ontimeout = reject;
 
-			if (method === METHOD.GET || !data) {
+			if (method === METHOD.GET || !requestData) {
 				xhr.send();
 			} else {
-				xhr.send(data);
+				xhr.send(requestData);
 			}
 		});
 	}
