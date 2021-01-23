@@ -356,8 +356,10 @@ class ChatPage extends Block<ChatPageProps> {
 			});
 		}
 
-		const chatBlock = document.querySelector('.messages-container')!;
-		chatBlock.scrollTop = chatBlock.scrollHeight;
+		const chatBlock = document.querySelector('.messages-container');
+		if (chatBlock) {
+			chatBlock.scrollTop = chatBlock.scrollHeight;
+		}
 	}
 
 	chatAvatarFormHandler = (event: Event) => {
