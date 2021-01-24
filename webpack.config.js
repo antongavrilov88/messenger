@@ -7,7 +7,7 @@ module.exports = {
 		historyApiFallback: true,
 		writeToDisk: true,
 		hot: true,
-		port: 80
+		port: 3000
 	},
 	entry: './src/index.ts',
 	output: {
